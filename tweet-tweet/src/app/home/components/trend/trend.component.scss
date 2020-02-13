@@ -1,0 +1,14 @@
+.app-trend{
+    max-width: 60rem;
+  background-color: white;
+  color: #777;
+
+  &:hover{
+    background-color: rgba(100, 100, 100, 0.1);
+    transition: all .6s;
+  }
+}
+
+.app-trend__header--subtitle{
+    color: rgba(50, 50, 50, 0.4);
+}
