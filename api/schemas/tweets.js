@@ -13,46 +13,48 @@ const tweetSchema = Schema({
     content: {
         text: String,
         required: true,
-        image: image,
+        imageURL: String,
+        mentions: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+        recentLikes: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ],
+        tags: [
+            {
+                type: String,
+                required: true
+            }
+        ],
+        date: {
+            type: moment.utc()
+        },
+        comments: {
+            type: Schema.Types.ObjectId,
+            ref: "Comments"
+        },
+        commentCount: {
+            type: Number,
+            required: true,
+        },
+        likes: {
+            type: Schema.Types.ObjectId,
+            ref: "Likes"
+        },
+        likeCount: {
+            type: Number,
+            required: true,
+        },
         
     },
-    mentions: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
-    recentLikes: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
-    tags: [
-        {
-            type: String,
-            required: true
-        }
-    ],
-    date: {
-        type: moment.utc()
-    },
-    comments: {
-        type: Schema.Types.ObjectId,
-        ref: "Comments"
-    },
-    commentCount: {
-        type: Number,
-        required: true,
-    },
-    likes: {
-        type: Schema.Types.ObjectId,
-        ref: "Likes"
-    },
-    likeCount: {
-        type: Number,
-        required: true,
-    },
+    
+   
     retweet: {
         type: Schema.Types.ObjectId,
         ref: "Retweet"

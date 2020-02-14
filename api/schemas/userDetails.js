@@ -45,7 +45,8 @@ const userSchema = Schema({
     tweetCount:{
         type: Number,
         default: 0
-    }
+    },
+    imageURL: String,
 });
  
 const User= mongoose.model('User', userSchema);
