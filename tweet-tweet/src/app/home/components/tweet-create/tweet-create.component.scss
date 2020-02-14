@@ -1,0 +1,58 @@
+.tweet-create{
+    width: 52rem;
+
+    &__primary{
+        display: flex;
+        width: 52rem;
+        justify-content: space-around;
+    
+        &--user_img{
+            background: url('https://www.w3schools.com/w3images/avatar6.png');
+            background-size: cover;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+        }
+    
+        &--tweet_area{
+            margin-top: 2rem;
+            font-size: 2.4rem;
+            width: 44rem;
+            height: 6rem;
+            resize: none;
+            color: #333;
+            border: none;
+            outline: none;
+
+            &::placeholder{
+                color: #cdcdcd;
+            }
+        }
+    }
+
+    &__secondary{
+        height: 5.4rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &--btn_tweet{
+        height: 4rem;
+        width: 8rem;
+        padding: 2px 4px;
+        background-color: #38a1f3;
+        color: white;
+        font-weight: 400;
+        font-size: 1.8rem;
+        border-radius: 4rem;
+        border: none;
+        margin-right: 1.2rem;
+
+        &:hover{
+            background-color: #1A91DA;
+            cursor: pointer;
+            transition: all .2s;
+        }
+    }
+}

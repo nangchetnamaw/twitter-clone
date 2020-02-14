@@ -1,0 +1,42 @@
+.post-card {
+  max-width: 60rem;
+  background-color: white;
+  color: #777;
+
+  &:hover{
+    background-color: rgba(100, 100, 100, 0.1);
+    transition: all .6s;
+  }
+}
+
+.post-header--image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.post-img{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    height: 28rem;
+    border-radius: 1rem;
+    background: url('https://material.angular.io/assets/img/examples/shiba2.jpg');
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.post-btn{
+    &:hover{
+        background-color: #cdcdcd;
+        transition: all .4s;
+    }
+}
+
+.post-btn-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.post-header--subtitle{
+    color: rgba(50, 50, 50, 0.4);
+}
