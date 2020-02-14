@@ -4,6 +4,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 //Custom Components
 import { TweetCreateComponent } from './home/components/tweet-create/tweet-create.component';
@@ -54,6 +63,8 @@ import {MatTreeModule} from '@angular/material/tree';
     TweetCreateComponent,
     PostComponent,
     TrendComponent
+    SideNavComponent,
+    WelcomePageComponent
   ],
   imports: [
     //Ng Modules
@@ -100,6 +111,12 @@ import {MatTreeModule} from '@angular/material/tree';
     MatTooltipModule,
     MatTreeModule
     //
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
