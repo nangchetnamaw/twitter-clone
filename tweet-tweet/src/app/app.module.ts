@@ -1,3 +1,4 @@
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -55,6 +56,7 @@ import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
+    SignUpComponent,
     AppComponent,
     TweetCreateComponent,
     PostComponent,
