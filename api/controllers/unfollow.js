@@ -19,7 +19,7 @@ async unfollowUpdate(req,res){
     const unfollower = await model.userModel.unfollow({"userHandle": req.body.unfollowerId},  unfollowerObj)
     const unfollowed = await model.userModel.unfollow({"userHandle": req.body.unfollowedId},  unfollowedObj)
 
-    const unfollower = await model.followerModel.unfollow({"user" : req.body.unfollowedObj, "follower" : req.body.unfollowerId})
+    const unfollower = await model.followerModel.unfollow({"user" : req.body.unfollowedId, "follower" : req.body.unfollowerId})
     const unfollowed = await model.followingModel.unfollow({"user": req.body.unfollowerId, "following" : req.body.unfollowedId})
 
     res.send("unfollowed")
