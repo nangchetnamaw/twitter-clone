@@ -1,0 +1,62 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 320px;
+  overflow: hidden;
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.mat-list-item{
+  margin-left: 55px;
+  font-size: 19px;
+  font-weight: 599;
+}
+.mat-list-item:hover{
+  color: rgba(29,161,242,1.00);
+  background-color: white;
+  border-radius: 20px;
+
+}
+.fa{
+  font-size: 25px;
+  font-weight: normal;
+}
+.fa-twitter{
+  font-size: 35px;
+  color: rgba(29,161,242,1.00);
+  
+}
+.mat-list-item span{
+  padding-left: 22px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+.mat-list-second-title{
+
+  color: rgba(29,161,242,1.00);
+}
+.tweet-main-btn{
+  background-color: rgba(29,161,242,1.00);
+  border: none;
+  color: white;
+  font-weight: 590;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  padding: 15px 90px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 15px 48px ;
+  cursor: pointer;
+  border-radius: 30px;
+  font-size:15px;
+
+}
