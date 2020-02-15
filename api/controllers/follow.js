@@ -16,8 +16,8 @@ async followUpdate(req,res){
 
     // console.log(updateObj)
 
-    const follower = await model.userModel.follow({userHandle: req.body.followerId},  followerObj)
-    const followed = await model.userModel.follow({userHandle: req.body.followedId},  followedObj)
+    const follower = await model.userModel.follow({"userHandle": req.body.followerId},  followerObj)
+    const followed = await model.userModel.follow({"userHandle": req.body.followedId},  followedObj)
 
     let followerObj = {
         "user" : req.body.followedObj,

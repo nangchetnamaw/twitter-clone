@@ -16,6 +16,10 @@ class User{
     async follow(criteria={}, updateObj){
         return this.model.update(criteria, updateObj )
     }
+
+    async unfollow(criteria={}, updateObj){
+        return this.model.update(criteria, updateObj )
+    }
 }
 
 module.exports = new User();

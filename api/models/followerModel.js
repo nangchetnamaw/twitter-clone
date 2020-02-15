@@ -11,6 +11,10 @@ class Follower{
         return await this.model.create(followerObj )
     }
 
+    async unfollow(criteria={}){
+        return await this.model.deleteOne(criteria)
+    }
+
 }
 
 module.exports = new Follower();
