@@ -10,5 +10,5 @@ module.exports = (app) => {
     app.put("/api/profile/pic/update", controller.profile.updateProfilePic)
     app.put("/api/profile/update", controller.profile.updateData)
     app.put("/api/follow",controller.follow.followUpdate) 
-    app.put("/api/unfollow",controller.follow.followUpdate) 
+    app.put("/api/unfollow",controller.unfollow.unfollowUpdate) 
 }
