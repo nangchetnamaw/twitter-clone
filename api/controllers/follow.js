@@ -17,16 +17,16 @@ async followUpdate(req,res){
     // console.log(updateObj)
 
     const follower = await model.userModel.follow({userHandle: req.body.followerId},  followerObj)
-    const followed = await model.userModel.follow({userHandle: req.params.followedId},  followedObj)
+    const followed = await model.userModel.follow({userHandle: req.body.followedId},  followedObj)
 
     let followerObj = {
-        "user" : req.params.followedObj,
-        "follower" : req.params.followerId
+        "user" : req.body.followedObj,
+        "follower" : req.body.followerId
     }
 
     let followedObj = {
-        "user": req.params.followerId,
-        "following" : req.params.followedId
+        "user": req.body.followerId,
+        "following" : req.body.followedId
     }
 
     const follower = await model.followerModel.follow(followerObj)
