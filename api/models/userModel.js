@@ -20,6 +20,10 @@ class User{
     async unfollow(criteria={}, updateObj){
         return this.model.update(criteria, updateObj )
     }
+
+    async getUsers(criteria={}){
+        return this.model.find(criteria, {"name":1, "userHandle":1, _id:0})
+    }
 }
 
 module.exports = new User();

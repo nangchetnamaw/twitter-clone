@@ -6,6 +6,8 @@ const config = require('config');
 const authenticate = require('./middlewares/authentication');
 const signupRoutes = require('./routes/signup');
 const loginRoutes = require('./routes/login');
+const searchRoutes = require('./controllers/profile');
+const followRoutes = require('./controllers/follow');
 
 if(!config.get('jwtPrivateKey')){
     console.log(config.get('jwtPrivateKey'));
@@ -21,6 +23,9 @@ app.use(authenticate);
 
 app.use('/api/signup', signupRoutes);
 app.use('/api/login', loginRoutes);
+app.use('/api/search', searchRoutes);
+app.use('/api/follow', followRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`Listening at port ${port}`));
+

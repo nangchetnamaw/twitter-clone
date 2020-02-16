@@ -6,11 +6,11 @@ class Follow {
     }
 
 async followUpdate(req,res){
-    let followerObj={
+    var followerObj={
         $inc: {'followingCount': 1}   
     }
 
-    let followedObj={
+    var followedObj={
         $inc: {'followerCount': 1}   
     }
 
@@ -19,12 +19,12 @@ async followUpdate(req,res){
     const follower = await model.userModel.follow({"userHandle": req.body.followerId},  followerObj)
     const followed = await model.userModel.follow({"userHandle": req.body.followedId},  followedObj)
 
-    let followerObj = {
+    var followerObj = {
         "user" : req.body.followedObj,
         "follower" : req.body.followerId
     }
 
-    let followedObj = {
+    var followedObj = {
         "user": req.body.followerId,
         "following" : req.body.followedId
     }
