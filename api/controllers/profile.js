@@ -39,6 +39,5 @@ class Profile {
         res.send(profilePic)
     }
 
-
 }
 module.exports = new Profile();
