@@ -1,9 +1,8 @@
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -14,6 +13,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { TweetCreateComponent } from './home/components/tweet-create/tweet-create.component';
 import { PostComponent } from './home/components/post/post.component';
 import { TrendComponent } from './home/components/trend/trend.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 //Material UI Imports
 import { MatCardModule } from '@angular/material/card';
@@ -71,7 +72,7 @@ import {MatTreeModule} from '@angular/material/tree';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-
+    HttpClientModule,
 
     //Materail UI Modules
     MatAutocompleteModule,
@@ -117,7 +118,9 @@ import {MatTreeModule} from '@angular/material/tree';
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

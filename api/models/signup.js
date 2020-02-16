@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-const Joi = require('joi');
+const Joi = require("joi");
 
 const signupSchema = mongoose.Schema({
   userhandle: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   email: {
     type: String,
@@ -23,35 +23,70 @@ const signupSchema = mongoose.Schema({
   phoneNo: {
     type: String
   },
+  profileImg: String,
   joined: {
     type: Date,
     default: Date.now()
   },
   dob: {
     type: Date
+  },
+  followerCount: {
+    type: Number,
+    default: 0
+  },
+  followingCount: {
+    type: Number,
+    default: 0
+  },
+  tweetCount: {
+    type: Number,
+    default: 0
   }
 });
 
-// userSchema.methods.authenticate (To be done later) 
+// userSchema.methods.authenticate (To be done later)
 
 const User = mongoose.model("User", signupSchema);
 
-function validateUser(user){
-    for(let key in user){
-      user[key] = user[key].trim();
-    }
+function validateUser(user) {
+  for (let key in user) {
+    user[key] = user[key].trim();
+  }
 
-    const schema = {
-        userhandle: Joi.string().min(3).max(50).required(),
-        email: Joi.string().min(5).max(200).required(),
-        password: Joi.string().min(5).max(255).required(),
-        name: Joi.string().min(2).max(100).required(),
-        mobile: Joi.string().min(8).max(20),
-        dob: Joi.string().min(4).max(20).required()
-    }
-    console.log('user mil gaya signup schema mein', user, 'Joi.validate', Joi.validate(user, schema));
+  const schema = {
+    userhandle: Joi.string()
+      .min(3)
+      .max(50)
+      .required(),
+    email: Joi.string()
+      .min(5)
+      .max(200)
+      .required(),
+    password: Joi.string()
+      .min(5)
+      .max(255)
+      .required(),
+    name: Joi.string()
+      .min(2)
+      .max(100)
+      .required(),
+    mobile: Joi.string()
+      .min(8)
+      .max(20),
+    dob: Joi.string()
+      .min(4)
+      .max(20)
+      .required()
+  };
+  console.log(
+    "user mil gaya signup schema mein",
+    user,
+    "Joi.validate",
+    Joi.validate(user, schema)
+  );
 
-    return Joi.validate(user, schema);
+  return Joi.validate(user, schema);
 }
 
 module.exports.User = User;
