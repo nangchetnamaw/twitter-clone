@@ -6,6 +6,7 @@ const userSchema = require('./userDetails');
 const followerSchema = Schema({
 	user: {
         type: Schema.Types.ObjectId,
+
         ref: "User"
     },
     
