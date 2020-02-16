@@ -1,3 +1,5 @@
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -48,17 +50,20 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+
 //
 
 
 @NgModule({
   declarations: [
+    SignUpComponent,
     AppComponent,
     TweetCreateComponent,
     PostComponent,
     TrendComponent,
     SideNavComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    LoginPageComponent
   ],
   imports: [
     //Ng Modules
