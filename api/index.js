@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('config');
 const authenticate = require('./middlewares/authentication');
@@ -14,6 +15,7 @@ if(!config.get('jwtPrivateKey')){
 
 mongoose.connect('mongodb://localhost/twitter').then(() => console.log('MongoDb connected')).catch(err => console.error('Error occured while connecting to db', err));
 
+app.use(cors())
 app.use(express.json());
 app.use(authenticate);
 

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const {User, validateUser} = require('../models/signup');
 
@@ -24,8 +26,11 @@ router.post('/', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     user.password = hashedPassword;
+    console.log(user, 'Line28@routes/signup.js');
     user = await user.save();
-    res.send(user);
+
+    const token = jwt.sign({ userhandle: user.userhandle, email: user.email }, config.get('jwtPrivateKey'));
+    res.header('x-auth-token', token).send(user);
 });
 
 module.exports = router;

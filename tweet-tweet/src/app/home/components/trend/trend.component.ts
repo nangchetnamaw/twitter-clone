@@ -14,4 +14,3 @@ import { Component } from "@angular/core";
 })
 export class TrendComponent {}
 
-//Checking git author
