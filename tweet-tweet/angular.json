@@ -25,11 +25,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-<<<<<<< HEAD
                "src/styles.css"
-=======
-              "src/styles.css"
->>>>>>> 627651f51eb120f8033dd8bc780fa15668ebc91a
             ],
             "scripts": []
           },
