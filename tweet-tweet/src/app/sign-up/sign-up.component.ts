@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.interface';
-
+import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +12,7 @@ import { User } from '../models/user.interface';
 export class SignUpComponent implements OnInit {
   isDisabled: Boolean = false;
   user: User;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,8 +25,10 @@ export class SignUpComponent implements OnInit {
   }
 
   submitHandler(inputObj: User): void{
-    this.userService.createUser(inputObj).subscribe((response) => {
-      console.log(response);
+    this.userService.createUser(inputObj).subscribe((response: HttpResponse<User>) => {
+      const token = response.headers.get('x-auth-token');
+      this.userService.headers.set('Authorization', `Bearer ${token}`);
+      this.router.navigate(['/home']);
     });
   }
 

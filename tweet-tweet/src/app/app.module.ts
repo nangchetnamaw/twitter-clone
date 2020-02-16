@@ -10,6 +10,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 //Custom Components
+import { HomeComponent } from './home/containers/home.component';
 import { TweetCreateComponent } from './home/components/tweet-create/tweet-create.component';
 import { PostComponent } from './home/components/post/post.component';
 import { TrendComponent } from './home/components/trend/trend.component';
@@ -64,7 +65,11 @@ import {MatTreeModule} from '@angular/material/tree';
     TrendComponent,
     SideNavComponent,
     WelcomePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HomeComponent,
+    PostComponent,
+    TweetCreateComponent,
+    TrendComponent
   ],
   imports: [
     //Ng Modules
