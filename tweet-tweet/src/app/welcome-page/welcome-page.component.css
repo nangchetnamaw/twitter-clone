@@ -1,5 +1,6 @@
 .front-bg {
   background:url('./tweet.png');
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,8 +32,6 @@
 .card-content-left {
   color: white;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-  text-align: left;
-  margin-left: 60px;
 }
 .card-content-right {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
