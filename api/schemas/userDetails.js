@@ -29,6 +29,7 @@ const userSchema = Schema({
         required: true
     },
     joined: {
+        type:Date,
         default: Date.now()
     },
     dob: {
@@ -49,5 +50,5 @@ const userSchema = Schema({
     imageURL: String,
 });
  
-const User= mongoose.model('User', userSchema);
-module.exports = User;
+// const User= mongoose.model('User', userSchema);
+// module.exports = User;
