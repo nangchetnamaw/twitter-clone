@@ -6,47 +6,59 @@ const mongoose = require('mongoose');
 //generate Schema
 const Schema = mongoose.Schema({
 
-    // user: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "User"
-    // },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
     content: {
         text: String,
         
         imageURL: String,
-        // mentions: [
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: "User"
-        //     }
-        // ],
-        tags: [
+        mentions: [
             {
-                type: String,
-                required: true
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User"
             }
-        ],
-        // date: {
-        //     type: date
-        // },
-        // comments: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: "Comments"
-        // },
-        commentCount: {
-            type: Number,
-            required: true,
-        },
-        // likes: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: "Likes"
-        // },
-        likeCount: {
-            type: Number,
-            required: true,
+        ]
+    },
+    
+    tags: [
+        {
+            type: String,
+            required: true
         }
-        
-    }
+    ],
+    recentLikes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    comments: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comments"
+    },
+    commentCount: {
+        type: Number,
+        required: true,
+    },
+    likes: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Likes"
+    },
+    likeCount: {
+        type: Number,
+        required: true,
+    },  
+    retweet: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Retweet"
+    },
+    date: {
+        type : Date,
+        default: Date.now()
+    },
+    
 
 });
 
@@ -67,4 +79,3 @@ router.post('/', async (req, res) => {
 // router.get()
 
 module.exports = router;
-
