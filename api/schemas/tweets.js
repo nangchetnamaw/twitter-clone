@@ -19,7 +19,8 @@ const tweetSchema = Schema({
                 type: Schema.Types.ObjectId,
                 ref: "User"
             }
-        ],
+        ]
+    },
         recentLikes: [
             {
                 type: Schema.Types.ObjectId,
@@ -33,7 +34,7 @@ const tweetSchema = Schema({
             }
         ],
         date: {
-            
+            type : date
         },
         comments: {
             type: Schema.Types.ObjectId,
@@ -51,14 +52,12 @@ const tweetSchema = Schema({
             type: Number,
             required: true,
         },
-        
-    },
-    
-   
+           
     retweet: {
         type: Schema.Types.ObjectId,
         ref: "Retweet"
     },
+ 
 });
  
 const Tweet = mongoose.model('Tweet', tweetSchema);
