@@ -7,6 +7,7 @@ const authenticate = require('./middlewares/authentication');
 const signupRoutes = require('./routes/signup');
 const loginRoutes = require('./routes/login');
 // const searchRoutes = require('./controllers/profile');
+const followRoutes = require('./controllers/follow');
 // const followRoutes = require('./controllers/follow');
 const composeTweet = require('./controllers/composeTweet');
 
@@ -25,6 +26,7 @@ app.use(authenticate);
 app.use('/api/signup', signupRoutes);
 app.use('/api/login', loginRoutes);
 // app.use('/api/search', searchRoutes);
+app.use('/api/follow', followRoutes);
 // app.use('/api/follow', followRoutes);
 app.use('/api/tweet', composeTweet);
 
