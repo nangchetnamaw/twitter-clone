@@ -12,6 +12,9 @@ class Tweet{
     async save(newTweet){
         return this.model.create(newTweet)
     }
+    async like(criteria={}, like){
+        return this.model.update(criteria, like)
+    }
 }
 
 module.exports = new Tweet();

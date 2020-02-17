@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const moment = require('moment');
+// const moment = require('moment');
 const Schema = mongoose.Schema;
 //Importing userSchema
-const User = require('./userDetails');
+// const User = require('./userDetails');
  
 const tweetSchema = Schema({
     
@@ -12,14 +12,14 @@ const tweetSchema = Schema({
     },
     content: {
         text: String,
-        required: true,
+        
         imageURL: String,
         mentions: [
             {
                 type: Schema.Types.ObjectId,
                 ref: "User"
             }
-        ],
+        ]},
         recentLikes: [
             {
                 type: Schema.Types.ObjectId,
@@ -33,7 +33,9 @@ const tweetSchema = Schema({
             }
         ],
         date: {
-            type: moment.utc()
+            type: Date,
+            default: Date.now()
+
         },
         comments: {
             type: Schema.Types.ObjectId,
@@ -51,15 +53,15 @@ const tweetSchema = Schema({
             type: Number,
             required: true,
         },
-        
-    },
-    
-   
+           
     retweet: {
         type: Schema.Types.ObjectId,
         ref: "Retweet"
     },
+
 });
- 
+
 const Tweet = mongoose.model('Tweet', tweetSchema);
+
 module.exports = Tweet;
+

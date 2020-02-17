@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "tweet-create",
+  selector: "app-tweet-create",
   template: `
     <div class="tweet-create">
       <div class="tweet-create__primary">
@@ -11,7 +11,7 @@ import { Component } from "@angular/core";
       <div class="tweet-create__secondary">
         <button class="tweet-create--btn_tweet">Tweet</button>
       </div>
-    </div>
+    </div>  
   `,
   styleUrls: ['./tweet-create.component.scss']
 })

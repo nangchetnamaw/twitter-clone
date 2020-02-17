@@ -6,15 +6,15 @@
             <div class="form-group" >
               <!-- <label for="exampleInputEmail1">Email address</label> -->
               <div class="text">Phone, email, or username</div>
-              <input type="email"  class="form-control" (keypress)="toggleDisabled(emailInput, passwordInput)"  id="exampleInputEmail1" aria-describedby="emailHelp" #emailInput>
+              <input type="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #emailInput>
             </div>
             <div class="form-group">
               <!-- <label for="exampleInputPassword1">Password</label> -->
               <div class="text">Password</div>
-              <input type="password" class="form-control" (keypress)="toggleDisabled(emailInput, passwordInput)" id="exampleInputPassword1" #passwordInput>
+              <input type="password" class="form-control" id="exampleInputPassword1" #passwordInput>
             </div>
             
-            <button  class="btn btn-primary" id = "myButton" [disabled]="isDisabled">Log in</button>
+            <a class="btn btn-primary" id = "myButton" (click)="loginHandler({email: emailInput.value, password: passwordInput.value})">Log in</a>
             <!-- <a href="#">Forgot password?</a>
             
             <a href="#">Sign up for Twitter</a> -->

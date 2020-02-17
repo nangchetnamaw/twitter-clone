@@ -1,9 +1,9 @@
 .tweet-create{
-    width: 52rem;
+    width: 60rem;
+    border-bottom: 1.2rem solid #efefef;
 
     &__primary{
         display: flex;
-        width: 52rem;
         justify-content: space-around;
     
         &--user_img{
@@ -17,16 +17,21 @@
         &--tweet_area{
             margin-top: 2rem;
             font-size: 2.4rem;
-            width: 44rem;
+            width: 52rem;
             height: 6rem;
             resize: none;
             color: #333;
             border: none;
             outline: none;
 
+            overflow: -moz-scrollbars-none;
+            -ms-overflow-style: none;
+
             &::placeholder{
                 color: #cdcdcd;
             }
+
+            &::-webkit-scrollbar { width: 0 !important }
         }
     }
 

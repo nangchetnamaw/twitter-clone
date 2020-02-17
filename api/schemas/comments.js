@@ -13,13 +13,12 @@ const commentsSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: "Tweet"
     },
-    reComments: {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-    },
+    // reComments: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Comment"
+    // },
 });
  
-
 const Comment = mongoose.model('Comment', commentsSchema);
 module.exports = Comment; 
 

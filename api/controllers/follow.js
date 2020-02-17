@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models/signup');
+const Joi = require('joi');
 
 // class Follow {
 //     constructor(){
@@ -57,7 +58,15 @@ router.post('/', async (req, res) => {
     res.send('Followed');
 });
 
+function validateFollow(obj){
+    // Joi.string().min(3).max(5) -> Example
+    const schema = {
+        userId: Joi.required,
+        followerId: Joi.required
+    }; 
 
+    return Joi.validate(obj, schema);
+}
 
 // async followUpdate(req,res){
 //     var followerObj={
@@ -92,5 +101,6 @@ router.post('/', async (req, res) => {
 // }
 
 module.exports = router;
-module.exports.followerModel = followerModel;
-module.exports.followingModel = followerModel;
+// module.exports.followerModel = followerModel;
+// module.exports.followingModel = followerModel;
+module.exports.validateFollow = validateFollow;
