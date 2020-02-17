@@ -1,33 +1,70 @@
-const model = require('../models')
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
 
-class Tweet {
-    constructor(){
 
-    }
-    async addNewTweet(req, res) {
-        let newTweet={
-            user: req.body.user,
-            content: {
-                text: req.body.content.text,
-                imageURL: req.body.content.imageURL,
-                mentions: req.body.content.mentions,
-                recentLikes: req.body.content.recentLikes,
-                tags: req.body.content.tags,
-                date: req.body.content.date,
-                comments: req.body.content.comments,
-                commentCount: req.body.content.commentCount,
-                likes: req.body.content.likes,
-                likeCount: req.body.content.likeCount
+//generate Schema
+const Schema = mongoose.Schema({
 
-            },
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "User"
+    // },
+    content: {
+        text: String,
+        
+        imageURL: String,
+        // mentions: [
+        //     {
+        //         type: mongoose.Schema.Types.ObjectId,
+        //         ref: "User"
+        //     }
+        // ],
+        tags: [
+            {
+                type: String,
+                required: true
+            }
+        ],
+        // date: {
+        //     type: date
+        // },
+        // comments: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: "Comments"
+        // },
+        commentCount: {
+            type: Number,
+            required: true,
+        },
+        // likes: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: "Likes"
+        // },
+        likeCount: {
+            type: Number,
+            required: true,
         }
-        const tweet = await model.tweetModel.save(newTweet)
-        res.send(tweet)
+        
     }
 
-    async show(req,res) {
-        const tweet = await model.tweetModel.get()
-        res.send(tweet);
-    }
-}
-module.exports = new Tweet();
+});
+
+
+
+//generate model
+const tweetModel = mongoose.model('tweet', Schema);
+
+//router.post('', (req, res) => {})
+
+router.post('/', async (req, res) => {
+    // const { text, imageURL, mentions, tags, comments, commentCount } = req.body.content;
+    await tweetModel.create(req.body);
+    
+    res.send('Tweet created successfully');
+});
+
+// router.get()
+
+module.exports = router;
+

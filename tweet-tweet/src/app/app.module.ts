@@ -52,6 +52,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { ProfileComponent } from './profile/profile.component';
 
 //
 
@@ -69,7 +70,8 @@ import {MatTreeModule} from '@angular/material/tree';
     HomeComponent,
     PostComponent,
     TweetCreateComponent,
-    TrendComponent
+    TrendComponent,
+    ProfileComponent
   ],
   imports: [
     //Ng Modules

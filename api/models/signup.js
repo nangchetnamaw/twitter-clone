@@ -31,14 +31,14 @@ const signupSchema = mongoose.Schema({
   dob: {
     type: Date
   },
-  followerCount: {
-    type: Number,
-    default: 0
+   followerCount : {
+    type : Number,
+    default : 0
   },
-  followingCount: {
-    type: Number,
-    default: 0
-  },
+  followingCount : {
+    type : Number,
+    default : 0
+},
   tweetCount: {
     type: Number,
     default: 0

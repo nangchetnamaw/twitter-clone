@@ -12,7 +12,7 @@ const tweetSchema = Schema({
     },
     content: {
         text: String,
-        required: true,
+        
         imageURL: String,
         mentions: [
             {
@@ -33,7 +33,7 @@ const tweetSchema = Schema({
             }
         ],
         date: {
-            type: moment.utc()
+            
         },
         comments: {
             type: Schema.Types.ObjectId,
