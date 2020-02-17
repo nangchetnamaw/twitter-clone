@@ -5,30 +5,23 @@ class LikeTweet {
 
     }
 
-    async addNewTweet(req, res) {
-        let newTweet={
-            user: req.body.user,
-            content: {
-                text: req.body.content.text,
-                imageURL: req.body.content.imageURL,
-                mentions: req.body.content.mentions,
-                recentLikes: req.body.content.recentLikes,
-                tags: req.body.content.tags,
-                date: req.body.content.date,
-                comments: req.body.content.comments,
-                commentCount: req.body.content.commentCount,
-                likes: req.body.content.likes,
-                likeCount: req.body.content.likeCount
-
-            },
+    async likeUpdate(req,res){
+       
+        var like={
+            $inc: {'likeCount': 1}   
         }
-        const tweet = await model.employee.save(newTweet)
-        res.send(tweet)
+
+        const like = await model.tweetModel.like({"likeCount": req.body.likeCount},  like)
+
+
+        var like= {
+            "likeCount": req.body.likeCount
+        }
+
+        res.send("like")
+
     }
 
-    async show(req,res){
-        const employee = await model.employee.get({"_id": req.params.id})
-        res.send(employee);
-    }
+
 }
 module.exports = new LikeTweet();
