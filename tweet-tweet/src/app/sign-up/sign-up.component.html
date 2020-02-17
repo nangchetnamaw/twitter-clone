@@ -7,35 +7,35 @@
       <form>
         <div class="form-group" > 
           <!-- <label for="exampleInputEmail1">Email address</label> -->
-          <div class="text">Name</div>
-          <input type="name" required class="form-control" (keypress)="toggleDisabled(nameInput, phoneInput)"  id="exampleInputName1" aria-describedby="emailHelp" #nameInput>
+          <label class="text">Name</label>
+          <input type="name" required class="form-control"  id="exampleInputName1" aria-describedby="emailHelp" #nameInput>
         </div>
         <div class="form-group">
           <!-- <label for="exampleInputPassword1">Password</label> -->
           <div class="text">Username</div>
-          <input type="username" required class="form-control" (keypress)="toggleDisabled(nameInput, phoneInput)" id="exampleInputUsername1" #usernameInput>
+          <input type="username" required class="form-control" id="exampleInputUsername1" #userhandleInput>
         </div>
         <div class="form-group">
             <!-- <label for="exampleInputPassword1">Password</label> -->
             <div class="text">Email</div>
-            <input type="email"  required class="form-control" (keypress)="toggleDisabled(nameInput, phoneInput)" id="exampleInputEmail1" #emailInput>
+            <input type="email"  required class="form-control" id="exampleInputEmail1" #emailInput>
           </div>
           <div class="form-group">
             <!-- <label for="exampleInputPassword1">Password</label> -->
             <div class="text">Password</div>
-            <input type="password" required class="form-control" (keypress)="toggleDisabled(nameInput, phoneInput)" id="exampleInputPassword1" #passwordInput>
+            <input type="password" required class="form-control" id="exampleInputPassword1" #passwordInput>
           </div>
           <div class="form-group">
             <!-- <label for="exampleInputPassword1">Password</label> -->
-            <div class="text">Phone</div>
-            <input type="number" class="form-control" (keypress)="toggleDisabled(nameInput, phoneInput)" id="exampleInputPhone1" #phoneInput>
+            <div class="text">Mobile</div>
+            <input type="number" class="form-control" id="exampleInputmobile1" #mobileInput>
           </div>
           <div class="form-group">
             <!-- <label for="exampleInputPassword1">Password</label> -->
             <div class="text">DOB</div>
-            <input type="date" required class="form-control" (keypress)="toggleDisabled(nameInput, phoneInput)" id="exampleInputDate1" #DOBInput>
+            <input type="date" required class="form-control" id="exampleInputDate1" #dobInput>
           </div>
-          <button  class="btn btn-primary" id = "myButton" [disabled]="isDisabled">Sign up</button>
+          <a class="btn btn-primary" id = "myButton" (click)="submitHandler({email: emailInput.value, password: passwordInput.value, name: nameInput.value, userhandle: userhandleInput.value, mobile: mobileInput.value, dob: dobInput.value })">Sign up</a>
       </form>
     </div>
 </div>
