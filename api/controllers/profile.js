@@ -2,6 +2,20 @@ const model = require('../models');
 const { User } = require('../models/signup');
 const express = require('express');
 const router = express.Router();  //it will append the index.js route with this
+const multer  = require('multer');
+var upload = multer({ dest: 'assests/' })
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads/images')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+  var upload = multer({ storage: storage })
+
 
 class Profile {
     constructor(){
@@ -42,13 +56,7 @@ class Profile {
         res.send(profilePic)
     }
 
-    
-
 }
 
-router.get('/', async (req, res) => {
-    const users = await User.find({}, {"name":1, "userHandle":1, _id:0} );
-    res.send(users);
-});
 
 module.exports = router;
