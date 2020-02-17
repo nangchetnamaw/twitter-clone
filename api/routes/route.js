@@ -13,6 +13,7 @@ module.exports = (app) => {
     app.put("/api/follow",controller.follow.followUpdate) 
     app.put("/api/unfollow",controller.unfollow.unfollowUpdate)
     app.get("/api/search",controller.profile.searchUser) 
+    
 
 
     

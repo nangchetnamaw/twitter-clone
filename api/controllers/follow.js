@@ -1,40 +1,96 @@
-const model = require('../models')
+// const model = require('../models');
+const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
+const { User } = require('../models/signup');
 
-class Follow {
-    constructor(){
+// class Follow {
+//     constructor(){
 
+//     }
+
+const FollowerSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    followerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
+});
 
-async followUpdate(req,res){
-    var followerObj={
-        $inc: {'followingCount': 1}   
+const FollowingSchema = mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    followingId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
+});
 
-    var followedObj={
-        $inc: {'followerCount': 1}   
-    }
+const followerModel = mongoose.model('UserFollower', FollowerSchema);
+const followingModel = mongoose.model('UserFollowing', FollowingSchema);
 
-    // console.log(updateObj)
+router.post('/', async (req, res) => {
+    const { userId, followerId } = req.body;
+    const userToBeFollowed = await User.findOne({ userhandle: userId });
+    const userFollower = await User.findOne({ userhandle: followerId });
 
-    const follower = await model.userModel.follow({"userHandle": req.body.followerId},  followerObj)
-    const followed = await model.userModel.follow({"userHandle": req.body.followedId},  followedObj)
+    console.log('userA', userToBeFollowed, 'userB', userFollower, 'pehli line');
 
-    var followerObj = {
-        "user" : req.body.followedObj,
-        "follower" : req.body.followerId
-    }
+    await followerModel.create({ userId: userToBeFollowed, followerId: userFollower });
+    await followingModel.create({ userId: userFollower, followingId: userToBeFollowed });
 
-    var followedObj = {
-        "user": req.body.followerId,
-        "following" : req.body.followedId
-    }
+    const follower = await User.findOne({ userhandle: userId });
+    const following = await User.findOne({ userhandle:followerId });
+    followerCount = follower.followerCount;
+    followingCount = following.followingCount;
+    console.log(followingCount, 'followingCount', followerCount, 'followerCount', 'doosri line');
 
-    const follower = await model.followerModel.follow(followerObj)
-    const followed = await model.followingModel.follow(followedObj)
+    await User.updateOne({ userhandle : userId  }, { followerCount: followerCount + 1 });
+    await User.updateOne({ userhandle: followerId }, { followingCount: followingCount + 1 })
+    console.log(followingCount, 'followingCount', followerCount, 'followerCount', 'tisri line');
 
-    res.send("followed")
+    res.send('Followed');
+});
 
-    }
-}
 
-module.exports = new Follow();
+
+// async followUpdate(req,res){
+//     var followerObj={
+//         $inc: {'followingCount': 1}   
+//     }
+
+//     var followedObj={
+//         $inc: {'followerCount': 1}   
+//     }
+
+//     // console.log(updateObj)
+
+//     const follower = await model.userModel.follow({"userHandle": req.body.followerId},  followerObj)
+//     const followed = await model.userModel.follow({"userHandle": req.body.followedId},  followedObj)
+
+//     var followerObj = {
+//         "user" : req.body.followedId,
+//         "follower" : req.body.followerId
+//     }
+
+//     var followedObj = {
+//         "user": req.body.followerId,
+//         "following" : req.body.followedId
+//     }
+
+//     const follower = await model.followerModel.follow(followerObj)
+//     const followed = await model.followingModel.follow(followedObj)
+
+//     res.send("followed")
+
+//     }
+// }
+
+module.exports = router;
+module.exports.followerModel = followerModel;
+module.exports.followingModel = followerModel;
