@@ -3,16 +3,16 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar><a mat-list-item mat-list-title href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></mat-toolbar>
+    <mat-toolbar><a mat-list-item mat-list-title><i class="fa fa-twitter" aria-hidden="true"></i></a></mat-toolbar>
     <mat-nav-list>
-      <div><a mat-list-item class="mat-list-second-title" href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-hashtag" aria-hidden="true"></i><span>Explore</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-bell-o" aria-hidden="true"></i><span>Notifications</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>Messages</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i><span>Bookmarks</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Lists</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a></div>
-      <div><a mat-list-item href="#"><i class="fa fa-ellipsis-h" aria-hidden="true"></i><span>More</span></a></div>
+      <div><a mat-list-item class="mat-list-second-title"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></div>
+      <div><a mat-list-item><i class="fa fa-hashtag" aria-hidden="true"></i><span>Explore</span></a></div>
+      <div><a mat-list-item><i class="fa fa-bell-o" aria-hidden="true"></i><span>Notifications</span></a></div>
+      <div><a mat-list-item><i class="fa fa-envelope-o" aria-hidden="true"></i><span>Messages</span></a></div>
+      <div><a mat-list-item><i class="fa fa-bookmark-o" aria-hidden="true"></i><span>Bookmarks</span></a></div>
+      <div><a mat-list-item><i class="fa fa-list-alt" aria-hidden="true"></i><span>Lists</span></a></div>
+      <div><a mat-list-item routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a></div>
+      <div><a mat-list-item><i class="fa fa-ellipsis-h" aria-hidden="true"></i><span>Logout</span></a></div>
       
     </mat-nav-list>
     <button class="tweet-main-btn">Tweet</button>

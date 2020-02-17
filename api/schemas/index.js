@@ -1,4 +1,4 @@
-const userDetails = require('./userDetails');
+//const userDetails = require('./userDetails');
 const follower = require('./followers');
 const following = require('./following');
 const tweets = require('./tweets');
