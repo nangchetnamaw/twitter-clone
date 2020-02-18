@@ -27,8 +27,7 @@ export class TweetCreateComponent {
       user: {
         userhandle: payload.userhandle,
         email: payload.email,
-        name: payload.name,
-        dob: payload.dob
+        name: payload.name
       },
       date: Date.now().toString()
     }

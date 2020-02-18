@@ -11,10 +11,10 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent,
+  { path: 'profile',
     children: [
       {
-        path: '', component: ProfileComponent
+        path: '', component: ProfileComponent, pathMatch: 'full'
       },
       {
         path: ':id', component: ProfileComponent

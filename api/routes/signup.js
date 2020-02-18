@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     console.log(user, 'Line28@routes/signup.js');
     user = await user.save();
 
-    const token = jwt.sign({ userhandle: user.userhandle, email: user.email }, config.get('jwtPrivateKey'));
+    const token = jwt.sign({ userhandle: user.userhandle, email: user.email, name: user.name }, config.get('jwtPrivateKey'));
     res.header('x-auth-token', token).send(user);
 });
 
