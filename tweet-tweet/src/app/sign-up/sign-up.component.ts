@@ -14,8 +14,7 @@ export class SignUpComponent implements OnInit {
   user: User;
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleDisabled(eventName, eventPhone, eventDOB, eventUsername, eventEmail, eventPassword):void{
     // if(eventName.value.trim().length !== 0 && eventDOB.value.trim().length !== 0 && eventPhone.value.trim().length !== 0 && eventUsername.value.trim().length !== 0 && eventEmail.value.trim().length !== 0 && eventPassword.value.trim().length !== 0 ){

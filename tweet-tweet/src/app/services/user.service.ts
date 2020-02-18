@@ -12,7 +12,7 @@ const USER_DOMAIN: string = 'http://localhost:3000/api/';
     providedIn: 'root'
 })
 export class UserService {
-    headers = new HttpHeaders({
+    headers: HttpHeaders = new HttpHeaders({
         'Content-Type': 'application/json'
     });
     httpOptions = {
