@@ -53,6 +53,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 //
 
@@ -123,11 +124,11 @@ import { ProfileComponent } from './profile/profile.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
-  ],
-  providers: [
+    MatListModule,
 
+    CommonModule
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
