@@ -1,68 +1,64 @@
-
-    
-
-constmongoose = require("mongoose");
+const mongoose = require("mongoose");
 // const moment = require('moment');
-constSchema = mongoose.Schema;
+const Schema = mongoose.Schema;
 //Importing userSchema
-constUser = require("./userDetails");
+const User = require("./userDetails");
  
-consttweetSchema = Schema({
-user: {
-type:Schema.Types.ObjectId,
-ref:"User"
+const tweetSchema = Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
   },
-content: {
-text:String,
+  content: {
+    text: String,
  
-imageURL:String,
-mentions: [
+    imageURL: String,
+    mentions: [
       {
-type:Schema.Types.ObjectId,
-ref:"User"
+        type: Schema.Types.ObjectId,
+        ref: "User"
       }
     ]
   },
-recentLikes: [
+  recentLikes: [
     {
-type:Schema.Types.ObjectId,
-ref:"User"
+      type: Schema.Types.ObjectId,
+      ref: "User"
     }
   ],
-tags: [
+  tags: [
     {
-type:String,
-required:true
+      type: String,
+      required: true
     }
   ],
-date: {
-type:Date,
-default:Date.now()
+  date: {
+    type: Date,
+    default: Date.now()
   },
-comments: {
-type:Schema.Types.ObjectId,
-ref:"Comments"
+  comments: {
+    type: Schema.Types.ObjectId,
+    ref: "Comments"
   },
-commentCount: {
-type:Number,
-required:true
+  commentCount: {
+    type: Number,
+    required: true
   },
-likes: {
-type:Schema.Types.ObjectId,
-ref:"Likes"
+  likes: {
+    type: Schema.Types.ObjectId,
+    ref: "Likes"
   },
-likeCount: {
-type:Number,
-required:true,
-default:0
+  likeCount: {
+    type: Number,
+    required: true,
+    default: 0
   },
  
-retweet: {
-type:Schema.Types.ObjectId,
-ref:"Retweet"
+  retweet: {
+    type: Schema.Types.ObjectId,
+    ref: "Retweet"
   }
 });
  
-constTweet = mongoose.model("Tweet", tweetSchema);
+const Tweet = mongoose.model("Tweet", tweetSchema);
 module.exports = Tweet;
-

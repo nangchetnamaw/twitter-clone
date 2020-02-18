@@ -16,15 +16,14 @@ const unfollowRoutes = require('./controllers/unfollow');
 // const followRoutes = require('./controllers/follow');
 const composeTweet = require('./controllers/composeTweet');
 
+const profileRoute = require('./controllers/profile');
+
 const tweetsRoutes = require('./controllers/tweets');
 
 
 // const searchRoutes = require('./controllers/profile');
 
 // const followRoutes = require('./controllers/follow');
-
-
-
 
 const likeRoute = require('./controllers/likeTweet');
 const unlikeRoute = require('./controllers/unlikeTweet');
@@ -50,11 +49,14 @@ app.use('/api/unfollow', unfollowRoutes);
 // app.use('/api/follow', followRoutes);
 app.use('/api/tweet', composeTweet);
 
+app.use('/api/profile', profileRoute);
+
 app.use('/api/search', searchRoutes);
 app.use('/api/feed/:parameter', tweetsRoutes);
 
 // app.use('/api/search', searchRoutes);
 // app.use('/api/follow', followRoutes);
+
 
 
 app.use('/api/like', likeRoute);
