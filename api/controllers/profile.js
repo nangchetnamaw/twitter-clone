@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();  //it will append the index.js route with this
 const mongoose = require('mongoose');
 
+
 const userSchema = mongoose.Schema({
     userhandle: {
       type: String,
@@ -28,8 +29,7 @@ const userSchema = mongoose.Schema({
     },
     profileImg: String,
     joined: {
-      
-      
+     
     },
     dob: {
     
@@ -48,7 +48,7 @@ const userSchema = mongoose.Schema({
     }
   });
 
-  const userModel = mongoose.model('UserDetails', userSchema);
+ const userModel = mongoose.model('UserDetails', userSchema);
 
 //router.post('', (req, res) => {})
 
@@ -81,6 +81,11 @@ router.patch('/', async (req, res) => {
     const userDetails = await userModel.update(req.body);
     
     res.send(userDetails);
+});
+
+router.get('/', async (req, res) => {
+    const users = await User.findOne({userhandle: req.body.userhandle});
+    res.send(users);
 });
 
 

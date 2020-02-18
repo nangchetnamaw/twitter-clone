@@ -1,4 +1,10 @@
-// const model = require('../models')
+// const model = require('../models');
+const { User } = require('../models/signup');
+const { followerModel } = require('./follow');
+const { followingModel } = require('./follow');
+const mongoose = require('mongoose');
+const express = require('express');
+const router = express.Router();
 
 // class Unfollow {
 //     constructor(){
@@ -29,18 +35,59 @@
 
 // module.exports = new Unfollow();
 
-const mongoose = require('mongoose');
-const express = require('express');
-const router = express.Router();
-const { User } = require('../models/signup');
-const { followerModel } = require('.\follow');
-const { followingModel } = require('.\follow');
+// const mongoose = require('mongoose');
+// const express = require('express');
+// const router = express.Router();
+// const { User } = require('../models/signup');
+// const { followerModel } = require('.\follow');
+// const { followingModel } = require('.\follow');
 
+// router.post('/', async (req, res) => {
+//     const { userId, unfollowerId } = req.body;
+//     const userToBeUnfollowed = await User.findOne({ userhandle: userId });
+//     const userUnfollower = await User.findOne({ userhandle: unfollowerId });
 
+//     console.log('userA', userToBeUnfollowed, 'userB', userUnfollower, 'pehli line');
 
+//     await followerModel.deleteOne({ userId: userToBeUnfollowed, followerId: userUnfollower });
+//     await followingModel.deleteOne({ userId: userUnfollower, followingId: userToBeUnfollowed });
 
+//     const toBeUnfollowed = await User.findOne({ userhandle: userId });
+//     const unfollower = await User.findOne({ userhandle:followerId });
+//     followerCount = toBeUnfollowed.followerCount;
+//     followingCount = unfollower.followingCount;
+//     console.log(followingCount, 'followingCount', followerCount, 'followerCount', 'doosri line');
 
+//     await User.updateOne({ userhandle : userId  }, { followerCount: followerCount - 1 });
+//     await User.updateOne({ userhandle: unfollowerId }, { followingCount: followingCount - 1 })
+//     console.log(followingCount, 'followingCount', followerCount, 'followerCount', 'tisri line');
 
+//     res.send('Unfollowed');
+// });
 
+router.put('/', async (req, res) => {
+    const { userId, unfollowerId } = req.body;
+    const userToBeUnfollowed = await User.findOne({ userhandle: userId });
+    const userUnfollower = await User.findOne({ userhandle: unfollowerId });
 
+    console.log('userA', userToBeUnfollowed, 'userB', userUnfollower, 'pehli line');
 
+    console.log(userToBeUnfollowed.userhandle, "here");
+    await followerModel.deleteOne({ userId: userToBeUnfollowed._id, followerId: userUnfollower._id });
+    await followingModel.deleteOne({ userId: userUnfollower._id, followingId: userToBeUnfollowed._id });
+
+    const beingUnfollowed = await User.findOne({ userhandle: userId });
+    const unfollowing = await User.findOne({ userhandle:unfollowerId });
+    followerCount = beingUnfollowed.followerCount;
+    followingCount = unfollowing.followingCount;
+    console.log( 'followingCount=',unfollowing.followingCount, 'followerCount=',beingUnfollowed.followerCount,  'doosri line');
+    
+    await User.updateOne({ userhandle : userId  }, { followerCount: followerCount - 1 });
+    await User.updateOne({ userhandle: unfollowerId }, { followingCount: followingCount - 1 });
+
+    console.log( 'followingCount=',unfollowing.followingCount, 'followerCount=',beingUnfollowed.followerCount,  'tisri line');
+
+    res.send('Unfollowed');
+});
+
+module.exports = router;
