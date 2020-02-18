@@ -22,10 +22,13 @@ export class LoginPageComponent{
 
   loginHandler(loginObj: Login): void{
     this.userService.loginUser(loginObj).subscribe((response: HttpResponse<Login>) => {
-      console.log(response.headers.get('x-auth-token'));
-      const token = response.headers.get('x-auth-token');
-      this.userService.headers.set('Authorization', `Bearer ${token}`);
-      console.log(token, this.userService.headers.get('Authorization'));
+      console.log(response.headers.get('x-auth-token'), response.body);
+      // const keys = response.headers.keys();
+      // const token = keys.map((cur) => { console.log(response.headers.get(cur)) });
+      // console.log(token);
+      this.userService.headers.set('Authorization', `Bearer ${response.body['x-auth-token']}`);
+      window.localStorage.setItem('Authorization', `Bearer ${response.body['x-auth-token']}`);
+      console.log(response.body['x-auth-token'], this.userService.headers.get('Authorization'));
       this.router.navigate(['/home']);
     });
   }
