@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const Tweet = require('./tweets');
  
 const likeSchema = new mongoose.Schema({
-    
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
