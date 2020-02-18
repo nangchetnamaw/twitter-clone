@@ -16,35 +16,36 @@ import { HttpResponse } from '@angular/common/http';
             </div>
             <div class="col-sm-11">
                 <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">{{ user?.name }}</h4>
-                <p style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; ">0 Tweets</p>
+                <p style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; ">{{user?.tweetCount}} Tweets</p>
             </div>
         </div>
         <div>
             <div class="profile-block col-sm-12">
                 <div class="profile-block-thumb cover-container">
                     <a href="#">
-                        <img src="https://pbs.twimg.com/profile_banners/738006188239921152/1581790348/1500x500" alt="" title="">        
+                        <img src="#" alt="" title="">        
                     </a>
                 </div>
                 <div class="profile-img">
                     <a href="#">
-                        <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
+                        <img src="#" alt="" title="">        
                     </a>
                 </div>
                 
                 <div class="profile-block-menu">
                     <div class="block-menu">
-                        <button class="tweet-main-btn">Edit Profile</button>
+                        <button class="tweet-main-btn" *ngIf="user.userhandle === currentUser.userhandle">Edit Profile</button>
+                        <button class="tweet-main-btn" *ngIf="user.userhandle !== currentUser.userhandle">Follow</button>
                     </div>
                 </div>
             </div>
         </div> 
         <div class="col-sm-12 profile-description-menu">
-                <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">Himanshu Kumar</h4>
-                <p style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; ">@imh0kumar</p>
+                <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">{{user?.name}}</h4>
+                <p style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; ">@{{user?.userhandle}}</p>
                 <p style="font-size: 15px;line-height: 1.3125;font-weight: 400;margin-top: -6px; ">Comedy and Humour Entertainment Music Sports</p>
-                <p style="font-size: 15px;line-height: 1.3125;font-weight: 400;margin-top: -6px; ">Born July 15, 1997<span><i class="fas fa-calendar-alt"></i>Joined June 2016</span></p>
-                <span><a href="#">0 followers</a><a href="#">0 following</a></span>
+                <p style="font-size: 15px;line-height: 1.3125;font-weight: 400;margin-top: -6px; ">Born {{user?.dob | date:'shortDate'}}<span><i class="fas fa-calendar-alt"></i>Joined {{user?.joined | date:'shortDate'}}</span></p>
+                <span><a href="#">{{user?.followerCount}} followers</a><a href="#">{{user?.followingCount}} following</a></span>
         </div>  
         <div class="block-menu col-sm-12">
             <ul>
@@ -91,15 +92,18 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class ProfileComponent implements OnInit{
     user: User = null;
-    
+    currentUser: User = this.parseJwt(window.localStorage.getItem('Authorization'));
+
+    private parseJwt(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace('-', '+').replace('_', '/');
+        return JSON.parse(window.atob(base64));
+    }
+
     constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute){}
 
     ngOnInit(){
-        this.route.params.pipe(switchMap((params: Params) => {
-            console.log(params);
-        return this.searchService.searchUser(params.id); }))
-        .subscribe((response: HttpResponse<User>) => this.user = response.body);
-        setTimeout(() => {console.log(this.user)}, 3000);
+        this.route.params.pipe(switchMap((params) => this.searchService.searchUser(params.id))).subscribe((response: HttpResponse<User>) => this.user = response.body);
     }
 
     // ngOnInit(): void{

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { HttpResponse } from '@angular/common/http';
 import { User } from '../../../models/user.interface';
-import { ActivatedRoute, Router, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-search',
@@ -19,14 +18,8 @@ import { switchMap } from 'rxjs/operators';
         </div>
     `
 })
-export class SearchComponent implements OnInit{
-    user: any = null;
-
-    constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute){}
-
-    ngOnInit(){
-        this.route.params.pipe(switchMap((params) => this.searchService.searchUser(params.id))).subscribe((data) => this.user = data);
-    }
+export class SearchComponent{
+    constructor(private searchService: SearchService, private router: Router){}
 
     searchUser(searchInput: String){
         this.searchService.searchUser(searchInput).subscribe((response: HttpResponse<User>) => {
