@@ -83,7 +83,7 @@ router.patch('/', async (req, res) => {
     res.send(userDetails);
 });
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const users = await User.findOne({userhandle: req.body.userhandle});
     res.send(users);
 });

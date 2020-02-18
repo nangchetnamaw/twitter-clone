@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { SearchService } from 'src/app/services/search.service';
+import { switchMap } from 'rxjs/operators'
+import { User } from '../models/user.interface';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-profile',
@@ -10,7 +15,7 @@ import { Component } from '@angular/core';
                 <i class="fas fa-arrow-left" style="align-items: center;"></i>
             </div>
             <div class="col-sm-11">
-                <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">Himanshu Kumar</h4>
+                <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">{{ user?.name }}</h4>
                 <p style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; ">0 Tweets</p>
             </div>
         </div>
@@ -51,7 +56,7 @@ import { Component } from '@angular/core';
         </div>
     </div>
     <div class="container col-lg-4 right-side-nav">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <form action="#" method="#" role="search">
                     <div class="input-group">
@@ -59,7 +64,8 @@ import { Component } from '@angular/core';
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
+        <app-search></app-search>
         <div class="card right-side-nav-2">
             <div class="card-body right-side-nav-2-title">
                 <h5 class="card-title">You might like</h5>
@@ -78,13 +84,30 @@ import { Component } from '@angular/core';
                         <button class="tweet-main-btn">Follow</button>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
     </div>
     `
 })
-export class ProfileComponent{
+export class ProfileComponent implements OnInit{
+    user: User = null;
     
+    constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute){}
+
+    ngOnInit(){
+        this.route.params.pipe(switchMap((params: Params) => {
+            console.log(params);
+        return this.searchService.searchUser(params.id); }))
+        .subscribe((response: HttpResponse<User>) => this.user = response.body);
+        setTimeout(() => {console.log(this.user)}, 3000);
+    }
+
+    // ngOnInit(): void{
+    //     // this.route.data.subscribe((data: User) => {
+    //     //     this.user = data;
+    //     //     console.log(data, 'data', this.user, 'user');
+    //     // });
+        
+    // }
+
 }
