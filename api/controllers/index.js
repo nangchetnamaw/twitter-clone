@@ -4,6 +4,7 @@ const follow = require('./follow');
 const unfollow = require('./unfollow');
 const likeTweet = require('./likeTweet');
 const unlikeTweet=require('./unlikeTweet');
+const retweet=require('./retweet');
 
 module.exports = {
     composeTweet: composeTweet,
@@ -11,5 +12,6 @@ module.exports = {
     follow:follow,
     unfollow:unfollow,
     likeTweet: likeTweet,
-    unlikeTweet:unlikeTweet
+    unlikeTweet:unlikeTweet,
+    retweet:retweet
 }

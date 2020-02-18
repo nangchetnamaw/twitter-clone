@@ -42,6 +42,7 @@
 .card-content-left i {
   padding-right: 15px;
   padding-top: 15px;
+  justify-content: left;
 }
 
 /* .head-design {
