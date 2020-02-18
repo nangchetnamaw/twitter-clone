@@ -3,11 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models/signup');
-
-// class Follow {
-//     constructor(){
-
-//     }
+const Joi = require('joi');
 
 const FollowerSchema = mongoose.Schema({
     userId: {
@@ -31,11 +27,14 @@ const FollowingSchema = mongoose.Schema({
     }
 });
 
-const followerModel = mongoose.model('UserFollower', FollowerSchema);
-const followingModel = mongoose.model('UserFollowing', FollowingSchema);
+const followerModel = mongoose.model('followerModel', FollowerSchema);
+const followingModel = mongoose.model('followingModel', FollowingSchema);
 
 router.post('/', async (req, res) => {
-    const { userId, followerId } = req.body;
+    
+    const userId = req.body.userId;
+    const followerId = req.body.followerId;
+    
     const userToBeFollowed = await User.findOne({ userhandle: userId });
     const userFollower = await User.findOne({ userhandle: followerId });
 
@@ -46,51 +45,33 @@ router.post('/', async (req, res) => {
 
     const follower = await User.findOne({ userhandle: userId });
     const following = await User.findOne({ userhandle:followerId });
+
+    // console.log(follower, "hereeeeeeee")
+
     followerCount = follower.followerCount;
     followingCount = following.followingCount;
-    console.log(followingCount, 'followingCount', followerCount, 'followerCount', 'doosri line');
+
+    console.log(follower.followingCount, 'followingCount', following.followerCount, 'followerCount', 'doosri line');
 
     await User.updateOne({ userhandle : userId  }, { followerCount: followerCount + 1 });
     await User.updateOne({ userhandle: followerId }, { followingCount: followingCount + 1 })
-    console.log(followingCount, 'followingCount', followerCount, 'followerCount', 'tisri line');
+
+    console.log(follower.followingCount, 'followingCount', following.followerCount, 'followerCount', 'tisri line');
 
     res.send('Followed');
 });
 
+function validateFollow(obj){
+    // Joi.string().min(3).max(5) -> Example
+    const schema = {
+        userId: Joi.required,
+        followerId: Joi.required
+    }; 
 
-
-// async followUpdate(req,res){
-//     var followerObj={
-//         $inc: {'followingCount': 1}   
-//     }
-
-//     var followedObj={
-//         $inc: {'followerCount': 1}   
-//     }
-
-//     // console.log(updateObj)
-
-//     const follower = await model.userModel.follow({"userHandle": req.body.followerId},  followerObj)
-//     const followed = await model.userModel.follow({"userHandle": req.body.followedId},  followedObj)
-
-//     var followerObj = {
-//         "user" : req.body.followedId,
-//         "follower" : req.body.followerId
-//     }
-
-//     var followedObj = {
-//         "user": req.body.followerId,
-//         "following" : req.body.followedId
-//     }
-
-//     const follower = await model.followerModel.follow(followerObj)
-//     const followed = await model.followingModel.follow(followedObj)
-
-//     res.send("followed")
-
-//     }
-// }
+    return Joi.validate(obj, schema);
+}
 
 module.exports = router;
 module.exports.followerModel = followerModel;
-module.exports.followingModel = followerModel;
+module.exports.followingModel = followingModel;
+module.exports.validateFollow = validateFollow;

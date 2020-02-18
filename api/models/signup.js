@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
+const { Tweet } = require('../schemas/tweets');
+
+// const tweetModel = mongoose.model('Tweet', {});
 
 const signupSchema = mongoose.Schema({
   userhandle: {
@@ -24,6 +27,7 @@ const signupSchema = mongoose.Schema({
     type: String
   },
   profileImg: String,
+
   joined: {
     type: Date,
     default: Date.now()
@@ -31,18 +35,22 @@ const signupSchema = mongoose.Schema({
   dob: {
     type: String
   },
-   followerCount : {
-    type : Number,
-    default : 0
+
+  followerCount: {
+    type: Number,
+    default: 0
   },
-  followingCount : {
-    type : Number,
-    default : 0
-},
+  followingCount: {
+    type: Number,
+    default: 0
+  },
   tweetCount: {
     type: Number,
     default: 0
-  }
+
+  },
+  
+  
 });
 
 // userSchema.methods.authenticate (To be done later)
@@ -77,6 +85,10 @@ function validateUser(user) {
     dob: Joi.string()
       .min(4)
       .max(20)
+
+      .required()
+    
+
       .required(),
       profileImg:Joi.string()
       .min(3)

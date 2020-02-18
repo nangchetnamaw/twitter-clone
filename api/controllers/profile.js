@@ -1,9 +1,10 @@
-const model = require('../models');
+// const model = require('../models');
 const { User } = require('../models/signup');
 const express = require('express');
 const router = express.Router();  //it will append the index.js route with this
 const multer  = require('multer');
 const fs  = require('fs');
+
 
 // var storage = multer.diskStorage({
 //     destination: function (req, file, cb) {
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
  
+
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         var dir = './uploads';
@@ -102,5 +104,10 @@ class Profile {
     }
 
 }
+router.get('/', async (req, res) => {
+    const users = await User.findOne({userhandle: req.body.userhandle});
+    res.send(users);
+});
+
 
 module.exports = router;
