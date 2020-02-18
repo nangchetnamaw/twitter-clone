@@ -5,9 +5,11 @@ const Schema = mongoose.Schema;
 const User = require("./userDetails");
  
 const tweetSchema = Schema({
+
   user: {
     type: Schema.Types.ObjectId,
     ref: "User"
+
   },
   content: {
     text: String,

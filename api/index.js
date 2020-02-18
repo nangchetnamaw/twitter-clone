@@ -52,7 +52,7 @@ app.use('/api/tweet', composeTweet);
 app.use('/api/profile', profileRoute);
 
 app.use('/api/search', searchRoutes);
-app.use('/api/feed/:parameter', tweetsRoutes);
+app.use('/api/feed', tweetsRoutes);
 
 // app.use('/api/search', searchRoutes);
 // app.use('/api/follow', followRoutes);
