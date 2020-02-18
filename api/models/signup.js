@@ -29,7 +29,7 @@ const signupSchema = mongoose.Schema({
     default: Date.now()
   },
   dob: {
-    type: Date
+    type: String
   },
    followerCount : {
     type : Number,
@@ -71,13 +71,16 @@ function validateUser(user) {
       .min(2)
       .max(100)
       .required(),
-    mobile: Joi.string()
+    phoneNo: Joi.string()
       .min(8)
       .max(20),
     dob: Joi.string()
       .min(4)
       .max(20)
-      .required()
+      .required(),
+      profileImg:Joi.string()
+      .min(3)
+      .max(40),
   };
   console.log(
     "user mil gaya signup schema mein",
