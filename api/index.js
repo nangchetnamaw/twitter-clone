@@ -15,6 +15,7 @@ const unfollowRoutes = require('./controllers/unfollow');
 
 // const followRoutes = require('./controllers/follow');
 const composeTweet = require('./controllers/composeTweet');
+
 const tweetsRoutes = require('./controllers/tweets');
 
 
@@ -24,6 +25,9 @@ const tweetsRoutes = require('./controllers/tweets');
 
 
 
+
+const likeRoute = require('./controllers/likeTweet');
+const unlikeRoute = require('./controllers/unlikeTweet');
 if(!config.get('jwtPrivateKey')){
     console.log(config.get('jwtPrivateKey'));
     console.error('FATAL ERROR: secretKey not set');
@@ -45,12 +49,16 @@ app.use('/api/unfollow', unfollowRoutes);
 
 // app.use('/api/follow', followRoutes);
 app.use('/api/tweet', composeTweet);
+
 app.use('/api/search', searchRoutes);
 app.use('/api/feed/:parameter', tweetsRoutes);
 
 // app.use('/api/search', searchRoutes);
 // app.use('/api/follow', followRoutes);
 
+
+app.use('/api/like', likeRoute);
+app.use('/api/unlike', unlikeRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`Listening at port ${port}`));

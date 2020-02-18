@@ -1,7 +1,8 @@
-const controller = require('../controllers');
+// const controller = require('../controllers');
 
 
-module.exports = (router) => {
+// module.exports = (router) => {
+
 
     // app.get("/api/tweet", controller.composeTweet.show)
     router.post("/api/tweet", controller.composeTweet.addNewTweet)
@@ -14,3 +15,5 @@ module.exports = (router) => {
     app.get("/api/search",controller.profile.searchUser)
     app.put("/api/like",controller.likeTweet.likeUpdate)
 }
+
+
