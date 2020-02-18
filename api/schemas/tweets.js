@@ -1,13 +1,10 @@
-
-    
-
-constmongoose = require("mongoose");
+const mongoose = require("mongoose");
 // const moment = require('moment');
-constSchema = mongoose.Schema;
+const Schema = mongoose.Schema;
 //Importing userSchema
-constUser = require("./userDetails");
+const User = require("./userDetails");
  
-consttweetSchema = Schema({
+const tweetSchema = Schema({
 user: {
 type:Schema.Types.ObjectId,
 ref:"User"
@@ -63,6 +60,6 @@ ref:"Retweet"
   }
 });
  
-constTweet = mongoose.model("Tweet", tweetSchema);
+const Tweet = mongoose.model("Tweet", tweetSchema);
 module.exports = Tweet;
 
