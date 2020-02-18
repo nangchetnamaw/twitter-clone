@@ -27,6 +27,7 @@ const signupSchema = mongoose.Schema({
     type: String
   },
   profileImg: String,
+
   joined: {
     type: Date,
     default: Date.now()
@@ -48,11 +49,7 @@ const signupSchema = mongoose.Schema({
     default: 0
 
   },
-  tweets:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Tweet"
-  }
-
+  
   
 });
 
@@ -89,6 +86,7 @@ function validateUser(user) {
       .min(4)
       .max(20)
       .required()
+    
   };
   console.log(
     "user mil gaya signup schema mein",

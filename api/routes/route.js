@@ -13,12 +13,4 @@ module.exports = (router) => {
     app.put("/api/unfollow",controller.unfollow.unfollowUpdate)
     app.get("/api/search",controller.profile.searchUser)
     app.put("/api/like",controller.likeTweet.likeUpdate)
-    
-
-
-
-
-    
-     
-
 }

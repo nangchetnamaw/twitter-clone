@@ -22,13 +22,11 @@ export class LoginPageComponent{
 
   loginHandler(loginObj: Login): void{
     this.userService.loginUser(loginObj).subscribe((response: HttpResponse<Login>) => {
-      console.log(response, response.headers.get('x-auth-token'));
+      console.log(response.headers.get('x-auth-token'));
       const token = response.headers.get('x-auth-token');
       this.userService.headers.set('Authorization', `Bearer ${token}`);
-      console.log(this.userService.headers);
+      console.log(token, this.userService.headers.get('Authorization'));
       this.router.navigate(['/home']);
     });
   }
-  
-
 }

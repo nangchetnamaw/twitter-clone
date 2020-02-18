@@ -19,7 +19,9 @@ const tweetSchema = Schema({
                 type: Schema.Types.ObjectId,
                 ref: "User"
             }
+
         ]},
+
         recentLikes: [
             {
                 type: Schema.Types.ObjectId,
@@ -35,6 +37,8 @@ const tweetSchema = Schema({
         date: {
             type: Date,
             default: Date.now()
+
+
 
         },
         comments: {

@@ -1,10 +1,11 @@
 .sidenav-container {
   height: 100%;
+  border-right: 1px solid #cdcdcd;
 }
 
 .sidenav {
-  width: 320px;
-  overflow: hidden;
+  width: 36rem;
+  background-color: white;
 }
 .sidenav .mat-toolbar {
   background: inherit;
@@ -17,17 +18,20 @@
 }
 .mat-list-item{
   margin-left: 55px;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 599;
+  color:rgba(0,0,0,0.842);
+  padding: 4rem 0;
 }
 .mat-list-item:hover{
   color: rgba(29,161,242,1.00);
   background-color: white;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  text-decoration: none;
 
 }
 .fa{
-  font-size: 25px;
+  font-size: 30px;
   font-weight: normal;
 }
 .fa-twitter{
@@ -57,6 +61,6 @@
   margin: 15px 48px ;
   cursor: pointer;
   border-radius: 30px;
-  font-size:15px;
+  font-size:17px;
 
 }

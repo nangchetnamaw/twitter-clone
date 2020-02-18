@@ -6,14 +6,22 @@ const config = require('config');
 const authenticate = require('./middlewares/authentication');
 const signupRoutes = require('./routes/signup');
 const loginRoutes = require('./routes/login');
+
 const searchRoutes = require('./controllers/profile');
 
 const followRoutes = require('./controllers/follow');
 
-// const unfollowRoutes = require('./controllers/unfollow');
+const unfollowRoutes = require('./controllers/unfollow');
 
 // const followRoutes = require('./controllers/follow');
 const composeTweet = require('./controllers/composeTweet');
+const tweetsRoutes = require('./controllers/tweets');
+
+
+// const searchRoutes = require('./controllers/profile');
+
+// const followRoutes = require('./controllers/follow');
+
 
 
 if(!config.get('jwtPrivateKey')){
@@ -33,11 +41,15 @@ app.use('/api/login', loginRoutes);
 
 app.use('/api/follow', followRoutes);
 
-// app.use('/api/unfollow', unfollowRoutes);
+app.use('/api/unfollow', unfollowRoutes);
 
 // app.use('/api/follow', followRoutes);
 app.use('/api/tweet', composeTweet);
 app.use('/api/search', searchRoutes);
+app.use('/api/feed/:parameter', tweetsRoutes);
+
+// app.use('/api/search', searchRoutes);
+// app.use('/api/follow', followRoutes);
 
 
 const port = process.env.PORT || 3000;
