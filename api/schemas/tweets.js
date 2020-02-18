@@ -44,6 +44,7 @@ const tweetSchema = Schema({
   },
   commentCount: {
     type: Number,
+    default:0,
     required: true
   },
   likes: {
