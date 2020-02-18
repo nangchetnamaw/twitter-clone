@@ -54,6 +54,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
+import { ReplyComponent } from './home/components/reply/reply.component';
+import { SearchComponent } from './home/components/search/search.component';
 
 //
 
@@ -72,7 +74,9 @@ import { CommonModule } from '@angular/common';
     PostComponent,
     TweetCreateComponent,
     TrendComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReplyComponent,
+    SearchComponent
   ],
   imports: [
     //Ng Modules

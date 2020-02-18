@@ -9,7 +9,9 @@ import { Component } from "@angular/core";
         <mat-card-header>
           <div mat-card-avatar class="post-header--image"></div>
           <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle class="post-header--subtitle">@shibaInu</mat-card-subtitle>
+          <mat-card-subtitle class="post-header--subtitle"
+            >@shibaInu</mat-card-subtitle
+          >
         </mat-card-header>
 
         <mat-card-content>
@@ -28,13 +30,33 @@ import { Component } from "@angular/core";
           /> -->
         </div>
 
+        <div class="reply-component" *ngIf="show">
+          <app-reply></app-reply>
+        </div>
+
         <mat-card-actions class="post-btn-container">
-          <button mat-button class="post-btn post-reply">Reply</button>
-          <button mat-button class="post-btn post-retweet">Retweet</button>
-          <button mat-button class="post-btn post-like">LIKE</button>
+          <button mat-button class="post-btn post-reply" (click)="toggleShow()">
+            <i class="fa fa-reply" aria-hidden="true" style="font-size: 3rem; color: #38a1f3;"></i><span>count</span>
+          </button>
+          <button mat-button class="post-btn post-retweet"><i class="fa fa-retweet" aria-hidden="true" style="font-size: 3rem; color: #38a1f3;"></i><span>count</span></button>
+          <div>
+            <button
+              mat-icon-button
+              color="warn"
+              aria-label="Example icon-button with a heart icon"
+            >
+              <mat-icon>favorite</mat-icon></button
+            ><span>count</span>
+          </div>
         </mat-card-actions>
       </mat-card>
     </div>
   `
 })
-export class PostComponent {}
+export class PostComponent {
+  show: Boolean = false;
+
+  toggleShow(): void {
+    this.show = !this.show;
+  }
+}

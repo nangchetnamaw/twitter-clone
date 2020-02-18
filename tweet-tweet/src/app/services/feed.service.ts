@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ITweet } from '../models/tweet.interface';
 
-const FEED_API = 'http://localhost:3000/api/feed';
+// const FEED_API = 'http://localhost:3000/api/feed';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,7 @@ export class FeedService{
     };
     constructor(private http: HttpClient){}
 
-    showTweets(): Observable<HttpResponse<ITweet[]>>{
-        return this.http.get<ITweet[]>(FEED_API, {...this.headers, observe: 'response'})
-    }
+    // showTweets(): Observable<HttpResponse<ITweet[]>>{
+    //     return this.http.get<ITweet[]>(FEED_API, {...this.headers, observe: 'response'})
+    // }
 }
