@@ -33,9 +33,9 @@ const tweetSchema = Schema({
                 required: true
             }
         ],
-        date: {
-            type : date
-        },
+        // date: {
+        //     type : Date
+        // },
         comments: {
             type: Schema.Types.ObjectId,
             ref: "Comments"

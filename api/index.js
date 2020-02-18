@@ -10,6 +10,8 @@ const loginRoutes = require('./routes/login');
 const followRoutes = require('./controllers/follow');
 // const followRoutes = require('./controllers/follow');
 const composeTweet = require('./controllers/composeTweet');
+const profileRoute = require('./controllers/profile');
+
 
 if(!config.get('jwtPrivateKey')){
     console.log(config.get('jwtPrivateKey'));
@@ -29,6 +31,8 @@ app.use('/api/login', loginRoutes);
 app.use('/api/follow', followRoutes);
 // app.use('/api/follow', followRoutes);
 app.use('/api/tweet', composeTweet);
+app.use('/api/profile', profileRoute);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`Listening at port ${port}`));
