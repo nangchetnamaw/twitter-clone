@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ITweet } from '../models/tweet.interface';
@@ -18,7 +18,11 @@ export class FeedService{
     };
     constructor(private http: HttpClient){}
 
-    showTweets(): Observable<HttpResponse<ITweet[]>>{
-        return this.http.get<ITweet[]>(FEED_API, {...this.headers, observe: 'response'})
+    showTweets(id: string): Observable<HttpResponse<ITweet[]>>{
+        const params = new HttpParams()
+        .set('id', id);
+
+        console.log(id, 'id insidenshowTweets');
+        return this.http.get<ITweet[]>(FEED_API, { ...this.httpOptions, observe: 'response', params });
     }
 }

@@ -29,11 +29,4 @@ export class TweetService{
         // }
         return this.http.post<ITweet>(`${TWEET_API}`, tweet, { ...this.httpOptions, observe: "response" });
     }
-
-    getTweet(id: string): Observable<HttpResponse<ITweet[]>>{
-        const params = new HttpParams()
-        .set('id', id);
-
-        return this.http.get<ITweet[]>('http://localhost:3000/api/feed', { ...this.httpOptions, observe: 'response', params });
-    }
 }

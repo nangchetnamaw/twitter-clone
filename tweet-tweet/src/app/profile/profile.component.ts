@@ -11,7 +11,9 @@ import { switchMap } from "rxjs/operators";
 import { User } from "../models/user.interface";
 import { HttpResponse } from "@angular/common/http";
 import { FollowService } from "../services/follow.service";
+import { FeedService } from "../services/feed.service";
 import { IFollower, IUnfollow } from "../models/follow.interface";
+import { ITweet } from '../models/tweet.interface';
 
 @Component({
   selector: "app-profile",
@@ -146,14 +148,17 @@ import { IFollower, IUnfollow } from "../models/follow.interface";
                 </div>
             </div>
         </div> -->
+        <div *ngFor="let tweet of tweets">
+      <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post></div>
+
+
     </div>
   `
 })
 export class ProfileComponent implements OnInit {
   user: User = null;
-
-  @Input()
-  follow: boolean = false;
+  tweets: ITweet[] = [];
+  follow: boolean;
 
   currentUser: User = this.parseJwt(
     window.localStorage.getItem("Authorization")
@@ -169,6 +174,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private followService: FollowService,
+    private feedService: FeedService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -198,8 +204,14 @@ export class ProfileComponent implements OnInit {
       )
       .subscribe((response: HttpResponse<IFollower>) => {
         console.log(response.body);
-        this.follow = response.body ? true : false;
+        this.follow = response.body['relation'] ? true : false;
       });
+
+      this.feedService.showTweets(this.redirectedUser).subscribe((res: HttpResponse<ITweet[]>) => {
+        console.log(res.body);
+        this.tweets = res.body['userTweets'];
+    });
+
   }
 
   handleFollow(): void {

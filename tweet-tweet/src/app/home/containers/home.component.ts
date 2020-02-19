@@ -13,7 +13,7 @@ import { HttpResponse } from '@angular/common/http';
                 <h2 class="header">Home</h2>
                 <app-tweet-create></app-tweet-create>
                 <div class="post-container" *ngFor="let tweet of tweets">
-                    <app-post></app-post>
+                    <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post>
                 </div>
             </div>
             <app-search></app-search>
@@ -22,12 +22,21 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit{
     tweets: ITweet[];
+
+    private parseJwt(token) {
+        var base64Url = token.split(".")[1];
+        var base64 = base64Url.replace("-", "+").replace("_", "/");
+        return JSON.parse(window.atob(base64));
+      }
+    
+      payload = this.parseJwt(localStorage.getItem('Authorization'));
+
     constructor(private feedService: FeedService){}
     // *ngFor="let tweet of tweets"
     ngOnInit(){
-        this.feedService.showTweets().subscribe((res: HttpResponse<ITweet[]>) => {
+        this.feedService.showTweets(this.payload.userhandle).subscribe((res: HttpResponse<ITweet[]>) => {
             console.log(res.body);
-            this.tweets = res.body;
+            this.tweets = res.body['tweetsOfFollowings'];
         });
     }
     
