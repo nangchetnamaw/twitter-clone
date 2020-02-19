@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     const tweetObj = await tweetModel.findOne({ _id: tweetId });
     const likedByUserObj = await tweetModel.findOne({ _id: likedBy });
     console.log(tweetObj, likedByUserObj);
-    await likeModel.create({ tweetObj, likedByUserObj });   
+    await  likeModel.create({ tweetObj, likedByUserObj });   
     const likes = tweetObj.likeCount+1;
     console.log(likes, 'likes');
 
