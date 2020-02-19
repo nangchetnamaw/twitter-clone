@@ -44,7 +44,7 @@ app.use(authenticate);
 app.use('/api/signup', signupRoutes);
 app.use('/api/login', loginRoutes);
 
-app.use('/api/follow', followRoutes);
+app.use('/api/follow', followRoutes.router);
 
 app.use('/api/unfollow', unfollowRoutes);
 

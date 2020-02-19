@@ -1,8 +1,7 @@
 // const model = require('../models');
 const { User } = require('../models/signup');
-const { followerModel } = require('./follow');
-const { followingModel } = require('./follow');
-const mongoose = require('mongoose');
+const follow = require('./follow');
+// const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
@@ -66,15 +65,17 @@ const router = express.Router();
 // });
 
 router.put('/', async (req, res) => {
+    const followerModel = follow.followerModel;
+    const followingModel = follow.followingModel;
     const { userId, followerId } = req.body;
     const userToBeUnfollowed = await User.findOne({ userhandle: userId });
     const userUnfollower = await User.findOne({ userhandle: followerId });
 
     console.log('userA', userToBeUnfollowed, 'userB', userUnfollower, 'pehli line');
-
     console.log(userToBeUnfollowed.userhandle, "here");
-    await followerModel.deleteOne({ userId: userToBeUnfollowed._id, followerId: userUnfollower._id });
-    await followingModel.deleteOne({ userId: userUnfollower._id, followingId: userToBeUnfollowed._id });
+    console.log(followerModel, 'FollowerModel');
+    await followerModel.deleteMany({ followerId: userToBeUnfollowed, userId: userUnfollower });
+    await followingModel.deleteMany({ followingId: userUnfollower, userId: userToBeUnfollowed });
 
     const beingUnfollowed = await User.findOne({ userhandle: userId });
     const unfollowing = await User.findOne({ userhandle:followerId });

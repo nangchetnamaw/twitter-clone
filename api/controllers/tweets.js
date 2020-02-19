@@ -6,38 +6,41 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-router.get('/:parameter', async (req, res) => {
-
-    const id = req.params.parameter;
+router.get('/', async (req, res) => {
+    const id = req.query.id;
     console.log(id);
-    const followings = await followingModel.find({ userId: id }, {followingId : 1, _id : 0});
+    const user = await User.findOne({userhandle: id});
+    const followings = await followingModel.find({ userId: user }, {followingId : 1, _id : 0});
 
     console.log(followings, "heloo");
 
-    var arrayOfTweets = [];
-    const loggedInUserTweets = await Tweet.find({ user: id })
+    var userTweets = [];
+    const loggedInUserTweets = await Tweet.find({ user: user })
     for (let k = 0; k < loggedInUserTweets.length; k++){
             
-        arrayOfTweets.push(loggedInUserTweets[k])
+        userTweets.push(loggedInUserTweets[k])
 
     }  
-    console.log(arrayOfTweets, "printing looged in user tweets")
+    // console.log(arrayOfTweets, "printing looged in user tweets");
+    const tweetsOfFollowings = [];
     for (let i = 0; i < followings.length; i++){
         const tweetCreater = followings[i].followingId;
         console.log(tweetCreater);
-        const tweetsOfCreater = await Tweet.find({ user: tweetCreater });
+        const tweetCreatorObj = await User.find({ userhandle: tweetCreater });
+        const tweetsOfCreater = await Tweet.find({ user: tweetCreatorObj });
 
         console.log(tweetsOfCreater, "here bro");
 
         for (let j = 0; j < tweetsOfCreater.length; j++){
             
-            arrayOfTweets.push(tweetsOfCreater[j])
+            tweetsOfFollowings.push(tweetsOfCreater[j])
 
         }    
 
     }
 
-    res.send(arrayOfTweets) ;
+    console.log({ 'userTweets': userTweets, 'tweetsOfFollowings': tweetsOfFollowings});
+    res.send({ 'userTweets': userTweets, 'tweetsOfFollowings': tweetsOfFollowings}) ;
 
 })
 
