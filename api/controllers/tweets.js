@@ -6,17 +6,23 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/:parameter', async (req, res) => {
 
     
-    const id = req.body.userId;
+    const id = req.params.parameter;
     console.log(id);
     const followings = await followingModel.find({ userId: id }, {followingId : 1, _id : 0});
 
-    console.log(followings, "helooooooooooooooooo");
+    console.log(followings, "heloo");
 
     var arrayOfTweets = [];
+    const loggedInUserTweets = await Tweet.find({ user: id })
+    for (let k = 0; k < loggedInUserTweets.length; k++){
+            
+        arrayOfTweets.push(loggedInUserTweets[k])
 
+    }  
+    console.log(arrayOfTweets, "printing looged in user tweets")
     for (let i = 0; i < followings.length; i++){
         const tweetCreater = followings[i].followingId;
         console.log(tweetCreater);
