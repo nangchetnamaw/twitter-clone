@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "app-post",
@@ -54,6 +54,8 @@ import { Component } from "@angular/core";
   `
 })
 export class PostComponent {
+  @Input()
+  text: string;
   show: Boolean = false;
 
   toggleShow(): void {

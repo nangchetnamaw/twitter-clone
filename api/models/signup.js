@@ -24,18 +24,17 @@ const signupSchema = mongoose.Schema({
     required: true
   },
   phoneNo: {
-    type: String
+    type: String,
+    default: ''
   },
-  profileImg: String,
-
   joined: {
     type: Date,
     default: Date.now()
   },
   dob: {
-    type: String
+    type: String,
+    default: ''
   },
-
   followerCount: {
     type: Number,
     default: 0
@@ -47,10 +46,7 @@ const signupSchema = mongoose.Schema({
   tweetCount: {
     type: Number,
     default: 0
-
-  },
-  
-  
+  }
 });
 
 // userSchema.methods.authenticate (To be done later)
@@ -85,14 +81,7 @@ function validateUser(user) {
     dob: Joi.string()
       .min(4)
       .max(20)
-
       .required()
-    
-
-      .required(),
-      profileImg:Joi.string()
-      .min(3)
-      .max(40),
   };
   console.log(
     "user mil gaya signup schema mein",
