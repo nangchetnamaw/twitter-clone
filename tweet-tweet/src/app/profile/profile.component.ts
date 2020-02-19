@@ -1,9 +1,11 @@
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { switchMap } from 'rxjs/operators'
 import { User } from '../models/user.interface';
 import { HttpResponse } from '@angular/common/http';
+import { FollowService } from '../services/follow.service';
+import { IFollower, IUnfollow } from '../models/follow.interface';
 
 @Component({
     selector: 'app-profile',
@@ -34,8 +36,15 @@ import { HttpResponse } from '@angular/common/http';
                 
                 <div class="profile-block-menu">
                     <div class="block-menu">
-                        <button class="tweet-main-btn" *ngIf="user.userhandle === currentUser.userhandle">Edit Profile</button>
-                        <button class="tweet-main-btn" *ngIf="user.userhandle !== currentUser.userhandle">Follow</button>
+                        <button class="tweet-main-btn" *ngIf="user?.userhandle === currentUser?.userhandle">Edit Profile</button>
+                        <div *ngIf="user?.userhandle !== currentUser?.userhandle">
+                            <div *ngIf="!follow">
+                                <button class="tweet-main-btn" (click)="handleFollow()">Follow</button>
+                            </div>
+                            <div *ngIf="follow">
+                                <button class="tweet-main-btn" (click)="handleUnfollow()">Unfollow</button>
+                            </div>
+                        </div>          
                     </div>
                 </div>
             </div>
@@ -67,7 +76,7 @@ import { HttpResponse } from '@angular/common/http';
             </div>
         </div> -->
         <app-search></app-search>
-        <div class="card right-side-nav-2">
+        <!-- <div class="card right-side-nav-2">
             <div class="card-body right-side-nav-2-title">
                 <h5 class="card-title">You might like</h5>
                 <div>
@@ -82,17 +91,27 @@ import { HttpResponse } from '@angular/common/http';
     
                     </div>
                     <div class="col-lg-2">
-                        <button class="tweet-main-btn">Follow</button>
+                        <div *ngIf="follow">
+                            <button class="tweet-main-btn" (click)="handleFollow()">Follow</button>
+                        </div>
+                        <div *ngIf="!follow">
+                            <button class="tweet-main-btn">Unfollow</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     `
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit, OnChanges{
     user: User = null;
+
+    @Input()
+    follow: boolean = false;
+    
     currentUser: User = this.parseJwt(window.localStorage.getItem('Authorization'));
+    redirectedUser: string;
 
     private parseJwt(token) {
         var base64Url = token.split('.')[1];
@@ -100,10 +119,36 @@ export class ProfileComponent implements OnInit{
         return JSON.parse(window.atob(base64));
     }
 
-    constructor(private searchService: SearchService, private router: Router, private route: ActivatedRoute){}
+    constructor(private searchService: SearchService, private followService: FollowService, private router: Router, private route: ActivatedRoute){}
 
     ngOnInit(){
-        this.route.params.pipe(switchMap((params) => this.searchService.searchUser(params.id))).subscribe((response: HttpResponse<User>) => this.user = response.body);
+        this.route.params.pipe(switchMap((params) => {this.redirectedUser = params.id; return this.searchService.searchUser(params.id)})).subscribe((response: HttpResponse<User>) => this.user = response.body);
+        
+    }
+
+    handleFollow(): void{
+        console.log('Inside handleFollow');
+        this.followService.follower({ followerId: this.currentUser.userhandle, userId: this.redirectedUser }).subscribe((res: HttpResponse<IFollower>) => {console.log(res)});
+
+        console.log(this.follow);
+        // if(this.follow){
+        this.follow = !this.follow;
+        
+    }
+
+    handleUnfollow(): void{
+        this.followService.unfollow({ userId: this.redirectedUser, followerId: this.currentUser.userhandle }).subscribe((res: HttpResponse<IUnfollow>) => {console.log(res)});
+
+        this.follow = !this.follow;
+    }
+
+    ngOnChanges(changes: SimpleChanges){
+        console.log('Inside ngOnChanges');
+        this.route.params.pipe(switchMap((params) => this.followService.getRelation({'userId': this.currentUser.userhandle, 'followerId': params.id}))).subscribe((response: HttpResponse<IFollower>) => {console.log(response.body); this.follow = response.body? true: false;});
+
+        // if(this.follow){
+            this.follow = !this.follow;
+        // }
     }
 
     // ngOnInit(): void{

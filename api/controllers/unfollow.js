@@ -22,7 +22,7 @@ const router = express.Router();
 
 //     // console.log(updateObj)
 
-//     const unfollower = await model.userModel.unfollow({"userHandle": req.body.unfollowerId},  unfollowerObj)
+//     const unfollower = await model.userModel.unfollow({"userHandle": req.body.followerId},  unfollowerObj)
 //     const unfollowed = await model.userModel.unfollow({"userHandle": req.body.unfollowedId},  unfollowedObj)
 
 //     const unfollower = await model.followerModel.unfollow({"user" : req.body.unfollowedId, "follower" : req.body.unfollowerId})
@@ -66,9 +66,9 @@ const router = express.Router();
 // });
 
 router.put('/', async (req, res) => {
-    const { userId, unfollowerId } = req.body;
+    const { userId, followerId } = req.body;
     const userToBeUnfollowed = await User.findOne({ userhandle: userId });
-    const userUnfollower = await User.findOne({ userhandle: unfollowerId });
+    const userUnfollower = await User.findOne({ userhandle: followerId });
 
     console.log('userA', userToBeUnfollowed, 'userB', userUnfollower, 'pehli line');
 
@@ -77,17 +77,17 @@ router.put('/', async (req, res) => {
     await followingModel.deleteOne({ userId: userUnfollower._id, followingId: userToBeUnfollowed._id });
 
     const beingUnfollowed = await User.findOne({ userhandle: userId });
-    const unfollowing = await User.findOne({ userhandle:unfollowerId });
+    const unfollowing = await User.findOne({ userhandle:followerId });
     followerCount = beingUnfollowed.followerCount;
     followingCount = unfollowing.followingCount;
     console.log( 'followingCount=',unfollowing.followingCount, 'followerCount=',beingUnfollowed.followerCount,  'doosri line');
     
     await User.updateOne({ userhandle : userId  }, { followerCount: followerCount - 1 });
-    await User.updateOne({ userhandle: unfollowerId }, { followingCount: followingCount - 1 });
+    await User.updateOne({ userhandle: followerId }, { followingCount: followingCount - 1 });
 
     console.log( 'followingCount=',unfollowing.followingCount, 'followerCount=',beingUnfollowed.followerCount,  'tisri line');
 
-    res.send('Unfollowed');
+    res.send({response: 'Unfollowed'});
 });
 
 module.exports = router;
