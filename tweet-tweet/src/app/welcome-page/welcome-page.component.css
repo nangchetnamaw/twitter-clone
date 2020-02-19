@@ -1,3 +1,7 @@
+.container-fluid{
+  margin: 0em;
+  padding: 0em;
+}
 .front-bg {
   background:url('./tweet.png');
   background-size: cover;
