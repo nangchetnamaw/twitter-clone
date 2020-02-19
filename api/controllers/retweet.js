@@ -22,6 +22,7 @@ router.post('/',async(req, res) => {
     const { tweetId, userId } = req.body;
     const tweetObj = await tweetModel.findOne({ _id: tweetId });
     console.log(tweetObj);
+    console.log("retweeted");
     res.send("retweeted");
     console.log(tweetObj.content);
    // await tweetModel.create( { content: tweetObj.content});
