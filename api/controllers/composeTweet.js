@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const { User } = require('../models/signup');
 
 
 //generate Schema
@@ -40,6 +41,7 @@ const Schema = mongoose.Schema({
     },
     commentCount: {
         type: Number,
+        default: 0,
         required: true,
     },
     likes: {
@@ -48,6 +50,7 @@ const Schema = mongoose.Schema({
     },
     likeCount: {
         type: Number,
+        default: 0,
         required: true,
     },  
     retweet: {
@@ -71,9 +74,10 @@ const tweetModel = mongoose.model('tweet', Schema);
 
 router.post('/', async (req, res) => {
     // const { text, imageURL, mentions, tags, comments, commentCount } = req.body.content;
-    await tweetModel.create(req.body);
+    const user = await User.findOne({userhandle: req.body.user});
+    await tweetModel.create({ ...req.body, user });
     
-    res.send('Tweet created successfully');
+    res.send( { ok: 1 } );
 });
 
 // router.get()

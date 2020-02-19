@@ -8,7 +8,6 @@ const router = express.Router();
 
 router.get('/:parameter', async (req, res) => {
 
-    
     const id = req.params.parameter;
     console.log(id);
     const followings = await followingModel.find({ userId: id }, {followingId : 1, _id : 0});

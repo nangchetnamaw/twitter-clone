@@ -21,24 +21,29 @@ import { HttpResponse } from '@angular/common/http';
 export class TweetCreateComponent {
   constructor(private tweetService: TweetService){}
 
-  createTweetHandler(tweet: ITweet){
-    const payload = this.parseJwt(localStorage.getItem('Authorization'));
-    tweet = {
-      user: {
-        userhandle: payload.userhandle,
-        email: payload.email,
-        name: payload.name
-      },
-      date: Date.now().toString()
-    }
-    this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<ITweet>) => {
-      console.log(response);
-    });
+  private parseJwt(token) {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace("-", "+").replace("_", "/");
+    return JSON.parse(window.atob(base64));
   }
 
-  parseJwt = function(token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace('-', '+').replace('_', '/');
-    return JSON.parse(window.atob(base64));
+  payload = this.parseJwt(localStorage.getItem('Authorization'));
+
+  createTweetHandler(text: string){
+    const tweet = {
+      user: this.payload.userhandle,
+      content: {
+        text: text
+      },
+      recentLikes: [],
+      tags: text.match(/\B\#\w\w+\b/g) || [],
+      date: Date.now().toString(),
+      commentCount: 0,
+      likeCount: 0
+    }
+    console.log(text.match(/\B\#\w\w+\b/g));
+    this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<ITweet>) => {
+      console.log(response.body);
+    });
   }
 }

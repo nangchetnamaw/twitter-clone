@@ -12,7 +12,7 @@ import { HttpResponse } from '@angular/common/http';
             <div class="middle">
                 <h2 class="header">Home</h2>
                 <app-tweet-create></app-tweet-create>
-                <div class="post-container">
+                <div class="post-container" *ngFor="let tweet of tweets">
                     <app-post></app-post>
                 </div>
             </div>
@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit{
     // *ngFor="let tweet of tweets"
     ngOnInit(){
         this.feedService.showTweets().subscribe((res: HttpResponse<ITweet[]>) => {
+            console.log(res.body);
             this.tweets = res.body;
         });
     }
