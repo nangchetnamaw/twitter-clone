@@ -58,7 +58,15 @@ router.post('/', async (req, res) => {
 
     console.log(follower.followingCount, 'followingCount', following.followerCount, 'followerCount', 'tisri line');
 
-    res.send('Followed');
+    res.send({response: 'Followed'});
+});
+
+router.get('/', (req, res) => {
+    console.log(req.query);
+    const { userId, followerId } = req.query;
+    // console.log(req.params);
+    // const relationJson = followerModel.findOne({ userId, followerId });
+    res.send(req.query);
 });
 
 function validateFollow(obj){

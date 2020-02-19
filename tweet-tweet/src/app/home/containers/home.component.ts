@@ -25,9 +25,9 @@ export class HomeComponent implements OnInit{
     constructor(private feedService: FeedService){}
     // *ngFor="let tweet of tweets"
     ngOnInit(){
-        // this.feedService.showTweets().subscribe((res: HttpResponse<ITweet[]>) => {
-        //     this.tweets = res.body;
-        // });
+        this.feedService.showTweets().subscribe((res: HttpResponse<ITweet[]>) => {
+            this.tweets = res.body;
+        });
     }
     
 }
