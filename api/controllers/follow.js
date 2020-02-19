@@ -61,12 +61,14 @@ router.post('/', async (req, res) => {
     res.send({response: 'Followed'});
 });
 
-router.get('/', (req, res) => {
+router.get('/', async(req, res) => {
     console.log(req.query);
     const { userId, followerId } = req.query;
-    // console.log(req.params);
-    // const relationJson = followerModel.findOne({ userId, followerId });
-    res.send(req.query);
+    const user = await User.findOne({ userhandle: userId });
+    const follower = await User.findOne({ userhandle: followerId });
+    console.log(user, follower);
+    const relation = await followerModel.findOne({ user, follower });
+    res.send({'relation': relation});
 });
 
 function validateFollow(obj){
@@ -79,7 +81,7 @@ function validateFollow(obj){
     return Joi.validate(obj, schema);
 }
 
-module.exports = router;
+module.exports.router = router;
 module.exports.followerModel = followerModel;
 module.exports.followingModel = followingModel;
 module.exports.validateFollow = validateFollow;
