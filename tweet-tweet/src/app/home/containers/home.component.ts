@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit{
     ngOnInit(){
         this.feedService.showTweets(this.payload.userhandle).subscribe((res: HttpResponse<ITweet[]>) => {
             console.log(res.body);
+            console.log(res.body['tweetsOfFollowings']);
             this.tweets = res.body['tweetsOfFollowings'];
         });
     }

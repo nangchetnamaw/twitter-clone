@@ -4,7 +4,7 @@ const { Tweet } = require('../schemas/tweets');
 
 // const tweetModel = mongoose.model('Tweet', {});
 
-const signupSchema = mongoose.Schema({
+const signupSchema = new mongoose.Schema({
   userhandle: {
     type: String,
     required: true,
@@ -51,7 +51,7 @@ const signupSchema = mongoose.Schema({
 
 // userSchema.methods.authenticate (To be done later)
 
-const User = mongoose.model("User", signupSchema);
+// const User = mongoose.model("User", signupSchema);
 
 function validateUser(user) {
   for (let key in user) {
@@ -93,5 +93,5 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 }
 
-module.exports.User = User;
+// module.exports.User = User;
 module.exports.validateUser = validateUser;

@@ -3,28 +3,20 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('config');
+
 const authenticate = require('./middlewares/authentication');
-const signupRoutes = require('./routes/signup');
+
+const userRoutes = require('./routes/user');
 const loginRoutes = require('./routes/login');
-
 const searchRoutes = require('./controllers/profile');
-
 const followRoutes = require('./controllers/follow');
-
 const unfollowRoutes = require('./controllers/unfollow');
-
 // const followRoutes = require('./controllers/follow');
 const composeTweet = require('./controllers/composeTweet');
-
 const profileRoute = require('./controllers/profile');
-
 const tweetsRoutes = require('./controllers/tweets');
-
-
 // const searchRoutes = require('./controllers/profile');
-
 // const followRoutes = require('./controllers/follow');
-
 const likeRoute = require('./controllers/likeTweet');
 const unlikeRoute = require('./controllers/unlikeTweet');
 const retweetRoute=require('./controllers/retweet');
@@ -41,7 +33,9 @@ app.use(cors())
 app.use(express.json());
 app.use(authenticate);
 
-app.use('/api/signup', signupRoutes);
+app.use('/api/user', userRoutes);
+
+// app.use('/api/signup', signupRoutes);
 app.use('/api/login', loginRoutes);
 
 app.use('/api/follow', followRoutes.router);
