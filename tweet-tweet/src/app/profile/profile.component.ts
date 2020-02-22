@@ -111,6 +111,7 @@ import { ITweet } from '../models/tweet.interface';
           <li><a href="#">Likes</a></li>
         </ul>
       </div>
+      
     </div>
     <div class="container col-lg-4 right-side-nav">
       <!-- <div class="row">
@@ -122,6 +123,8 @@ import { ITweet } from '../models/tweet.interface';
                 </form>
             </div>
         </div> -->
+        <div *ngFor="let tweet of tweets">
+      <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post></div>
       <app-search></app-search>
       <!-- <div class="card right-side-nav-2">
             <div class="card-body right-side-nav-2-title">
@@ -148,8 +151,8 @@ import { ITweet } from '../models/tweet.interface';
                 </div>
             </div>
         </div> -->
-        <div *ngFor="let tweet of tweets">
-      <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post></div>
+        <!-- <div *ngFor="let tweet of tweets">
+      <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post></div> -->
 
 
     </div>

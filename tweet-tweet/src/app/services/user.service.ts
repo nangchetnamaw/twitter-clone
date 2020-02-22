@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user.interface';
 import { Login } from '../models/login.interface';
 
-const USER_DOMAIN: string = 'http://localhost:3000/api/';
+const USER_DOMAIN: string = 'http://localhost:3000/api/user';
 
 
 @Injectable({
@@ -21,13 +21,13 @@ export class UserService {
     
     constructor(private http: HttpClient){}
 
-    createUser(user: User): Observable<HttpResponse<User>>{
+    createUser(user: User): Observable<HttpResponse<any>>{
         console.log(user);
-        return this.http.post<User>(`${USER_DOMAIN}signup`, user, { ...this.httpOptions, observe: "response" });
+        return this.http.post<any>(`${USER_DOMAIN}/signup`, user, { observe: 'response' });
     }   
 
     loginUser(user: Login): Observable<HttpResponse<Login>>{
         console.log(user);
-        return this.http.post<Login>(`${USER_DOMAIN}login`, user, { ...this.httpOptions, observe: "response" });
+        return this.http.post<Login>(`${USER_DOMAIN}/login`, user, { ...this.httpOptions, observe: 'response' });
     }
 }

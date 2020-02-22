@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Login } from '../models/login.interface';
 import { UserService } from '../services/user.service';
+import { FeedService } from '../services/feed.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
@@ -11,8 +12,9 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class LoginPageComponent{
   isDisabled: Boolean = true;
+  message: String;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private feedService: FeedService, private router: Router) { }
 
   // toggleDisabled(eventEmail, eventPassword):void{
   //   if(eventEmail.value.trim().length !== 0 && eventPassword.value.trim().length !== 0){
@@ -22,15 +24,14 @@ export class LoginPageComponent{
 
   loginHandler(loginObj: Login): void{
     this.userService.loginUser(loginObj).subscribe((response: HttpResponse<Login>) => {
-      console.log('Reached');
-      console.log(response.headers.get('x-auth-token'), response.body);
-      // const keys = response.headers.keys();
-      // const token = keys.map((cur) => { console.log(response.headers.get(cur)) });
-      // console.log(token);
-      // this.userService.headers.set('Authorization', `Bearer ${response.body['x-auth-token']}`);
-      window.localStorage.setItem('Authorization', `Bearer ${response.body['x-auth-token']}`);
-      // console.log(response.body['x-auth-token'], this.userService.headers.get('Authorization'));
+      window.localStorage.setItem('Authorization', `Bearer ${response.headers.get('x-auth-token')}`);
+
       this.router.navigate(['/home']);
+    }, (error) => {
+      setTimeout(() => {
+        this.message = null;
+      }, 3000); 
+      this.message = error.error.error 
     });
   }
 }
