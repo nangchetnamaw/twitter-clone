@@ -70,7 +70,6 @@ function validateUser(user) {
       .max(100)
       .required(),
     profileImg: Joi.string().allow(null),
-    joined: Joi.string(),
     dob: Joi.string().allow(null)
   };
   return Joi.validate(user, schema);

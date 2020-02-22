@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('config');
+const authenticate = require('./middlewares/authentication');
 
 //User Imports
 const userRoutes = require('./routes/user');
@@ -22,8 +23,8 @@ app.use(express.json());
 
 //Routes
 app.use('/api/user', userRoutes);
-app.use('/api/tweet', tweetRoutes);
-app.use('/api/follow', followRoutes);
+app.use('/api/tweet', authenticate, tweetRoutes);
+app.use('/api/follow', authenticate, followRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`Listening at port ${port}`));

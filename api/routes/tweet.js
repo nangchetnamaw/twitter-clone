@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { User } = require('../models/user');
 const Tweet = require('../models/tweet');
 const Like = require('../models/like');
 const Retweet = require('../models/retweet');
@@ -16,9 +17,24 @@ router.post('/', async (req, res) => {
     });
 });
 
-router.get('/', async(req, res) => {
-    const tweets = await Tweet.find({ _id: req.query.userId });
+router.get('/feed', async(req, res) => {
+    const userhandle = req.user._id;
+    const _id = await User.find({ userhandle: userhandle }).select('_id');
+    const tweets = await Tweet.find({ user: _id });
 
+    res.send({
+        success: true,
+        payload: {
+            tweets
+        }
+    });
+});
+
+router.get('/', async(req, res) => {
+    const userhandle = req.query.userhandle;
+    const _id = await User.find({ userhandle: userhandle }).select('_id');
+    const tweets = await Tweet.find({ user: _id });
+    console.log('I was here');
     res.send({
         success: true,
         payload: {

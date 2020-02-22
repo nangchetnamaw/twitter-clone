@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const authenticate = require('../middlewares/authentication');
 
 const { User, validateUser } = require('../models/user');
 
@@ -13,13 +14,13 @@ router.post('/signup', async (req, res) => {
         error: error.details[0].message
     });
 
-    let user = await User.findOne({ "email": email });
+    let user = await User.findOne({ "email": value.email });
     if(user) return res.status(401).send({
         success: false,
         error: 'User with this email already registered'
     });
 
-    user = await User.findOne({ "userhandle": userhandle });
+    user = await User.findOne({ "userhandle": value.userhandle });
     if(user) return res.status(401).send({
         success: false,
         error: 'User with this userhandle already registered'
@@ -29,7 +30,7 @@ router.post('/signup', async (req, res) => {
     console.log(user);
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(value.password, salt);
 
     user.password = hashedPassword;
     user = await user.save();
@@ -41,7 +42,8 @@ router.post('/signup', async (req, res) => {
         success: true,
         payload: {
             _id: user._id
-        }
+        },
+        message: 'Signed Up Successfully! LoggedIn'
     });
 });
 
@@ -70,7 +72,7 @@ router.post('/login', async (req, res) => {
     });
 });
 
-router.get('/profile', (req, res) => {
+router.get('/profile', authenticate,  (req, res) => {
     const userhandle = req.query.userhandle;
     const user = User.findOne({ userhandle }).select('-password');
     

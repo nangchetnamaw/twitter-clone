@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-    userId = {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    followId = {
+    followId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     }

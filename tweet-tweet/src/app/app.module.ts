@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -85,6 +86,7 @@ import { SearchComponent } from './home/components/search/search.component';
     BrowserAnimationsModule,
     MatCardModule,
     HttpClientModule,
+    FormsModule,
 
     //Materail UI Modules
     MatAutocompleteModule,

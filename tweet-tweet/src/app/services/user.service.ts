@@ -21,9 +21,9 @@ export class UserService {
     
     constructor(private http: HttpClient){}
 
-    createUser(user: User): Observable<HttpResponse<User>>{
+    createUser(user: User): Observable<HttpResponse<any>>{
         console.log(user);
-        return this.http.post<User>(`${USER_DOMAIN}/signup`, user, { observe: 'response' });
+        return this.http.post<any>(`${USER_DOMAIN}/signup`, user, { observe: 'response' });
     }   
 
     loginUser(user: Login): Observable<HttpResponse<Login>>{

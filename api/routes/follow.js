@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     });
 });
 
-router.delete('/', (req, res) => {
+router.delete('/', async (req, res) => {
     const { userId, followId } = req.body;
 
     await User.updateOne({ _id: userId }, { $dec: { "count.followingCount": 1 } });
@@ -33,7 +33,7 @@ router.delete('/', (req, res) => {
     });
 });
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     const followers = await Follow.find({ userId: req.body.userId }).select(userId);
     const followings = await Follow.find({ userId: req.body.userId }).select(followId);
     

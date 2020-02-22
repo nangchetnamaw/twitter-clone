@@ -12,6 +12,7 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class LoginPageComponent{
   isDisabled: Boolean = true;
+  message: String;
 
   constructor(private userService: UserService, private feedService: FeedService, private router: Router) { }
 
@@ -26,6 +27,11 @@ export class LoginPageComponent{
       window.localStorage.setItem('Authorization', `Bearer ${response.headers.get('x-auth-token')}`);
 
       this.router.navigate(['/home']);
+    }, (error) => {
+      setTimeout(() => {
+        this.message = null;
+      }, 3000); 
+      this.message = error.error.error 
     });
   }
 }
