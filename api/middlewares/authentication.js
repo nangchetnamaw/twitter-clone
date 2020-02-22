@@ -3,11 +3,11 @@ const config = require('config');
 
 authenticator = (req, res, next) => {
     console.log('Authenticating...');
-    
     const token = req.header('Authorization').replace('Bearer ','');
     console.log(token);
 
     if(!token) return res.status(401).send('Invalid token');
+
     try{
         const payload = jwt.verify(token, config.get('jwtPrivateKey'));    
         console.log(payload);
@@ -17,7 +17,7 @@ authenticator = (req, res, next) => {
         console.log(e);
         res.status(400).send('Invalid Token');
     }
-    next();
+    console.log('testinggggggggggggggg');
 }
 
 module.exports = authenticator;

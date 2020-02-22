@@ -37,11 +37,11 @@ router.post('/signup', async (req, res) => {
 
     const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
 
-    res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
-    res.header('x-auth-token', token).send({
+    res.send({
         success: true,
         payload: {
-            _id: user._id
+            _id: user._id,
+            'x-auth-token': token
         },
         message: 'Signed Up Successfully! LoggedIn'
     });
@@ -62,13 +62,15 @@ router.post('/login', async (req, res) => {
     });
 
     const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
-    
-    res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
-    res.header('x-auth-token', token).send({
+    console.log(token);
+
+    res.send({
         success: true,
         payload: {
-            _id: user._id
-        }
+            _id: user._id,
+            'x-auth-token': token
+        },
+        message: 'Signed Up Successfully! LoggedIn'
     });
 });
 
