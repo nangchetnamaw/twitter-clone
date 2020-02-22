@@ -17,9 +17,7 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async(req, res) => {
-    const tweets = await Tweet.find({ _id: req.query.userId }).map((cur) => {
-        Tweet.findOne({ _id: cur._id }).populate(());
-    });
+    const tweets = await Tweet.find({ _id: req.query.userId });
 
     res.send({
         success: true,
@@ -40,9 +38,48 @@ router.delete('/', async (req, res) => {
 router.patch('/', async(req, res) => {
     if(req.body.type === 'like'){
         if(req.body.operation === 'inc'){
-            
+            await Tweet.findOneAndUpdate({ _id: req.body.tweetId }, { $inc: { "count.likeCount": 1 } });
+
+            await Like.create({ tweetId: req.body.tweetId, userId: req.body.userId });
+        }
+        if(req.body.operation === 'dec'){
+            await Tweet.findOneAndUpdate({ _id: req.body.tweetId }, { $dec: { "count.likeCount": 1 } });
+
+            await Like.deleteOne({ tweetId: req.body.tweetId, userId: req.body.userId });
         }
     }
+
+    if(req.body.type === 'retweet'){
+        if(req.body.operation === 'inc'){
+            await Tweet.findOneAndUpdate({ _id: req.body.tweetId }, { $inc: { "count.retweetCount": 1 } });
+
+            await Retweet.create({ tweetId: req.body.tweetId, userId: req.body.userId });
+
+            const tweet = await Tweet.findOne({ _id: req.body.tweetId });
+            await Tweet.create({ user: req.body.userId, content: tweet.content });
+        }
+        if(req.body.operation === 'dec'){
+            await Tweet.findOneAndUpdate({ _id: req.body.tweetId }, { $dec: { "count.retweetCount": 1 } });
+
+            await Retweet.deleteOne({ tweetId: req.body.tweetId, userId: req.body.userId });
+
+            await Tweet.deleteOne({ _id: req.retweetId });//Recheck It
+        }
+    }
+
+    if(req.body.type === 'reply'){
+        if(req.body.operation === 'inc'){
+            await Tweet.findOneAndUpdate({ _id: req.body.tweetId }, { $inc: { "count.replyCount": 1 } });
+
+            await Reply.create({ tweetId: req.body.tweetId, userId: req.body.userId, content: req.body.content });
+        }
+        if(req.body.operation === 'dec'){
+            await Tweet.findOneAndUpdate({ _id: req.body.tweetId }, { $dec: { "count.likeCount": 1 } });
+
+            await Reply.deleteOne({ _id: req.replyId });
+        }
+    }
+    
 });
 
 
