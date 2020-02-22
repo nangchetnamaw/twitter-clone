@@ -8,7 +8,7 @@ import { HttpResponse } from '@angular/common/http';
     styleUrls: ['./home.component.scss'],
     template: `
         <div class="app-home">
-            <side-nav></side-nav>
+            <!-- <side-nav></side-nav>
             <div class="middle">
                 <h2 class="header">Home</h2>
                 <app-tweet-create></app-tweet-create>
@@ -16,7 +16,7 @@ import { HttpResponse } from '@angular/common/http';
                     <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post>
                 </div>
             </div>
-            <app-search></app-search>
+            <app-search></app-search> -->
         </div>
     `
 })
@@ -29,12 +29,12 @@ export class HomeComponent implements OnInit{
         return JSON.parse(window.atob(base64));
       }
     
-      payload = this.parseJwt(localStorage.getItem('Authorization'));
+    //   payload = this.parseJwt(localStorage.getItem('Authorization'));
 
     constructor(private feedService: FeedService){}
     // *ngFor="let tweet of tweets"
     ngOnInit(){
-        this.feedService.showTweets(this.payload.userhandle).subscribe((res: HttpResponse<ITweet[]>) => {
+        this.feedService.showTweets('senseihimanshu').subscribe((res: HttpResponse<ITweet[]>) => {
             console.log(res.body);
             console.log(res.body['tweetsOfFollowings']);
             this.tweets = res.body['tweetsOfFollowings'];

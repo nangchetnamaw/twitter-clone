@@ -4,10 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('config');
 
-const authenticate = require('./middlewares/authentication');
-
 const userRoutes = require('./routes/user');
-const loginRoutes = require('./routes/login');
+// const loginRoutes = require('./routes/login');
 const searchRoutes = require('./controllers/profile');
 const followRoutes = require('./controllers/follow');
 const unfollowRoutes = require('./controllers/unfollow');
@@ -31,12 +29,11 @@ mongoose.connect('mongodb://localhost/twitter').then(() => console.log('MongoDb 
 
 app.use(cors())
 app.use(express.json());
-app.use(authenticate);
 
 app.use('/api/user', userRoutes);
 
 // app.use('/api/signup', signupRoutes);
-app.use('/api/login', loginRoutes);
+// app.use('/api/login', loginRoutes);
 
 app.use('/api/follow', followRoutes.router);
 

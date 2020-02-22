@@ -35,6 +35,8 @@ router.post('/signup', async (req, res) => {
     user = await user.save();
 
     const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
+
+    res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
     res.header('x-auth-token', token).send({
         success: true,
         payload: {
@@ -59,6 +61,7 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
     
+    res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
     res.header('x-auth-token', token).send({
         success: true,
         payload: {
