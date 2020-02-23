@@ -17,7 +17,7 @@ const routes: Routes = [
         path: '', component: ProfileComponent, pathMatch: 'full'
       },
       {
-        path: ':id', component: ProfileComponent
+        path: ':userhandle', component: ProfileComponent
       }
     ]
   }

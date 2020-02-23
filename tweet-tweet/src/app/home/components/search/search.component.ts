@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { HttpResponse } from '@angular/common/http';
-import { User } from '../../../models/user.interface';
+import { IUser } from '../../../models/user.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
 export class SearchComponent{
     constructor(private searchService: SearchService, private router: Router){}
 
-    searchUser(searchInput: String){
-        this.searchService.searchUser(searchInput).subscribe((response: HttpResponse<User>) => {
+    searchUser(searchInput: string){
+        this.searchService.searchUser(searchInput).subscribe((response: HttpResponse<IUser>) => {
             const user = response.body;
 
             if(user){

@@ -74,9 +74,9 @@ router.post('/login', async (req, res) => {
     });
 });
 
-router.get('/profile', authenticate,  (req, res) => {
+router.get('/profile', authenticate, async (req, res) => {
     const userhandle = req.query.userhandle;
-    const user = User.findOne({ userhandle }).select('-password');
+    const user = await User.findOne({ userhandle }).select('-password');
     
     if(!user){
         res.status(400).send({

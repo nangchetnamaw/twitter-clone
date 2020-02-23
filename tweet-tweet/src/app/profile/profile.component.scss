@@ -1,12 +1,60 @@
 *{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+.profile-container{
+  border: 1px solid #E6ECF0;
+}
+.fa-arrow-left{
+  font-size: 20px;
+  color:#1A91DA;
+  padding: 15px 5px;
+  cursor: pointer;
+
+}
+.fa-arrow-left:hover{
+  background-color:rgb(197, 220, 235);
+  border-radius: 50%;
+  
+}
+.profile-container-top-nav{
+  border-bottom: 1px solid #E6ECF0;
+  height: 53px;
+  
+}
+.profile-container-top-nav h4{
+  line-height: 1.3125;
+  font-weight: 800;
+  margin-top: 3px;
+}
+.profile-container-top-nav p{
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 400;
+  margin-top: -6px;
+}
+
+.profile-description-menu h4{
+  line-height: 1.3125;
+  font-weight: 800;
+  margin-top: 3px;
+}
+.profile-description-menu p, span{
+  font-size: 15px;
+  color:#9AA5AF;
+  line-height: 1.3125;
+  font-weight: 400;
+  margin-top: -6px;
+}
+#followers-number, #following-number{
+  color: black;
+  font-weight: 700;
 }
 .profile-block {
     margin: auto;
     position: relative;
     width: 100%;
   }
-  .cover-container{
+.cover-container{
     /* background: #1E90FF; */
     background: -webkit-radial-gradient(bottom, #73D6F5 12%, #1E90FF);
     background: radial-gradient(at bottom, #73D6F5 12%, #1E90FF)
@@ -61,8 +109,10 @@
   }
   .block-menu ul li a:hover {
     text-decoration: none;
-    color: rgba(29,161,242,1.00);}
+    color: rgba(29,161,242,1.00);
+  }
   .block-menu ul li a {
+    float: left;
     font-size: 15px;
     font-weight: bolder;
     height: 50px;
@@ -74,8 +124,7 @@
     color:gray;
     text-transform:capitalize;
   }
- 
-  .tweet-main-btn{
+  .edit-profile-btn{
     border: 1px solid rgba(29,161,242,1.00);
     background-color: white;
     color:rgba(29,161,242,1.00);
@@ -86,7 +135,61 @@
     text-decoration: none;
     display: inline-block;
     margin: 2px 0;
-    float: right;
+    /* float: right; */
+    position: relative;
+    top: -6px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size:15px;
+    margin-top: 10px;
+  }
+
+.who-to-follow-div-content{
+    padding:15px 15px;
+  }
+.who-to-follow-div-middle{
+    padding-left: 5%;
+}
+.who-to-follow-div{
+    margin: auto;
+    background-color: #F5F8FA;
+    border-radius: 10px;;
+}
+.who-to-follow-div h5{
+    padding:10px;
+    color: black;
+    font-size: 20px;
+    font-weight: 800;
+}
+.who-to-follow-div-content-img a{
+    border-radius: 50%;
+    box-shadow: none;
+    display: block;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
+    z-index:9;
+}
+.who-to-follow-div-content-img img {
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
+    height:60px;
+    width:60px;
+  }
+  .who-to-follow-btn{
+    border: 1px solid rgba(29,161,242,1.00);
+    background-color: #F5F8FA;
+    color:rgba(29,161,242,1.00);
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    padding: 4px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 0;
+    /* float: right; */
     position: relative;
     top: -6px;
     cursor: pointer;
@@ -99,48 +202,94 @@
     margin:0;
     padding:20px ;
     }
-// .form-control {
-//     padding:0px 25px;
-//     margin-top: 5px;
-//     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-//     color: gray;
-//     font-size: 17px;
-//     font-weight: 400;
-//     border: 1px solid rgba(29,161,242,1.00);
-//     -webkit-box-shadow: none;
-//     box-shadow: none;
-//     height:40px;
-//     border-radius: 30px!important;
-// }
+
+    .search-form{
+      display: flex;
+    }
+    /* .form.search-form input[type=text]{
+      float: left;
+    }
+    */
+    .search-form button{
+      margin-left:-5px;
+      margin-top: 2px;
+      border:none;
+      background-color:white ;
+
+    } 
+.form-control {
+    padding:0px 25px;
+    margin-top: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: gray;
+    font-size: 17px;
+    font-weight: 400;
+    border: 1px solid rgba(29,161,242,1.00);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height:40px;
+    border-radius: 30px!important;
+}
+.right-side-nav-2-content{
+  padding:15px 15px;
+  
+}
+.right-side-nav-middle{
+  padding-left: 5%;
+}
 .right-side-nav-2{
-    background-color: rgba(29,161,242,1.00);
+    margin: auto;
+    background-color: #F5F8FA;
     border-radius: 10px;;
 }
-.right-side-nav-2-title h5{
+.right-side-nav-2 h5{
     padding:10px;
     color: black;
     font-size: 20px;
     font-weight: 800;
 }
-.profile-img-2 a{
+.right-nav-content-img a{
     
     border-radius: 50%;
     box-shadow: none;
     display: block;
     
-    padding:1px;
+    
     position: absolute;
-    height: 75px;
-    width: 75px;
+    height: 60px;
+    width: 60px;
     background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
     z-index:9;
 }
-.profile-img-2 img {
+.right-nav-content-img img {
     background-color: #fff;
     border-radius: 50%;
+    
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
-    height:75px;
-    width:75px;
+    height:60px;
+    width:60px;
+  }
+  .right-nav-content-follow-btn{
+    border: 1px solid rgba(29,161,242,1.00);
+    background-color: #F5F8FA;
+    color:rgba(29,161,242,1.00);
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    padding: 4px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 0;
+    /* float: right; */
+    position: relative;
+    top: -6px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size:15px;
+    margin-top: 10px;
+  }
+  .tweet-image{
+    width: 100%;
   }
 
 

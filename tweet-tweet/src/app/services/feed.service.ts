@@ -22,7 +22,11 @@ export class FeedService{
         const params = new HttpParams()
         .set('userhandle', userhandle);
 
-        console.log(userhandle, 'id insidenshowTweets');
+        console.log(userhandle, 'id insidenshowTweets', this.headers, 'headers');
         return this.http.get<ITweet[]>(FEED_API, { ...this.httpOptions, observe: 'response', params });
+    }
+
+    showFeed(): Observable<HttpResponse<any>>{
+        return this.http.get<any>(FEED_API + '/feed', this.httpOptions);
     }
 }

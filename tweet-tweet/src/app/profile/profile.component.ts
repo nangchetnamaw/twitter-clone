@@ -8,171 +8,200 @@ import {
 } from "@angular/core";
 import { SearchService } from "src/app/services/search.service";
 import { switchMap } from "rxjs/operators";
-import { User } from "../models/user.interface";
+import { IUser, JwtPayload } from "../models/user.interface";
 import { HttpResponse } from "@angular/common/http";
 import { FollowService } from "../services/follow.service";
 import { FeedService } from "../services/feed.service";
 import { IFollower, IUnfollow } from "../models/follow.interface";
 import { ITweet } from '../models/tweet.interface';
+import ParseJwt from '../utils/parsejwt';
 
 @Component({
   selector: "app-profile",
   styleUrls: ["./profile.component.scss"],
   template: `
-    <div
-      class="container col-sm-6 col-sm-offset-2"
-      style="border: 1px solid #d3d6db;"
-    >
-      <div class="row" style="border: 1px solid gray; height: 53px; ">
-        <div class="col-sm-1">
-          <i class="fas fa-arrow-left" style="align-items: center;"></i>
-        </div>
-        <div class="col-sm-11">
-          <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">
-            {{ user?.name }}
-          </h4>
-          <p
-            style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; "
-          >
-            {{ user?.tweetCount }} Tweets
-          </p>
-        </div>
-      </div>
-      <div>
-        <div class="profile-block col-sm-12">
-          <div class="profile-block-thumb cover-container">
-            <a href="#">
-              <img src="#" alt="" title="" />
-            </a>
-          </div>
-          <div class="profile-img">
-            <a href="#">
-              <img src="#" alt="" title="" />
-            </a>
-          </div>
-
-          <div class="profile-block-menu">
-            <div class="block-menu">
-              <button
-                class="tweet-main-btn"
-                *ngIf="user?.userhandle === currentUser?.userhandle"
-              >
-                Edit Profile
-              </button>
-              <div *ngIf="user?.userhandle !== currentUser?.userhandle">
-                <div *ngIf="!follow">
-                  <button class="tweet-main-btn" (click)="handleFollow()">
-                    Follow
-                  </button>
-                </div>
-                <div *ngIf="follow">
-                  <button class="tweet-main-btn" (click)="handleUnfollow()">
-                    Unfollow
-                  </button>
-                </div>
-              </div>
+    <div class="container profile-container col-sm-6 col-sm-offset-2">
+        <div class="row profile-container-top-nav">
+            <div class="col-sm-1 col-lg-1 col-md-1">
+                <i class="fa fa-arrow-left"></i>
             </div>
-          </div>
+            <div class="col-sm-11 col-lg-11 col-md-11">
+                <h4>Himanshu Kumar</h4>
+                <p>0 Tweets</p>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-12 profile-description-menu">
-        <h4 style="line-height: 1.3125; font-weight: 800;margin-top: 3px; ">
-          {{ user?.name }}
-        </h4>
-        <p
-          style="font-size: 13px;line-height: 1;font-weight: 400;margin-top: -6px; "
-        >
-          @{{ user?.userhandle }}
-        </p>
-        <p
-          style="font-size: 15px;line-height: 1.3125;font-weight: 400;margin-top: -6px; "
-        >
-          Comedy and Humour Entertainment Music Sports
-        </p>
-        <p
-          style="font-size: 15px;line-height: 1.3125;font-weight: 400;margin-top: -6px; "
-        >
-          Born {{ user?.dob | date: "shortDate"
-          }}<span
-            ><i class="fas fa-calendar-alt"></i>Joined
-            {{ user?.joined | date: "shortDate" }}</span
-          >
-        </p>
-        <span
-          ><a href="#">{{ user?.followerCount }} followers</a
-          ><a href="#">{{ user?.followingCount }} following</a></span
-        >
-      </div>
-      <div class="block-menu col-sm-12">
-        <ul>
-          <li><a href="#">Tweets</a></li>
-          <li><a href="#">Tweets & Replies</a></li>
-          <li><a href="#">Media</a></li>
-          <li><a href="#">Likes</a></li>
-        </ul>
-      </div>
-      
-    </div>
-    <div class="container col-lg-4 right-side-nav">
-      <!-- <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <form action="#" method="#" role="search">
-                    <div class="input-group">
-                        <input class="form-control" placeholder="Search Twitter" name="srch-term" id="ed-srch-term" type="text">
+        <div class="row">
+            <div class="row profile-block col-sm-12 col-lg-12 col-md-12">
+                <div class="row profile-block-thumb cover-container">
+                    <a href="#">
+                        <img src="https://pbs.twimg.com/profile_banners/738006188239921152/1581790348/1500x500" alt="" title="">        
+                    </a>
+                </div>
+                <div class="profile-img">
+                    <a href="#">
+                        <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
+                    </a>
+                </div>
+                
+                <div class="row profile-block-menu">
+                    <div class="block-menu col-lg-3 col-lg-offset-9">
+                        <button class="edit-profile-btn">Edit Profile</button>
                     </div>
-                </form>
+                </div>
             </div>
-        </div> -->
-        <div *ngFor="let tweet of tweets">
-      <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post></div>
-      <app-search></app-search>
-      <!-- <div class="card right-side-nav-2">
-            <div class="card-body right-side-nav-2-title">
-                <h5 class="card-title">You might like</h5>
-                <div>
-                    <div class="col-lg-2 profile-img-2">
+        </div> 
+        <div class="col-sm-12 profile-description-menu">
+            <h4>Himanshu Kumar</h4>
+            <p>@imh0kumar</p>
+            <p>Comedy and Humour Entertainment Music Sports</p>
+            <p>Born July 15, 1997
+                <span><i class="fa fa-calendar" aria-hidden="true"></i> Joined June 2016</span>
+            </p>
+            <span><a href="#"><span id="following-number">5 </span><span> Following</span></a>
+            <a href="#"><span id="followers-number">0 </span><span> Followers</span></a></span>
+        </div>  
+        <div class="block-menu col-sm-12">
+            <ul>
+                <li><a href="#">Tweets</a></li>
+                <li><a href="#">Tweets & Replies</a></li>
+                <li><a href="#">Media</a></li>
+                <li><a href="#">Likes</a></li>
+            </ul>
+        </div>
+        <div class="who-to-follow-div tweet-feed col-sm-12">
+            <div class="card-body">
+                <div class="row who-to-follow-div-content tweet-feed-content">
+                    <div class="col-lg-1 col-md-1 col-sm-1 who-to-follow-div-content-img tweet-feed-content-img">
                         <a href="#">
                             <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
                         </a>
                     </div>
-                    <div class="col-lg-8" style="padding-left: 40px;">
+                    <div class="col-lg-11 col-md-11 col-sm-11 who-to-follow-div-middle tweet-feed-content-right">
+                        <a href="#">H Fisk Johnson, Ph.</a>
+                        <span>@H Johnson</span>
+                        <p>It did take time. But finally we were able to overcome all obstacles.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-11 col-lg-offset-1">
+                        <img class="tweet-image" src="https://4.img-dpreview.com/files/p/E~TS590x0~articles/3925134721/0266554465.jpeg">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-lg-offset-1">
+                        
+                    </div>
+                    <div class="col-lg-3">
+                        
+                    </div>
+                    <div class="col-lg-3">
+                        
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <div class="who-to-follow-div col-sm-12">
+            <div class="card-body">
+                <h5 class="card-title">Who To Follow</h5>
+                <div class="row who-to-follow-div-content">
+                    <div class="col-lg-2 who-to-follow-div-content-img">
+                        <a href="#">
+                            <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 who-to-follow-div-middle">
+                        <a href="#">H Fisk Johnson, Ph.</a>
+                        <p>@H Johnson</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="who-to-follow-btn">Follow</button>
+                    </div>
+                </div>
+                <div class="row who-to-follow-div-content">
+                    <div class="col-lg-2 who-to-follow-div-content-img">
+                        <a href="#">
+                            <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 who-to-follow-div-middle">
+                        <a href="#">H Fisk Johnson, Ph.</a>
+                        <p>@H Johnson</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="who-to-follow-btn">Follow</button>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-lg-4 right-side-nav">
+        <div class="row">
+            <div class="input-group col-sm-10 col-sm-offset-1">
+                <form class="search-form" action="#" method="#" role="search">
+                    <input class="form-control" placeholder="Search Twitter" name="srch-term" id="ed-srch-term" type="text">
+                    <button type="submit"><i class="fa fa-search"></i></button>   
+                </form>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <form method = "#" action="#" class = "pull-down  navbar-search">
+                <div class="input-append">
+                    <input class="search-query input-medium"  name="search_query" type="text" placeholder="Arama Yap" >
+                    <button type = "submit "class="btn btn-large" type="button"><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div> -->
+        <div class="card right-side-nav-2">
+            <div class="card-body">
+                <h5 class="card-title">You might like</h5>
+                <div class="row right-side-nav-2-content">
+                    <div class="col-lg-2 right-nav-content-img">
+                        <a href="#">
+                            <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 right-side-nav-middle">
+                        <a href="#">H Fisk Johnson, Ph.</a>
+                        <p>@H Johnson</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="right-nav-content-follow-btn">Follow</button>
+                    </div>
+                </div>
+                <div class="row right-side-nav-2-content">
+                    <div class="col-lg-2 right-nav-content-img">
+                        <a href="#">
+                            <img src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg" alt="" title="">        
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 right-side-nav-middle">
                         <a href="#">H Fisk Johnson, Ph.</a>
                         <p>@H Johnson</p>
     
                     </div>
-                    <div class="col-lg-2">
-                        <div *ngIf="follow">
-                            <button class="tweet-main-btn" (click)="handleFollow()">Follow</button>
-                        </div>
-                        <div *ngIf="!follow">
-                            <button class="tweet-main-btn">Unfollow</button>
-                        </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button class="right-nav-content-follow-btn">Follow</button>
                     </div>
                 </div>
+                
             </div>
-        </div> -->
-        <!-- <div *ngFor="let tweet of tweets">
-      <app-post [text]="tweet.content.text" [likeCount]="tweet.likeCount" [commentCount]="tweet.commentCount"></app-post></div> -->
-
-
+        </div>
     </div>
   `
 })
 export class ProfileComponent implements OnInit {
-  user: User = null;
+  user: IUser = {
+    userhandle: "",
+    email: "",
+    password: "",
+    name: "",
+    dob: ""
+  };
   tweets: ITweet[] = [];
   follow: boolean;
-
-  currentUser: User = this.parseJwt(
-    window.localStorage.getItem("Authorization")
-  );
+  currentUser: JwtPayload = ParseJwt.parseJwt();
   redirectedUser: string;
-
-  private parseJwt(token) {
-    var base64Url = token.split(".")[1];
-    var base64 = base64Url.replace("-", "+").replace("_", "/");
-    return JSON.parse(window.atob(base64));
-  }
 
   constructor(
     private searchService: SearchService,
@@ -187,32 +216,27 @@ export class ProfileComponent implements OnInit {
     this.route.params
       .pipe(
         switchMap(params => {
-          if (!params.id) {
+          if (!params.userhandle) {
               this.router.navigate(['/profile/'+this.currentUser.userhandle]);
           }
-          this.redirectedUser = params.id;
-          return this.searchService.searchUser(params.id);
+          this.redirectedUser = params.userhandle;
+          return this.searchService.searchUser(params.userhandle);
         })
       )
-      .subscribe((response: HttpResponse<User>) => (this.user = response.body));
+      .subscribe((response: HttpResponse<IUser>) => (this.user = response.body["payload.user"]));
 
-    this.route.params
-      .pipe(
-        switchMap(params =>
-          this.followService.getRelation({
-            userId: this.currentUser.userhandle,
-            followerId: params.id
-          })
-        )
-      )
+      this.followService.getRelation({
+        userhandle: this.currentUser.userhandle,
+        followerhandle: this.redirectedUser
+      })
       .subscribe((response: HttpResponse<IFollower>) => {
-        console.log(response.body);
-        this.follow = response.body['relation'] ? true : false;
+        console.log(response.body, response.body["payload.isRelation"]);
+        this.follow = response.body["payload.isRelation"];
       });
 
       this.feedService.showTweets(this.redirectedUser).subscribe((res: HttpResponse<ITweet[]>) => {
         console.log(res.body);
-        this.tweets = res.body['userTweets'];
+        this.tweets = res.body['payload.tweets'];
     });
 
   }
@@ -221,8 +245,8 @@ export class ProfileComponent implements OnInit {
     console.log("Inside handleFollow");
     this.followService
       .follower({
-        followerId: this.currentUser.userhandle,
-        userId: this.redirectedUser
+        followerhandle: this.currentUser.userhandle,
+        userhandle: this.redirectedUser
       })
       .subscribe((res: HttpResponse<IFollower>) => {
         console.log(res);

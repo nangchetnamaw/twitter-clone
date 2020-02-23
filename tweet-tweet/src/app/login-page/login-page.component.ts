@@ -23,9 +23,9 @@ export class LoginPageComponent{
   // }
 
   loginHandler(loginObj: Login): void{
-    this.userService.loginUser(loginObj).subscribe((response: HttpResponse<Login>) => {
-      window.localStorage.setItem('Authorization', `Bearer ${response.headers.get('x-auth-token')}`);
-
+    this.userService.loginUser(loginObj).subscribe((response: HttpResponse<any>) => {
+      window.localStorage.setItem('Authorization', `Bearer ${response.body.payload['x-auth-token']}`);
+      console.log(response.body);
       this.router.navigate(['/home']);
     }, (error) => {
       setTimeout(() => {
