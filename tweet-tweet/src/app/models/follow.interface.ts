@@ -1,6 +1,6 @@
 interface IFollower{
-    userId: string;
-    followerId: string;
+    userhandle: string;
+    followerhandle: string;
 }
 
 interface IFollowing{

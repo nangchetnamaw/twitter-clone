@@ -1,9 +1,9 @@
-import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.interface';
+import { IUser } from '../models/user.interface';
 import { Observable } from 'rxjs';
 
-const SEARCH_API = 'http://localhost:3000/api/search';
+const SEARCH_API = 'http://localhost:3000/api/user/profile';
 
 @Injectable({
     providedIn: 'root'
@@ -13,12 +13,16 @@ export class SearchService{
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('Authorization')
     });
-    headerOptions = {
-        header: this.headers
-    }
+    httpOptions = {
+        headers: this.headers
+    };
+
     constructor(private http: HttpClient){}
 
-    searchUser(user: String): Observable<HttpResponse<User>>{
-        return this.http.post<User>(SEARCH_API, { userhandle: user }, {...this.headerOptions, observe: 'response'});
+    
+    searchUser(user: string): Observable<HttpResponse<IUser>>{
+        console.log(user, 'Inside SearchUSer', localStorage.getItem('Authorization'));
+        const params = new HttpParams().set('userhandle', user);
+        return this.http.get<IUser>(SEARCH_API, {...this.httpOptions, observe: 'response', params});
     }
 }

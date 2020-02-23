@@ -3,6 +3,7 @@ const config = require('config');
 
 authenticator = (req, res, next) => {
     console.log('Authenticating...');
+    console.log(req.header('Authorization'));
     const token = req.header('Authorization').replace('Bearer ','');
     console.log(token);
 

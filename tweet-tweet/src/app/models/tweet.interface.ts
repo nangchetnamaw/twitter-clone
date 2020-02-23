@@ -1,9 +1,9 @@
-import { User } from "./user.interface";
+import { IUser } from "./user.interface";
 
 export interface ITweet {
   user: string;
   content: any;
-  recentLikes?: User[];
+  recentLikes?: IUser[];
   tags?: String[];
   date: String;
   comments?: any;

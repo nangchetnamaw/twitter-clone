@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { User } from '../models/user.interface';
+import { IUser } from '../models/user.interface';
 import { Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 
@@ -11,7 +11,7 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class SignUpComponent implements OnInit {
   isDisabled: Boolean = false;
-  user: User;
+  user: IUser;
   message: String;
   constructor(private userService: UserService, private router: Router) { }
 
@@ -24,7 +24,7 @@ export class SignUpComponent implements OnInit {
   //   this.user.name = eventName;
   // }
 
-  submitHandler(inputObj: User): void{
+  submitHandler(inputObj: IUser): void{
     this.userService.createUser(inputObj).subscribe((response: HttpResponse<any>) => {
       const token = response.headers.get('x-auth-token');
       this.message = response.body['message'];

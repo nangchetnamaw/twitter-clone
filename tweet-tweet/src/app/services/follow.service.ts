@@ -13,29 +13,30 @@ export class FollowService{
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('Authorization')
     });
-    headerOptions = {
-        header: this.headers
-    }
+    httpOptions = {
+        headers: this.headers
+    };
 
     constructor(private http: HttpClient){}
 
     follower(followObj: IFollower): Observable<HttpResponse<IFollower>>{
-        return this.http.post<IFollower>(`${FOLLOW_API}follow`, followObj, {...this.headerOptions, observe: 'response'});
+        return this.http.post<IFollower>(`${FOLLOW_API}follow`, followObj, {...this.httpOptions, observe: 'response'});
     }
 
     following(followObj: IFollowing): Observable<HttpResponse<IFollowing>>{
-        return this.http.post<IFollowing>(`${FOLLOW_API}follow`, followObj, {...this.headerOptions, observe: 'response'});
+        return this.http.post<IFollowing>(`${FOLLOW_API}follow`, followObj, {...this.httpOptions, observe: 'response'});
     }
 
     unfollow(followObj: IUnfollow): Observable<HttpResponse<IUnfollow>>{
-        return this.http.put<IUnfollow>(`${FOLLOW_API}unfollow`, followObj, {...this.headerOptions, observe: 'response'});
+        return this.http.put<IUnfollow>(`${FOLLOW_API}unfollow`, followObj, {...this.httpOptions, observe: 'response'});
     }
 
     getRelation(followObj: IFollower): Observable<HttpResponse<IFollower>>{
+        console.log(followObj);
         const params = new HttpParams()
-            .set('userId', followObj.userId)
-            .set('followerId', followObj.followerId);
+            .set('userhandle', followObj.userhandle)
+            .set('followerhandle', followObj.followerhandle);
 
-        return this.http.get<IFollower>(`${FOLLOW_API}follow`, { ...this.headerOptions, observe: 'response', params });
+        return this.http.get<IFollower>(`${FOLLOW_API}follow`, { ...this.httpOptions, observe: 'response', params });
     }
 }

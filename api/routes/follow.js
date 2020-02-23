@@ -34,8 +34,8 @@ router.delete('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    const followers = await Follow.find({ userId: req.body.userId }).select(userId);
-    const followings = await Follow.find({ userId: req.body.userId }).select(followId);
+    const followers = await Follow.find({ userId: req.body.userId }).select('userId');
+    const followings = await Follow.find({ userId: req.body.userId }).select('followId');
     
     res.send({
         success: true,
@@ -44,6 +44,20 @@ router.get('/', async (req, res) => {
             followings
         }
     })
+});
+
+router.post('/relation', async(req, res) => {
+    const userId = await User.findOne({ userhandle: req.body.userId }).select('_id');
+    const followerId = await User.findOne({ userhandle: req.body.followerId }).select('_id');
+
+    const relation = await Follow.findOne({ userId, followId });
+    console.log('Inside Relation', relation);
+    res.send({
+        success: true,
+        payload: {
+            isRelation: relation? true : false
+        }
+    });
 });
 
 module.exports = router;

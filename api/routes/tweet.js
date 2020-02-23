@@ -28,7 +28,7 @@ router.get('/feed', async(req, res) => {
         tweets.push(await Tweet.find({ user: cur.followId }));
     });
 
-    console.log(tweets);
+    console.log(tweets, 'I was here');
 
     res.send({
         success: true,
