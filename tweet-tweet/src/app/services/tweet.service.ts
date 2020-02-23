@@ -19,14 +19,9 @@ export class TweetService{
 
     constructor(private http: HttpClient){};
 
-    createTweet(tweet: ITweet): Observable<HttpResponse<ITweet>>{
+    createTweet(tweet: ITweet): Observable<HttpResponse<any>>{
         console.log(tweet);
-        // tweet = {
-        //     user: {
-
-        //     },
-        //     data: Date.now().toString()
-        // }
-        return this.http.post<ITweet>(`${TWEET_API}`, tweet, { ...this.httpOptions, observe: "response" });
+    
+        return this.http.post<any>(`${TWEET_API}`, tweet, { ...this.httpOptions, observe: "response" });
     }
 }

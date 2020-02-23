@@ -31,12 +31,12 @@ export class FollowService{
         return this.http.put<IUnfollow>(`${FOLLOW_API}unfollow`, followObj, {...this.httpOptions, observe: 'response'});
     }
 
-    getRelation(followObj: IFollower): Observable<HttpResponse<IFollower>>{
+    getRelation(followObj: IFollower): Observable<HttpResponse<any>>{
         console.log(followObj);
         const params = new HttpParams()
             .set('userhandle', followObj.userhandle)
             .set('followerhandle', followObj.followerhandle);
 
-        return this.http.get<IFollower>(`${FOLLOW_API}follow`, { ...this.httpOptions, observe: 'response', params });
+        return this.http.post<any>(`${FOLLOW_API}follow/relation`, followObj, { ...this.httpOptions, observe: 'response', params });
     }
 }

@@ -20,9 +20,9 @@ export class SearchService{
     constructor(private http: HttpClient){}
 
     
-    searchUser(user: string): Observable<HttpResponse<IUser>>{
+    searchUser(user: string): Observable<HttpResponse<any>>{
         console.log(user, 'Inside SearchUSer', localStorage.getItem('Authorization'));
         const params = new HttpParams().set('userhandle', user);
-        return this.http.get<IUser>(SEARCH_API, {...this.httpOptions, observe: 'response', params});
+        return this.http.get<any>(SEARCH_API, {...this.httpOptions, observe: 'response', params});
     }
 }

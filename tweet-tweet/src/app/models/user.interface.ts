@@ -1,3 +1,8 @@
+interface ICount{
+  followerCount: number;
+  followingCount: number;
+}
+
 export interface IUser {
   userhandle: string;
   email: string;
@@ -5,6 +10,8 @@ export interface IUser {
   name: string;
   dob: string;
   profileImg?: string;
+  joined?: string;
+  count?: ICount;
 }
 
 export interface IJwtPayload {
