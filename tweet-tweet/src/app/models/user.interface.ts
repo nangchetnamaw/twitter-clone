@@ -7,7 +7,7 @@ export interface IUser {
   profileImg?: string;
 }
 
-export interface JwtPayload {
+export interface IJwtPayload {
   _id: string,
   userhandle: string,
   name: string,

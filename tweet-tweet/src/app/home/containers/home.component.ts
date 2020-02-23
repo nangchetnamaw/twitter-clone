@@ -22,26 +22,13 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit{
     tweets: ITweet[];
-
-    private parseJwt(token) {
-        var base64Url = token.split(".")[1];
-        var base64 = base64Url.replace("-", "+").replace("_", "/");
-        return JSON.parse(window.atob(base64));
-      }
     
-      payload = this.parseJwt(localStorage.getItem('Authorization'));
-
     constructor(private feedService: FeedService){}
-    // *ngFor="let tweet of tweets"
+
     ngOnInit(){
-        // this.feedService.showTweets(this.payload['_id']).subscribe((res: HttpResponse<ITweet[]>) => {
-        //     // console.log(res.body);
-        //     // console.log(res.body['tweetsOfFollowings']);
-        //     // this.tweets = res.body['tweetsOfFollowings'];
-        //     console.log(res.body);
-        // });
-        this.feedService.showFeed().subscribe((res: HttpResponse<any>) => {
-            console.log(res);
+        this.feedService.showFeed().subscribe((res: any) => {
+            console.log(res.payload.tweets);
+            this.tweets = res.payload.tweets;
         }), (err) => { console.log(err) };
     }
     
