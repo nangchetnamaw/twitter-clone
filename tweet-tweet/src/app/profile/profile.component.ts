@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 import { SearchService } from "src/app/services/search.service";
 import { switchMap } from "rxjs/operators";
-import { IUser, JwtPayload } from "../models/user.interface";
+import { IUser, IJwtPayload } from "../models/user.interface";
 import { HttpResponse } from "@angular/common/http";
 import { FollowService } from "../services/follow.service";
 import { FeedService } from "../services/feed.service";
@@ -200,7 +200,7 @@ export class ProfileComponent implements OnInit {
   };
   tweets: ITweet[] = [];
   follow: boolean;
-  currentUser: JwtPayload = ParseJwt.parseJwt();
+  currentUser: IJwtPayload = ParseJwt.parseJwt();
   redirectedUser: string;
 
   constructor(

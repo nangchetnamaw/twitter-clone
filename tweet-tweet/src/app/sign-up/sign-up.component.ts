@@ -26,11 +26,11 @@ export class SignUpComponent implements OnInit {
 
   submitHandler(inputObj: IUser): void{
     this.userService.createUser(inputObj).subscribe((response: HttpResponse<any>) => {
-      const token = response.headers.get('x-auth-token');
+      // const token = response.headers.get('x-auth-token');
       this.message = response.body['message'];
       console.log(this.message);
 
-      window.localStorage.setItem('Authorization', `Bearer ${token}`);
+      window.localStorage.setItem('Authorization', `Bearer ${response.body.payload['x-auth-token']}`);
       // this.userService.headers.set('Authorization', `Bearer ${token}`);
       this.router.navigate(['/home']);
     }, (error) => {

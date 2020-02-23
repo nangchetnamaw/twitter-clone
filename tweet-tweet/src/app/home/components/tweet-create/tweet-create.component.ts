@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { TweetService } from 'src/app/services/tweet.service';
 import { ITweet } from 'src/app/models/tweet.interface';
 import { HttpResponse } from '@angular/common/http';
+import ParseJwt from 'src/app/utils/parsejwt';
+import { IJwtPayload } from 'src/app/models/user.interface';
 
 @Component({
   selector: "app-tweet-create",
@@ -21,13 +23,7 @@ import { HttpResponse } from '@angular/common/http';
 export class TweetCreateComponent {
   constructor(private tweetService: TweetService){}
 
-  private parseJwt(token) {
-    var base64Url = token.split(".")[1];
-    var base64 = base64Url.replace("-", "+").replace("_", "/");
-    return JSON.parse(window.atob(base64));
-  }
-
-  payload = this.parseJwt(localStorage.getItem('Authorization'));
+  payload: IJwtPayload = ParseJwt.parseJwt();
 
   createTweetHandler(text: string){
     const tweet = {
