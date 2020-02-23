@@ -27,18 +27,17 @@ export class TweetCreateComponent {
 
   createTweetHandler(text: string){
     const tweet = {
-      user: this.payload.userhandle,
+      user: this.payload._id,
       content: {
-        text: text
+        text: text,
+        tags: text.match(/\B\#\w\w+\b/g) || [],
+        imageUrl: "",
+        mentions: []
       },
-      recentLikes: [],
-      tags: text.match(/\B\#\w\w+\b/g) || [],
-      date: Date.now().toString(),
-      commentCount: 0,
-      likeCount: 0
+      date: Date.now().toString()
     }
     console.log(text.match(/\B\#\w\w+\b/g));
-    this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<ITweet>) => {
+    this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<any>) => {
       console.log(response.body);
     });
   }

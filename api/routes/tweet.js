@@ -47,7 +47,8 @@ router.get('/', async(req, res) => {
     res.send({
         success: true,
         payload: {
-            tweets
+            tweets,
+            tweetCount: tweets.length
         }
     });
 });

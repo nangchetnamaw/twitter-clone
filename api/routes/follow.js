@@ -50,8 +50,8 @@ router.post('/relation', async(req, res) => {
     const userId = await User.findOne({ userhandle: req.body.userId }).select('_id');
     const followerId = await User.findOne({ userhandle: req.body.followerId }).select('_id');
 
-    const relation = await Follow.findOne({ userId, followId });
-    console.log('Inside Relation', relation);
+    const relation = await Follow.findOne({ userId, followerId });
+    console.log('Inside Relation', relation, userId, followerId);
     res.send({
         success: true,
         payload: {

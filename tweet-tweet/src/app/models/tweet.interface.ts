@@ -1,13 +1,25 @@
 import { IUser } from "./user.interface";
 
+interface IContent{
+  text: string;
+  imageURL?: string;
+  mentions: String[];
+  tags: String[];
+}
+
+interface ICount{
+  likeCount: number;
+  replyCount: number;
+  retweetCount: number;
+}
+
 export interface ITweet {
   user: string;
-  content: any;
+  content: IContent;
   recentLikes?: IUser[];
-  tags?: String[];
   date: String;
-  comments?: any;
-  commentCount?: Number;
+  replies?: any;
   likes?: any;
-  likeCount?: Number;
+  retweets?: any;
+  count?: ICount;
 }

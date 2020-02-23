@@ -18,12 +18,12 @@ export class FeedService{
     };
     constructor(private http: HttpClient){}
 
-    showTweets(userhandle: string): Observable<HttpResponse<ITweet[]>>{
+    showTweets(userhandle: string): Observable<HttpResponse<any>>{
         const params = new HttpParams()
         .set('userhandle', userhandle);
 
         console.log(userhandle, 'id insidenshowTweets', this.headers, 'headers');
-        return this.http.get<ITweet[]>(FEED_API, { ...this.httpOptions, observe: 'response', params });
+        return this.http.get<any>(FEED_API, { ...this.httpOptions, observe: 'response', params });
     }
 
     showFeed(): Observable<HttpResponse<any>>{
