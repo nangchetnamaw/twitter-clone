@@ -24,4 +24,8 @@ export class TweetService{
     
         return this.http.post<any>(`${TWEET_API}`, tweet, { ...this.httpOptions, observe: "response" });
     }
+
+    tweetOperations(type: string, operation: string, tweetId: string): Observable<HttpResponse<any>>{
+        return this.http.patch<any>(TWEET_API, { type, operation, tweetId }, { ...this.httpOptions})
+    }
 }

@@ -4,12 +4,15 @@ const Follow = require('../models/follow');
 const { User } = require('../models/user');
 
 router.post('/', async (req, res) => {
-    const { userId, followId } = req.body;
+    const { userhandle, followerhandle } = req.body;
+    const userId = await User.findOne({ userhandle: userhandle }).select('_id');
+    const followId = await User.findOne({ userhandle: followerhandle }).select('_id');
+    
+    await User.updateOne({ _id: userId._id }, { $inc: { "count.followingCount": 1 } });
+    await User.updateOne({ _id: followId._id }, { $inc: { "count.followerCount": 1 } });
+    await Follow.create({ userId: userId._id, followId: followId._id });
 
-    await User.updateOne({ _id: userId }, { $inc: { "count.followingCount": 1 } });
-    await User.updateOne({ _id: followId }, { $inc: { "count.followerCount": 1 } });
-    await Follow.create({ userId, followId });
-
+    console.log(userId, followId, 'Inside post');
     res.send({
         success: true,
         payload: {
@@ -19,11 +22,14 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/', async (req, res) => {
-    const { userId, followId } = req.body;
+    const { userhandle, followerhandle } = req.query;
+    const userId = await User.findOne({ userhandle: userhandle }).select('_id');
+    const followId = await User.findOne({ userhandle: followerhandle }).select('_id');
+    console.log(userId, followId, 'Inside Delete');
 
-    await User.updateOne({ _id: userId }, { $dec: { "count.followingCount": 1 } });
-    await User.updateOne({ _id: followId }, { $dec: { "count.followerCount": 1 } });
-    await Follow.deleteOne({ userId, followId });
+    await User.updateOne({ _id: userId._id }, { $inc: { "count.followingCount": -1 } });
+    await User.updateOne({ _id: followId._id }, { $inc: { "count.followerCount": -1 } });
+    await Follow.deleteOne({ userId: userId._id, followId: followId._id });
 
     res.send({
         success: true,
@@ -47,10 +53,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/relation', async(req, res) => {
-    const userId = await User.findOne({ userhandle: req.body.userId }).select('_id');
-    const followerId = await User.findOne({ userhandle: req.body.followerId }).select('_id');
+    const userId = await User.findOne({ userhandle: req.body.userhandle }).select('_id');
+    const followerId = await User.findOne({ userhandle: req.body.followerhandle }).select('_id');
+    console.log('Inside Relation', userId, followerId);
 
-    const relation = await Follow.findOne({ userId, followerId });
+    const relation = await Follow.findOne({ followId: userId._id, userId: followerId._id });
     console.log('Inside Relation', relation, userId, followerId);
     res.send({
         success: true,

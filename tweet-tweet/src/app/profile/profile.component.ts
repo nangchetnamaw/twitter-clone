@@ -115,64 +115,6 @@ import ParseJwt from "../utils/parsejwt";
           ></app-post>
         </div>
       </div>
-
-      <!-- <div class="container col-lg-4 right-side-nav">
-        <div class="row">
-          <div class="input-group col-sm-10 col-sm-offset-1">
-            <form class="search-form" action="#" method="#" role="search">
-              <input
-                class="form-control"
-                placeholder="Search Twitter"
-                name="srch-term"
-                id="ed-srch-term"
-                type="text"
-              />
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-        </div>
-        <div class="card right-side-nav-2">
-          <div class="card-body">
-            <h5 class="card-title">You might like</h5>
-            <div class="row right-side-nav-2-content">
-              <div class="col-lg-2 right-nav-content-img">
-                <a href="#">
-                  <img
-                    src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg"
-                    alt=""
-                    title=""
-                  />
-                </a>
-              </div>
-              <div class="col-lg-7 col-md-7 col-sm-7 right-side-nav-middle">
-                <a href="#">H Fisk Johnson, Ph.</a>
-                <p>@H Johnson</p>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-2">
-                <button class="right-nav-content-follow-btn">Follow</button>
-              </div>
-            </div>
-            <div class="row right-side-nav-2-content">
-              <div class="col-lg-2 right-nav-content-img">
-                <a href="#">
-                  <img
-                    src="https://pbs.twimg.com/profile_images/738007813398532097/oX5g8no8_400x400.jpg"
-                    alt=""
-                    title=""
-                  />
-                </a>
-              </div>
-              <div class="col-lg-7 col-md-7 col-sm-7 right-side-nav-middle">
-                <a href="#">H Fisk Johnson, Ph.</a>
-                <p>@H Johnson</p>
-              </div>
-              <div class="col-lg-2 col-md-2 col-sm-2">
-                <button class="right-nav-content-follow-btn">Follow</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </div>
   `
 })
@@ -243,10 +185,10 @@ export class ProfileComponent implements OnInit {
   handleFollow(): void {
     console.log("Inside handleFollow");
     this.followService
-      .follower({
+      .follow({
         followerhandle: this.currentUser.userhandle,
         userhandle: this.redirectedUser
-      })
+      }, true)
       .subscribe((res: HttpResponse<IFollower>) => {
         console.log(res);
       });
@@ -259,10 +201,10 @@ export class ProfileComponent implements OnInit {
 
   handleUnfollow(): void {
     this.followService
-      .unfollow({
-        userId: this.redirectedUser,
-        followerId: this.currentUser.userhandle
-      })
+      .follow({
+        userhandle: this.redirectedUser,
+        followerhandle: this.currentUser.userhandle
+      }, false)
       .subscribe((res: HttpResponse<IUnfollow>) => {
         console.log(res);
       });
