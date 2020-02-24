@@ -11,7 +11,7 @@ const tweetSchema = new Schema({
     text: {
       type: String,
       minlength: 3,
-      maxlength: 50,
+      maxlength: 200,
       required: true
     },
     imageURL: {

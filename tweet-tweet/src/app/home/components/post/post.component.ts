@@ -33,17 +33,28 @@ import { Component, Input } from "@angular/core";
 
         <mat-card-actions class="post-btn-container">
           <button mat-button class="post-btn post-reply" (click)="toggleShow()">
-            <i class="fa fa-reply" aria-hidden="true" style="font-size: 2rem; color: #38a1f3;"></i>
+            <i
+              class="fa fa-reply"
+              aria-hidden="true"
+              style="font-size: 2rem; color: #38a1f3;"
+            ></i>
           </button>
-<button mat-button class="post-btn post-retweet"><i class="fa fa-retweet" aria-hidden="true" style="font-size: 2rem; color: #38a1f3;"></i><span>{{commentCount}}</span></button>
+          <button mat-button class="post-btn post-retweet">
+            <i
+              class="fa fa-retweet"
+              aria-hidden="true"
+              style="font-size: 2rem; color: #38a1f3;"
+            ></i
+            ><span>{{ commentCount }}</span>
+          </button>
           <div>
             <button
               mat-icon-button
               color="warn"
               aria-label="Example icon-button with a heart icon"
             >
-            <mat-icon>favorite</mat-icon><span>{{likeCount}}</span></button
-            >
+              <mat-icon>favorite</mat-icon><span>{{ likeCount }}</span>
+            </button>
           </div>
         </mat-card-actions>
       </mat-card>
