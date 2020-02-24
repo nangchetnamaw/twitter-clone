@@ -13,7 +13,7 @@ import { HttpResponse } from '@angular/common/http';
                 <h2 class="header">Home</h2>
                 <app-tweet-create></app-tweet-create>
                 <div class="post-container" *ngFor="let tweet of tweets">
-                    <app-post [text]="tweet.content.text" [likeCount]="tweet.count.likeCount" [commentCount]="tweet.count.replyCount"></app-post>
+                    <app-post [user]="tweet.user" [text]="tweet.content.text" [likeCount]="tweet.count.likeCount" [commentCount]="tweet.count.replyCount"></app-post>
                 </div>
             </div>
             <app-search></app-search>

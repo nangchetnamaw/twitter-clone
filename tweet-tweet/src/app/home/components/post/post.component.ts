@@ -8,10 +8,10 @@ import { Component, Input } from "@angular/core";
       <mat-card class="post-card">
         <mat-card-header>
           <div mat-card-avatar class="post-header--image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle class="post-header--subtitle"
-            >@shibaInu</mat-card-subtitle
-          >
+          <mat-card-title>{{ user.name }}</mat-card-title>
+          <mat-card-subtitle class="post-header--subtitle">{{
+            "@" + user.userhandle
+          }}</mat-card-subtitle>
         </mat-card-header>
 
         <mat-card-content>
@@ -48,6 +48,9 @@ import { Component, Input } from "@angular/core";
             ><span>{{ commentCount }}</span>
           </button>
           <div>
+          <!-- <button mat-icon-button disabled aria-label="Example icon-button with a heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button> -->
             <button
               mat-icon-button
               color="warn"
@@ -68,6 +71,8 @@ export class PostComponent {
   likeCount: Number;
   @Input()
   commentCount: Number;
+  @Input()
+  user: any;
 
   show: Boolean = false;
 

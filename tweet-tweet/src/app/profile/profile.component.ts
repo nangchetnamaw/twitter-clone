@@ -108,11 +108,7 @@ import ParseJwt from "../utils/parsejwt";
       <div class="container col-lg-4 right-side-nav">
         <app-search></app-search>
         <div *ngFor="let tweet of tweets">
-          <app-post
-            [text]="tweet.content.text"
-            [likeCount]="tweet.count.likeCount"
-            [commentCount]="tweet.count.replyCount"
-          ></app-post>
+        <app-post [user]="tweet.user" [text]="tweet.content.text" [likeCount]="tweet.count.likeCount" [commentCount]="tweet.count.replyCount"></app-post>
         </div>
       </div>
     </div>

@@ -36,7 +36,7 @@ router.get("/feed", async (req, res) => {
     await Promise.all(
       followings.map(async following => {
         console.log(following);
-        const tweetArray = await Tweet.find({ user: following.userId });
+        const tweetArray = await Tweet.find({ user: following.userId }).populate('user');
         console.log(tweetArray);
         tweets = [...tweets, ...tweetArray];
       })
@@ -57,7 +57,7 @@ router.get("/feed", async (req, res) => {
 router.get("/", async (req, res) => {
   const userhandle = req.query.userhandle;
   const _id = await User.findOne({ userhandle: userhandle }).select("_id");
-  const tweets = await Tweet.find({ user: _id });
+  const tweets = await Tweet.find({ user: _id }).populate('user');
   console.log(_id, tweets);
   console.log("I was here");
   res.send({
