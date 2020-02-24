@@ -12,30 +12,39 @@
           <i class="fa fa-twitter" id="twitter" ></i>
         </div>
       <h1 class="card-title">Create your account</h1>
-      <form>
+      <form #userForm = "ngForm">
+
+        <!-- {{userForm.value | json}} -->
+
         <div class="form-group" > 
           <label class="text">Name</label>
-          <input type="name" required class="form-control"  id="exampleInputName1" aria-describedby="emailHelp" #nameInput>
+          <input class="inputBox" type="name" [class.warning]="nameInput.invalid && nameInput.touched" ngModel required class="form-control "   name="name" id="exampleInputName1" aria-describedby="emailHelp" #nameInput='ngModel'>
         </div>
+        <small class= "text-danger" [class.smallText]="nameInput.valid || nameInput.untouched">Name is required</small>
+
+        <!-- {{nameInput.valid}} -->
+
         <div class="form-group">
           <div class="text">Username</div>
-          <input type="username" required class="form-control" id="exampleInputUsername1" #userhandleInput>
+          <input  class="inputBox" type="username" [class.warning]="userhandleInput.invalid && userhandleInput.touched"  required class="form-control" name="username" id="exampleInputUsername1" ngModel #userhandleInput='ngModel'>
         </div>
+        <small class= "text-danger" [class.smallText]="userhandleInput.valid || userhandleInput.untouched">Username is required</small>
         <div class="form-group">
             <div class="text">Email</div>
-            <input type="email"  required class="form-control" id="exampleInputEmail1" #emailInput>
+            <input class="inputBox" type="email" [class.warning]="emailInput.invalid && emailInput.touched"  required class="form-control" name="email" id="exampleInputEmail1" ngModel #emailInput='ngModel'>
           </div>
+          <small class= "text-danger" [class.smallText]="emailInput.valid || emailInput.untouched">Email is required</small>
           <div class="form-group">
             <div class="text">Password</div>
-            <input type="password" required class="form-control" id="exampleInputPassword1" #passwordInput>
+            <input class="inputBox" type="password" [class.warning]="passwordInput.invalid && passwordInput.touched"  required class="form-control" name="password" id="exampleInputPassword1" ngModel #passwordInput='ngModel'>
           </div>
+          <small class= "text-danger" [class.smallText]="passwordInput.valid || passwordInput.untouched">Password is required</small>
           <div class="form-group">
             <div class="text">DOB</div>
-            <input type="date" required class="form-control" id="exampleInputDate1" #dobInput>
+            <input class="inputBox" type="date" [class.warning]="dobInput.invalid && dobInput.touched"  required class="form-control" name="date" id="exampleInputDate1" ngModel #dobInput='ngModel'>
           </div>
+          <small class= "text-danger" [class.smallText]="dobInput.valid || dobInput.untouched">DOB is required</small>
           <a class="btn btn-primary" id = "myButton" (click)="submitHandler({email: emailInput.value, password: passwordInput.value, name: nameInput.value, userhandle: userhandleInput.value, dob: dobInput.value })">Sign up</a>
       </form>
     </div>
 </div>
-
-
