@@ -1,27 +1,30 @@
-    <div class="card" style="position: relative;">
+<div class="card" style="position: relative;">
 
-      <div class="message-parent" *ngIf="message">
-        <div class="message" style="position: absolute; top: 0; right: 0; width: 20%; 
-        color: #ffffff; background-color: rgb(0, 98, 255); padding: 2rem;">
-          {{ message }}
-        </div>
-      </div>
-
-        <div class="card-body">
-          <div class="image"><i class="fa fa-twitter" id="twitter" ></i></div>
-          <h1 class="card-title">Log in to Twitter</h1>
-          <form>
-            <div class="form-group" >
-              <div class="text">Email</div>
-              <input type="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #emailInput>
-            </div>
-            <div class="form-group">
-              <div class="text">Password</div>
-              <input type="password" class="form-control" id="exampleInputPassword1" #passwordInput>
-            </div>
-            
-            <a class="btn btn-primary" id = "myButton" (click)="loginHandler({email: emailInput.value, password: passwordInput.value})">Log in</a>
-            
-          </form>
-        </div>
+  <div class="message-parent" *ngIf="message">
+    <div class="message" style="position: absolute; top: 0; right: 0; width: 20%; 
+    color: #ffffff; background-color: rgb(0, 98, 255); padding: 2rem;">
+      {{ message }}
     </div>
+  </div>
+
+  <div class="card-body">
+    <div class="image"><i class="fa fa-twitter" id="twitter" ></i></div>
+    <h1 class="card-title">Log in to Twitter</h1>
+    <form>
+
+      <div class="form-group" >
+        <div class="text">Email</div>
+        <input type="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #emailInput>
+      </div>
+      
+      <div class="form-group">
+        <div class="text">Password</div>
+        <input type="password" class="form-control" id="exampleInputPassword1" #passwordInput>
+      </div>
+      
+      <a class="btn btn-primary" id = "myButton" (click)="loginHandler({email: emailInput.value, password: passwordInput.value})">Log in</a>
+      
+    </form>
+  </div>
+
+</div>
