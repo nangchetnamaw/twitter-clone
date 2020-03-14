@@ -27,6 +27,7 @@ export class LoginPageComponent{
    }
  }
  loginHandler2(loginObj: Login){
+   if(loginObj.email!='' && loginObj.password!=''){
     this.userService.loginUser(loginObj).subscribe((response: HttpResponse<any>) => {
       window.localStorage.setItem('Authorization', `Bearer ${response.body.payload['x-auth-token']}`);
       this.message = response.body['message'];
@@ -38,5 +39,6 @@ export class LoginPageComponent{
       }, 8000); 
       this.message = "The username and password you entered did not match our records. Please double-check and try again." 
     });
+  }
  }
 }
