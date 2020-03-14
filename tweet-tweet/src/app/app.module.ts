@@ -77,7 +77,7 @@ import { SearchComponent } from './home/components/search/search.component';
     TrendComponent,
     ProfileComponent,
     ReplyComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     //Ng Modules
