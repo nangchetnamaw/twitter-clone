@@ -2,6 +2,13 @@
     background-color: white;
     border: none;
     height: 95vh;
+
+}
+.card-title{
+    
+    font-size: 25px;
+    color:black;
+    font-weight: bolder;
 }
 
 .card-body{
@@ -39,10 +46,35 @@ h1{
     text-align: center;
     font-size: 1rem;
 }
+.card-myname{
+    font-size: 15px;
+    margin-top: 50px;
+    font-weight: 70;
+}
 
+.card-my-name{
+    line-height: 1.3125;
+    color: black;
+    font-size: 15px;
+    text-align:left;
+    font-weight: 20;
+    font-family:sans-serif;
+}
+.mycheckbox{
+   
+    margin-top:5px;
+    margin-left:5px;
+  }
 .text{
-    padding: 1% 2%
+   
+    padding: 0%;
+    font-size: 20px;
+    font-weight: 650;
+    color:black;
 
+}
+.card-name{
+    margin-top: 50px;
 }
 
 .inputBox:focus{
@@ -69,7 +101,5 @@ h1{
     
 
   }
-  /* .warning:focus{
-      border-bottom: 2px solid rgb(224, 36, 94);
-  } */
+  
 
