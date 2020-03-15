@@ -63,6 +63,7 @@
         <input class="inputBox" type="password" [class.warning]="passwordInput.invalid && passwordInput.touched"  required class="form-control" name="password" id="exampleInputPassword1" ngModel #passwordInput='ngModel' (keyup)="submitHandler({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})">
       </div>
       <small class= "text-danger" [class.smallText]="passwordInput.valid || passwordInput.untouched">Password is required</small>
+      
       <div class="footer" [style.display]="isStep3 ? 'block' : 'none'" >
         <h3>By signing up, you agree to the <a>terms and conditions</a> and <a>Privacy Policy</a>, including <a>Cookie Use</a>. Others will be able to find you by email or phone number when provided. <a>Privacy options</a> </h3>
         <a class="btn btn-primary" id = "submitButton" (click)="submitHandler2({name:nameInput.value, email: emailInput.value, password: passwordInput.value, userhandle: userhandleInput.value})">Sign Up</a>
