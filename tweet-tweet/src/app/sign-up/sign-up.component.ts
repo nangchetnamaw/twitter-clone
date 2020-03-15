@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   isVisible2:Boolean =true;
   isStep1: Boolean = true;
   isStep3: Boolean= false;
+  isBackNeeded: Boolean =false;
   isFilled: Boolean =false;
   user: IUser;
   message: String;
@@ -25,15 +26,18 @@ export class SignUpComponent implements OnInit {
     if(inputObj.name!='' || inputObj.userhandle!=''|| inputObj.email!='' || inputObj.password!=''){
       this.isStep1=false;
       this.isStep3=true;
+      this.isBackNeeded=true;
     }
   } 
   back(){
     this.isStep1=true;
     this.isStep3=false;
+    this.isBackNeeded=false;
   }
   submitHandler(inputObj: IUser){
     this.isStep1=true;
     this.isStep3=false;
+    this.isBackNeeded=false;
     if(inputObj.name=='' || inputObj.userhandle==''|| inputObj.email=='' || inputObj.password==''){
       this.isFilled = false;
       console.log(this.isFilled)
