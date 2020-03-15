@@ -32,6 +32,8 @@ export class SignUpComponent implements OnInit {
     this.isStep3=false;
   }
   submitHandler(inputObj: IUser){
+    this.isStep1=true;
+    this.isStep3=false;
     if(inputObj.name=='' || inputObj.userhandle==''|| inputObj.email=='' || inputObj.password==''){
       this.isFilled = false;
       console.log(this.isFilled)
