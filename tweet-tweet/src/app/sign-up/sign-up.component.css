@@ -1,4 +1,4 @@
-.card{
+/* .card{
     background-color: white;
     border: none;
     height: 95vh;
@@ -13,7 +13,7 @@
 
 .card-body{
     padding: 0% 30%;
-}
+} */
 
 .form-control{
     height: 3rem;
@@ -196,4 +196,25 @@ h3{
     overflow-wrap: break-word;
     padding-left: 2%;
 }
+ 
+.content{
+    margin-left: 2%;
+}
+.title{
+    margin-left: 2%;
+}
+.sub-title h3{
+    margin-left: 2%;
+    font-weight: bolder;
+    font-size: large;
+    padding-left: 0;
+    margin-top: 3%;
+}
+
+.content-footer{
+    margin-top: 4%;
+    padding-left: 2%;
+}
+
+
 

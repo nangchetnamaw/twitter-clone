@@ -14,6 +14,7 @@ export class SignUpComponent implements OnInit {
   isVisible: Boolean = true;
   isVisible2:Boolean =true;
   isStep1: Boolean = true;
+  isStep2: Boolean = false;
   isStep3: Boolean= false;
   isBackNeeded: Boolean =false;
   isFilled: Boolean =false;
@@ -24,9 +25,19 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {}
   next(inputObj: IUser){
     if(inputObj.name!='' || inputObj.userhandle!=''|| inputObj.email!='' || inputObj.password!=''){
-      this.isStep1=false;
-      this.isStep3=true;
-      this.isBackNeeded=true;
+      if(this.isStep1==true){
+        this.isStep1=false;
+        this.isStep2=true;
+        this.isBackNeeded=true;
+      }
+      else if(this.isStep2==true){
+        this.isStep2=false;
+        this.isStep3=true;
+        this.isBackNeeded=true;
+      }
+      // this.isStep1=false;
+      // this.isStep3=true;
+      // this.isBackNeeded=true;
     }
   } 
   back(){

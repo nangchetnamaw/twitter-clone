@@ -9,17 +9,39 @@
         <div class="header">
           <div class="image">
             <i class="fa fa-arrow-left" id="arrow-left" [style.display]="isBackNeeded ? 'block' : 'none'" (click)="back()"></i>
-            <i class="fa fa-twitter" id="twitter" [style.display]="isStep1 ? 'block' : 'none'" ></i>
+            <i class="fa fa-twitter" id="twitter" [style.display]="isStep3 ? 'none' : 'block'" ></i>
           </div>
-          <a class="btn btn-primary" id = "myButton" (click)="next({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})" [style.background-color]="isFilled ? 'rgba(29,161,242,1.00)': 'babyblue'"  [style.display]="isStep1 ? 'block' : 'none'">Next</a>
+          <a class="btn btn-primary" id = "myButton" (click)="next({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})" [style.background-color]="isFilled ? 'rgba(29,161,242,1.00)': 'babyblue'"  [style.display]="isStep3 ? 'none' : 'block'">Next</a>
         </div>
-        <h1 class="card-title">Create your account</h1>
+        <h1 class="card-title" [style.display]="isStep2 ? 'none' : 'block'">Create your account</h1>
       <!-- Modal body -->
       <div class="message-parent" *ngIf="message">
         <div class="message">
           {{ message }}
         </div>
       </div>
+      <div class="step-two" [style.display]="isStep2 ? 'block' : 'none'">
+        <h1 class="title">Customize your experience</h1> 
+        <div class="sub-title">
+          <h3 class="text">Personalized ads</h3>
+        </div>
+        <div class="content">
+          You will always see ads on Twitter based on your Twitter activity. When this setting is enabled, Twitter may further personalize ads from Twitter advertisers, on and off Twitter, by combining your Twitter activity with other online activity and information from our partners. 
+          <input type="checkbox" data-ng-model="rememberMe" class="pull-right mycheckbox" checked>
+        </div>
+        <div class="sub-title">
+          <h3 class="text">Track where you see twitter content across the web</h3>
+        </div>
+        <div class="content">
+          Twitter uses this data to personalize your experience. This web browsing history will never be stored with your name,email or phone number.
+          <input type="checkbox" data-ng-model="rememberMe" class="pull-right mycheckbox" checked>
+        </div>
+        <div class="content-footer">
+          For more details about these settings, visit the <a href="https://help.twitter.com/en/managing-your-account/new-account-settings">Help Center.</a>  
+        </div> 
+
+      </div>
+      <div class="user-detail" [style.display]="isStep2 ? 'none' : 'block'" >
       <div class="form-group" > 
         <div class="text">Name</div>
         <input class="inputBox" type="name" [class.warning]="nameInput.invalid && nameInput.touched" ngModel required class="form-control "   name="name" id="exampleInputName1" aria-describedby="emailHelp" #nameInput='ngModel' (keyup)="submitHandler({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})">
@@ -45,6 +67,7 @@
         <h3>By signing up, you agree to the <a>terms and conditions</a> and <a>Privacy Policy</a>, including <a>Cookie Use</a>. Others will be able to find you by email or phone number when provided. <a>Privacy options</a> </h3>
         <a class="btn btn-primary" id = "submitButton" (click)="submitHandler2({name:nameInput.value, email: emailInput.value, password: passwordInput.value, userhandle: userhandleInput.value})">Sign Up</a>
       </div>
+    </div>
       </form>
     </div>
   </div>
