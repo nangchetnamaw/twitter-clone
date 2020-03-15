@@ -1,4 +1,5 @@
-<div class="card" style="position: relative;">
+
+<!-- <div class="card" style="position: relative;">
 
   <div class="message-parent" *ngIf="message">
     <div class="message" style="position: absolute; top: 0; right: 0; width: 20%; 
@@ -27,8 +28,57 @@
       <div class="card-myname">
        For more details about these settings, visit the <a href="https://help.twitter.com/en/managing-your-account/new-account-settings">Help Center.</a> 
        
-      </div>
+      </div> -->
       
+
+<!-- Modal Step1-->
+<div class="modal" id="signup-modal" [style.display]="isVisible ? 'block' : 'none'">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+  
+      <!-- Modal Header -->
+      <form #userForm = "ngForm">
+        <div class="header">
+          <div class="image">
+            <i class="fa fa-arrow-left" id="arrow-left" [style.display]="isBackNeeded ? 'block' : 'none'" (click)="back()"></i>
+            <i class="fa fa-twitter" id="twitter" [style.display]="isStep1 ? 'block' : 'none'" ></i>
+          </div>
+          <a class="btn btn-primary" id = "myButton" (click)="next({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})" [style.background-color]="isFilled ? 'rgba(29,161,242,1.00)': 'babyblue'"  [style.display]="isStep1 ? 'block' : 'none'">Next</a>
+        </div>
+        <h1 class="card-title">Create your account</h1>
+      <!-- Modal body -->
+      <div class="message-parent" *ngIf="message">
+        <div class="message">
+          {{ message }}
+        </div>
+      </div>
+      <div class="form-group" > 
+        <div class="text">Name</div>
+        <input class="inputBox" type="name" [class.warning]="nameInput.invalid && nameInput.touched" ngModel required class="form-control "   name="name" id="exampleInputName1" aria-describedby="emailHelp" #nameInput='ngModel' (keyup)="submitHandler({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})">
+      </div>
+      <small class= "text-danger" [class.smallText]="nameInput.valid || nameInput.untouched">Name is required</small>
+
+      <div class="form-group">
+        <div class="text">Username</div>
+        <input  class="inputBox" type="username" [class.warning]="userhandleInput.invalid && userhandleInput.touched"  required class="form-control" name="username" id="exampleInputUsername1" ngModel #userhandleInput='ngModel' (keyup)="submitHandler({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})">
+      </div>
+      <small class= "text-danger" [class.smallText]="userhandleInput.valid || userhandleInput.untouched">What is your name?</small>
+      <div class="form-group">
+        <div class="text">Email</div>
+        <input class="inputBox" type="email" [class.warning]="emailInput.invalid && emailInput.touched"  required class="form-control" name="email" id="exampleInputEmail1" ngModel #emailInput='ngModel' (keyup)="submitHandler({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})">
+      </div>
+      <small class= "text-danger" [class.smallText]="emailInput.valid || emailInput.untouched">Email is required</small>
+      <div class="form-group">
+        <div class="text">Password</div>
+        <input class="inputBox" type="password" [class.warning]="passwordInput.invalid && passwordInput.touched"  required class="form-control" name="password" id="exampleInputPassword1" ngModel #passwordInput='ngModel' (keyup)="submitHandler({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})">
+      </div>
+      <small class= "text-danger" [class.smallText]="passwordInput.valid || passwordInput.untouched">Password is required</small>
+      <div class="footer" [style.display]="isStep3 ? 'block' : 'none'" >
+        <h3>By signing up, you agree to the <a>terms and conditions</a> and <a>Privacy Policy</a>, including <a>Cookie Use</a>. Others will be able to find you by email or phone number when provided. <a>Privacy options</a> </h3>
+        <a class="btn btn-primary" id = "submitButton" (click)="submitHandler2({name:nameInput.value, email: emailInput.value, password: passwordInput.value, userhandle: userhandleInput.value})">Sign Up</a>
+      </div>
+
       </form>
     </div>
+  </div>
 </div>

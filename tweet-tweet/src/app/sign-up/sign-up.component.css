@@ -15,31 +15,59 @@
     padding: 0% 30%;
 }
 
-#myButton{
-
-    width: 100%;
-    border-radius: 3rem;
-    
-
-}
-
 .form-control{
     height: 3rem;
     background-color: rgb(245, 248, 250);
     border-bottom: black;
     border: none ;
-    border-bottom: 2px solid darkslategrey
+    border-bottom: 2px solid darkslategrey;
+    box-shadow: none;
+    margin-bottom: 2%;
+}
+.form-control:focus{
+    border-color:  rgba(29,161,242,1.00);
+    box-shadow: none;    
 }
 
 h1{
     text-align: left;
+    color: black;
+    font-size: x-large;
+    font-weight: bolder;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    margin-left:2%;
+    margin-bottom: 20px;
+}
+ 
+h3{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    margin-left:2%;
+    color: black;
+    font-size: medium;
+    margin-bottom: 20px;
+    font-weight: normal;
 }
 
 #twitter{
     color: rgba(29,161,242,1.00);
     font-size: 3rem;
-    
+    flex: 0 1 auto;
+    position: absolute;           
+    left: 50%;
+    transform: translateX(-50%);
+} 
+
+#arrow-left{
+    color: rgba(29,161,242,1.00);
+    font-size: 2rem;
+    font-weight: lighter;
+    position: absolute;
+    left: 0;
+    padding-bottom: 5%;
+}
+
+.header{
+    padding-top: 2%;
 }
 
 .image{
@@ -66,12 +94,20 @@ h1{
     margin-left:5px;
   }
 .text{
+
    
     padding: 0%;
     font-size: 20px;
     font-weight: 650;
     color:black;
 
+    padding: 1% 2%
+}
+
+
+.text-danger{
+    padding-left: 2% ;
+    font-size: small;
 }
 .card-name{
     margin-top: 50px;
@@ -84,13 +120,8 @@ h1{
 .form-group{
     background-color: rgb(245, 248, 250);
     margin-bottom: 0rem;
+    margin: 0 2%;
 }
-
-.form-control:focus {
-    
-    box-shadow: none;
-
-  }
 
   .smallText{
       visibility: hidden;
@@ -102,4 +133,68 @@ h1{
 
   }
   
+
+.header{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.header #myButton{
+    align-self: flex-end;
+    border-radius: 3rem;
+    background-color: rgb(162,207,254);
+    border: none;
+    font-weight: bolder;
+    width: max-content;
+    flex: 0 1 auto;
+    margin-left: auto;  
+} 
+
+#submitButton{
+    border-radius: 3rem;
+    background-color: rgba(29,161,242,1.00);
+    border: none;
+    font-weight: bolder;
+    width: -webkit-fill-available;
+    
+    margin-bottom: 5%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    height: 4rem;
+    position: relative;
+    flex: 0 1 auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* @media only screen and (min-device-width: 320px)and (max-width: 1024px) {
+    #signup-modal{
+        padding: 2% 10%;
+    }
+}
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px){
+    .signup-modal{
+        padding: 2% 20%;
+    }
+}
+@media screen  and (min-device-width: 1200px) and (max-device-width: 1600px){ 
+    #signup-modal{
+        padding: 2% 30%;
+    }
+} */
+
+#signup-modal{
+    padding: 0% 10%;
+}
+
+.modal-content{
+    height: 80%;
+}
+
+.message{
+    color:rgb(224,0,0);
+    overflow-wrap: break-word;
+    padding-left: 2%;
+}
 
