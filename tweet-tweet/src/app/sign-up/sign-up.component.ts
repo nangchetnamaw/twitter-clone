@@ -41,9 +41,17 @@ export class SignUpComponent implements OnInit {
     }
   } 
   back(){
-    this.isStep1=true;
-    this.isStep3=false;
-    this.isBackNeeded=false;
+    if(this.isStep2==true){
+      this.isStep2=false;
+      this.isStep1=true;
+      this.isBackNeeded=false;
+    }
+    else if(this.isStep3==true){
+      this.isStep3=false;
+      this.isStep2=true;
+      this.isBackNeeded=true;
+    }
+    
   }
   submitHandler(inputObj: IUser){
     this.isStep1=true;
