@@ -26,7 +26,7 @@ const userSchema = Schema({
     name: {
         type: String,
         max: 40,
-        required: true
+        // required: true
     },
     joined: {
         type:Date,
