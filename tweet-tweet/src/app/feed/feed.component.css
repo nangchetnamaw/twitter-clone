@@ -60,3 +60,14 @@ body{
 .image{
     max-width: 5rem;
 }
+.media-heading{
+    color: black;
+    font-size: 20px;
+}
+.content{
+    font-size: 15px;
+    line-height: -10px;
+}
+.pull-right{
+    font-size: 12px;
+}
