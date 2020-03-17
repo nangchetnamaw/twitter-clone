@@ -48,7 +48,9 @@ body{
     background-color: #f44336
 }
 
-
+.media-body{
+    margin-top: -2px;
+}
 .list-group-item {
     position: relative;
     display: block;
@@ -57,17 +59,33 @@ body{
     background-color: #fff;
     border: 1px solid transparent;
 }
+
 .image{
-    max-width: 5rem;
+    max-width: 1rem;
+    max-height: 30rem;
+    border-radius: 10rem;
+    border-radius: 100px;
 }
 .media-heading{
     color: black;
-    font-size: 20px;
+    font-size: 18px;
+    padding: 10px;
 }
 .content{
     font-size: 15px;
     line-height: -10px;
+    padding: 10px;
+    margin-top: -20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+.media{
+    font-size: 18px;
+    padding: 10px;
+    margin-top: -20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+
 }
 .pull-right{
     font-size: 12px;
+    
 }
