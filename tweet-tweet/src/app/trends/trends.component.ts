@@ -1,31 +1,37 @@
 import { ITrend } from './../models/trend.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef} from '@angular/core';
+
 
 @Component({
   selector: 'app-trends',
   templateUrl: './trends.component.html',
-  styleUrls: ['./trends.component.css']
+  styleUrls: ['./trends.component.css'], 
+
 })
 export class TrendsComponent implements OnInit {
   isDropdownClicked: Boolean[] = [false, false, false, false, false, false, false, false, false, false];
   isSecondList: Boolean= false;
 
-  constructor() { }
+  constructor(private eRef: ElementRef) { }
 
-  ngOnInit() {
-    var modal = document.getElementById('modal');
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+  ngOnInit() {   
+  }
+  @HostListener('document:click', ['$event'])
+  handleOutsideClick(event) {  
+    debugger
+    if (this.eRef.nativeElement.contains(event.target)) {
+      if(event.target.id!="angle-down"){
+        for(let i=0;i<this.isDropdownClicked.length;i++){
+        this.isDropdownClicked[i]=false;
+      }
+      
       }
     }
     
   }
-
   
   dropdownShow(id: number){
-    this.isDropdownClicked[id] = true;
+    this.isDropdownClicked[id] = true;    
   }
 
   showMore(){
