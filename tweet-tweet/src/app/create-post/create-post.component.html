@@ -1,0 +1,9 @@
+<div class="tweet-create">
+    <div class="tweet-create__primary">
+      <div class="tweet-create__primary--user_img"></div>
+      <textarea class="tweet-create__primary--tweet_area" placeholder="What's happening?" #tweetarea></textarea>
+    </div>
+    <div class="tweet-create__secondary">
+      <button class="tweet-create--btn_tweet" (click)="createTweetHandler(tweetarea.value)">Tweet</button>
+    </div>
+</div>  

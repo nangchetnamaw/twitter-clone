@@ -57,6 +57,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
 import { ReplyComponent } from './home/components/reply/reply.component';
 import { SearchComponent } from './home/components/search/search.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 //
 
@@ -77,7 +78,8 @@ import { SearchComponent } from './home/components/search/search.component';
     TrendComponent,
     ProfileComponent,
     ReplyComponent,
-    SearchComponent
+    SearchComponent,
+    CreatePostComponent
   ],
   imports: [
     //Ng Modules
