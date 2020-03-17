@@ -58,6 +58,7 @@ import { CommonModule } from '@angular/common';
 import { ReplyComponent } from './home/components/reply/reply.component';
 import { SearchComponent } from './home/components/search/search.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { TrendsComponent } from './trends/trends.component';
 
 //
 
@@ -79,7 +80,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     ProfileComponent,
     ReplyComponent,
     SearchComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    TrendsComponent
   ],
   imports: [
     //Ng Modules

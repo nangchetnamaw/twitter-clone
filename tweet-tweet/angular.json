@@ -25,7 +25,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-               "src/styles.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "tweet-tweet"
+  "defaultProject": "tweet-tweet",
+  "cli": {
+    "analytics": "e8cbebff-0ad0-444c-abda-2d3d7effad60"
+  }
 }
