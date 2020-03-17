@@ -8,8 +8,8 @@
         <div class="list-body">
         <div class="trend-head">
             {{trend.trendingIn}}<br>
-            <i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow()"></i>
-            <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked ? 'block' : 'none'">
+            <i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow(trend._id)"></i>
+            <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked[trend._id] ? 'block' : 'none'">
                 <div class="modal-body">
                 <ul >
                     <li class="list-dialog" *ngFor="let dialogs of ModalDialog">

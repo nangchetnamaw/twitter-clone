@@ -1,3 +1,4 @@
+import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'create', component: CreatePostComponent},
   { path: 'profile',
     children: [
       {
