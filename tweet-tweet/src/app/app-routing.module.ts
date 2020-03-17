@@ -8,7 +8,7 @@ import { HomeComponent } from './home/containers/home.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-  { path: "", component: WelcomePageComponent, pathMatch: 'full' },
+  { path: "", component: WelcomePageComponent},
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
