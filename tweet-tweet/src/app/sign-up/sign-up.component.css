@@ -1,28 +1,40 @@
-/* .card{
+.card{
     background-color: white;
     border: none;
-    height: 95vh;
-
 }
+
 .card-title{
-    
-    font-size: 25px;
+    font-size: 22px;
+    margin-bottom: 3rem;
     color:black;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .card-body{
     padding: 0% 30%;
-} */
+}
+
+.modal-content{
+    max-height: 100vh;
+    
+}
+
+.user-detail{
+    max-height: 65vh;
+}
+.step-two{
+    max-height: 100vh;
+}
 
 .form-control{
-    height: 3rem;
+   
     background-color: rgb(245, 248, 250);
     border-bottom: black;
     border: none ;
     border-bottom: 2px solid darkslategrey;
     box-shadow: none;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
+    max-height: 20px;
 }
 .form-control:focus{
     border-color:  rgba(29,161,242,1.00);
@@ -30,22 +42,29 @@
 }
 
 h1{
+    font-size: 22px;
+    margin-bottom: 3rem;
+    color:black;
+    font-weight: bold;
     text-align: left;
-    color: black;
-    font-size: x-large;
-    font-weight: bolder;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     margin-left:2%;
-    margin-bottom: 20px;
+    
+}
+.pull-right .mycheckbox{
+    font-size: 100%;
+    padding: 10vw;
 }
  
 h3{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    margin-left:2%;
     color: black;
     font-size: medium;
-    margin-bottom: 20px;
     font-weight: normal;
+  margin-top: -3rem;
+}
+.form{
+    max-height: 100px;
 }
 
 #twitter{
@@ -63,11 +82,14 @@ h3{
     font-weight: lighter;
     position: absolute;
     left: 0;
+    padding: 1rem;
     padding-bottom: 5%;
+    margin-right: 100px;
 }
 
 .header{
-    padding-top: 2%;
+    padding-top: 2rem;
+    padding: 2rem;
 }
 
 .image{
@@ -95,15 +117,13 @@ h3{
   }
 .text{
 
-   
-    padding: 0%;
-    font-size: 20px;
-    font-weight: 650;
-    color:black;
-
-    padding: 1% 2%
+    padding: 0px;
+    font-size: 15px;
+    font-weight: 400;
 }
-
+.foot{
+    text-align: center;
+}
 
 .text-danger{
     padding-left: 2% ;
@@ -119,19 +139,18 @@ h3{
 
 .form-group{
     background-color: rgb(245, 248, 250);
-    margin-bottom: 0rem;
+    padding:-5rem;
     margin: 0 2%;
+    max-height: 80px;
 }
 
-  .smallText{
+.smallText{
       visibility: hidden;
-  }
+}
 
-  .warning{
+.warning{
     border-bottom: 2px solid rgb(224, 36, 94);
-    
-
-  }
+}
   
 
 .header{
@@ -157,14 +176,9 @@ h3{
     border: none;
     font-weight: bolder;
     width: -webkit-fill-available;
-    
-    margin-bottom: 5%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    height: 4rem;
-    position: relative;
-    flex: 0 1 auto;
-    left: 50%;
-    transform: translateX(-50%);
+   margin-top:-1rem;
+   padding: -2rem;
 }
 
 
@@ -188,10 +202,6 @@ h3{
     padding: 0% 10%;
 }
 
-.modal-content{
-    height: 80%;
-}
-
 .message{
     color:rgb(224,0,0);
     overflow-wrap: break-word;
@@ -203,19 +213,19 @@ h3{
 }
 .title{
     margin-left: 2%;
+    margin-top: 0px;
 }
 .sub-title h3{
     margin-left: 2%;
     font-weight: bolder;
     font-size: large;
     padding-left: 0;
-    margin-top: 3%;
+    margin-top: 8%;
 }
 
 .content-footer{
-    margin-top: 4%;
+  
     padding-left: 2%;
+    margin-bottom: 25rem;
+   margin-top: 15px;
 }
-
-
-
