@@ -1,49 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="h-100 d-none d-lg-block d-xl-none d-none d-md-block d-lg-none d-none d-xl-block">
+  <div class="row main-row">
 
-<head>
-  <title>Bootstrap Card</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
-  <div class="container-fluid">
-    <div class="card-group">
-      <div class="card front-bg">
-        <div class="container text-center">
-          <div class="card-body card-content-left">
-            <h2><span><i class="fa fa-fw fa-search mt-3"></i></span>Follow your interests</h2>
-            <h2><span><i class="fa fa-fw fa-user mt-3"></i></span>Hear what people are talking about</h2>
-            <h2><span><i class="fa fa-fw fa-comment mt-3"></i></span>Join the conversation</h2>
-          </div>
-        </div>
+    <div class="col-md-6 left-content">
+      <div>
+        <h2><span><i class="fa fa-fw fa-search mt-3"></i></span>Follow your interests</h2>
+        <h2><span><i class="fa fa-fw fa-user mt-3"></i></span>Hear what people are talking about</h2>
+        <h2><span><i class="fa fa-comment mt-3"></i></span>Join the conversation</h2>
       </div>
-      <div class="card bg6">
-        <div class="container text-center">
-          <div class="card-body card-content-right">
-            <i class="fa fa-twitter m-4" aria-hidden="true"></i>
-            <h1 class="font-weight-bolder mt-3">See what's happening in the <br>world right now</h1>
-            <h1 class="right-content mt-3">Join Twitter Today</h1>
-            <div class="text-center buttons-design">
-              <button class="btn btn-outline-primary btn-primary text-white text-center button-style mt-5"
-                [routerLink]="['signup']"><b>Sign
-                  up</b></button>
-              <br>
-              <button class="btn text-center button-style-new mt-3" [routerLink]="['login']"><b>Log in</b></button>
-            </div>
-          </div>
-        </div>
+    </div>
+
+    <div class="col-md-6 right-content">
+      <div class="content">
+        <i class="fa fa-twitter m-0" aria-hidden="true"></i>
+        <h1 class=" mt-4">See what's happening in <br> the world right now</h1>
+
+        <h4 class="right-content">Join Twitter today</h4>
+        
+        <button class="btn btn-outline-primary text-white text-center mb-2 button-style-signup" [routerLink]="['signup']">
+          <b>Sign up</b>
+        </button>
+        <br>
+        <button class="btn text-center btn-outline-primary button-style-login" [routerLink]="['login']"><b>Log in</b></button>
       </div>
+    </div>
+
+  </div>
+
+  <nav class="navbar navbar-white bg-white">
+    <a>About</a>
+    <a>Help Center</a>
+    <a>Terms</a>
+    <a>Privacy policy</a>
+    <a>Cookies</a>
+    <a>Ads info</a>
+    <a>Blog</a>
+    <a>Status</a>
+    <a>Jobs</a>
+    <a>Brand</a>
+    <a>Advertise</a>
+    <a>Marketing</a>
+    <a>Businesses</a>
+    <a>Developers</a>
+    <a>Directory</a>
+    <a>Settings</a>
+    <a>&copy; 2020 Twitter Inc.</a>
+  </nav>
+</div>
+
+<!-- For Smaller Screens -->
+<div class="d-none d-sm-block d-md-none d-block d-sm-none">
+  <div class="right-content">
+    <div class="content">
+      <i class="fa fa-twitter m-0" aria-hidden="true"></i>
+      <h1 class=" mt-4">See what's happening in <br> the world right now</h1>
+
+      <h4 class="right-content">Join Twitter today</h4>
+      
+      <button class="btn btn-outline-primary text-white text-center mb-2 button-style-signup" [routerLink]="['signup']">
+        <b>Sign up</b>
+      </button>
+      <br>
+      <button class="btn text-center btn-outline-primary button-style-login" [routerLink]="['login']"><b>Log in</b></button>
     </div>
   </div>
 
-</body>
+  <div class="left-content mt-5">
 
-</html>
+    <div class="tags mt-5">
+      <i class="fa fa-fw fa-search"></i>
+      <h2>Follow your interests</h2>
+    </div>
+    
+    <div class="tags">
+      <i class="fa fa-fw fa-user"></i>
+      <h2>Hear what people are talking about</h2>
+    </div>
+    
+    <div class="tags">
+      <i class="fa fa-comment"></i>
+      <h2>Join the conversation</h2>
+    </div>
+
+  </div>
+
+  <div class="row mt-5 mx-0">
+
+    <div class="col-sm-5 col-5 offset-sm-1 offset-1 pl-0">
+      <button class="btn btn-outline-primary text-white text-center mb-2 button-style-signup" [routerLink]="['signup']">
+        <b>Sign up</b>
+      </button>
+    </div>
+
+    <div class="col-sm-5 col-5 pr-0">
+      <button class="btn text-center btn-outline-primary button-style-login" [routerLink]="['login']"><b>Log in</b></button>
+    </div>
+
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-white bg-white">
+    <a class="nav-link" href="#">About</a>
+    <a class="nav-link" href="#">Help Center</a>
+    <a class="nav-link" href="#">Terms</a>
+    <a class="nav-link" href="#">Privacy policy</a>
+    <a class="nav-link" href="#">Cookies</a>
+    <a class="nav-link" href="#">Ads info</a>
+    <a class="nav-link" href="#">Blog</a>
+    <a class="nav-link" href="#">Status</a>
+    <a class="nav-link" href="#">Jobs</a>
+    <a class="nav-link" href="#">Brand</a>
+    <a class="nav-link" href="#">Advertise</a>
+    <a class="nav-link" href="#">Marketing</a>
+    <a class="nav-link" href="#">Businesses</a>
+    <a class="nav-link" href="#">Developers</a>
+    <a class="nav-link" href="#">Directory</a>
+    <a class="nav-link" href="#">Settings</a>
+    <a class="nav-link" href="#">&copy; 2020 Twitter Inc.</a>
+  </nav>
+
+</div>

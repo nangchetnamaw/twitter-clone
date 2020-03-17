@@ -7,17 +7,7 @@ import { HttpResponse } from '@angular/common/http';
     selector: 'app-home',
     styleUrls: ['./home.component.scss'],
     template: `
-        <div class="app-home">
-            <side-nav></side-nav>
-            <div class="middle">
-                <h2 class="header">Home</h2>
-                <app-tweet-create></app-tweet-create>
-                <div class="post-container" *ngFor="let tweet of tweets">
-                    <app-post [user]="tweet.user" [text]="tweet.content.text" [likeCount]="tweet.count.likeCount" [commentCount]="tweet.count.replyCount"></app-post>
-                </div>
-            </div>
-            <app-search></app-search>
-        </div>
+        <side-nav></side-nav>
     `
 })
 export class HomeComponent implements OnInit{

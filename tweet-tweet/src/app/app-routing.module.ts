@@ -1,3 +1,5 @@
+import { CreatePostComponent } from './create-post/create-post.component';
+import { TrendsComponent } from './trends/trends.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,10 +9,11 @@ import { HomeComponent } from './home/containers/home.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-  { path: "", component: WelcomePageComponent, pathMatch: 'full' },
+  { path: "", component: WelcomePageComponent},
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'create', component: CreatePostComponent},
   { path: 'profile',
     children: [
       {
@@ -20,7 +23,8 @@ const routes: Routes = [
         path: ':userhandle', component: ProfileComponent
       }
     ]
-  }
+  },
+  {path: "trends", component: TrendsComponent}
 ];
 
 @NgModule({

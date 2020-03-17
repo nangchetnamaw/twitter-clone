@@ -1,0 +1,60 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">Trends for you</h3>
+      <i class="fa fa-cog" id="settings" ></i>
+    </div>
+    <ul class="list-group list-group-flush" >
+      <li class="list-group-item" *ngFor="let trend of Trend | slice:0:5" let i="index">
+        <div class="list-body">
+        <div class="trend-head">
+            {{trend.trendingIn}}<br>
+            <i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow(trend._id)"></i>
+            <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked[trend._id] ? 'block' : 'none'">
+                <div class="modal-body">
+                <ul >
+                    <li class="list-dialog" *ngFor="let dialogs of ModalDialog">
+                        <span class="dialog">
+                            <i class="fa fa-frown-o"  id="frown" aria-hidden="true"></i>
+                            {{dialogs.message}}<br>                    
+                        </span>
+                    </li>
+                </ul>          
+                </div>
+            </div> 
+        </div>
+        <h5>#{{trend.hashtag}}</h5>
+        {{trend.tweets}} tweets
+        </div>
+      </li>
+      
+    </ul>
+    <ul class="list-group list-group-flush" [style.display]="isSecondList ? 'block' : 'none'" >
+        <li class="list-group-item" *ngFor="let trend of Trend | slice:5:10" let i="index">
+          <div class="list-body"> 
+          <span class="trend-head">
+              Trending in {{trend.trendingIn}}<br>
+              <a><i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow()"></i></a>
+          </span>
+          <h5>#{{trend.hashtag}}</h5>
+          {{trend.tweets}} tweets
+          </div>
+        </li>       
+    </ul>
+    <div class="card-body">
+      <a class="btn btn-link" (click)="showMore()">Show more</a>
+    </div>
+  </div>
+
+  <!--  modal for dropdown -->
+  <!-- <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked ? 'block' : 'none'">
+    <div class="modal-body">
+    <ul >
+        <li class="list-dialog" *ngFor="let dialogs of ModalDialog">
+            <span class="dialog">
+                <i class="fa fa-frown-o"  id="frown" aria-hidden="true"></i>
+                {{dialogs.message}}<br>                    
+            </span>
+        </li>
+    </ul>          
+    </div>
+  </div>  -->

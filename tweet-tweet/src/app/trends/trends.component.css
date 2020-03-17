@@ -1,0 +1,99 @@
+#settings {
+    font-size: 2rem;   
+    color: rgba(29,161,242,1.00);
+    margin-top: 25px;
+    position: absolute;
+    right: 0;
+    margin-right: 5.4%;
+}
+
+.card{
+    background-color:rgb(240, 240, 240);
+    border-radius: 4%;
+    width: 30vw !important;
+    margin: auto;
+}
+
+.card-body{
+    margin-left: 2%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.card-body h3{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    color: black;
+    font-weight: 700;
+    font-size: 2.3rem;
+}
+
+.list-group-item{
+    background-color:unset;
+}
+
+h5{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.card-link{
+    margin-bottom: 5%;
+    font-weight: 500;
+    color:rgba(29,161,242,1.00);
+}
+
+.trend-head{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.trend-head #angle-down{
+    margin-top: 5px ;
+    position: absolute;
+    right: 0;
+    margin-right: 2%;
+    font-size: 1.8rem;
+}
+
+.trend-head #dropdown{
+    position: absolute;  /* <-- added declarations */
+    background-color: tomato;
+}
+
+.trend-head #angle-down :hover{
+    border-radius: 50%;
+    background-color: white;
+    color: rgba(29,161,242,1.00);
+}
+
+.modal-body{
+    width: fit-content;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: white;
+    border-radius: 2%;
+}
+
+.list-dialog{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+}
+
+.list-group list-group-flush{
+    cursor: pointer;
+}
+
+li :hover{
+    background-color: rgb(230, 236, 240);
+    border-color : solidrgb(230, 236, 240);
+}
+
+
+

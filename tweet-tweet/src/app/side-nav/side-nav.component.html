@@ -1,20 +1,65 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar><a mat-list-item mat-list-title><i class="fa fa-twitter" aria-hidden="true"></i></a></mat-toolbar>
-    <mat-nav-list>
-      <div><a mat-list-item class="mat-list-second-title"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></div>
-      <div><a mat-list-item><i class="fa fa-hashtag" aria-hidden="true"></i><span>Explore</span></a></div>
-      <div><a mat-list-item><i class="fa fa-bell-o" aria-hidden="true"></i><span>Notifications</span></a></div>
-      <div><a mat-list-item><i class="fa fa-envelope-o" aria-hidden="true"></i><span>Messages</span></a></div>
-      <div><a mat-list-item><i class="fa fa-bookmark-o" aria-hidden="true"></i><span>Bookmarks</span></a></div>
-      <div><a mat-list-item><i class="fa fa-list-alt" aria-hidden="true"></i><span>Lists</span></a></div>
-      <div><a mat-list-item routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a></div>
-      <div><a mat-list-item><i class="fa fa-ellipsis-h" aria-hidden="true"></i><span>Logout</span></a></div>
-      
-    </mat-nav-list>
-    <button class="tweet-main-btn">Tweet</button>
+<mat-sidenav-container class="sidenav-container d-none d-xl-block">
+  <mat-sidenav #drawer mode="side" class="sidenav" fixedInViewport [opened]="true">
+    <div class="sidenav-sub-container">
+      <mat-nav-list>
+        <a mat-list-item><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-hashtag" aria-hidden="true"></i><span>Explore</span></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-bell-o" aria-hidden="true"></i><span>Notifications</span></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>Messages</span></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-bookmark-o" aria-hidden="true"></i><span>Bookmarks</span></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Lists</span></a>
+        <a mat-list-item class="for-hover" routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a>
+        <a mat-list-item class="for-hover"><i class="fa fa-ellipsis-h" aria-hidden="true"></i><span>Logout</span></a>
+      </mat-nav-list>
+      <a class="tweet-main-btn btn">Tweet</a>
+    </div>
   </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-create-post></app-create-post>
+  </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!--       FOR SMALLER SCREENS        -->
+
+<mat-sidenav-container class="sidenav-container d-none d-md-block d-lg-none d-none d-lg-block d-xl-none">
+  <mat-sidenav #drawer mode="side" class="sidenav-small" fixedInViewport [opened]="true">
+    <div class="sidenav-sub-small-container">
+      <mat-nav-list class="small-container">
+        <a mat-list-item class="small"><i class="fa fa-twitter icon" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-home icon" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-hashtag icon" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-bell-o icon" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-envelope-o icon" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-bookmark-o icon special" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-list-alt icon" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-user icon special" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-ellipsis-h icon special" aria-hidden="true"></i></a>
+        <a mat-list-item class="small"><i class="fa fa-plus special" aria-hidden="true"></i></a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-create-post></app-create-post>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--       For Mobile Devices         -->
+
+<div class="d-none d-sm-block d-md-none d-block d-sm-none">
+  <mat-toolbar class="bg-white d-flex">
+    <div class="align-self-center">
+      <img src="../../assets/user-logo.png" class="user-image">
+      <span class="page-title">{{title}}</span>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+  <mat-toolbar class="bg-white d-flex justify-content-around lower">
+    <a><i class="fa fa-home icon"></i></a>
+    <a><i class="fa fa-search icon"></i></a>
+    <a><i class="fa fa-bell-o icon"></i></a>
+    <a><i class="fa fa-envelope-o icon"></i></a>
+  </mat-toolbar>
+</div>
