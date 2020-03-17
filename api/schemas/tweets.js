@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-// const moment = require('moment');
 const Schema = mongoose.Schema;
-//Importing userSchema
 const User = require("./userDetails");
  
 const tweetSchema = Schema({

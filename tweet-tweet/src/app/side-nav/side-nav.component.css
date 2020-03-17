@@ -79,7 +79,7 @@ i{
 .sidenav-small{
   background-color: white;
   width: 12rem;
-  border-right: 1px solid #cdcdcd;
+  border-right: 1px solid #E1E8ED;
 }
 
 .sidenav-sub-small-container{
@@ -115,4 +115,31 @@ i{
 .lower{
   position: fixed;
   bottom: 0;
+}
+
+.main-content{
+  background-color: white;
+  width: 50%;
+}
+
+.main-content-big{
+  background-color: white;
+  width: 45%;
+}
+
+.navigation-header{
+  border: #E1E8ED;
+  border-left: none;
+  border-style: solid;
+  border-width: 0.2rem;
+}
+
+.floating-btn{
+  position: fixed;
+  left: 75%;
+  top: 80%;
+  color: white;
+  background-color: #007bff;
+  padding: 1.5rem 1.8rem 1.5rem 1.8rem;
+  border-radius: 30px;
 }

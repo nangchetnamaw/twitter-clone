@@ -1,9 +1,14 @@
-<div class="tweet-create">
-    <div class="tweet-create__primary">
-      <div class="tweet-create__primary--user_img"></div>
-      <textarea class="tweet-create__primary--tweet_area" placeholder="What's happening?" #tweetarea></textarea>
+<div class="bg-white p-3 main-container">
+    <div class="d-flex p-2">
+        <img src="../../assets/user-logo.png" class="user-image">
+        <textarea placeholder="What's Happening ?" class="tweet-area"> </textarea>
     </div>
-    <div class="tweet-create__secondary">
-      <button class="tweet-create--btn_tweet" (click)="createTweetHandler(tweetarea.value)">Tweet</button>
+
+    <div class="d-flex align-items-center buttons">
+        <a><i class="fa fa-picture-o icon mr-2" aria-hidden="true"></i></a>
+        <a><i class="fa fa-tasks icon mr-2" aria-hidden="true"></i></a>
+        <a><i class="fa fa-git-square icon special mr-2" aria-hidden="true"></i></a>
+        <a><i class="fa fa-smile-o icon special mr-2" aria-hidden="true"></i></a>
+        <a class="btn tweet ml-auto">Tweet</a>
     </div>
-</div>  
+</div>

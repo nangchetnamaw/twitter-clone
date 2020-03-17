@@ -1,0 +1,62 @@
+.main-container{
+    border: #E1E8ED;
+    border-width: 0.2rem;
+    border-left: none;
+    border-top: none;
+    border-bottom-width: 0.7rem;
+    border-style: solid;
+}
+
+.user-image{
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-right: 1.5rem;
+}
+
+.tweet{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: #A5D9FA;
+    border-radius: 30px;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+}
+
+.tweet-area{
+    font-size: 2rem;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    border: none;
+    outline: none;
+    resize: none;
+    color: black;
+}
+
+.tweet-area::placeholder{
+    color: #cdcdcd;
+}
+
+.icon{
+    font-size: 2.5rem;
+    /* width: 25px;
+    height: 25px; */
+    color: #00aced;
+    padding: 1rem;
+}
+
+.special{
+    padding: 1rem 1.25rem 1rem 1.25rem;
+}
+
+.icon:hover{
+    background-color: #F5F8FA;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.buttons{
+    margin-left: 6rem;
+}
