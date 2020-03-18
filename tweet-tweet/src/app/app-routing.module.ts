@@ -1,3 +1,4 @@
+import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
@@ -24,7 +25,8 @@ const routes: Routes = [
       }
     ]
   },
-  {path: "trends", component: TrendsComponent}
+  {path: "trends", component: TrendsComponent},
+  {path:"feed", component:FeedComponent}
 ];
 
 @NgModule({
