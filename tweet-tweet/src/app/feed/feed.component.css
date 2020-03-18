@@ -1,0 +1,91 @@
+body{
+    margin-top:20px;
+    background:#eee;
+}
+
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    white-space: nowrap;
+    border-radius: 1000px;
+    vertical-align: bottom
+    
+}
+
+.avatar i {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-radius: 100%
+}
+
+.avatar img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 0 none;
+    border-radius: 1000px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.avatar-online i {
+    background-color: #4caf50
+}
+
+.avatar-off i {
+    background-color: #616161
+}
+
+.avatar-busy i {
+    background-color: #ff9800
+}
+
+.avatar-away i {
+    background-color: #f44336
+}
+
+.media-body{
+    margin-top: -2px;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid transparent;
+}
+
+.image{
+    max-width: 1rem;
+    max-height: 30rem;
+    border-radius: 10rem;
+    border-radius: 100px;
+}
+.media-heading{
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+}
+.content{
+    font-size: 15px;
+    line-height: -10px;
+    padding: 10px;
+    margin-top: -20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+.media{
+    font-size: 18px;
+    padding: 10px;
+    margin-top: -20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+
+}
+.pull-right{
+    font-size: 12px;
+    
+}

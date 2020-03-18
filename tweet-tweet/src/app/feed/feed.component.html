@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6 col-xs-12 col-md-offset-3">
+      <div class="panel">
+        <div class="panel-body">
+         <div class="clearfix"></div>
+          <hr class="margin-bottom-10">
+          <ul class="list-group list-group-dividered list-group-full">
+            <li class="list-group-item" *ngFor="let feed of Feed">
+              <div class="media">
+                <div class="media-left">
+                  <a class="avatar avatar-online" href="javascript:void(0)">
+                    <img src="{{feed.photos}}">
+                    <i></i>
+                  </a>
+                </div>
+                <div class="media-body">
+                    <small class="text-muted pull-right" >{{feed.text}}</small>
+                  <h4 class="media-heading">{{feed.title}}</h4>
+                  <span class="text-muted media">{{feed.name}}</span>
+                  <div class="content" >{{feed.description}}</div>
+                    <div class="image">
+                       <img src="{{feed.newphoto}}">
+                    </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
