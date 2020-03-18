@@ -1,17 +1,17 @@
 #settings {
     font-size: 2rem;   
     color: rgba(29,161,242,1.00);
-    margin-top: 25px;
+    margin-top: 10px;
     position: absolute;
     right: 0;
-    margin-right: 5.4%;
+    margin-right: 4.5%;
 }
 
 .card{
     background-color:rgb(240, 240, 240);
     border-radius: 4%;
     width: 30vw !important;
-    margin: auto;
+    /* margin: auto; */
 }
 
 .card-body{
@@ -30,12 +30,19 @@
 
 .list-group-item{
     background-color:unset;
+    padding-left: 6%;
 }
 
 h5{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     font-weight: bold;
     color: black;
+    font-size: 1.5rem;
+}
+
+h4{
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 .card-link{
@@ -48,6 +55,7 @@ h5{
     display: flex;
     flex-direction: row;
     position: relative;
+    font-size: 1.5rem;
 }
 
 .trend-head #angle-down{
@@ -60,7 +68,6 @@ h5{
 
 .trend-head #dropdown{
     position: absolute;  /* <-- added declarations */
-    background-color: tomato;
 }
 
 .trend-head #angle-down :hover{
@@ -92,8 +99,48 @@ h5{
 
 li :hover{
     background-color: rgb(230, 236, 240);
-    border-color : solidrgb(230, 236, 240);
 }
 
 
+.input-icons i { 
+    position: absolute; 
+} 
+  
+.input-icons { 
+    width: 100%; 
+    margin-bottom: 10px;
+    margin-top: 1%;
+} 
+
+.input-icons :focus{ 
+    background-color: white;
+    outline: none;
+    border:1px solid rgba(29,161,242,1.00);
+} 
+
+  
+.icon { 
+    padding: 10px; 
+    min-width: 40px; 
+    font-size: 1.8rem;
+    padding-top: 12px;
+
+} 
+  
+.input-field { 
+    width: 100%; 
+    padding: 10px; 
+    padding-left: 45px;
+    font-size: 1.5rem;
+    background-color:rgb(230, 236, 240);
+    border-radius:50px;
+    width: 30vw !important;
+    border: none;
+} 
+
+.btn-link {
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: rgba(29,161,242,1.00) !important;
+}
 

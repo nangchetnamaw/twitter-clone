@@ -1,4 +1,10 @@
-<div class="card" style="width: 18rem;">
+<div class="input-icons"> 
+  <i class="fa fa-search icon"></i> 
+  <input class="input-field" type="search" placeholder="Search Twitter"> 
+</div> 
+
+
+<div class="card">
     <div class="card-body">
       <h3 class="card-title">Trends for you</h3>
       <i class="fa fa-cog" id="settings" ></i>
@@ -23,7 +29,7 @@
             </div> 
         </div>
         <h5>#{{trend.hashtag}}</h5>
-        {{trend.tweets}} tweets
+        <h4>{{trend.tweets}} tweets</h4>
         </div>
       </li>
       
@@ -33,10 +39,22 @@
           <div class="list-body"> 
           <span class="trend-head">
               Trending in {{trend.trendingIn}}<br>
-              <a><i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow()"></i></a>
+              <i class="fa fa-angle-down" id="angle-down" aria-hidden="true" (click)="dropdownShow(trend._id)"></i>
+              <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked[trend._id] ? 'block' : 'none'">
+                <div class="modal-body">
+                <ul >
+                    <li class="list-dialog" *ngFor="let dialogs of ModalDialog">
+                        <span class="dialog">
+                            <i class="fa fa-frown-o"  id="frown" aria-hidden="true"></i>
+                            {{dialogs.message}}<br>                    
+                        </span>
+                    </li>
+                </ul>          
+                </div>
+              </div> 
           </span>
           <h5>#{{trend.hashtag}}</h5>
-          {{trend.tweets}} tweets
+          <h4>{{trend.tweets}} tweets</h4>
           </div>
         </li>       
     </ul>
@@ -45,16 +63,4 @@
     </div>
   </div>
 
-  <!--  modal for dropdown -->
-  <!-- <div class="dropdown" id="modal" tabindex="-1" role="dialog" [style.display]="isDropdownClicked ? 'block' : 'none'">
-    <div class="modal-body">
-    <ul >
-        <li class="list-dialog" *ngFor="let dialogs of ModalDialog">
-            <span class="dialog">
-                <i class="fa fa-frown-o"  id="frown" aria-hidden="true"></i>
-                {{dialogs.message}}<br>                    
-            </span>
-        </li>
-    </ul>          
-    </div>
-  </div>  -->
+  
