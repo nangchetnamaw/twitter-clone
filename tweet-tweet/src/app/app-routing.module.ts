@@ -1,3 +1,4 @@
+import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreatePostComponent},
+  { path: 'profile', component: MyprofileComponent},
   { path: 'profile',
     children: [
       {
