@@ -1,7 +1,7 @@
 const controller = require('../controllers');
-const authenticator = require('../middlewares');
+const authenticator = require('../middlewares/authentication');
 
 module.exports = (app) => {
 
-    app.post('/tweet', authenticator, controller.composeTweet);
+    app.post('/tweet', authenticator, controller.composeTweet.composeTweet);
 }

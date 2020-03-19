@@ -10,10 +10,7 @@ const tweetSchema = Schema({
 
   content: {
     text: String,
-    imageURL: {
-      type: String,
-      default: null
-    },
+    imageURL: String,
     tags: [
       {
         type: String,

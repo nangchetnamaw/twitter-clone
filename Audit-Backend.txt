@@ -1,1 +1,2 @@
 ---------------------------------------------Write Audits for Backend Here-----------------------------------------------------
+Started writing all routes in (routes > index.js)
