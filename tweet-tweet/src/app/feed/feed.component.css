@@ -89,3 +89,17 @@ body{
     font-size: 12px;
     
 }
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;    
+    margin-top: 2%;
+}
+
+.content-image{
+    object-fit: cover;
+    max-height: 30rem;
+    max-width: 35rem;
+}
+
