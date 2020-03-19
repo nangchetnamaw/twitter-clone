@@ -8,7 +8,8 @@ const databaseConfig = require('./database/config');
 
 // --------------------NEEDED----------------------------
 //User Imports
-const userRoutes = require('./routes/user');
+
+// const userRoutes = require('./routes/user');
 // const tweetRoutes = require('./routes/tweet');
 // const followRoutes = require('./routes/follow');
 
@@ -27,9 +28,10 @@ require('./routes')(app);
 
 // ------------------------NEEDED--------------------------
 //Routes
-app.use('/api/user', userRoutes);
+// app.use('/api/user', userRoutes);
 // app.use('/api/tweet', authenticate, tweetRoutes);
 // app.use('/api/follow', authenticate, followRoutes);
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`Listening at port ${port}`));
