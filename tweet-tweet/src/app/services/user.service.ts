@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { IUser } from '../models/user.interface';
 import { Login } from '../models/login.interface';
 
-const USER_DOMAIN: string = 'http://localhost:3000/api/user';
+const USER_DOMAIN: string = 'http://localhost:3000';
 
 
 @Injectable({

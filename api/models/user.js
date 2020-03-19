@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const schemas = require("../schemas");
 
+//new
+const userDetails = require("../schemas/userDetails")
+
 // const userSchema = new mongoose.Schema({
 //     userhandle: {
 //       type: String,
@@ -45,7 +48,7 @@ const schemas = require("../schemas");
 //     }
 // });
 
-const User = schemas.userDetails;
+// const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
   //for removing unnecessary spaces
@@ -77,4 +80,4 @@ function validateUser(user) {
 }
 
 module.exports.validateUser = validateUser;
-module.exports.User = User;
+module.exports.User = userDetails;

@@ -1,2 +1,16 @@
 ---------------------------------------------Write Audits for Backend Here-----------------------------------------------------
+-----By Shubham-------------
 Started writing all routes in (routes > index.js)
+
+-----By Chetna-----
+controllers:
+added user controller file 
+added alias for it in index controller
+commented user.js in routes
+copied code to user.js controller
+made changes in user controller in proper structure
+added routes in index.js routes
+removed routes from main index file 
+imported routes to main index file
+
+

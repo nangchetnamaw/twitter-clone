@@ -6,6 +6,9 @@ const likeTweet = require('./likeTweet');
 const unlikeTweet=require('./unlikeTweet');
 const retweet=require('./retweet');
 
+//new code
+const user =require('./user');
+
 module.exports = {
     composeTweet: composeTweet,
     profile: profile,
@@ -13,5 +16,7 @@ module.exports = {
     unfollow:unfollow,
     likeTweet: likeTweet,
     unlikeTweet:unlikeTweet,
-    retweet:retweet
+    retweet:retweet,
+    //new code
+    user: user
 }
