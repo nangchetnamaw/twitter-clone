@@ -1,0 +1,168 @@
+
+.twitter-card{
+  width: 600px;
+  height: 490px;
+  border: 1px solid var( #eee);
+  border-radius: 6px;
+  flex-direction: column;
+  padding: 2rem;
+  background: var(white);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.twitter{
+    max-height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../assets/Images/my.jpg");
+}
+
+.row-top{
+    max-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+
+}
+
+.user-image{
+  margin-top: 50px;
+  position: absolute;
+  background-image: url("../../assets/Images/my.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 95px; 
+  width: 100px;
+  border-radius: 50%;
+  margin-right: 50px;
+  border: 3px solid white;
+}
+
+/* .profile-user > * {
+  display: block;
+} */
+
+.edit{
+    position: relative;
+    margin-top: 250px;
+    font-size: medium;
+  padding: 2px 20px;
+  border-style: solid;
+  border-radius: 30px;
+  color:skyblue;
+  font-weight:bold;
+  transition: all .2s ease-out;
+}
+
+.edit:hover{
+  background-color: #DDE6E8;
+  color: var(white);
+}
+
+.user{
+    position: relative;
+    margin-top: 100px;
+  font-size: large;
+  font-weight: bolder;
+  color: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+#arrow-left{
+    color: rgba(29,161,242,1.00);
+    font-size: 1.5rem;
+    font-weight:lighter;
+    position: relative;
+    margin-left: -120px;
+}
+.span{
+    margin-left: 30px;
+    font-size: medium;
+    color: black;
+    font-weight: bolder;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+.username{
+  font-size: small;
+  color: var(grey);
+}
+
+.profile-bio{
+  width: 90%;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: none;
+}
+
+.row-middle{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-location{
+  font-size: small;
+  color: var(gray);
+  margin-bottom: 10px;
+  line-height: 0px;
+}
+.profile-calendar{
+    font-size: small;
+    color: var(gray);
+    margin-bottom: 10px;
+       line-height: 0px;
+  }
+
+.profile-location > i, .profile-website > i, .profile-calendar > i {
+   font-size: 1rem;
+   color: var(gray);
+   margin-right: 5px;
+   line-height: 0px;
+}
+
+.profile-website > i{
+  margin-right: 2px;
+  line-height: 0px;
+}
+.profile-calendar > i{
+    margin-right: 2px;
+    line-height: 0px;
+  }
+
+.profile-website{
+  margin-bottom: 1.2rem;
+ 
+}
+
+.profile-website > a{
+  text-decoration: none;
+  font-size: small;
+  color: var( #0084b4);
+  
+}
+
+.row-bottom{
+  border-top: 1px solid #ccc;
+  padding-top: 1rem;
+}
+
+.row-bottom > *:not(:first-child) {
+  padding-left: 10rem;
+}
+
+.count-meta{
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(black);
+}
+.count{
+   font-size: 12px;
+    padding: 8px;
+}
+.followers{
+    font-size: 15px;
+    font-weight: bold;
+    align-items: center;
+   
+}
