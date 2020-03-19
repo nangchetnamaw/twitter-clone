@@ -6,9 +6,11 @@ const config = require('config');
 const authenticate = require('./middlewares/authentication');
 
 //User Imports
-const userRoutes = require('./routes/user');
-const tweetRoutes = require('./routes/tweet');
-const followRoutes = require('./routes/follow');
+// const userRoutes = require('./routes/user');
+// const tweetRoutes = require('./routes/tweet');
+// const followRoutes = require('./routes/follow');
+
+
 
 if(!config.get('jwtPrivateKey')){
     console.log(config.get('jwtPrivateKey'));
@@ -22,9 +24,11 @@ app.use(cors())
 app.use(express.json());
 
 //Routes
-app.use('/api/user', userRoutes);
-app.use('/api/tweet', authenticate, tweetRoutes);
-app.use('/api/follow', authenticate, followRoutes);
+// app.use('/api/user', userRoutes);
+// app.use('/api/tweet', authenticate, tweetRoutes);
+// app.use('/api/follow', authenticate, followRoutes);
+
+require('./routes/index')(app);
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=> console.log(`Listening at port ${port}`));
