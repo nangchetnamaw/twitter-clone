@@ -60,9 +60,7 @@ import { SearchComponent } from './home/components/search/search.component';
 import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
-
-
-//
+import { MyprofileComponent } from './myprofile/myprofile.component';
 
 
 @NgModule({
@@ -84,7 +82,8 @@ import { TrendsComponent } from './trends/trends.component';
     SearchComponent,
     FeedComponent,
     CreatePostComponent,
-    TrendsComponent
+    TrendsComponent,
+    MyprofileComponent
   ],
   imports: [
     //Ng Modules

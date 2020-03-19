@@ -1,4 +1,4 @@
-
+<body>
 <!-- Modal Step1-->
 <div class="modal" id="signup-modal" [style.display]="isVisible ? 'block' : 'none'">
   <div class="modal-dialog modal-dialog-centered">
@@ -11,7 +11,7 @@
             <i class="fa fa-arrow-left" id="arrow-left" [style.display]="isBackNeeded ? 'block' : 'none'" (click)="back()"></i>
             <i class="fa fa-twitter" id="twitter" [style.display]="isStep3 ? 'none' : 'block'" ></i>
           </div>
-          <a class="btn btn-primary" id = "myButton" (click)="next({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})" [style.background-color]="isFilled ? 'rgba(29,161,242,1.00)': 'babyblue'"  [style.display]="isStep3 ? 'none' : 'block'">Next</a>
+          <a class="btn btn-primary btn-lg" id = "myButton" (click)="next({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})" [style.background-color]="isFilled ? 'rgba(29,161,242,1.00)': 'babyblue'"  [style.display]="isStep3 ? 'none' : 'block'">Next</a>
         </div>
         <h1 class="card-title" [style.display]="isStep2 ? 'none' : 'block'">Create your account</h1>
       <!-- Modal body -->
@@ -59,7 +59,7 @@
       <small class= "text-danger" [class.smallText]="passwordInput.valid || passwordInput.untouched">Password is required</small>
       
       <div class="footer" [style.display]="isStep3 ? 'block' : 'none'" >
-        <h3 class="foot">By signing up, you agree to the <a>terms and conditions</a> and <a>Privacy Policy</a>, including <a>Cookie Use</a>. Others will be able to find you by email or phone number when provided. <a>Privacy options</a> </h3>
+        <h3 class="foot">By signing up, you agree to the <a>terms and conditions</a> and <a>Privacy Policy</a>, including <a>Cookie Use</a>. Noone will find you by provided email or phone number. <a>Privacy options</a> </h3>
         <a class="btn btn-primary" id = "submitButton" (click)="submitHandler2({name:nameInput.value, email: emailInput.value, password: passwordInput.value, userhandle: userhandleInput.value})">Sign Up</a>
       </div>
     </div>
@@ -67,3 +67,4 @@
     </div>
   </div>
 </div>
+</body>
