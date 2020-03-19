@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//Importing userSchema
-const Tweet = require('./tweets');
  
 const likeSchema = new mongoose.Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
-},
-    tweetLikes: {
+    },
+
+    tweet: {
         type: Schema.Types.ObjectId,
         ref: "Tweet"
     },

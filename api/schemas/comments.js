@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//Importing userSchema
-const Tweet = require('./tweets');
  
 const commentsSchema = Schema({
     
@@ -9,16 +7,17 @@ const commentsSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    tweetComments: {
+
+    tweet: {
         type: Schema.Types.ObjectId,
         ref: "Tweet"
     },
-    // reComments: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Comment"
-    // },
+
+    comment: {
+        type: String
+    }
+
 });
  
 const Comment = mongoose.model('Comment', commentsSchema);
 module.exports = Comment; 
-
