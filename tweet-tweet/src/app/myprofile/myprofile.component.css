@@ -1,7 +1,7 @@
 
 .twitter-card{
   width: 600px;
-  height: 490px;
+  height: 492px;
   border: 1px solid var( #eee);
   border-radius: 6px;
   flex-direction: column;
@@ -47,7 +47,7 @@
     position: relative;
     margin-top: 250px;
     font-size: medium;
-  padding: 2px 20px;
+  padding: 1px 20px;
   border-style: solid;
   border-radius: 30px;
   color:skyblue;
@@ -56,7 +56,7 @@
 }
 
 .edit:hover{
-  background-color: #DDE6E8;
+  background-color: #EAFAF2;
   color: var(white);
 }
 
@@ -73,11 +73,11 @@
     font-size: 1.5rem;
     font-weight:lighter;
     position: relative;
-    margin-left: -120px;
+    margin-left: -135px;
 }
 .span{
     margin-left: 30px;
-    font-size: medium;
+    font-size: large;
     color: black;
     font-weight: bolder;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
@@ -85,14 +85,14 @@
 
 
 .username{
-  font-size: small;
+  font-size: 15px;
   color: var(grey);
 }
 
 .profile-bio{
   width: 90%;
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: none;
 }
 
@@ -102,13 +102,14 @@
 }
 
 .profile-location{
-  font-size: small;
+  font-size: 14px;
   color: var(gray);
   margin-bottom: 10px;
   line-height: 0px;
 }
 .profile-calendar{
-    font-size: small;
+  
+    font-size: 14px;
     color: var(gray);
     margin-bottom: 10px;
        line-height: 0px;
@@ -137,7 +138,7 @@
 
 .profile-website > a{
   text-decoration: none;
-  font-size: small;
+  font-size: 14px;
   color: var( #0084b4);
   
 }
@@ -147,10 +148,6 @@
   padding-top: 1rem;
 }
 
-.row-bottom > *:not(:first-child) {
-  padding-left: 10rem;
-}
-
 .count-meta{
   display: block;
   font-size: 16px;
@@ -158,11 +155,15 @@
   color: var(black);
 }
 .count{
-   font-size: 12px;
+   font-size: 13px;
     padding: 8px;
 }
 .followers{
-  margin-top: 250px;
+  
+  padding: 12px 35px;
+  justify-content: space-around;
+  margin: 0 0 0 0;;
+  border-radius: 2px;
   color:gray;
   font-weight:bold;
   transition: all .2s ease-out;
@@ -171,6 +172,6 @@
 }
 
 .followers:hover{
-  background-color:	#B0E0E6;
+  background-color:	#EAFAF2;
   color:#00BFFF;
 }
