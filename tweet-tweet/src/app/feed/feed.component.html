@@ -1,5 +1,6 @@
 <div class="container">
-<div class="col-md-7">  
+<div class="col-md-7"> 
+   
             <div class="list-group-item" *ngFor="let feed of Feed">
               <div class="media">
                 <div class="media-left">
@@ -8,7 +9,7 @@
                     <i></i>
                   </a>
                 </div>
-                <div class="media-body">
+                <div class="media-body" >
                   <div class="text-muted pull-right" >{{feed.text}}</div>
                   <div class="media-heading">{{feed.title}}</div>
                   <div class="media">{{feed.name}}</div>
@@ -17,10 +18,10 @@
                       <img class="content-image" src="{{feed.newphoto}}">
                   </div>
                   <div class="icons">
-                    <i class="fa fa-comment comment"></i>
-                    <i class="fa fa-retweet"></i>
-                    <i class="fa fa-heart"></i>
-                    <i class="fa fa-share-square"></i>
+                    <span class="fa fa-comment comment icon" ></span>
+                    <span class="fa fa-retweet icon"></span>
+                    <span class="fa fa-heart icon"></span>
+                    <span class="fa fa-share-square icon"></span>
                   </div>
                 </div>
               </div>
