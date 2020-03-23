@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 import { AppComponent } from './app.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -83,7 +83,8 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
     FeedComponent,
     CreatePostComponent,
     TrendsComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    FileSelectDirective
   ],
   imports: [
     //Ng Modules

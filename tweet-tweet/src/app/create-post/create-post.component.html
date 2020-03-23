@@ -1,14 +1,15 @@
 <div class="bg-white p-3 main-container">
     <div class="d-flex p-2">
         <img src="../../assets/user-logo.png" class="user-image">
-        <textarea placeholder="What's Happening ?" class="tweet-area"> </textarea>
+        <textarea placeholder="What's Happening ?" class="tweet-area" [(ngModel)]="textArea"></textarea>
     </div>
 
     <div class="d-flex align-items-center buttons">
+        <input type="file" name="image" ng2FileSelect [uploader] = "uploader">
         <a><i class="fa fa-picture-o icon mr-2" aria-hidden="true"></i></a>
         <a><i class="fa fa-tasks icon mr-2" aria-hidden="true"></i></a>
         <a><i class="fa fa-git-square icon special mr-2" aria-hidden="true"></i></a>
         <a><i class="fa fa-smile-o icon special mr-2" aria-hidden="true"></i></a>
-        <a class="btn tweet ml-auto">Tweet</a>
+        <button class="btn tweet ml-auto" (click) = "OnSubmit()" [disabled]="!uploader.getNotUploadedItems().length">Tweet</button>
     </div>
 </div>

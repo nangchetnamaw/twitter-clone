@@ -71,7 +71,34 @@ class tweets {
     }
 
     async composeTweet(req, res){
-        console.log(req.body);
+        console.log(req.file);
+        if (!req.file) {
+            console.log("No file is available!");
+            return res.status(200).send({
+                success: false
+            });
+        } 
+        else {
+            console.log('File is available!');
+            console.log(req.file);
+            console.log(req.file.path);
+            // console.log(req.headers.token);
+            // let postObj = {
+            //     ownerId: req.body.ownerId,
+            //     url: req.file.path.substring(43),
+            //     caption: req.body.caption,
+            //     createdAt: Date.now()
+            // };
+
+            // console.log(postObj.url);
+            try{
+                // const tempObj = await model.posts.save(postObj);
+                return res.status(200).send("Uploaded");
+            }catch(err){
+                return res.status(501).send("Some Error Occured");
+            }
+        }
+    
     }
 }
 
