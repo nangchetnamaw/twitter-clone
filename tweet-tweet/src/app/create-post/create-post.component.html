@@ -1,7 +1,7 @@
 <div class="bg-white p-3 main-container">
     <div class="d-flex p-2">
         <img src="../../assets/user-logo.png" class="user-image">
-        <textarea placeholder="What's Happening ?" class="tweet-area" [(ngModel)]="textArea"></textarea>
+        <textarea placeholder="What's Happening ?" class="tweet-area" (keyup)="check($event)" [(ngModel)]="textArea"></textarea>
     </div>
 
     <div class="d-flex align-items-center buttons">
@@ -11,5 +11,19 @@
         <a><i class="fa fa-git-square icon special mr-2" aria-hidden="true"></i></a>
         <a><i class="fa fa-smile-o icon special mr-2" aria-hidden="true"></i></a>
         <button class="btn tweet ml-auto" (click) = "OnSubmit()" [disabled]="!uploader.getNotUploadedItems().length">Tweet</button>
+    </div>
+</div>
+
+<div *ngIf="isVisible" class="card">
+    <div class="card-body p-0">
+        <ul>
+            <li *ngFor = "let user of searchedUsers" class="py-2">
+                <img src="../../assets/abhi-maza-ayega-na-bhidu.jpg"  class="d-inline-flex ml-3 mt-3">
+                <div class="d-inline-flex flex-column ml-3">
+                    <p class="m-0 user-name">{{user.name}}</p>
+                    <p class="m-0 user-handle">{{user.userhandle}}</p>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

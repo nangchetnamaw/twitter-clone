@@ -71,7 +71,7 @@ class tweets {
     }
 
     async composeTweet(req, res){
-        console.log(req.file);
+        console.log(req.body.text);
         if (!req.file) {
             console.log("No file is available!");
             return res.status(200).send({

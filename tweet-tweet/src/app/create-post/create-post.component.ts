@@ -16,6 +16,14 @@ export class CreatePostComponent implements OnInit {
   // img:string = "..\postsDb\1584941952605-abhi-maza-ayega-na-bhidu.jpg";
 
   textArea:string;
+  isVisible: Boolean = false;
+  searchedUsers = [
+                    {name: "Shubham", userhandle: "@shubham"}, 
+                    {name: "Ankit", userhandle: "@ankit"}, 
+                    {name: "Suraj", userhandle: "@suraj"}, 
+                    {name: "Faizan", userhandle: "@faizan"}, 
+                    {name: "Deepak", userhandle: "@deepak"}
+                  ];
 
   public uploader: FileUploader = new FileUploader({
     url: URL,
@@ -28,11 +36,25 @@ export class CreatePostComponent implements OnInit {
       file.withCredentials = false;
     };
     this.uploader.onCompleteItem = (item: any, status: any) => {
-      console.log("Uploaded File details", item, status);
+      console.log("=========================", item, status);
     };
   }
 
+  check(event: any){
+    console.log(this.textArea.substring(this.textArea.length-3, this.textArea.length-1));
+    if(this.textArea.substring(this.textArea.length-3, this.textArea.length-1) == " @"){
+      this.isVisible = true;
+    }
+    else{
+      this.isVisible = false;
+    }
+  }
+
   OnSubmit(){
+    this.uploader.onBuildItemForm = (item, form) => {
+      form.append("text", this.textArea);
+      item.formData = [this.textArea];
+    };
     this.uploader.uploadAll();
     console.log(this.textArea);
   }

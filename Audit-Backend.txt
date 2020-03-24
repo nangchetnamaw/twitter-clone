@@ -1,6 +1,8 @@
 ---------------------------------------------Write Audits for Backend Here-----------------------------------------------------
 -----By Shubham-------------
 Started writing all routes in (routes > index.js)
+Updated Schema for Tweets
+Added the code for image uploads
 
 -----By Chetna-----
 controllers:
