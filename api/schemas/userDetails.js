@@ -9,6 +9,10 @@ const userSchema = Schema({
         required: true,
         unique: true
     },
+    bio:{
+        type:String,
+        default:null
+    },
 
     email: {
         type: String,
