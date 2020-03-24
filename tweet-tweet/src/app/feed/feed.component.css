@@ -1,7 +1,4 @@
-body{
-    margin-top:20px;
-    background:#eee;
-}
+
 
 .avatar {
     position: relative;
@@ -9,97 +6,114 @@ body{
     width: 40px;
     white-space: nowrap;
     border-radius: 1000px;
-    vertical-align: bottom
-    
+    vertical-align: bottom;
+    margin-top: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
 }
-
-.avatar i {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 10px;
-    height: 10px;
-    border: 2px solid #fff;
-    border-radius: 100%
+.media-body{
+    margin-top: 30px;
+    max-width: 30vw;
 }
 
 .avatar img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    margin-top: 80%;
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    border: 0 none;
+    max-width: 100vw;
+    height: 100%;
     border-radius: 1000px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.avatar-online i {
-    background-color: #4caf50
-}
-
-.avatar-off i {
-    background-color: #616161
-}
-
-.avatar-busy i {
-    background-color: #ff9800
-}
-
-.avatar-away i {
-    background-color: #f44336
-}
-
-.media-body{
-    margin-top: -2px;
-}
-.list-group-item {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid transparent;
-}
-
 .image{
-    max-width: 1rem;
-    max-height: 30rem;
+    max-width: 3rem;
+    max-height: 50rem;
     border-radius: 10rem;
     border-radius: 100px;
 }
 .media-heading{
     color: black;
-    font-size: 18px;
+    font-size: 20px;
     padding: 10px;
+    font-weight: bolder;
+    margin-right: 100px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif
 }
 .content{
+    color: black;
     font-size: 15px;
     line-height: -10px;
     padding: 10px;
-    margin-top: -20px;
+    margin-top: -15px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 .media{
-    font-size: 18px;
+    position: relative;
+    font-size: 16px;
     padding: 10px;
-    margin-top: -20px;
+    margin-left: 70px;
+    margin-top: -50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 
 }
 .pull-right{
-    font-size: 12px;
-    
+    font-size: 14px;
+    position: relative;
+    margin-right: 150px;
+    margin-top: 4%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+
 }
 
 .icons{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;    
-    margin-top: 2%;
+    flex-direction: row;    
+    margin-top: 3%;
+    margin-right: 60px;
+    justify-content: space-evenly;
+    
 }
 
 .content-image{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     object-fit: cover;
-    max-height: 30rem;
-    max-width: 35rem;
+    max-height: 40rem;
+    max-width: 45rem;
+    border-radius: 10px;
 }
+
+.icon{
+    position: relative;
+    font-size: medium;
+  padding: 5px 8px;
+  border-radius: 30px;
+  color:gray;
+  font-weight:bold;
+  transition: all .2s ease-out;
+  justify-content: space-evenly;
+}
+
+.icon:hover{
+   background-color:#EAFAF2;
+   color: skyblue;
+}
+.icons{
+    padding-top: 0.5rem;
+    margin: 0 5px 0 0;
+    
+    
+  }
+  
+
+
+
+
 

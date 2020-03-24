@@ -1,4 +1,7 @@
 ---------------------------------------------Write Audits for Backend Here-----------------------------------------------------
+-----By Shubham-------------
+Started writing all routes in (routes > index.js)
+
 -----By Chetna-----
 login-signup:
 we created a separate controller to handle sign-up login functionalities by the name of user controller
@@ -18,4 +21,5 @@ we restructured the code so that it follows proper structure and made changes wi
 we added checks to check whether or not that person already exists in his/her follower/following list. 
 we added routes for it in index.js routes.
 we removed code present in route follow.js. 
+
 

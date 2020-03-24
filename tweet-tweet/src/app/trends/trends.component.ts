@@ -18,7 +18,6 @@ export class TrendsComponent implements OnInit {
   }
   @HostListener('document:click', ['$event'])
   handleOutsideClick(event) {  
-    debugger
     if (this.eRef.nativeElement.contains(event.target)) {
       if(event.target.id!="angle-down"){
         for(let i=0;i<this.isDropdownClicked.length;i++){
