@@ -1,19 +1,35 @@
 const mongoose = require('mongoose');
-const schema = require('../schemas/followers');
-const followerSchema = mongoose.Schema(schema.follower)
+//const schema = require('../schemas/followers');
+//const followerSchema = mongoose.Schema(schema.follower);
+//new
+const followerSchema= require('../schemas/followers').schema;
 
 class Follower{
     constructor(){
-        this.model = mongoose.model('Follower', followerSchema)
+         this.model = mongoose.model('Follower', followerSchema);
     }
     
-    async follow(followerObj){
-        return await this.model.create(followerObj )
+    async create(followObj){
+        return await this.model.create(followObj);
     }
 
-    async unfollow(criteria={}){
-        return await this.model.deleteOne(criteria)
+    async delete(criteria={}){
+        return await this.model.deleteOne(criteria);
     }
+    async find(criteria={}){
+        return await this.model.find(criteria);
+    }
+    async getRelation(criteria={}){
+        return await this.model.findOne(criteria)
+    }
+
+    async getAll(criteria={}, columns={}){
+        let fields = 'profileImageURL email tweetCount followerCount followingCount name userhandle';
+        let followerData = await this.model.find(criteria, columns).populate('follower', fields);
+        return (JSON.stringify(followerData));
+    }
+    
+    
 
 }
 
