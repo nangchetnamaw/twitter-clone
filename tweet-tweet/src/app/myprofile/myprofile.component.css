@@ -58,6 +58,7 @@
 .edit:hover{
   background-color: #EAFAF2;
   color: var(white);
+  cursor: pointer;
 }
 
 .user{
@@ -174,4 +175,5 @@
 .followers:hover{
   background-color:	#EAFAF2;
   color:#00BFFF;
+  cursor: pointer;
 }

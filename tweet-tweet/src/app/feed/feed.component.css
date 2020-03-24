@@ -104,6 +104,7 @@
 .icon:hover{
    background-color:#EAFAF2;
    color: skyblue;
+   cursor: pointer;
 }
 .icons{
     padding-top: 0.5rem;
