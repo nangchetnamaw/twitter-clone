@@ -15,3 +15,4 @@ module.exports = (app) => {
     //new
     app.post('/follow',controller.follow.follow);
     app.post('/unfollow',controller.follow.unfollow);
+}
