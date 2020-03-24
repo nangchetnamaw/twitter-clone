@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = Schema({
 
-    userHandle: {
+    userhandle: {
         type: String,
         max: 40,
         required: true,
