@@ -2,6 +2,7 @@
 -----By Shubham-------------
 Started writing all routes in (routes > index.js)
 Updated Schema for Tweets
+Updated Schema for Users
 Added the code for image uploads
 
 -----By Chetna-----

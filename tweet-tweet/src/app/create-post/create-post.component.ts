@@ -41,13 +41,19 @@ export class CreatePostComponent implements OnInit {
   }
 
   check(event: any){
-    console.log(this.textArea.substring(this.textArea.length-3, this.textArea.length-1));
-    if(this.textArea.substring(this.textArea.length-3, this.textArea.length-1) == " @"){
+    console.log(event.key);
+    if(event.key == "@"){
       this.isVisible = true;
     }
-    else{
+    else if(event.key == " "){
       this.isVisible = false;
     }
+    // if(this.textArea.substring(this.textArea.length-3, this.textArea.length-1) == " @"){
+    //   this.isVisible = true;
+    // }
+    // else{
+    //   this.isVisible = false;
+    // }
   }
 
   OnSubmit(){
