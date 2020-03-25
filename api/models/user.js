@@ -47,7 +47,7 @@ const schemas = require("../schemas");
 
 // const User = mongoose.model("User", userSchema);
 
-const userDetails = require('../schemas/userDetails');
+const userDetails = require('../schemas/user');
 
 function validateUser(user) {
   //for removing unnecessary spaces

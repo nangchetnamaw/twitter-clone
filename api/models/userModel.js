@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const schema = require('../schemas');
-const userSchema = mongoose.Schema(schema.userDetails)
+const userSchema = require('../schemas/user').schema;
 
 class User{
     constructor(){

@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const user = require('./user');
+const tweet = require('./tweet');
  
 const likeSchema = new mongoose.Schema({
-    user: {
+    userId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "user"
     },
 
-    tweet: {
+    tweetId: {
         type: Schema.Types.ObjectId,
-        ref: "Tweet"
+        ref: "tweet"
     },
     
 });

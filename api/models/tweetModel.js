@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const schema = require('../schemas');
-const tweetSchema = mongoose.Schema(schema.tweets)
+const tweetSchema = require('../schemas/tweet').schema;
 
 class Tweet{
     constructor(){
@@ -12,6 +12,11 @@ class Tweet{
     async save(newTweet){
         return this.model.create(newTweet)
     }
+    async update(criteria={},tweetObj)
+    {
+        return this.model.updateOne(criteria, tweetObj);
+    }
+      
     async like(criteria={}, like){
         return this.model.update(criteria, like)
     }

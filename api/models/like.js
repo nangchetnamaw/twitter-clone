@@ -1,20 +1,29 @@
 const mongoose = require('mongoose');
-
-const schema = new mongoose.Schema({
-    tweetId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Tweet"
-    },
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    },
-    time: {
-        type: Date,
-        default: Date.now()
+const like= require('../schemas/likes').schema;
+const likeSchema = mongoose.Schema(like);
+class likeTweet{
+    constructor(){
+         this.model = mongoose.model('like', likeSchema);
     }
-});
 
-const Like = mongoose.model('Like', schema);
+    async get(criteria={}, columns={}){
+        return  await this.model.find(criteria, columns);
+    }
 
-module.exports = Like;
+    async create(likeObj){
+        console.log(likeObj);
+       const obj= await this.model.create(likeObj);
+       console.log(obj);
+       return obj;
+    }
+
+    async updateOne(criteria ={}, updateObj){
+        return this.model.updateOne(criteria, updateObj);
+    }
+
+    async delete(criteria ={}){
+        return await this.model.deleteOne(criteria);
+    }
+}
+
+module.exports = new likeTweet();
