@@ -2,53 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const schemas = require("../schemas");
 
-//new
 const userDetails = require("../schemas/userDetails");
-
-// const userSchema = new mongoose.Schema({
-//     userhandle: {
-//       type: String,
-//       unique: true,
-//       required: true
-//     },
-//     name: {
-//       type: String,
-//       required: true
-//     },
-//     email: {
-//       type: String,
-//       unique: true,
-//       required: true
-//     },
-//     password: {
-//       type: String,
-//       required: true
-//     },
-//     profileImg: {
-//       type: String,
-//       default: null
-//     },
-//     joined: {
-//       type: Date,
-//       default: Date.now()
-//     },
-//     dob: {
-//       type: Date,
-//       default: null
-//     },
-//     count: {
-//       followerCount: {
-//         type: Number,
-//         default: 0
-//       },
-//       followingCount: {
-//         type: Number,
-//         default: 0
-//       }
-//     }
-// });
-
-// const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
   //for removing unnecessary spaces

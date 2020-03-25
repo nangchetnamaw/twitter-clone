@@ -1,18 +1,61 @@
 body{
-    background-color:#A9A9A9;
+    background-color:#B0B0B0;
+}
+#signup-modal{
+    max-width: 100vw;
+    max-height: 100vh;
+    
+ }
+.modal-content{
+    border-radius: 12px;
+    border:none;
+    padding: 50px;
+}
+.modal-dialog{
+    max-width: 580px;
+}
+.header{
+    padding: 20px 25px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
 }
 
-.card{
-    background-color: white;
+.header #myButton{
+    align-self: flex-end;
+    border-radius: 3rem;
+    background-color: rgb(162,207,254);
     border: none;
+    font-weight: bolder;
+    margin-left: auto;  
+    font-size: 15px;
 }
 
+.image{
+    
+    text-align: center;
+    font-size: 1rem;
+}
+#arrow-left{
+    color: rgba(29,161,242,1.00);
+    font-size: 2rem;
+    font-weight: lighter;
+    padding: 1rem;
+    margin-right: 30px;
+}
+#twitter{
+    position: absolute;
+    color: rgba(29,161,242,1.00);
+    font-size: 3rem;          
+    margin-left: 220px;
+    margin-top: 0px;
+    
+}
 #myButton{
-    padding: 8px 22px;
+    padding: 5px 20px;
     font-size: 10px;
     color:white;
 }
-
 .card-title{
     font-size: 22px;
     margin-bottom: 3rem;
@@ -20,21 +63,55 @@ body{
     font-weight: bold;
 }
 
-.card-body{
-    padding: 0% 30%;
+.card{
+    background-color: white;
+    border: none;
 }
 
-.modal-content{
-    max-height: 100vh;
-    max-width: 100vw;
-    border-radius: 12px;
-}
-
-.user-detail{
-    max-height: 65vh;
+.message{
+    color:rgb(224,0,0);
+    overflow-wrap: break-word;
+    padding-left: 2%;
 }
 .step-two{
     max-height: 100vh;
+}
+.sub-title h3{
+    margin-left: 2%;
+    font-weight: bolder;
+    font-size: large;
+    padding-left: 0;
+    margin-top: 8%;
+}
+.text{
+    font-size: 15px;
+    font-weight: 400;
+}
+.title{
+    margin-left: 2%;
+    margin-top: 0px;
+}
+.content{
+    margin-left: 2%;
+    font-size: 15px;
+    margin-top:30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+.content-footer{
+    font-size: 17px;
+    padding-left: 2%;
+    margin-bottom: 25rem;
+   margin-top: 17px;
+}
+.user-detail{
+    max-height: 65vh;
+}
+
+.form-group{
+    background-color: rgb(245, 248, 250);
+    margin: 0 2%;
+    max-height: 90px;
 }
 
 .form-control{
@@ -43,11 +120,20 @@ body{
     border-bottom: 2px solid darkslategrey;
     box-shadow: none;
     margin-bottom: 4%;
-    max-height: 20px;
+    max-height: 25px;
+    font-size: 15px;
 }
 .form-control:focus{
     border-color:  rgba(29,161,242,1.00);
     box-shadow: none;    
+}
+.inputBox:focus{
+    border-color: rgba(29,161,242,1.00)  !important;
+}
+.text-danger{
+
+    padding-left: 2% ;
+    font-size: small;
 }
 
 h1{
@@ -60,124 +146,17 @@ h1{
     margin-left:2%;
     
 }
-.pull-right .mycheckbox{
-    font-size: 100%;
-    padding: 10vw;
-}
- 
+
 h3{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     color: black;
     font-size: small;
     font-weight: normal;
-  margin-top: -2rem;
-}
-.form{
-    max-height: 100px;
-}
-
-#twitter{
-    color: rgba(29,161,242,1.00);
-    font-size: 3rem;
-    flex: 0 1 auto;
-    position: absolute;           
-    left: 50%;
-    transform: translateX(-50%);
-} 
-
-#arrow-left{
-    color: rgba(29,161,242,1.00);
-    font-size: 2rem;
-    font-weight: lighter;
-    position: absolute;
-    left: 0;
-    padding: 1rem;
-    padding-bottom: 5%;
-    margin-right: 100px;
-}
-
-.header{
-    padding-top: 2rem;
-    padding: 2rem;
-}
-
-.image{
-    text-align: center;
-    font-size: 1rem;
-}
-.card-myname{
-    font-size: 15px;
-    margin-top: 50px;
-    font-weight: 70;
-}
-
-.card-my-name{
-    line-height: 1.3125;
-    color: black;
-    font-size: 15px;
-    text-align:left;
-    font-weight: 20;
-    font-family:sans-serif;
-}
-.mycheckbox{
-   
-    margin-top:5px;
-    margin-left:5px;
-  }
-.text{
-
-    padding: 0px;
-    font-size: 15px;
-    font-weight: 400;
+  
 }
 .foot{
     text-align: center;
 }
-
-.text-danger{
-    padding-left: 2% ;
-    font-size: small;
-}
-.card-name{
-    margin-top: 50px;
-}
-
-.inputBox:focus{
-    border-color: rgba(29,161,242,1.00)  !important;
-}
-
-.form-group{
-    background-color: rgb(245, 248, 250);
-    padding:-5rem;
-    margin: 0 2%;
-    max-height: 80px;
-}
-
-.smallText{
-      visibility: hidden;
-}
-
-.warning{
-    border-bottom: 2px solid rgb(224, 36, 94);
-}
-  
-
-.header{
-    display: flex;
-    justify-content: flex-start;
-    position: relative;
-}
-
-.header #myButton{
-    align-self: flex-end;
-    border-radius: 3rem;
-    background-color: rgb(162,207,254);
-    border: none;
-    font-weight: bolder;
-    width: max-content;
-    flex: 0 1 auto;
-    margin-left: auto;  
-} 
 
 #submitButton{
     border-radius: 3rem;
@@ -188,52 +167,19 @@ h3{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
    margin-top:1rem;
 }
-
-
-/* @media only screen and (min-device-width: 320px)and (max-width: 1024px) {
-    #signup-modal{
-        padding: 2% 10%;
-    }
+.smallText{
+    visibility: hidden;
 }
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px){
-    .signup-modal{
-        padding: 2% 20%;
-    }
-}
-@media screen  and (min-device-width: 1200px) and (max-device-width: 1600px){ 
-    #signup-modal{
-        padding: 2% 30%;
-    }
-} */
-
-#signup-modal{
-    padding: 0% 10%;
+.warning{
+    border-bottom: 2px solid rgb(224, 36, 94);
 }
 
-.message{
-    color:rgb(224,0,0);
-    overflow-wrap: break-word;
-    padding-left: 2%;
-}
+
+
+
+
  
-.content{
-    margin-left: 2%;
-}
-.title{
-    margin-left: 2%;
-    margin-top: 0px;
-}
-.sub-title h3{
-    margin-left: 2%;
-    font-weight: bolder;
-    font-size: large;
-    padding-left: 0;
-    margin-top: 8%;
-}
 
-.content-footer{
-  
-    padding-left: 2%;
-    margin-bottom: 25rem;
-   margin-top: 15px;
-}
+
+
+
