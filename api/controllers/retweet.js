@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const tweetModel = require('../schemas/tweets');
+const tweetModel = require('../schemas/tweet');
 
  const Schema = mongoose.Schema({
      tweetId: {
