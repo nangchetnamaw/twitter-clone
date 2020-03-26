@@ -2,3 +2,10 @@
 ----By Chetna----
 service:
 user domain changed from http://localhost:3000/api/user to http://localhost:3000
+
+------By Shubham------------
+1.  Create Tweet Component wasn't responsive, made it responsive.
+2.  Welcome page wasn't responsive, so made it responsive
+3.  Sidenav of the home page wasn't responsive, so made it responsive
+4.  Modified create Tweet UI.
+5.  Added code for Image Uploads.

@@ -5,10 +5,13 @@ const authenticate = require('../middlewares/authentication');
 const { User, validateUser } = require('../models/user');
 
 class UserController{
+    
     constructor(){
         
     }
+
     async signup (req, res) {
+        // console.log(req.body);
         const { error, value } = validateUser(req.body);
         if(error) return res.status(400).send({
             success: false,
@@ -28,13 +31,21 @@ class UserController{
         });
 
         user = new User(value);
-        console.log(user);
+        console.log("==========================", user);
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(value.password, salt);
 
         user.password = hashedPassword;
-        user = await user.save();
+        console.log("-------------------------------------", user);
+        try{
+            user = await user.save();
+            // console.log(user.schema);
+        }
+        catch(e){
+            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>..", e);
+        }
+        
 
         const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
 
@@ -97,5 +108,24 @@ class UserController{
             }
         });
     };
+    async updateProfile(req,res) {
+        //if(middleware.tokenVerifier(req.headers.token)){
+            try{
+            let updateObj= req.body;
+            const employee= await User.updateOne({_id: req.params.id},  updateObj);
+            res.status(200).send({success: true,
+                payload: {
+                    user}
+                });
+            }
+        //}
+        //else{
+            catch{
+                res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        //}
+    }
 }
 module.exports = new UserController();

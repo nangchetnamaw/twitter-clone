@@ -1,6 +1,6 @@
 import { IUser } from "./user.interface";
 
-interface IContent{
+export interface IContent{
   text: string;
   imageURL?: string;
   mentions: String[];

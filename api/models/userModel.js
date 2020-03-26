@@ -22,7 +22,7 @@ class User{
     }
 
     async getUsers(criteria={}){
-        return this.model.find(criteria, {"name":1, "userHandle":1, _id:0})
+        return this.model.find(criteria, {"name":1, "userhandle":1, _id:0})
     }
 }
 
