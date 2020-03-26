@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const user = require('./user');
+const user = require('./userDetails');
 const tweet = require('./tweet');
  
 const likeSchema = new mongoose.Schema({
