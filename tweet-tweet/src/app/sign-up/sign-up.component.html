@@ -7,10 +7,8 @@
       <!-- Modal Header -->
       <form #userForm = "ngForm">
         <div class="header">
-          <div class="image">
             <i class="fa fa-arrow-left" id="arrow-left" [style.display]="isBackNeeded ? 'block' : 'none'" (click)="back()"></i>
             <i class="fa fa-twitter" id="twitter" [style.display]="isStep3 ? 'none' : 'block'" ></i>
-          </div>
           <a class="btn btn-primary btn-lg" id = "myButton" (click)="next({name:nameInput.value, email: emailInput.value, password: passwordInput.value,  userhandle: userhandleInput.value})" [style.background-color]="isFilled ? 'rgba(29,161,242,1.00)': 'babyblue'"  [style.display]="isStep3 ? 'none' : 'block'">Next</a>
         </div>
         <h1 class="card-title" [style.display]="isStep2 ? 'none' : 'block'">Create your account</h1>
