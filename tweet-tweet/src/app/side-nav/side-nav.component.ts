@@ -9,7 +9,7 @@ import{Router}from '@angular/router'
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent {
-
+   isClicked:boolean = false;
   // isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
   //   .pipe(
   //     map(result => result.matches),
@@ -19,9 +19,13 @@ export class SideNavComponent {
   constructor(private breakpointObserver: BreakpointObserver,private router:Router) {}
 
   title: string = "Home"
-  logout(event:any){
+  logout(){
     localStorage.removeItem('Authorization');
     this.router.navigate(["/login"])
    
+  }
+  toggle(){
+    this.isClicked=!this.isClicked;
+    console.log(this.isClicked);
   }
 }

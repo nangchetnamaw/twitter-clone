@@ -64,6 +64,14 @@ i{
 .for-hover:hover i, .for-hover:hover span{
   color: rgba(29,161,242,1.00);
 }
+.colorChange{
+  color: rgba(29,161,242,1.00);
+}
+
+a:focus {
+  color:blue;
+  outline: none;
+}
 
 /*-----------------------------------------------------------------------------------*/
 
