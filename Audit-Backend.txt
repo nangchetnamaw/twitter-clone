@@ -6,14 +6,23 @@ Updated Schema for Users
 Added the code for image uploads
 
 -----By Chetna-----
-controllers:
-added user controller file 
-added alias for it in index controller
-commented user.js in routes
-copied code to user.js controller
-made changes in user controller in proper structure
-added routes in index.js routes
-removed routes from main index file 
-imported routes to main index file
+login-signup:
+we created a separate controller to handle sign-up login functionalities by the name of user controller
+we used the code present in user.js routes after removing it from user.js under routes
+we exported user controller class using an alias in index controller
+we removed the schema present in user.js model and imported new user schema present in schema 
+we imported user model from models in user.js controller and modified it so that direct routes weren't defined and made
+required changes to code keeping rewriting to the minimum.
+we added routes in index.js in routes and imported routes in main index file.
+
+-----By Chetna-----
+follow-unfollow with checks:
+two versions of code were present one in controllers and the other in routes. we have used the code in follow route.
+we removed schema from follower, following model and imported new schemas.
+we imported new schemas and models in follow controller and removed the existing code and used the code present in follow route.
+we restructured the code so that it follows proper structure and made changes with minimal rewrite .
+we added checks to check whether or not that person already exists in his/her follower/following list. 
+we added routes for it in index.js routes.
+we removed code present in route follow.js. 
 
 

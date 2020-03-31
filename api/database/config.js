@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //mongoose is a wrapper of mongoDB
 
-const url = "mongodb://localhost:27017/twitter";
+const url = "mongodb+srv://deepanshu:deepanshu@cluster0-kpkhd.mongodb.net/twitter?retryWrites=true&w=majority";
 
 mongoose.Promise = global.Promise;
 

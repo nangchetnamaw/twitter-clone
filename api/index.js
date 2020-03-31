@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const config = require('config');
 const databaseConfig = require('./database/config');
+const bodyParser=require('body-parser');
 // const authenticate = require('./middlewares/authentication');
 
 
@@ -20,11 +21,10 @@ if(!config.get('jwtPrivateKey')){
 }
 
 // mongoose.connect('mongodb://localhost/twitter').then(() => console.log('MongoDb connected')).catch(err => console.error('Error occured while connecting to db', err));
-
+app.use(bodyParser.json());
 app.use(cors())
 app.use(express.json());
-
-require('./routes')(app);
+require('./routes/index')(app);
 
 // ------------------------NEEDED--------------------------
 //Routes
