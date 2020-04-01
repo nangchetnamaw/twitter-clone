@@ -29,7 +29,7 @@ module.exports = (app) => {
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
     app.get('/profile', authenticator, controller.user.getProfile);
-    app.patch('/profile/:id', authenticator, controller.user.updateProfile);
+    //app.patch('/profile/:id', authenticator, controller.user.updateProfile);
 
     //new
     app.post('/follow',controller.follow.follow);

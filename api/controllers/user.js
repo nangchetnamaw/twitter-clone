@@ -2,7 +2,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const authenticate = require('../middlewares/authentication');
-const {User} = require('../models/userModel');
+//const {User} = require('../models/userModel');
+const {User, validateUser} = require('../models/user');
 
 class UserController{
     constructor(){
