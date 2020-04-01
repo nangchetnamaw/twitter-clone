@@ -3,7 +3,7 @@ import { HttpClient, HttpResponse, HttpHeaders, HttpParams } from '@angular/comm
 import { Observable } from 'rxjs';
 import { IFollower, IFollowing, IUnfollow } from '../models/follow.interface';
 
-const FOLLOW_API = 'http://localhost:3000/api/follow';
+const FOLLOW_API = 'http://localhost:3000';
 
 @Injectable({
     providedIn: 'root'

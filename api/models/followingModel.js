@@ -17,6 +17,10 @@ class Following{
     async delete(criteria={}){
         return await this.model.deleteOne(criteria);
     }
+    
+    async find(criteria={}){
+        return await this.model.find(criteria);
+    }
 
     async getAll(criteria={}, coloumns={}){
         let fields = 'profileImageURL email tweetCount followerCount followingCount name userhandle';
