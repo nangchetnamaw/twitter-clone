@@ -2,6 +2,7 @@
 ----By Chetna----
 service:
 user domain changed from http://localhost:3000/api/user to http://localhost:3000
+FOLLOW_API changed from 'http://localhost:3000/api/follow' to'http://localhost:3000'
 
 ------By Shubham------------
 1.  Create Tweet Component wasn't responsive, made it responsive.
