@@ -34,6 +34,7 @@ module.exports = (app) => {
     //new
     app.post('/follow',controller.follow.follow);
     app.post('/unfollow',controller.follow.unfollow);
+    app.post('/comment',controller.comment.comment);
 
     //like
     app.post('/like',controller.likeTweet.updateLike);
