@@ -28,7 +28,8 @@ const routes: Routes = [
     ]
   },
   {path: "trends", component: TrendsComponent},
-  {path:"feed", component:FeedComponent}
+  {path:"feed", component:FeedComponent},
+ 
 ];
 
 @NgModule({
