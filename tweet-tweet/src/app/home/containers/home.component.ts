@@ -7,7 +7,20 @@ import { HttpResponse } from '@angular/common/http';
     selector: 'app-home',
     styleUrls: ['./home.component.scss'],
     template: `
-        <side-nav></side-nav>
+   
+    <div class="container-fluid">
+       <div class="row">
+         <div class="col-md-3">
+           <side-nav></side-nav>
+          </div> 
+          <div class="col-md-6">
+            <app-create-post></app-create-post>
+            </div>
+         <div class="col-md-3">  
+           <app-trends></app-trends>
+         </div>
+       </div>
+     </div>
     `
 })
 export class HomeComponent implements OnInit{
