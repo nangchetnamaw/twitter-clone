@@ -9,8 +9,8 @@ class User{
     async get(criteria={}){
         return this.model.find(criteria)
     }
-    async update(criteria={}, updateProfile){
-        return this.model.update(criteria, updateProfile)
+    async update(criteria={}, updatedObj){
+        return this.model.updateOne(criteria, updatedObj)
     }
 
     async follow(criteria={}, updateObj){
