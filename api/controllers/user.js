@@ -99,12 +99,8 @@ class UserController{
     };
     async updateProfile(req,res) {
         //if(middleware.tokenVerifier(req.headers.token)){
-            //console.log("insidecontroller")
             try{
-                //console.log("insidetry")
-                //console.log(req.body.name)
             let updateObj= req.body;
-            //console.log(updateObj)
             const user= await User.update({_id: req.params.id},  updateObj);
             res.status(200).send({success: true,
                 payload: {
