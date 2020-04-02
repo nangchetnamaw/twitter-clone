@@ -1,13 +1,12 @@
 
 .twitter-card{
-  width: 600px;
-  height: 492px;
+  width: 660px;
+  height: 400px;
   border: 1px solid var( #eee);
   border-radius: 6px;
   flex-direction: column;
-  padding: 2rem;
   background: var(white);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
 }
 .twitter{
     max-height: 150px;
@@ -147,6 +146,7 @@
 .row-bottom{
   border-top: 1px solid #ccc;
   padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .count-meta{
@@ -161,9 +161,8 @@
 }
 .followers{
   
-  padding: 12px 35px;
+  padding: 13px 50px;
   justify-content: space-around;
-  margin: 0 0 0 0;;
   border-radius: 2px;
   color:gray;
   font-weight:bold;

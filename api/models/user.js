@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const schemas = require("../schemas");
-
 const userDetails = require("../schemas/userDetails");
-
 function validateUser(user) {
   //for removing unnecessary spaces
   for (let key in user) {
