@@ -99,7 +99,7 @@ class UserController{
         });
     };
     async updateProfile(req,res) {
-        //if(middleware.tokenVerifier(req.headers.token)){
+        if(authenticate.authenticator()){
             try{
             let updateObj= req.body;
             const user= await User.update({_id: req.params.id},  updateObj);
@@ -108,15 +108,17 @@ class UserController{
                     user}
                 });
             }
-        //}
-        //else{
             catch(error){
-                console.log(error,"anchal");
-            //     res.status(401).send({
-            //     "message": "Unauthorized"
-            // });
+                console.log(error);
+            }
         }
-        //}
+        else{
+           
+                res.status(401).send({
+                "message": "Unauthorized"
+            });
+        
+        }
     }
 }
 module.exports = new UserController();
