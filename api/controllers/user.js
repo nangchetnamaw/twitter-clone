@@ -80,7 +80,6 @@ class UserController{
         const _id= req.params.id;
         const user = await User.findById({"_id":_id})
         if(user!=null){
-            console.log("required________________________",user)
             res.status(200).send(user);
         }
         else{

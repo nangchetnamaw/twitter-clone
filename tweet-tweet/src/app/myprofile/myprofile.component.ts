@@ -14,8 +14,8 @@ export class MyprofileComponent implements OnInit {
     userhandle: "",
     email: "",
     password: "",
+    bio:"",
     name: "",
-    dob: "",
     count: {
       followerCount: 0,
       followingCount: 0
