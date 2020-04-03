@@ -86,6 +86,16 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
+  insertTag(userhandle: string){
+    let strArray = this.textArea.split(" ");
+    if(strArray[strArray.length - 1].charAt(0) == "@"){
+      strArray.pop();
+      this.textArea = strArray.join(" ") + " @" + userhandle;
+      this.isVisible = false;
+      this.flag = 0;
+    }
+  }
+
   OnSubmit(){
     this.uploader.onBuildItemForm = (item, form) => {
       form.append("text", this.textArea);
