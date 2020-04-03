@@ -8,7 +8,7 @@ export interface IUser {
   email: string;
   password?: string;
   name: string;
-  dob: string;
+  bio?: string;
   profileImg?: string;
   joined?: string;
   count?: ICount;

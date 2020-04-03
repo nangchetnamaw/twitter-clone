@@ -30,4 +30,11 @@ export class UserService {
         console.log(user);
         return this.http.post<any>(`${USER_DOMAIN}/login`, user, { ...this.httpOptions, observe: 'response' });
     }
+
+    userDetails(_id:string): Observable<HttpResponse<any>>{
+        console.log(_id);
+        return this.http.get<any>(`${USER_DOMAIN}/profile/${_id}`, {...this.httpOptions, observe:'response'});
+    }
+    
+    
 }
