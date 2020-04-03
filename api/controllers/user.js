@@ -3,15 +3,13 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { User, validateUser } = require('../models/user');
 const model = require('../models/userModel');
+const authenticate = require('../middlewares/authentication');
 
 class UserController{
-    
     constructor(){
         
     }
-
     async signup (req, res) {
-        // console.log(req.body);
         const { error, value } = validateUser(req.body);
         if(error) return res.status(400).send({
             success: false,
@@ -31,21 +29,13 @@ class UserController{
         });
 
         user = new User(value);
-        console.log("==========================", user);
+        console.log(user);
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(value.password, salt);
 
         user.password = hashedPassword;
-        console.log("-------------------------------------", user);
-        try{
-            user = await user.save();
-            // console.log(user.schema);
-        }
-        catch(e){
-            console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>..", e);
-        }
-        
+        user = await user.save();
 
         const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
 
@@ -87,46 +77,39 @@ class UserController{
     };
 
     async getProfile (req, res) {
-        const userhandle = req.query.userhandle;
-        const user = await User.findOne({ userhandle }).select('-password');
-        
-        if(!user){
-            res.status(400).send({
-                success: false,
-                payload: {
-                    user
-                }
+        const _id= req.params.id;
+        const user = await User.findById({"_id":_id})
+        if(user!=null){
+            res.status(200).send(user);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
             });
         }
-
-        console.log(user, 'Inside /api/user/profile');
-
-        res.send({
-            success: true,
-            payload: {
-                user
-            }
-        });
-    };
+    }
 
     async updateProfile(req,res) {
-        //if(middleware.tokenVerifier(req.headers.token)){
+        if(authenticate.authenticator()){
             try{
             let updateObj= req.body;
-            const employee= await User.updateOne({_id: req.params.id},  updateObj);
+            const user= await User.update({_id: req.params.id},  updateObj);
             res.status(200).send({success: true,
                 payload: {
                     user}
                 });
             }
-        //}
-        //else{
-            catch{
+            catch(error){
+                console.log(error);
+            }
+        }
+        else{
+           
                 res.status(401).send({
                 "message": "Unauthorized"
             });
+        
         }
-        //}
     }
 
     async search(req, res){

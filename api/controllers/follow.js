@@ -18,23 +18,28 @@ class followController{
     async follow(req, res) {
         try{
             const { userhandle, followerhandle } = req.body;
+            const userId = await User.findOne({ userhandle: userhandle }).select('_id');
+            const followId = await User.findOne({ userhandle: followerhandle }).select('_id');
             let followObj={
-                user:req.body.user,
-                follower:req.body.follower,
+                user:userId,
+                follower:followId,
+            }
+            let followingObj={
+                user:followId,
+                following:userId
             }
             console.log(followObj);
             const relation = await follower.getRelation(followObj);
-            console.log(relation)
+            const followingRelation = await following.getRelation(followingObj);
+            
+            console.log(relation,followingRelation);
 
-            if( relation== null){
-                const userId = await User.findOne({ userhandle: userhandle }).select('_id');
-                const followId = await User.findOne({ userhandle: followerhandle }).select('_id');
+            if( relation== null && followingRelation== null){
                 //new
                 await User.updateOne({ _id: userId._id }, { $inc: { "followingCount": 1 } });
                 await User.updateOne({ _id: followId._id }, { $inc: { "followerCount": 1 } });
-                await follower.create({ user: userId._id, follower: followId._id });
-                //new
-                await following.create({user: userId._id, following: followId._id});
+                await follower.create(followObj);
+                await following.create(followingObj);
             
                 console.log(userId, followId, 'Inside post');
                 res.send({
@@ -60,23 +65,30 @@ class followController{
     async unfollow(req, res) {
         try{
                 const { userhandle, followerhandle } = req.body;
+                const userId = await User.findOne({ userhandle: userhandle }).select('_id');
+                const followId = await User.findOne({ userhandle: followerhandle }).select('_id');  
                 let followObj={
-                    user:req.body.user,
-                    follower:req.body.follower
+                    user:userId,
+                    follower:followId
+                }
+                let followingObj={
+                    user:followId,
+                    following:userId
                 }
 
                 const relation = await follower.getRelation(followObj);
+                const followingRelation = await following.getRelation(followingObj);
+
                 console.log(relation);
                 
-                if(relation!= null){
-                const userId = await User.findOne({ userhandle: userhandle }).select('_id');
-                const followId = await User.findOne({ userhandle: followerhandle }).select('_id');    
+                if(relation!= null && followingRelation!= null){
+                 
                 await User.updateOne({ _id: userId._id }, { $inc: { "followingCount": -1 } });
                 await User.updateOne({ _id: followId._id }, { $inc: { "followerCount": -1 } });
                 console.log(userId, followId, 'Inside Delete');
                 //new
-                await follower.delete({ user: userId._id, follower: followId._id });
-                await following.delete({user: userId._id, following: followId._id});
+                await follower.delete(followObj);
+                await following.delete(followingObj);
 
             
                 res.send({

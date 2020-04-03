@@ -59,4 +59,10 @@ export class UserService {
             return of(error as T);
         };
     }
+    
+    userDetails(_id:string): Observable<HttpResponse<any>>{
+        console.log(_id);
+        return this.http.get<any>(`${USER_DOMAIN}/profile/${_id}`, {...this.httpOptions, observe:'response'});
+    }
+
 }

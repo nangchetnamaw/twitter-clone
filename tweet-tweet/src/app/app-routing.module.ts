@@ -16,19 +16,20 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreatePostComponent},
-  { path: 'profile', component: MyprofileComponent},
+  //{ path: 'profile', component: MyprofileComponent},
   { path: 'profile',
     children: [
       {
-        path: '', component: ProfileComponent, pathMatch: 'full'
+        path: '', component: MyprofileComponent, pathMatch: 'full'
       },
       {
-        path: ':userhandle', component: ProfileComponent
+        path: ':userhandle', component: MyprofileComponent
       }
     ]
   },
   {path: "trends", component: TrendsComponent},
-  {path:"feed", component:FeedComponent}
+  {path:"feed", component:FeedComponent},
+ 
 ];
 
 @NgModule({
