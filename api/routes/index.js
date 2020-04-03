@@ -31,6 +31,7 @@ module.exports = (app) => {
     app.get('/profile/:id', controller.user.getProfile);
     app.patch('/profile/:id', controller.user.updateProfile);
 
+
     //new
     app.post('/follow',controller.follow.follow);
     app.post('/unfollow',controller.follow.unfollow);

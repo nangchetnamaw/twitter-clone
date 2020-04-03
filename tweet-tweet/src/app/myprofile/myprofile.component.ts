@@ -1,8 +1,9 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import ParseJwt from "../utils/parsejwt";
-import { IUser, IJwtPayload } from "../models/user.interface";
+import { IUser, IJwtPayload , ICount} from "../models/user.interface";
 import { Router, ActivatedRoute, Params } from "@angular/router";
+
 
 @Component({
   selector: 'app-myprofile',
@@ -11,17 +12,19 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 })
 export class MyprofileComponent implements OnInit {
   user: IUser = {
+    dob: "",
     userhandle: "",
     email: "",
     password: "",
     bio:"",
     name: "",
+    location:"",
     count: {
       followerCount: 0,
-      followingCount: 0
+      followingCount: 0,
+      tweetCount: 0,
     }
   };
-  tweetCount: number = 0;
   follow: boolean;
   currentUser: IJwtPayload = ParseJwt.parseJwt();
   redirectedUser: string;
@@ -53,5 +56,6 @@ export class MyprofileComponent implements OnInit {
       }
     });
    }   
+
 
 }

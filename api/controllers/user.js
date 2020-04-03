@@ -88,7 +88,7 @@ class UserController{
             });
         }
         
-    };
+    }
     async updateProfile(req,res) {
         if(authenticate.authenticator()){
             try{
