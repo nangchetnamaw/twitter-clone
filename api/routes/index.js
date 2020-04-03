@@ -28,7 +28,7 @@ module.exports = (app) => {
 
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
-    app.get('/profile', controller.user.getProfile);
+    app.get('/profile/:id', controller.user.getProfile);
     app.patch('/profile/:id', controller.user.updateProfile);
 
     //new

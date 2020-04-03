@@ -77,26 +77,18 @@ class UserController{
     };
 
     async getProfile (req, res) {
-        const userhandle = req.query.userhandle;
-        const user = await User.findOne({ userhandle }).select('-password');
-        
-        if(!user){
-            res.status(400).send({
-                success: false,
-                payload: {
-                    user
-                }
+        const _id= req.params.id;
+        const user = await User.findById({"_id":_id})
+        if(user!=null){
+            console.log("required________________________",user)
+            res.status(200).send(user);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
             });
         }
-
-        console.log(user, 'Inside /api/user/profile');
-
-        res.send({
-            success: true,
-            payload: {
-                user
-            }
-        });
+        
     };
     async updateProfile(req,res) {
         if(authenticate.authenticator()){
