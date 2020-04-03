@@ -1,7 +1,7 @@
 <div class="container">
 <div class="col-md-7"> 
    
-            <div class="list-group-item" *ngFor="let feed of Feed">
+            <div class="list-group-item" id="feed"*ngFor="let feed of Feed;index as _id">
               <div class="media">
                 <div class="media-left">
                   <a class="avatar avatar-online" href="javascript:void(0)">
@@ -18,10 +18,10 @@
                       <img class="content-image" src="{{feed.newphoto}}">
                   </div>
                   <div class="icons">
-                    <span class="fa fa-comment comment icon" ></span>
-                    <span class="fa fa-retweet icon"></span>
-                    <span class="fa fa-heart icon"></span>
-                    <span class="fa fa-share-square icon"></span>
+                    <span ><i class="fa fa-comment comment icon"></i></span>
+                    <span ><i class="fa fa-retweet icon"></i></span>
+                    <a (click)="onSelect(feed._id,feed)" id="like"><i  [ngClass]="{'selected':feed.isClicked==true}"class="fa fa-heart icon"></i></a>
+                    <span><i class="fa fa-share-square icon"></i></span>
                   </div>
                 </div>
               </div>

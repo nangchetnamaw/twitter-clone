@@ -4,14 +4,39 @@
       <mat-nav-list>
         <a mat-list-item><i class="fa fa-twitter" aria-hidden="true"></i></a>
       
-        <a mat-list-item class="for-hover"tabindex="0"><i class="fa fa-home"aria-hidden="true"></i><span>Home</span></a>
-        <a mat-list-item class="for-hover"><i class="fa fa-hashtag" aria-hidden="true"></i><span>Explore</span></a>
-        <a mat-list-item class="for-hover"><i class="fa fa-bell-o" aria-hidden="true"></i><span>Notifications</span></a>
-        <a mat-list-item class="for-hover"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>Messages</span></a>
-        <a mat-list-item class="for-hover"><i class="fa fa-bookmark-o" aria-hidden="true"></i><span>Bookmarks</span></a>
-        <a mat-list-item class="for-hover"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Lists</span></a>
-        <a mat-list-item class="for-hover" routerLink="/profile"><i class="fa fa-user" aria-hidden="true"></i><span>Profile</span></a>
-        <a mat-list-item class="for-hover"(click)="logout()"><i class="fa fa-ellipsis-h" aria-hidden="true"></i><span>Logout</span></a>
+        <a mat-list-item (click)="toggle($event)"class="for-hover">
+        
+          <i  class="fa fa-home"aria-hidden="true"></i>
+          <span >Home</span>
+        </a>
+        <a mat-list-item (click)="toggle($event)"class="for-hover">
+          <i class="fa fa-hashtag" aria-hidden="true"></i>
+          <span>Explore</span>
+        </a>
+        <a mat-list-item (click)="toggle($event)"class="for-hover">
+          <i class="fa fa-bell-o" aria-hidden="true"></i>
+          <span>Notifications</span>
+        </a>
+        <a mat-list-item (click)="toggle($event)"class="for-hover">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          <span>Messages</span>
+        </a>
+        <a mat-list-item (click)="toggle($event)" class="for-hover">
+          <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+          <span>Bookmarks</span>
+        </a>
+        <a mat-list-item (click)="toggle($event)"class="for-hover">
+          <i class="fa fa-list-alt" aria-hidden="true"></i>
+          <span>Lists</span>
+        </a>
+        <a mat-list-item class="for-hover"(click)="toggle($event)" routerLink="/profile">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <span>Profile</span>
+        </a>
+        <a mat-list-item class="for-hover"(click)="toggle($event)"(click)="logout()">
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          <span>Logout</span>
+        </a>
       </mat-nav-list>
       <a class="tweet-main-btn btn">Tweet</a>
     </div>

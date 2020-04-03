@@ -91,6 +91,7 @@
 }
 
 .icon{
+   
     position: relative;
     font-size: medium;
   padding: 5px 8px;
@@ -103,15 +104,21 @@
 
 .icon:hover{
    background-color:#EAFAF2;
-   color: skyblue;
+    color: skyblue; 
    cursor: pointer;
+  
 }
 .icons{
     padding-top: 0.5rem;
     margin: 0 5px 0 0;
-    
-    
-  }
+}
+.selected{
+    background-color:#EAFAF2;
+    color:red; 
+   cursor: pointer;
+
+}
+ 
   
 
 

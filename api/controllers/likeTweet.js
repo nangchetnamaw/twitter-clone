@@ -7,9 +7,10 @@ class like{
     async updateLike(req,res){
          try{
             const likeObj={
-                userId: req.query.userId,
-                tweetId:req.query.tweetId
+                userId: req.body.userId,
+                tweetId:req.body.tweetId
             }
+            
             await likesModel.create({ userId:likeObj.userId, tweetId:likeObj.tweetId});
             const obj=await tweetModel.update({ _id: likeObj.tweetId }, { $inc: { "likeCount": 1 } });
             console.log(obj);
