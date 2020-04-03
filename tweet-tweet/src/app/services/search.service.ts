@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IUser } from '../models/user.interface';
 import { Observable } from 'rxjs';
 
-const SEARCH_API = 'http://localhost:3000/api/user/profile';
+const SEARCH_API = 'http://localhost:3000';
 
 @Injectable({
     providedIn: 'root'
