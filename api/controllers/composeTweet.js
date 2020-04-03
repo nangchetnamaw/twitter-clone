@@ -1,22 +1,43 @@
-const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
-const { User } = require('../models/signup');
-class tweets {
-    constructor() {
+const model = require('../models');
 
+class tweets {
+
+    constructor() {
     }
 
     async composeTweet(req, res){
         if (!req.file) {
-            console.log("No file is available!");
             return res.status(200).send({
                 success: false
             });
         } 
         else {
-            console.log('File is available!');
-           
+            let _id = (model.tokenDecoder(req.headers.authorization))._id;
+            let tagsArray = [];
+            let mentionArray = [];
+            let countTag = 0, countMention = 0;
+            let textArray = (req.body.text).split(" ");
+            for(let index = 0; index < textArray.length; index++){
+                if(textArray[index].charAt(0) == "@"){
+                    mentionArray[countMention] = textArray[index];
+                    countMention++;
+                }
+                else if(textArray[index].charAt(0) == "#"){
+                    tagsArray[countTag] = textArray[index];
+                    countTag++;
+                }
+            }
+            let tweetObject = {
+                "user" : _id,
+                "content" : {
+                    "text" : req.body.text,
+                    "imageURL" : req.file.path,
+                    "tags": tagsArray,
+                    "mentions": (req.body.mentions).split(",")
+                },
+                "date" : Date.now()
+            };
+            var result = await model.tweetModel.save(tweetObject);
             try{
                 return res.status(200).send("Uploaded");
             }catch(err){
@@ -26,4 +47,5 @@ class tweets {
     
     }
 }
+
 module.exports = new tweets();

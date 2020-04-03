@@ -1,8 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const { User, validateUser } = require('../models/user');
+const model = require('../models/userModel');
 const authenticate = require('../middlewares/authentication');
-const {User, validateUser} = require('../models/user');
 
 class UserController{
     constructor(){
@@ -84,8 +85,8 @@ class UserController{
                 "message": "Unauthorized"
             });
         }
-        
     }
+
     async updateProfile(req,res) {
         if(authenticate.authenticator()){
             try{
@@ -107,6 +108,12 @@ class UserController{
             });
         
         }
+    }
+
+    async search(req, res){
+        let queryObject = { $regex: req.params.userhandle, $options: 'i'};
+        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1});
+        res.status(200).send(employees);
     }
 }
 module.exports = new UserController();

@@ -25,6 +25,7 @@ module.exports = (app) => {
     app.post('/tweet', upload.single('image'), controller.composeTweet.composeTweet);
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
+    app.get('/user/:userhandle', controller.user.search);
     app.get('/profile/:id', controller.user.getProfile);
     app.patch('/profile/:id', controller.user.updateProfile);
     app.post('/follow',controller.follow.follow);
