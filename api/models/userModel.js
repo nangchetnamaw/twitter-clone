@@ -6,8 +6,8 @@ class User{
     constructor(){
         this.model = mongoose.model('User', userSchema)
     }
-    async get(criteria={}){
-        return this.model.find(criteria)
+    async get(criteria = {}, columns = {}){
+        return this.model.find(criteria, columns);
     }
     async update(criteria={}, updateProfile){
         return this.model.update(criteria, updateProfile)

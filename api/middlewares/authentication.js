@@ -18,7 +18,6 @@ authenticator = (req, res, next) => {
         console.log(e);
         res.status(400).send('Invalid Token');
     }
-    console.log('testinggggggggggggggg');
 }
 
 module.exports = authenticator;
