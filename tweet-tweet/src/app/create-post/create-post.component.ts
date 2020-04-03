@@ -19,6 +19,7 @@ export class CreatePostComponent implements OnInit {
 
   textArea:string;
   isVisible: Boolean = false;
+  mentionIdArray = [];
   //searchedUsers: any = [];
   searchedUsers = [
                     {name: "Shubham", userhandle: "@shubham"}, 
@@ -86,11 +87,13 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  insertTag(userhandle: string){
+  insertTag(user: any){
     let strArray = this.textArea.split(" ");
     if(strArray[strArray.length - 1].charAt(0) == "@"){
       strArray.pop();
-      this.textArea = strArray.join(" ") + " @" + userhandle;
+      console.log(user);
+      this.textArea = strArray.join(" ") + " @" + user.userhandle;
+      this.mentionIdArray.push(user._id);
       this.isVisible = false;
       this.flag = 0;
     }
@@ -99,10 +102,13 @@ export class CreatePostComponent implements OnInit {
   OnSubmit(){
     this.uploader.onBuildItemForm = (item, form) => {
       form.append("text", this.textArea);
+      form.append("mentions", this.mentionIdArray);
       item.formData = [this.textArea];
+      item.formData = this.mentionIdArray;
     };
     this.uploader.uploadAll();
-    console.log(this.textArea);
+    this.textArea = "";
+    this.mentionIdArray = [];
   }
 
 }

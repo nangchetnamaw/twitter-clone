@@ -17,7 +17,7 @@
 <div *ngIf="isVisible" class="card">
     <div class="card-body p-0">
         <ul>
-            <li *ngFor = "let user of searchedUsers" class="py-2"  (click) = "insertTag(user.userhandle)">
+            <li *ngFor = "let user of searchedUsers" class="py-2"  (click) = "insertTag(user)">
                 <img src="../../assets/abhi-maza-ayega-na-bhidu.jpg"  class="d-inline-flex ml-3 mt-3">
                 <div class="d-inline-flex flex-column ml-3">
                     <p class="m-0 user-name">{{user.name}}</p>
