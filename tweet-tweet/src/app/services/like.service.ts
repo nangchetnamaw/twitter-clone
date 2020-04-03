@@ -30,7 +30,7 @@ export class likeService{
     getRelation(likeObj: ILike): Observable<HttpResponse<ILike>>{
         const params = new HttpParams()
             .set('tweetId', likeObj.tweetId)
-            .set('likedBy', likeObj.userId);
+            .set('userId', likeObj.userId);
 
         return this.http.get<ILike>(`${LIKE_API}like`, { ...this.headerOptions, observe: 'response', params });
     }

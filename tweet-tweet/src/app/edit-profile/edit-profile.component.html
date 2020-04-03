@@ -1,0 +1,50 @@
+<body>
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <!-- Modal header --> 
+            <div class="header">
+                <div class="inner-header"> 
+                <span class="closebtn" aria-haspopup="false" aria-label="Close" role="button">
+                    <i class="fa fa-times"></i>
+                </span>
+                <span class="title" role="heading">Edit profile
+                </span>
+                <span id="saveButton">Save
+                </span>
+                </div>
+            </div>
+
+         <!-- Modal body -->
+            <form #userForm = "ngForm">
+              <div class="twitter">
+                <div class="row-top">
+                  <div class="user-wrapper">
+                     <span class="user-image"></span>
+                  </div>
+                </div>
+              </div>
+
+          <div class="user-detail">
+
+          <div class="form-group" > 
+            <div class="text">Name</div>
+            <input class="inputBox" type="text" ngModel name="nameInput" class="form-control" #nameInput='ngModel'>
+          </div>    
+          <div class="form-group">
+            <div class="text">Bio</div>
+            <input  class="inputBox" type="text" ngModel name="bioInput" class="form-control" #bioInput='ngModel'>
+          </div>
+          <div class="form-group">
+            <div class="text">Location</div>
+            <input class="inputBox" type="text" class="form-control" ngModel name="locationInput" #locationInput='ngModel'>
+          </div>
+          <div class="form-group">
+            <div class="date">Birth date</div>
+            <input class="inputBox" type="date" class= "form-control" ngModel name="dobInput" #dobInput='ngModel'>
+          </div>
+          
+          </div> 
+          </form>
+        </div>
+      </div>
+</body>

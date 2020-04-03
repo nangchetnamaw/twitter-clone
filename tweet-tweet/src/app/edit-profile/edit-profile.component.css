@@ -1,0 +1,209 @@
+body{
+    background-color:#B0B0B0;
+}
+
+.modal-content{
+    border-radius: 15px;
+    border:none;
+}
+
+.modal-dialog{
+    min-height: 400px;
+    min-width: 600px;
+    max-width: 600px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    display: flex;
+    flex-shrink: 1;
+    box-sizing: border-box;
+}
+
+.header{
+    position: sticky;
+    height: 45px;
+    z-index: 2;
+    -webkit-box-align: stretch;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    align-items: stretch;
+    border: 0 solid black;
+    box-sizing: border-box;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    min-height: 0px;
+    min-width: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    position: relative;
+    font-size: 15px;
+}
+
+.inner-header{
+    border-bottom-color: rgb(204, 214, 221);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 45px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    background-color: rgba(255,255,255,1.00);
+    padding-left: 15px;
+    padding-right: 15px;
+    justify-content: center;
+}
+
+.closebtn{
+    min-width: 30px;
+    min-height: 30px;
+    align-self: stretch;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    margin-left: calc(5px+(-1*(41px-1.5em))/2);
+    line-height: 1;
+    font-weight: bold;
+}
+
+.fa-times{
+    height: 1em;
+    color: rgba(29,161,242,1.00);
+    vertical-align: text-bottom;
+    position: relative;
+    display: inline-block;
+    font-size: xx-large;
+    margin-top: 3px;
+}
+
+.title{
+    position: absolute;
+    font-size: 20px;
+    color: black;
+    font-weight: 800;
+    margin-left: 8%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    margin-top: 0.5rem;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-shrink: 1;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    height: 100%;
+    line-height: 1.3125;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    align-self: flex-end;
+}
+
+#saveButton{
+    border-radius: 3rem;
+    background-color: rgba(29,161,242,1.00);
+    border: none;
+    font-weight: bolder;
+    width: fit-content;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    margin-left:47rem;
+    margin-right: auto;
+    color: white;
+    transition-property: background-color, box-shadow;
+    transition-duration: 0.2s;
+    padding:0.5em 1em;
+    position: absolute;
+    margin-top: 0.3rem;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-shrink: 1;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    line-height: 1.3125;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    align-self: flex-end;
+}
+
+.text{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.user-detail{
+    max-height: 65vh;
+}
+
+.form{
+    overflow: scroll;
+    padding-bottom: 30px;
+}
+
+.form-group{
+    background-color: rgb(245, 248, 250);
+    margin: 0 2%;
+    max-height: 90px;
+}
+
+.form-control{
+    background-color: rgb(245, 248, 250);
+    border: none ;
+    border-bottom: 2px solid darkslategrey;
+    box-shadow: none;
+    margin-bottom: 4%;
+    max-height: 25px;
+    font-size: 15px;
+}
+
+.form-control:focus{
+    border-color:  rgba(29,161,242,1.00);
+    box-shadow: none;    
+}
+
+.inputBox:focus{
+    border-color: rgba(29,161,242,1.00)  !important;
+}
+
+.text-danger{
+    padding-left: 2% ;
+    font-size: small;
+}
+
+.twitter{
+    max-height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(128, 128, 128, 0.397);
+    margin-bottom: 7.5rem;
+    border: 2px solid white;
+    display: flex;
+    height: 18rem;
+}
+
+.row-top{
+    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+}
+
+.user-image {
+    margin-top: 70px;
+    position: absolute;
+    background-image: url("../../assets/Images/my.jpg");
+    color: aqua;
+    background-position: center;
+    background-size: cover;
+    height: 120px; 
+    width: 120px;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    border: 3px solid white;
+}

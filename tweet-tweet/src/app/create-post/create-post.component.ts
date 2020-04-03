@@ -31,7 +31,7 @@ export class CreatePostComponent implements OnInit {
   });
 
   ngOnInit() {
-    console.log(this.textArea);
+    
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
     };

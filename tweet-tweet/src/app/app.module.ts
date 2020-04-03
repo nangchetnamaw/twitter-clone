@@ -19,6 +19,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 //Material UI Imports
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatCardModule } from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -61,6 +62,7 @@ import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -84,9 +86,11 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
     CreatePostComponent,
     TrendsComponent,
     MyprofileComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    EditProfileComponent
   ],
   imports: [
+    NgbModule,
     //Ng Modules
     BrowserModule,
     AppRoutingModule,
@@ -131,14 +135,12 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    //
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-
     CommonModule
   ],
   providers: [],

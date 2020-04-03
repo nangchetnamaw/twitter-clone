@@ -123,7 +123,8 @@ export class ProfileComponent implements OnInit {
     dob: "",
     count: {
       followerCount: 0,
-      followingCount: 0
+      followingCount: 0,
+      tweetCount:0
     }
   };
   tweets: ITweet[] = [];
