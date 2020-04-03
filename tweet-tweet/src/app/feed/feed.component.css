@@ -79,7 +79,7 @@
     margin-top: 3%;
     margin:0 5px 0 0;
     justify-content: space-evenly;
-
+    padding-top: 1rem;
     
 }
 
@@ -94,6 +94,7 @@
 }
 
 .icon{
+   
     position: relative;
     font-size: medium;
   border-radius: 30px;
@@ -105,12 +106,15 @@
 
 .icon:hover{
    background-color:#EAFAF2;
-   color: skyblue;
+    color: skyblue; 
    cursor: pointer;
 }
-.icons{
-    padding-top: 1rem;
-  }
+
+.selected{
+    background-color:#EAFAF2;
+    color:red; 
+   cursor: pointer;
+}
   
 
 
