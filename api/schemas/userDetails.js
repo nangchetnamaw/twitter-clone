@@ -26,6 +26,11 @@ const userSchema = Schema({
         max: 255,
         required: true,
     },
+    location:{
+        type: String,
+        max:50,
+        required:true,
+    },
 
     name: {
         type: String,

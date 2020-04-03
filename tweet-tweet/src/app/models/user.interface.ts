@@ -1,9 +1,12 @@
-interface ICount{
+export interface ICount{
   followerCount: number;
   followingCount: number;
+  tweetCount: number;
 }
 
 export interface IUser {
+  location?: string;
+  dob: string;
   userhandle: string;
   email: string;
   password?: string;
