@@ -11,9 +11,7 @@ class likeTweet{
     }
 
     async create(likeObj){
-        console.log(likeObj);
        const obj= await this.model.create(likeObj);
-       console.log(obj);
        return obj;
     }
 

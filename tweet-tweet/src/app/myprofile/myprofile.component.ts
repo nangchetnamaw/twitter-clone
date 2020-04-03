@@ -46,9 +46,7 @@ export class MyprofileComponent implements OnInit {
    loadUserDetails(currentUserId){
     this.userService.userDetails(currentUserId).subscribe(res => {
       if(res.status == 200){
-        console.log(res.body);
         this.user = res.body;
-        console.log(this.user);
       }
       else if(res.status == 401){
         localStorage.removeItem("token");

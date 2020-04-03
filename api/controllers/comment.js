@@ -27,9 +27,6 @@ class comment{
             else{
                 res.send("no such tweet");
             }
-           
-           
-
         }
         catch(error){
             console.log(error);

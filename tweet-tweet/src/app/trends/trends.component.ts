@@ -35,7 +35,6 @@ export class TrendsComponent implements OnInit {
 
   showMore(){
     this.isSecondList=true;
-    console.log("showing MORE")
   }
 
   Trend: ITrend[]=[

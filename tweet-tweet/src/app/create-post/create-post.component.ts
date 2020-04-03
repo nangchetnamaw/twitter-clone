@@ -12,9 +12,6 @@ const URL = 'http://localhost:3000/tweet';
 export class CreatePostComponent implements OnInit {
 
   constructor() { }
-
-  // img:string = "..\postsDb\1584941952605-abhi-maza-ayega-na-bhidu.jpg";
-
   textArea:string;
   isVisible: Boolean = false;
   searchedUsers = [
@@ -41,19 +38,12 @@ export class CreatePostComponent implements OnInit {
   }
 
   check(event: any){
-    console.log(event.key);
     if(event.key == "@"){
       this.isVisible = true;
     }
     else if(event.key == " "){
       this.isVisible = false;
     }
-    // if(this.textArea.substring(this.textArea.length-3, this.textArea.length-1) == " @"){
-    //   this.isVisible = true;
-    // }
-    // else{
-    //   this.isVisible = false;
-    // }
   }
 
   OnSubmit(){
@@ -62,7 +52,6 @@ export class CreatePostComponent implements OnInit {
       item.formData = [this.textArea];
     };
     this.uploader.uploadAll();
-    console.log(this.textArea);
   }
 
 }

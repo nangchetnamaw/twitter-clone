@@ -91,7 +91,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
   imports: [
     NgbModule,
-    //Ng Modules
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
