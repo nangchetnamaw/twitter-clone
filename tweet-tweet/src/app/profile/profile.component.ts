@@ -123,7 +123,8 @@ export class ProfileComponent implements OnInit {
     dob: "",
     count: {
       followerCount: 0,
-      followingCount: 0
+      followingCount: 0,
+      tweetCount:0
     }
   };
   tweets: ITweet[] = [];
@@ -141,7 +142,6 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("Inside ngOnInit");
     this.route.params
       .pipe(
         switchMap(params => {
@@ -154,7 +154,6 @@ export class ProfileComponent implements OnInit {
       )
       .subscribe(
         (response: any) =>{
-            console.log(response);
             return (this.user = response.body.payload.user)
         }
       );
@@ -165,21 +164,18 @@ export class ProfileComponent implements OnInit {
         followerhandle: this.redirectedUser
       })
       .subscribe((response: HttpResponse<any>) => {
-        console.log(response.body, response.body.payload.isRelation);
         this.follow = response.body.payload.isRelation;
       });
 
     this.feedService
       .showTweets(this.redirectedUser)
       .subscribe((res: HttpResponse<any>) => {
-        console.log(res.body);
         this.tweets = res.body.payload.tweets;
         this.tweetCount = res.body.payload.tweetCount;
       });
   }
 
   handleFollow(): void {
-    console.log("Inside handleFollow");
     this.followService
       .follow({
         followerhandle: this.currentUser.userhandle,
@@ -189,10 +185,7 @@ export class ProfileComponent implements OnInit {
         console.log(res);
       });
 
-    console.log(this.follow);
     this.toggleFollow();
-    // if(this.follow){
-    // this.follow = !this.follow;
   }
 
   handleUnfollow(): void {
@@ -206,27 +199,9 @@ export class ProfileComponent implements OnInit {
       });
 
     this.toggleFollow();
-    // this.follow = !this.follow;
   }
-
-  // ngOnChanges(changes: SimpleChanges){
-  //     console.log('Inside ngOnChanges');
-  //     this.route.params.pipe(switchMap((params) => this.followService.getRelation({'userId': this.currentUser.userhandle, 'followerId': params.id}))).subscribe((response: HttpResponse<IFollower>) => {console.log(response.body); this.follow = response.body? true: false;});
-
-  //     if(changes.follow){
-  //         this.follow = !changes.follow.currentValue;
-  //     }
-  // }
 
   toggleFollow() {
     this.follow = !this.follow;
   }
-
-  // ngOnInit(): void{
-  //     // this.route.data.subscribe((data: User) => {
-  //     //     this.user = data;
-  //     //     console.log(data, 'data', this.user, 'user');
-  //     // });
-
-  // }
 }

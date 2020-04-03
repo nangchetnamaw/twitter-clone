@@ -36,7 +36,7 @@ export class CreatePostComponent implements OnInit {
   });
 
   ngOnInit() {
-    console.log(this.textArea);
+    
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
     };
@@ -78,7 +78,6 @@ export class CreatePostComponent implements OnInit {
     var searchString = (str[str.length - 1]).substring(1);
     this.userService.searchUser(searchString).subscribe(res => {
       if(res.status == 200){
-        console.log(res.body);
         this.searchedUsers = res.body;
       }
       else{
@@ -91,7 +90,6 @@ export class CreatePostComponent implements OnInit {
     let strArray = this.textArea.split(" ");
     if(strArray[strArray.length - 1].charAt(0) == "@"){
       strArray.pop();
-      console.log(user);
       this.textArea = strArray.join(" ") + " @" + user.userhandle;
       this.mentionIdArray.push(user._id);
       this.isVisible = false;

@@ -20,7 +20,6 @@ export class LoginPageComponent{
   loginHandler(loginObj: Login): void{
     if(loginObj.email=='' || loginObj.password==''){
       this.isFilled = false;
-      console.log(this.isFilled)
     }
     else {
       this.isFilled=true;
@@ -31,7 +30,6 @@ export class LoginPageComponent{
     this.userService.loginUser(loginObj).subscribe((response: HttpResponse<any>) => {
       window.localStorage.setItem('Authorization', `Bearer ${response.body.payload['x-auth-token']}`);
       this.message = response.body['message'];
-      console.log(response.body);
       this.router.navigate(['/home']);
     }, (error) => {
       setTimeout(() => {

@@ -11,11 +11,6 @@ import{Router}from '@angular/router'
 })
 export class SideNavComponent implements OnInit{
    isClicked:boolean = false;
-  // isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  //   .pipe(
-  //     map(result => result.matches),
-  //     shareReplay()
-  //   );
 
   constructor(
     private breakpointObserver: BreakpointObserver,

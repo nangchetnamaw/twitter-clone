@@ -36,7 +36,6 @@ export class TweetCreateComponent {
       },
       date: Date.now().toString()
     }
-    console.log(text.match(/\B\#\w\w+\b/g));
     this.tweetService.createTweet(tweet).subscribe((response: HttpResponse<any>) => {
       console.log(response.body);
     });

@@ -45,8 +45,6 @@ export class FeedComponent implements OnInit {
    this.selectedFeed.isClicked=!this.selectedFeed.isClicked;
     const tokenPayload=this.JsonDecoderService.jsonDecoder(localStorage.getItem("Authorization"));
     this.likeObj={
-      // tweetId:this.selectedFeed._id,
-      // likedBy:tokenPayload.userhandle
       tweetId:"5e8351537f1fe49ec0039173",//hardcoded value
       userId:tokenPayload._id
      }

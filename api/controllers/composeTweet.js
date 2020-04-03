@@ -6,7 +6,6 @@ class tweets {
     }
 
     async composeTweet(req, res){
-        console.log(req.body.text);
         if (!req.file) {
             return res.status(200).send({
                 success: false
@@ -28,9 +27,6 @@ class tweets {
                     countTag++;
                 }
             }
-            console.log(req.body);
-            console.log(tagsArray);
-            console.log(mentionArray);
             let tweetObject = {
                 "user" : _id,
                 "content" : {
@@ -41,9 +37,7 @@ class tweets {
                 },
                 "date" : Date.now()
             };
-            console.log("======", tweetObject);
             var result = await model.tweetModel.save(tweetObject);
-            console.log(result);
             try{
                 return res.status(200).send("Uploaded");
             }catch(err){

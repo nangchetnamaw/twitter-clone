@@ -29,7 +29,6 @@ class UserController{
         });
 
         user = new User(value);
-        console.log(user);
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(value.password, salt);
@@ -64,7 +63,6 @@ class UserController{
         });
 
         const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
-        console.log(token);
 
         res.send({
             success: true,
@@ -113,7 +111,6 @@ class UserController{
     }
 
     async search(req, res){
-        console.log("Inside Search");
         let queryObject = { $regex: req.params.userhandle, $options: 'i'};
         const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1});
         res.status(200).send(employees);

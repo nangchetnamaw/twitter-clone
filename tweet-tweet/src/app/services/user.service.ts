@@ -30,12 +30,10 @@ export class UserService {
     }
 
     createUser(user: IUser): Observable<HttpResponse<any>>{
-        console.log(user);
         return this.http.post<any>(`${USER_DOMAIN}/signup`, user, { ...this.httpOptions, observe: 'response' });
     }   
 
     loginUser(user: Login): Observable<HttpResponse<any>>{
-        console.log(user);
         return this.http.post<any>(`${USER_DOMAIN}/login`, user, { ...this.httpOptions, observe: 'response' });
     }
 
@@ -61,7 +59,6 @@ export class UserService {
     }
     
     userDetails(_id:string): Observable<HttpResponse<any>>{
-        console.log(_id);
         return this.http.get<any>(`${USER_DOMAIN}/profile/${_id}`, {...this.httpOptions, observe:'response'});
     }
 

@@ -1,7 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import ParseJwt from "../utils/parsejwt";
-import { IUser, IJwtPayload} from "../models/user.interface";
+import { IUser, IJwtPayload } from "../models/user.interface";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
 
@@ -22,6 +22,7 @@ export class MyprofileComponent implements OnInit {
     count: {
       followerCount: 0,
       followingCount: 0,
+      tweetCount:0
     }
   };
   follow: boolean;
@@ -45,9 +46,7 @@ export class MyprofileComponent implements OnInit {
    loadUserDetails(currentUserId){
     this.userService.userDetails(currentUserId).subscribe(res => {
       if(res.status == 200){
-        console.log(res.body);
         this.user = res.body;
-        console.log(this.user);
       }
       else if(res.status == 401){
         localStorage.removeItem("token");

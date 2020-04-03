@@ -34,11 +34,9 @@ export class SearchComponent {
     this.searchService
       .searchUser(searchInput)
       .subscribe((response: HttpResponse<any>) => {
-          console.log(response.body);
         const user = response.body.payload.user.userhandle;
 
         if (user) {
-          console.log(user);
           this.router.navigate(["/profile", user]);
         }
       });

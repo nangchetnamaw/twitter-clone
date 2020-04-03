@@ -1,6 +1,7 @@
 export interface ICount{
   followerCount: number;
   followingCount: number;
+  tweetCount: number;
 }
 
 export interface IUser {
