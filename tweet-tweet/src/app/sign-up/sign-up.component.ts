@@ -35,9 +35,6 @@ export class SignUpComponent implements OnInit {
         this.isStep3=true;
         this.isBackNeeded=true;
       }
-      // this.isStep1=false;
-      // this.isStep3=true;
-      // this.isBackNeeded=true;
     }
   } 
   back(){
@@ -59,7 +56,6 @@ export class SignUpComponent implements OnInit {
     this.isBackNeeded=false;
     if(inputObj.name=='' || inputObj.userhandle==''|| inputObj.email=='' || inputObj.password==''){
       this.isFilled = false;
-      console.log(this.isFilled)
     }
     else {
       this.isFilled=true;
@@ -68,12 +64,9 @@ export class SignUpComponent implements OnInit {
   submitHandler2(inputObj: IUser): void{
     if(inputObj.name!=''&& inputObj.userhandle!=''&& inputObj.email!='' && inputObj.password!=''){
       this.userService.createUser(inputObj).subscribe((response: HttpResponse<any>) => {
-        // const token = response.headers.get('x-auth-token');
         this.message = response.body['message'];
-        console.log(this.message);
 
         window.localStorage.setItem('Authorization', `Bearer ${response.body.payload['x-auth-token']}`);
-        // this.userService.headers.set('Authorization', `Bearer ${token}`);
         this.router.navigate(['/home']);
       }, (error) => {
         setTimeout(() => {

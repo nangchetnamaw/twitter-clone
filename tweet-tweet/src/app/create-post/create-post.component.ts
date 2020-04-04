@@ -1,6 +1,8 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { IContent } from '../models/tweet.interface';
+import { ThrowStmt } from '@angular/compiler';
 
 const URL = 'http://localhost:3000/tweet';
 
@@ -11,12 +13,14 @@ const URL = 'http://localhost:3000/tweet';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  // img:string = "..\postsDb\1584941952605-abhi-maza-ayega-na-bhidu.jpg";
+  flag: number = 0;
 
   textArea:string;
   isVisible: Boolean = false;
+  mentionIdArray = [];
+  //searchedUsers: any = [];
   searchedUsers = [
                     {name: "Shubham", userhandle: "@shubham"}, 
                     {name: "Ankit", userhandle: "@ankit"}, 
@@ -27,11 +31,12 @@ export class CreatePostComponent implements OnInit {
 
   public uploader: FileUploader = new FileUploader({
     url: URL,
-    itemAlias: 'image'
+    itemAlias: 'image',
+    authToken: localStorage.getItem("Authorization").substring(7)
   });
 
   ngOnInit() {
-    console.log(this.textArea);
+    
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
     };
@@ -41,28 +46,67 @@ export class CreatePostComponent implements OnInit {
   }
 
   check(event: any){
-    console.log(event.key);
+    var strArray = this.textArea.split(" ");
+    if(this.flag == 1){
+      this.searchForUser();
+    }
     if(event.key == "@"){
+      this.flag = 1;
       this.isVisible = true;
     }
-    else if(event.key == " "){
+    if(event.key == " "){
+      this.flag = 0;
       this.isVisible = false;
     }
-    // if(this.textArea.substring(this.textArea.length-3, this.textArea.length-1) == " @"){
-    //   this.isVisible = true;
-    // }
-    // else{
-    //   this.isVisible = false;
-    // }
+    if(strArray[strArray.length - 1].charAt(0) == "@"){
+      this.flag = 1;
+      this.isVisible = true;
+    }
+    else{
+      this.flag = 0;
+      this.isVisible = false;
+    }
+
+    if(this.textArea == ""){
+      this.flag = 0;
+      this.isVisible = false;
+    }
+  }
+
+  searchForUser(){
+    var str = this.textArea.split(" ");
+    var searchString = (str[str.length - 1]).substring(1);
+    this.userService.searchUser(searchString).subscribe(res => {
+      if(res.status == 200){
+        this.searchedUsers = res.body;
+      }
+      else{
+        console.log("Some Error");
+      }
+    });
+  }
+
+  insertTag(user: any){
+    let strArray = this.textArea.split(" ");
+    if(strArray[strArray.length - 1].charAt(0) == "@"){
+      strArray.pop();
+      this.textArea = strArray.join(" ") + " @" + user.userhandle;
+      this.mentionIdArray.push(user._id);
+      this.isVisible = false;
+      this.flag = 0;
+    }
   }
 
   OnSubmit(){
     this.uploader.onBuildItemForm = (item, form) => {
       form.append("text", this.textArea);
+      form.append("mentions", this.mentionIdArray);
       item.formData = [this.textArea];
+      item.formData = this.mentionIdArray;
     };
     this.uploader.uploadAll();
-    console.log(this.textArea);
+    this.textArea = "";
+    this.mentionIdArray = [];
   }
 
 }

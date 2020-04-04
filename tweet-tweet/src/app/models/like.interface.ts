@@ -1,6 +1,6 @@
 interface ILike{
     tweetId: string;
-    likedBy: string;
+    userId: string;
 }
 
 interface IUnlike{

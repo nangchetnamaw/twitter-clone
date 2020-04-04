@@ -21,7 +21,6 @@ export class CommentService {
   constructor(private http: HttpClient) { }
 
   createComment(comment: IComment): Observable<HttpResponse<any>>{
-    console.log(comment);
     return this.http.post<any>(`${COMMENT_API}/comment`, comment, { ...this.httpOptions, observe: 'response' });
 }  
 }

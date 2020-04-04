@@ -30,9 +30,6 @@ export class HomeComponent implements OnInit{
 
     ngOnInit(){
         this.feedService.showFeed().subscribe((res: any) => {
-            console.log(res);
-            
-            console.log(res.payload.tweets);
             this.tweets = res.payload.tweets;
         }), (err) => { console.log(err) };
     }

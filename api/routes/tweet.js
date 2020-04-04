@@ -20,31 +20,18 @@ router.post("/", async (req, res) => {
 
 router.get("/feed", async (req, res) => {
   const userId = req.user._id;
-  console.log(userId);
   let tweets = [];
   const followings = await Follow.find({ followId: userId }).select("userId");
-  console.log(followings);
-
-  //   followings.map(async () => {
-  //     const extArray = await Tweet.find({ user: following.userId });
-  //     tweets.push(...extArray);
-  //   });
-  //   console.log(tweets);
-
-  //   let tempTweets;
+  
   const tempPromise = async () => {
     await Promise.all(
       followings.map(async following => {
-        console.log(following);
         const tweetArray = await Tweet.find({ user: following.userId }).populate('user');
-        console.log(tweetArray);
         tweets = [...tweets, ...tweetArray];
       })
     );
-    // console.log(tweets, "ajsbfkjasfkj");
     return tweets;
   };
-//   console.log(tempPromise(), 'was here man');
   const retTweets = await tempPromise();
   res.send({
     success: true,
@@ -58,8 +45,6 @@ router.get("/", async (req, res) => {
   const userhandle = req.query.userhandle;
   const _id = await User.findOne({ userhandle: userhandle }).select("_id");
   const tweets = await Tweet.find({ user: _id }).populate('user');
-  console.log(_id, tweets);
-  console.log("I was here");
   res.send({
     success: true,
     payload: {
@@ -144,14 +129,6 @@ router.patch("/", async (req, res) => {
         content: req.body.content
       });
     }
-    // if (req.body.operation === "dec") {
-    //   await Tweet.findOneAndUpdate(
-    //     { _id: req.body.tweetId },
-    //     { $inc: { "count.likeCount": -1 } }
-    //   );
-
-    //   await Reply.deleteOne({ _id: req.replyId });
-    // }
   }
 
   res.send({

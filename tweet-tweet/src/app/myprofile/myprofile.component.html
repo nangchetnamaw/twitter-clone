@@ -3,11 +3,12 @@
     <div class="col-md-3">
       <side-nav>
       </side-nav>
-  </div>
+    </div>
       <div class="col-md-6">
     <div class="twitter-card"> 
     <span class="span">{{user.name}}</span>
-    <i class="fa fa-arrow-left" id="arrow-left"></i>
+    <div class="fa fa-arrow-left" id="arrow-left"></div>
+    <div class="span-one">{{user.tweetCount}}&nbsp; tweets</div>
     <div class="twitter">
     <div class="row-top">
       <div class="user-wrapper">
@@ -21,7 +22,7 @@
     <div class="row-middle">
       <span class="profile-location">
         <i class="fa fa-map-marker"></i>
-        Delhi, India
+        {{user.location}}
       </span>
       <span class="profile-website">
         <i class="fa fa-link"></i>
@@ -38,6 +39,7 @@
       </span>
     <span class="count">
        <b>{{user.followingCount}}</b> Following
+
         </span>
   
         <div class="row-bottom">
@@ -54,7 +56,9 @@
               Likes
             </small>
           </div>
+          <div class="row-bottom"></div>
   </div>
+  <div class="col-md-12"><app-feed></app-feed></div>
   </div>
   </div>
   <div class="col-md-3">
@@ -63,3 +67,4 @@
 </div>
 </div>
 </div>
+

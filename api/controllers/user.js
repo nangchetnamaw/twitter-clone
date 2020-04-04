@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const { User, validateUser } = require('../models/user');
+const model = require('../models/userModel');
 const authenticate = require('../middlewares/authentication');
-//const {User} = require('../models/userModel');
-const {User, validateUser} = require('../models/user');
 
 class UserController{
     constructor(){
@@ -29,7 +29,6 @@ class UserController{
         });
 
         user = new User(value);
-        console.log(user);
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(value.password, salt);
@@ -64,7 +63,6 @@ class UserController{
         });
 
         const token = jwt.sign({ _id: user._id, userhandle: user.userhandle, name: user.name }, config.get('jwtPrivateKey'));
-        console.log(token);
 
         res.send({
             success: true,
@@ -103,7 +101,9 @@ class UserController{
             });
         }
         console.log(user);
-    }
+    };
+    
+
     async updateProfile(req,res) {
         if(authenticate.authenticator()){
             try{
@@ -125,6 +125,12 @@ class UserController{
             });
         
         }
+    }
+
+    async search(req, res){
+        let queryObject = { $regex: req.params.userhandle, $options: 'i'};
+        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1});
+        res.status(200).send(employees);
     }
 }
 module.exports = new UserController();

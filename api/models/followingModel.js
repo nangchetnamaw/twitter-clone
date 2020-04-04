@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-//const schema = require('../schemas');
-//const followingSchema = mongoose.Schema(schema.following)
-//new
 const followingSchema = require('../schemas/following').schema;
-
 
 class Following{
     constructor(){

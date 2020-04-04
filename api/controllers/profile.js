@@ -1,4 +1,3 @@
-// const model = require('../models');
 const { User } = require('../models/signup');
 const express = require('express');
 const router = express.Router();  //it will append the index.js route with this
@@ -49,8 +48,6 @@ const userSchema = mongoose.Schema({
   });
 
  const userModel = mongoose.model('UserDetails', userSchema);
-
-//router.post('', (req, res) => {})
 
 router.get('/', async (req, res) => {
     

@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
-const { Tweet } = require('../schemas/tweet');
-
-// const tweetModel = mongoose.model('Tweet', {});
 
 const signupSchema = new mongoose.Schema({
   userhandle: {
@@ -49,10 +46,6 @@ const signupSchema = new mongoose.Schema({
   }
 });
 
-// userSchema.methods.authenticate (To be done later)
-
-// const User = mongoose.model("User", signupSchema);
-
 function validateUser(user) {
   for (let key in user) {
     user[key] = user[key].trim();
@@ -83,13 +76,6 @@ function validateUser(user) {
       .max(20)
       .required()
   };
-  console.log(
-    "user mil gaya signup schema mein",
-    user,
-    "Joi.validate",
-    Joi.validate(user, schema)
-  );
-
   return Joi.validate(user, schema);
 }
 

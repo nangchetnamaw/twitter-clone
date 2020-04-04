@@ -23,21 +23,15 @@ let upload = multer({storage: storage});
 module.exports = (app) => {
 
     app.post('/tweet', upload.single('image'), controller.composeTweet.composeTweet);
-
-    //new
-
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
+    app.get('/user/:userhandle', controller.user.search);
     app.get('/profile/:id', controller.user.getProfile);
     app.get('/redirectedProfile/:userhandle', controller.user.getProfileByUserhandle);
     app.patch('/profile/:id', controller.user.updateProfile);
-
-    //new
     app.post('/follow',controller.follow.follow);
     app.post('/unfollow',controller.follow.unfollow);
     app.post('/comment',controller.comment.comment);
-
-    //like
     app.post('/like',controller.likeTweet.updateLike);
     app.put('/unlike',controller.unlikeTweet.unlike);
 }

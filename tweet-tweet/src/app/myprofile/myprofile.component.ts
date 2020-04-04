@@ -4,6 +4,7 @@ import ParseJwt from "../utils/parsejwt";
 import { IUser, IJwtPayload } from "../models/user.interface";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
+
 @Component({
   selector: 'app-myprofile',
   templateUrl: './myprofile.component.html',
@@ -11,17 +12,19 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
 })
 export class MyprofileComponent implements OnInit {
   user: IUser = {
+    dob: "",
     userhandle: "",
     email: "",
     password: "",
     bio:"",
     name: "",
+    location:"",
     count: {
       followerCount: 0,
-      followingCount: 0
+      followingCount: 0,
+      tweetCount:0
     }
   };
-  tweetCount: number = 0;
   follow: boolean;
   currentUser: IJwtPayload = ParseJwt.parseJwt();
   redirectedUser: string;
@@ -43,9 +46,7 @@ export class MyprofileComponent implements OnInit {
    loadUserDetails(currentUserId){
     this.userService.userDetails(currentUserId).subscribe(res => {
       if(res.status == 200){
-        console.log(res.body);
         this.user = res.body;
-        console.log(this.user);
       }
       else if(res.status == 401){
         localStorage.removeItem("token");
@@ -53,5 +54,6 @@ export class MyprofileComponent implements OnInit {
       }
     });
    }   
+
 
 }
