@@ -89,6 +89,21 @@ class UserController{
         }
         
     };
+
+    async getProfileByUserhandle (req,res){
+        const userhandle=req.params.userhandle;
+        console.log(userhandle)
+        const user = await User.findOne({"userhandle":userhandle})
+        if(user!= null){
+            res.status(200).send(user);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        console.log(user);
+    }
     async updateProfile(req,res) {
         if(authenticate.authenticator()){
             try{

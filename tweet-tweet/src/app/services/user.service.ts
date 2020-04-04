@@ -32,9 +32,11 @@ export class UserService {
     }
 
     userDetails(_id:string): Observable<HttpResponse<any>>{
-        console.log(_id);
         return this.http.get<any>(`${USER_DOMAIN}/profile/${_id}`, {...this.httpOptions, observe:'response'});
     }
     
+    searchedUserDetails(userhandle: string): Observable<HttpResponse<any>>{
+        return this.http.get<any>(`${USER_DOMAIN}/profile/${userhandle}`, {...this.httpOptions, observe:'response'});
+    }
     
 }
