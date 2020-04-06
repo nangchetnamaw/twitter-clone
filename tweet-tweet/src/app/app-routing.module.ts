@@ -1,3 +1,4 @@
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -13,12 +14,13 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: "", component: WelcomePageComponent},
+  { path: 'comingsoon', component: ComingSoonComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreatePostComponent},
   { path: 'profile', component: MyprofileComponent},
-  { path: 'modal', component :EditProfileComponent},
+  { path: 'editprofile', component :EditProfileComponent},
   { path: 'profile',
     children: [
       {

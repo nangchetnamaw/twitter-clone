@@ -80,7 +80,11 @@ export class MyprofileComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     });
-   }   
+   }
+   
+   editProfileModal(){
+     this.router.navigate(['/editprofile']);
+   }
 
    loadSearchedUserDetails(searchedUser){
     this.userService.searchedUserDetails(searchedUser).subscribe(res => {
