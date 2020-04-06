@@ -86,11 +86,11 @@ export class MyprofileComponent implements OnInit {
    Profile: Profile[]=[
     {image: '../../assets/Images/my.jpg',images: '../../assets/Images/my.jpg'}
    ];
-   }
+   
    
    editProfileModal(){
      this.router.navigate(['/editprofile']);
-   }
+   };
 
    loadSearchedUserDetails(searchedUser){
     this.userService.searchedUserDetails(searchedUser).subscribe(res => {
