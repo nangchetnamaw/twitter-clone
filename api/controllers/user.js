@@ -55,7 +55,7 @@ class UserController{
             success: false,
             error: 'Invalid email or password'
         });
-
+          debugger
         const isPassword = await bcrypt.compare(password, user.password);
         if(!isPassword) return res.status(401).send({
             success: false,

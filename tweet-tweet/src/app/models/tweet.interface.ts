@@ -11,6 +11,7 @@ interface ICount{
   likeCount: number;
   replyCount: number;
   retweetCount: number;
+  
 }
 
 export interface ITweet {

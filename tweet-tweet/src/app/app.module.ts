@@ -66,6 +66,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 
+
 @NgModule({
   declarations: [
     SignUpComponent,
@@ -145,6 +146,7 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     CommonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
