@@ -53,7 +53,11 @@ export class MyprofileComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     });
-   }   
+   }
+   
+   editProfileModal(){
+     this.router.navigate(['/editprofile']);
+   }
 
 
 }

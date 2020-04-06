@@ -33,4 +33,5 @@ module.exports = (app) => {
     app.post('/comment',controller.comment.comment);
     app.post('/like',controller.likeTweet.updateLike);
     app.put('/unlike',controller.unlikeTweet.unlike);
+    app.get('/explore',controller.explore.getExploreTweets);
 }
