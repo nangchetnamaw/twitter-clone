@@ -1,20 +1,28 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { JsonDecoderService } from './../services/json-decoder.service';
-import { Component, OnInit,HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit,HostListener, ElementRef,Type } from '@angular/core';
 import { Feed } from './../models/feed.interface';
 import{likeService} from'../services/like.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ILike } from '../models/like.interface';
-
+import{MatDialog,MatDialogConfig} from'@angular/material'
+//import{ModalComponent} from '../modal/modal.component'
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  styleUrls: ['./feed.component.css',]
 })
 export class FeedComponent implements OnInit {
   isDropdownClicked: Boolean[] = [false, false, false, false, false, false, false, false, false, false];
 
  
-  constructor(private eRef: ElementRef,private likeService:likeService,private JsonDecoderService:JsonDecoderService ) { }
+  constructor(private eRef: ElementRef,
+    private likeService:likeService,
+    private JsonDecoderService:JsonDecoderService,
+    private dialog: MatDialog,
+    
+    ) { }
+   
 
   ngOnInit() {   
   }
@@ -60,6 +68,23 @@ export class FeedComponent implements OnInit {
   );
  
 }
+display:boolean=false;
+showModal(){
+  this.display=true;
+ 
+ document.getElementById("feed").style.opacity="0.5";
+ 
+ console.log("deepsy");
+ document.body.setAttribute('style', 'overflow: hidden;');
+ 
+}
+closeModal(){
+  this.display=false;
+ 
+ document.getElementById("feed").style.opacity="1";
+ document.body.setAttribute('style', 'overflow: scroll;');
+ 
+}
   
 
   Feed: Feed[]=[
@@ -77,3 +102,4 @@ export class FeedComponent implements OnInit {
 
 
   }
+  

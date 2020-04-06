@@ -1,5 +1,5 @@
-<div class="feed">
-          <div class="item" id="feed"*ngFor="let feed of Feed;index as _id">
+<div class="feed"id="feed">
+          <div class="item" *ngFor="let feed of Feed;index as _id">
 
               <div class="media">
                 <div class="media-left">
@@ -17,7 +17,7 @@
                       <img class="content-image" src="{{feed.newphoto}}">
                   </div>
                   <div class="icons">
-                    <span ><i class="fa fa-comment comment icon"></i></span>
+                    <span ><i class="fa fa-comment comment icon"(click)="showModal()"></i></span>
                     <span ><i class="fa fa-retweet icon"></i></span>
                     <a (click)="onSelect(feed._id,feed)" id="like"><i  [ngClass]="{'selected':feed.isClicked==true}"class="fa fa-heart icon"></i></a>
                     <span><i class="fa fa-share-square icon"></i></span>
@@ -26,6 +26,52 @@
               </div>
             </div>
           </div>
-     
-        
-        
+    <div [ngClass]="{'show':display==true}"id="#commentModal"class="modal"tabindex="-1">
+       <div class="modal-dialog"style="z-index:1000">
+         <div class="modal-content">
+            <div class="modal-header">           
+              <button class="close pull-left"data-dismiss="modal"(click)="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="handler">
+              <a class="avatar avatar-online" href="javascript:void(0)">
+                <img  src="../assets/Images/image.jpeg">
+              </a>
+              <div >
+                 <div class="text-muted pull-right" >Amitabh</div>
+                  <div class="media-heading">@Amitabh12345</div>
+                  <div class="media">@music @dance @acting</div>
+                  <div class="content" >i am handsome,beautiful,helping to poor people</div>
+              </div>
+             </div> 
+             <div >
+             <a class="avatar avatar-online" href="javascript:void(0)">
+              <img  src="../assets/Images/image.jpeg">
+            </a>
+
+              <textarea placeholder="Tweet your reply ?" class="tweet-area" (keyup)="check($event)" [(ngModel)]="textArea"></textarea>
+             </div> 
+
+          </div>
+          <div class="modal-footer">
+            <div class="d-flex align-items-center buttons">
+              <input type="file" name="image" ng2FileSelect [uploader] = "uploader">
+              <a><i class="fa fa-picture-o icon2 mr-2" aria-hidden="true"></i></a>
+              <a><i class="fa fa-tasks icon2 mr-2" aria-hidden="true"></i></a>
+              <a><i class="fa fa-git-square icon2 special mr-2" aria-hidden="true"></i></a>
+              <a><i class="fa fa-smile-o icon2 special mr-2" aria-hidden="true"></i></a>
+              <button class="btn tweet ml-auto" >Reply</button>
+          </div>
+
+
+
+          </div>
+
+
+
+       </div>
+
+
+
+
+    </div>
