@@ -1,3 +1,4 @@
+import { EditProfileComponent } from '../myprofile/edit-profile/edit-profile.component';
 import { UserService } from './../services/user.service';
 import { FollowService } from "../services/follow.service";
 import { Component, OnInit, Injectable } from '@angular/core';
@@ -7,6 +8,11 @@ import { HttpResponse } from "@angular/common/http";
 import { IFollower, IUnfollow } from "../models/follow.interface";
 import { IUser, IJwtPayload } from "../models/user.interface";
 import { Router, ActivatedRoute, Params } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import {
+  NgbModal,
+  ModalDismissReasons
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-myprofile',
@@ -35,13 +41,16 @@ export class MyprofileComponent implements OnInit {
   follow: boolean;
   currentUser: IJwtPayload = ParseJwt.parseJwt();
   searchedUser: string;
+  closeResult: string;
 
   
   constructor(
     private userService: UserService,
     private router: Router,
     private followService : FollowService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    // public dialog: MatDialog,
+    private modalService: NgbModal,
     ) {}
   
 
@@ -89,8 +98,8 @@ export class MyprofileComponent implements OnInit {
 
    
    editProfileModal(){
-     this.router.navigate(['/editprofile']);
-   };
+    this.open(EditProfileComponent);
+   }
 
    loadSearchedUserDetails(searchedUser){
     this.userService.searchedUserDetails(searchedUser).subscribe(res => {
@@ -131,6 +140,29 @@ export class MyprofileComponent implements OnInit {
 
   toggleFollow() {
     this.follow = !this.follow;
+  }
+
+  open(content) {
+    this.modalService
+      .open(content)
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }

@@ -62,7 +62,7 @@ import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 
