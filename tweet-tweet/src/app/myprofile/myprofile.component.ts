@@ -1,7 +1,8 @@
 import { UserService } from './../services/user.service';
 import { FollowService } from "../services/follow.service";
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import ParseJwt from "../utils/parsejwt";
+import { Profile } from './../models/profile.interface';
 import { HttpResponse } from "@angular/common/http";
 import { IFollower, IUnfollow } from "../models/follow.interface";
 import { IUser, IJwtPayload } from "../models/user.interface";
@@ -12,6 +13,11 @@ import { Router, ActivatedRoute, Params } from "@angular/router";
   templateUrl: './myprofile.component.html',
   styleUrls: ['./myprofile.component.css']
 })
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class MyprofileComponent implements OnInit {
   user: IUser = {
     userhandle: "",
@@ -40,16 +46,12 @@ export class MyprofileComponent implements OnInit {
   
 
   ngOnInit() {
-    //debugger
-    console.log(this.currentUser)
-    let currenUserhandle = this.currentUser.userhandle;
-    this.router.navigate(["/profile/" + currenUserhandle]);  
+    let currentUserhandle = this.currentUser.userhandle;
     let currentUserId = this.currentUser._id;
     this.loadUserDetails(currentUserId);
     let current_route = this.router.url.split("/");
     let user = current_route[2];
-    console.log(user)
-    if(user!=currenUserhandle){
+    if(user!=currentUserhandle){
       this.router.navigate(["/profile/" + user]);
       this.searchedUser = user;
       this.loadSearchedUserDetails(this.searchedUser);
@@ -65,7 +67,6 @@ export class MyprofileComponent implements OnInit {
    checkRelation(checkObj){
      this.followService.getRelation(checkObj).subscribe(res => {
       this.follow = res.body.payload.isRelation;
-      console.log(this.follow);
      })
    }
   
@@ -80,7 +81,11 @@ export class MyprofileComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     });
-   }
+   }  
+
+   Profile: Profile[]=[
+    {image: '../../assets/Images/my.jpg',images: '../../assets/Images/my.jpg'}
+   ];
    
    editProfileModal(){
      this.router.navigate(['/editprofile']);
