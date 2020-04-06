@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'profile',
     children: [
       {
-        path: '', component: MyprofileComponent, pathMatch: 'full'
+        path: '', component: MyprofileComponent, 
       },
       {
         path: ':userhandle', component: MyprofileComponent
