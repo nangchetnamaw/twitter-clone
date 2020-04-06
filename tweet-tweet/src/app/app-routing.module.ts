@@ -19,12 +19,12 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreatePostComponent},
-  { path: 'profile', component: MyprofileComponent},
+  //{ path: 'profile', component: MyprofileComponent},
   { path: 'editprofile', component :EditProfileComponent},
   { path: 'profile',
     children: [
       {
-        path: '', component: MyprofileComponent, pathMatch: 'full'
+        path: '', component: MyprofileComponent, 
       },
       {
         path: ':userhandle', component: MyprofileComponent

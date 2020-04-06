@@ -107,7 +107,12 @@ class followController{
             });
         }
         else{
-            res.send("can follow")
+            res.send({
+                success: true,
+                payload: {
+                    isRelation: false
+                }
+            });
         }
     };
 }
