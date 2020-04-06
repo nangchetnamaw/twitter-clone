@@ -2,6 +2,7 @@ import { UserService } from './../services/user.service';
 import { FollowService } from "../services/follow.service";
 import { Component, OnInit, Injectable } from '@angular/core';
 import ParseJwt from "../utils/parsejwt";
+import { Profile } from './../models/profile.interface';
 import { HttpResponse } from "@angular/common/http";
 import { IFollower, IUnfollow } from "../models/follow.interface";
 import { IUser, IJwtPayload } from "../models/user.interface";
@@ -80,6 +81,11 @@ export class MyprofileComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     });
+   }  
+
+   Profile: Profile[]=[
+    {image: '../../assets/Images/my.jpg',images: '../../assets/Images/my.jpg'}
+   ];
    }
    
    editProfileModal(){
