@@ -63,6 +63,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     TrendsComponent,
     MyprofileComponent,
     FileSelectDirective,
-    EditProfileComponent
+    EditProfileComponent,
+    ComingSoonComponent
   ],
   imports: [
     NgbModule,

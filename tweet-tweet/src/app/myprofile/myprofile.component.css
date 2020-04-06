@@ -50,9 +50,28 @@
 }
 
 .edit:hover{
-  background-color: #EAFAF2;
+  background-color: #38A1F3;
   color: var(white);
   cursor: pointer;
+}
+
+#unfollow-edit:hover{
+  background-color: darkred;
+  color: var(white);
+  cursor: pointer;
+}
+
+.edit .unfollow { 
+  display: none;
+}
+
+.edit:hover .following {
+    display: none; 
+}
+
+
+.edit:hover .unfollow{
+    display: inline;
 }
 
 .user{

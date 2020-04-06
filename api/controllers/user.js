@@ -85,10 +85,25 @@ class UserController{
                 "message": "Unauthorized"
             });
         }
-    }
+        
+    };
 
+    async getProfileByUserhandle (req,res){
+        const userhandle=req.params.userhandle;
+        console.log(userhandle)
+        const user = await User.findOne({"userhandle":userhandle})
+        if(user!= null){
+            res.status(200).send(user);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        console.log(user);
+    };
+    
     async updateProfile(req,res) {
-        if(authenticate.authenticator()){
             try{
             let updateObj= req.body;
             const user= await User.update({_id: req.params.id},  updateObj);
@@ -100,14 +115,8 @@ class UserController{
             catch(error){
                 console.log(error);
             }
-        }
-        else{
-           
-                res.status(401).send({
-                "message": "Unauthorized"
-            });
         
-        }
+        
     }
 
     async search(req, res){
