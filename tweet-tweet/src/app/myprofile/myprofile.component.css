@@ -42,27 +42,47 @@
     position: relative;
     margin-top: 250px;
     font-size: medium;
-  padding: 0px 20px;
-  border-style: solid;
-  border-radius: 30px;
-  color:#38A1F3;
-  font-weight:bold;
-  transition: all .2s ease-out;
+    padding: 0px 20px;
+    border-style: solid;
+    border-radius: 30px;
+    background-color:#38A1F3;
+    color: white;
+    font-weight:bold;
+    transition: all .2s ease-out;
 }
 
 .edit:hover{
-  background-color: #EAFAF2;
+  background-color: #38A1F3;
   color: var(white);
   cursor: pointer;
+}
+
+#unfollow-edit:hover{
+  background-color: darkred;
+  color: var(white);
+  cursor: pointer;
+}
+
+.edit .unfollow { 
+  display: none;
+}
+
+.edit:hover .following {
+    display: none; 
+}
+
+
+.edit:hover .unfollow{
+    display: inline;
 }
 
 .user{
     position: relative;
     margin-top: 100px;
-  font-size: large;
-  font-weight: bolder;
-  color: black;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    font-size: large;
+    font-weight: bolder;
+    color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 #arrow-left{
     color: rgba(29,161,242,1.00);
