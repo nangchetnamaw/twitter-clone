@@ -1,6 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import ParseJwt from "../utils/parsejwt";
+import { Profile } from './../models/profile.interface';
 import { IUser, IJwtPayload } from "../models/user.interface";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
@@ -53,7 +54,10 @@ export class MyprofileComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     });
-   }   
+   }  
 
+   Profile: Profile[]=[
+    {image: '../../assets/Images/my.jpg',images: '../../assets/Images/my.jpg'}
+   ];
 
 }

@@ -8,7 +8,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
-import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreatePostComponent},
-  { path: 'profile', component: MyprofileComponent},
   { path: 'modal', component :EditProfileComponent},
   { path: 'profile',
     children: [

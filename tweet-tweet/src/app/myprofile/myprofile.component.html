@@ -1,18 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
-      <side-nav>
-      </side-nav>
-    </div>
-      <div class="col-md-6">
-    <div class="twitter-card"> 
+    <div class="col-md-6">
+    <div class="twitter-card" id="profile"*ngFor="let profile of Profile;index as _id"> 
     <span class="span">{{user.name}}</span>
     <div class="fa fa-arrow-left" id="arrow-left"></div>
     <div class="span-one">{{user.tweetCount}}&nbsp; tweets</div>
-    <div class="twitter">
+    <div>
+      <img class="twitter" src="{{profile.image}}">
     <div class="row-top">
       <div class="user-wrapper">
-         <span class="user-image"></span>
+         <span ><img class="user-image" src="{{profile.images}}"></span>
       </div>
        <span class="edit">Edit Profile</span>
     </div>
@@ -58,13 +55,7 @@
           </div>
           <div class="row-bottom"></div>
   </div>
-  <div class="col-md-12"><app-feed></app-feed></div>
   </div>
-  </div>
-  <div class="col-md-3">
-  <app-trends>
-  </app-trends>
-</div>
 </div>
 </div>
 
