@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'create', component: CreatePostComponent},
   { path: 'profile', component: MyprofileComponent},
-  { path: 'modal', component :EditProfileComponent},
+  { path: 'editprofile', component :EditProfileComponent},
   { path: 'profile',
     children: [
       {
