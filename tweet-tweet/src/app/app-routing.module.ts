@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FeedComponent } from './feed/feed.component';
@@ -9,8 +10,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
 const routes: Routes = [
   { path: "", component: WelcomePageComponent},
   { path: 'comingsoon', component: ComingSoonComponent },
@@ -20,7 +19,7 @@ const routes: Routes = [
   { path: 'create', component: CreatePostComponent},
   { path: 'modal', component :EditProfileComponent},
   //{ path: 'profile', component: MyprofileComponent},
-  { path: 'editprofile', component :EditProfileComponent},
+  // { path: 'editprofile', component :EditProfileComponent},
   { path: 'profile',
     children: [
       {
