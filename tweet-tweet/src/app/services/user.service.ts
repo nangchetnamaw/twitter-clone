@@ -63,7 +63,7 @@ export class UserService {
     }
     
     searchedUserDetails(userhandle: string): Observable<HttpResponse<any>>{
-        return this.http.get<any>(`${USER_DOMAIN}/profile/${userhandle}`, {...this.httpOptions, observe:'response'});
+        return this.http.get<any>(`${USER_DOMAIN}/redirectedProfile/${userhandle}`, {...this.httpOptions, observe:'response'});
     }
     
 

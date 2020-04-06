@@ -29,11 +29,11 @@ export class FollowService{
         return this.http.post<IUnfollow>(`${FOLLOW_API}/unfollow`, followObj, {...this.httpOptions, observe: 'response'});
     }
 
-    getRelation(followObj: IFollower): Observable<HttpResponse<any>>{
+    getRelation(checkObj: IFollower): Observable<HttpResponse<any>>{
         const params = new HttpParams()
-            .set('userhandle', followObj.userhandle)
-            .set('followerhandle', followObj.followerhandle);
+            .set('userhandle', checkObj.userhandle)
+            .set('followerhandle', checkObj.followerhandle);
 
-        return this.http.post<any>(`${FOLLOW_API}/relation`, followObj, { ...this.httpOptions, observe: 'response', params });
+        return this.http.post<any>(`${FOLLOW_API}/relation`, checkObj, { ...this.httpOptions, observe: 'response', params });
     }
 }

@@ -31,6 +31,7 @@ module.exports = (app) => {
     app.patch('/profile/:id', controller.user.updateProfile);
     app.post('/follow',controller.follow.follow);
     app.post('/unfollow',controller.follow.unfollow);
+    app.post('/relation',controller.follow.checkRelation);
     app.post('/comment',controller.comment.comment);
     app.post('/like',controller.likeTweet.updateLike);
     app.put('/unlike',controller.unlikeTweet.unlike);

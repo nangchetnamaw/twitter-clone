@@ -103,9 +103,7 @@ class UserController{
         console.log(user);
     };
     
-
     async updateProfile(req,res) {
-        if(authenticate.authenticator()){
             try{
             let updateObj= req.body;
             const user= await User.update({_id: req.params.id},  updateObj);
@@ -117,14 +115,8 @@ class UserController{
             catch(error){
                 console.log(error);
             }
-        }
-        else{
-           
-                res.status(401).send({
-                "message": "Unauthorized"
-            });
         
-        }
+        
     }
 
     async search(req, res){
