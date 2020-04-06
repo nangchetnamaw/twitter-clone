@@ -6,12 +6,11 @@ class explore{
     constructor(){ }
 
     async getExploreTweets(req,res){
-        console.log('inside function')
         var tweet= new twit(twitterConfig);
 
         var params = { 
         q: 'covid-19 since:2010-04-01 country:india', 
-        count: 2,
+        count: 10,
         lang: 'en',
         result_type: "mixed"
         };
@@ -19,7 +18,6 @@ class explore{
         await tweet.get('search/tweets', params , gotData)
 
         function gotData(err, data, response) {
-            console.log(data);
             res.send(data.statuses);
         
             //   //favourite the extracted tweets
