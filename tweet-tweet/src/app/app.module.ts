@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -64,6 +65,8 @@ import { TrendsComponent } from './trends/trends.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { ExploreComponent } from './explore/explore.component';
+
 
 
 
@@ -90,7 +93,9 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     MyprofileComponent,
     FileSelectDirective,
     EditProfileComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    ExploreComponent,
+    
   ],
   imports: [
     NgbModule,
@@ -146,7 +151,7 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     CommonModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-
+  bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }
