@@ -36,4 +36,12 @@ export class FollowService{
 
         return this.http.post<any>(`${FOLLOW_API}/relation`, checkObj, { ...this.httpOptions, observe: 'response', params });
     }
+
+    getFollowers(userhandle: string): Observable<HttpResponse<any>>{
+        return this.http.get<any>(`${FOLLOW_API}/followers/${userhandle}`,{...this.httpOptions, observe:'response'});
+    }
+
+    getFollowing(userhandle: string): Observable<HttpResponse<any>>{
+        return this.http.get<any>(`${FOLLOW_API}/following/${userhandle}`,{...this.httpOptions, observe:'response'});
+    }
 }

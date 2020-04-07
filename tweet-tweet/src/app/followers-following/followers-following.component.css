@@ -1,0 +1,30 @@
+#arrow-left{
+    color: rgba(29,161,242,1.00);
+    font-size: 2rem;
+    font-weight: lighter;
+    padding: 1rem;
+    margin-right: 30px;
+}
+
+.card-body{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-body-title:hover{
+    background-color: rgba(29,161,242,1.00);
+
+}
+
+.card-body-title{
+    font-size: 1.5rem;
+}
+
+.card{
+    width:45vw;
+}

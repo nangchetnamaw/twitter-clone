@@ -1,3 +1,4 @@
+import { FollowersFollowingComponent } from './followers-following/followers-following.component';
 import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
@@ -23,10 +24,15 @@ const routes: Routes = [
   { path: 'profile',
     children: [
       {
-        path: '', component: MyprofileComponent, 
+        path: ':userhandle', component: MyprofileComponent, 
       },
       {
-        path: ':userhandle', component: MyprofileComponent
+        path: ':userhandle',
+        children: [
+          {
+            path: ':followers', component: FollowersFollowingComponent
+          }
+        ]
       }
     ]
   },
