@@ -41,10 +41,16 @@
       <a class="tweet-main-btn btn">Tweet</a>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content class="main-content-big">
-    <div class="align-self-center bg-white p-3 navigation-header">
-      <span class="page-title">Home</span>
-    </div>
+  <mat-sidenav-content class="main-content-big mr-0">
+    <div class="d-flex">
+      <div class="align-self-center bg-white p-3 navigation-header">
+        <span class="page-title">Home</span>
+        <router-outlet></router-outlet>
+      </div>
+      <div class="ml-3">
+        <app-trends></app-trends>
+      </div>
+    </div>  
   </mat-sidenav-content>
 </mat-sidenav-container>
 
@@ -67,6 +73,11 @@
         <a mat-list-item class="small"><i class="fa fa-plus special" aria-hidden="true"></i></a>
       </mat-nav-list>
     </div>
+    <mat-sidenav-content class="main-content-big">
+      <div class="align-self-center bg-white p-3 navigation-header">
+        <span class="page-title">Home</span>
+      </div>
+    </mat-sidenav-content>
   </mat-sidenav>
 
   <mat-sidenav-content class="main-content">

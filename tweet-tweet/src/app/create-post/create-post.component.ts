@@ -21,13 +21,7 @@ export class CreatePostComponent implements OnInit {
   isVisible: Boolean = false;
   mentionIdArray = [];
   //searchedUsers: any = [];
-  searchedUsers = [
-                    {name: "Shubham", userhandle: "@shubham"}, 
-                    {name: "Ankit", userhandle: "@ankit"}, 
-                    {name: "Suraj", userhandle: "@suraj"}, 
-                    {name: "Faizan", userhandle: "@faizan"}, 
-                    {name: "Deepak", userhandle: "@deepak"}
-                  ];
+  searchedUsers = [];
 
   public uploader: FileUploader = new FileUploader({
     url: URL,

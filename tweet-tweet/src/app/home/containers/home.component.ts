@@ -7,31 +7,16 @@ import { HttpResponse } from '@angular/common/http';
     selector: 'app-home',
     styleUrls: ['./home.component.scss'],
     template: `
-   
-    <div class="container-fluid">
-       <div class="row">
-         <div class="col-md-3">
-           <side-nav></side-nav>
-          </div> 
-          <div class="col-md-6">
-            <app-create-post></app-create-post>
-            </div>
-         <div class="col-md-3">  
-           <app-trends></app-trends>
-         </div>
-       </div>
-     </div>
+      <app-create-post></app-create-post>
+      <app-feed></app-feed>
     `
 })
 export class HomeComponent implements OnInit{
     tweets: ITweet[];
     
-    constructor(private feedService: FeedService){}
+    constructor(){}
 
     ngOnInit(){
-        this.feedService.showFeed().subscribe((res: any) => {
-            this.tweets = res.payload.tweets;
-        }), (err) => { console.log(err) };
     }
     
 }

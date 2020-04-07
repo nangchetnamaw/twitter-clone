@@ -30,6 +30,7 @@ const userSchema = Schema({
         type: String,
         max:50,
         required:true,
+        default: "Delhi"
     },
 
     name: {

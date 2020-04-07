@@ -1,70 +1,54 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3">
-      <side-nav>
-      </side-nav>
-    </div>
-      <div class="col-md-6">
     <div class="twitter-card"> 
-    <span class="span">{{user.name}}</span>
-    <div class="fa fa-arrow-left" id="arrow-left"></div>
-    <div class="span-one">{{user.tweetCount}}&nbsp; tweets</div>
-    <div class="twitter">
-    <div class="row-top">
-      <div class="user-wrapper">
-         <span class="user-image"></span>
-      </div>
-       <span class="edit">Edit Profile</span>
-    </div>
-    <div class="user">{{user.name}}</div>
-    <div class="username">{{user.userhandle}}</div>
-    <p class="profile-bio">{{user.bio}}</p>
-    <div class="row-middle">
-      <span class="profile-location">
-        <i class="fa fa-map-marker"></i>
-        {{user.location}}
-      </span>
-      <span class="profile-website">
-        <i class="fa fa-link"></i>
-        <a href="https://www.instagram.com/anchal.hora/">https://www.instagram.com/{{user.userhandle}}/</a>
-      </span>
-      <span class="profile-calendar">
-        <i class="fa fa-calendar"></i>
-        {{user.joined}}
-      </span>
-    </div>
-    
-      <span class="count">
-        <b>{{user.followerCount}}</b> Followers
-      </span>
-    <span class="count">
-       <b>{{user.followingCount}}</b> Following
-
-        </span>
-  
-        <div class="row-bottom">
-            <small class="followers">
-            Tweets
-            </small>
-            <small class="followers">
-             Tweets & Replies
-            </small>
-             <small class="followers">
-              Media
-             </small>
-            <small class="followers">
-              Likes
-            </small>
+      <span class="span">{{user.name}}</span>
+      <div class="fa fa-arrow-left" id="arrow-left"></div>
+      <div class="span-one">{{user.tweetCount}}&nbsp; tweets</div>
+      <div class="twitter">
+        <div class="row-top">
+          <div class="user-wrapper">
+            <span class="user-image"></span>
           </div>
-          <div class="row-bottom"></div>
-  </div>
-  <div class="col-md-12"><app-feed></app-feed></div>
-  </div>
-  </div>
-  <div class="col-md-3">
-  <app-trends>
-  </app-trends>
-</div>
-</div>
-</div>
+          <span class="edit">Edit Profile</span>
+        </div>
+        <div class="user">{{user.name}}</div>
+        <div class="username">{{user.userhandle}}</div>
+        <p class="profile-bio">{{user.bio}}</p>
+        <div class="row-middle">
+          <span class="profile-location">
+            <i class="fa fa-map-marker"></i>
+            {{user.location}}
+          </span>
+          <span class="profile-website">
+            <i class="fa fa-link"></i>
+            <a href="https://www.instagram.com/anchal.hora/">https://www.instagram.com/{{user.userhandle}}/</a>
+          </span>
+          <span class="profile-calendar">
+            <i class="fa fa-calendar"></i>
+            {{user.joined}}
+          </span>
+        </div>
+  
+        <span class="count">
+          <b>{{user.followerCount}}</b> Followers
+        </span>
+        <span class="count">
+          <b>{{user.followingCount}}</b> Following
+        </span>
 
+        <div class="row-bottom">
+          <small class="followers">
+            Tweets
+          </small>
+          <small class="followers">
+            Tweets & Replies
+          </small>
+          <small class="followers">
+            Media
+          </small>
+          <small class="followers">
+            Likes
+          </small>
+        </div>
+      </div>
+    </div>
+</div>
