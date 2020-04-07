@@ -37,4 +37,6 @@ module.exports = (app) => {
     app.post('/like',controller.likeTweet.updateLike);
     app.put('/unlike',controller.unlikeTweet.unlike);
     app.get('/explore',controller.explore.getExploreTweets);
+    app.get('/followers/:userhandle',controller.follow.getFollowersData);
+    app.get('/following/:userhandle',controller.follow.getFollowingData);
 }

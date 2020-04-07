@@ -18,10 +18,10 @@ class Following{
         return await this.model.find(criteria);
     }
 
-    async getAll(criteria={}, coloumns={}){
-        let fields = 'profileImageURL email tweetCount followerCount followingCount name userhandle';
-        let followingData = await this.model.find(criteria, coloumns).populate('following', fields);
-        return (JSON.stringify(followingData));
+    async getFollowing(criteria={}, columns={}){
+        let fields = 'profileImageURL name userhandle bio ';
+        let followingData = await this.model.find(criteria, columns).populate('following', fields);
+        return (followingData);
     }
     
     async getRelation(criteria={}){

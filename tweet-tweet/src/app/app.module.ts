@@ -65,6 +65,7 @@ import { TrendsComponent } from './trends/trends.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { FollowersFollowingComponent } from './followers-following/followers-following.component';
 import { ExploreComponent } from './explore/explore.component';
 
 
@@ -94,6 +95,7 @@ import { ExploreComponent } from './explore/explore.component';
     FileSelectDirective,
     EditProfileComponent,
     ComingSoonComponent,
+    FollowersFollowingComponent
     ExploreComponent,
     
   ],

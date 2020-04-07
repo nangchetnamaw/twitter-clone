@@ -1,5 +1,6 @@
 import { ProfileComponent } from './profile/profile.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { FollowersFollowingComponent } from './followers-following/followers-following.component';
 import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
@@ -34,6 +35,26 @@ const routes: Routes = [
   { path: 'create', component: CreatePostComponent},
   { path: 'modal', component: EditProfileComponent},
   {path:"explore",component:ExploreComponent}
+  { path: 'profile',
+    children: [
+   {  path: '', component: MyprofileComponent, 
+      },
+      {
+        path: ':userhandle', component: MyprofileComponent, 
+      },
+      {
+        path: ':userhandle',
+        children: [
+          {
+            path: ':followers', component: FollowersFollowingComponent
+          }
+        ]
+      }
+    ]
+  },
+  {path: "trends", component: TrendsComponent},
+  {path:"feed", component:FeedComponent},
+
 ];
 
 @NgModule({

@@ -13,19 +13,22 @@
        <i class="fa fa-cog " id="settings" ></i>
      </div> 
   </div>
-   <div *ngFor="let feed of Feed">
+  <div class="card"style="margin-top:10px">
+    <h2 class="bold"style="text-align:left">What's happening</h2>
+  </div>
+   <div *ngFor="let tweet of data">
     <div class="card ">
       <div class="card-header tweets">
        <div>
-        <span> <h5>{{feed.title}}</h5> {{feed.text}}</span>
-         <h3>{{feed.name}}</h3>
+        <span> <h5 class="bold">{{tweet.user.screen_name}}</h5> {{tweet.created_at}}</span>
+         <h3 class="bold">{{tweet.user.name}}</h3>
         
        </div>
        <div>
-        <img class="thumbnail" src={{feed.photos}}>
+        <img class="thumbnail" src={{tweet.user.profile_image_url}}>
        </div>
         <div>
-         <h5 >{{feed.description}}</h5>
+         <h5 >{{tweet.text }}</h5>
         </div>
       </div>
     </div>
