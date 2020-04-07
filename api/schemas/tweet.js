@@ -46,7 +46,12 @@ const tweetSchema = Schema({
     type: Number,
     required: true,
     default: 0
-  }
+  },
+
+  retweetId: {
+    type: Schema.Types.ObjectId,
+    ref: "Tweet"
+  },
 
 });
  

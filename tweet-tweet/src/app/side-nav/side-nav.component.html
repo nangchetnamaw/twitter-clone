@@ -13,23 +13,23 @@
           <i class="fa fa-hashtag" aria-hidden="true"></i>
           <span>Explore</span>
         </a>
-        <a mat-list-item (click)="toggle($event)"class="for-hover">
+        <a mat-list-item (click)="toggle($event)" routerLink="/comingsoon" class="for-hover">
           <i class="fa fa-bell-o" aria-hidden="true"></i>
           <span>Notifications</span>
         </a>
-        <a mat-list-item (click)="toggle($event)"class="for-hover">
+        <a mat-list-item (click)="toggle($event)" routerLink="/comingsoon" class="for-hover">
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
           <span>Messages</span>
         </a>
-        <a mat-list-item (click)="toggle($event)" class="for-hover">
+        <a mat-list-item (click)="toggle($event)" routerLink="/comingsoon" class="for-hover">
           <i class="fa fa-bookmark-o" aria-hidden="true"></i>
           <span>Bookmarks</span>
         </a>
-        <a mat-list-item (click)="toggle($event)"class="for-hover">
+        <a mat-list-item (click)="toggle($event)" routerLink="/comingsoon" class="for-hover">
           <i class="fa fa-list-alt" aria-hidden="true"></i>
           <span>Lists</span>
         </a>
-        <a mat-list-item class="for-hover"(click)="toggle($event)" routerLink="/profile">
+        <a mat-list-item class="for-hover"(click)="toggle($event)" routerLink="/profile/{{currentUserhandle}}">
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>Profile</span>
         </a>

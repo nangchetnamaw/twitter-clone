@@ -1,5 +1,7 @@
 import { ProfileComponent } from './profile/profile.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -10,11 +12,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
+import{ExploreComponent} from './explore/explore.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: "welcome", component: WelcomePageComponent},
   { path: "login", component: LoginPageComponent },
+  { path: 'comingsoon', component: ComingSoonComponent },
   { path: "signup", component: SignUpComponent },
   { path: "", component: SideNavComponent, children: [
     {
@@ -28,17 +32,8 @@ const routes: Routes = [
     }
   ]},
   { path: 'create', component: CreatePostComponent},
-  { path: 'modal', component: EditProfileComponent}
-  // { path: 'profile',
-  //   children: [
-  //     {
-  //       path: '', component: MyprofileComponent, pathMatch: 'full'
-  //     },
-  //     {
-  //       path: ':userhandle', component: MyprofileComponent
-  //     }
-  //   ]
-  // } 
+  { path: 'modal', component: EditProfileComponent},
+  {path:"explore",component:ExploreComponent}
 ];
 
 @NgModule({

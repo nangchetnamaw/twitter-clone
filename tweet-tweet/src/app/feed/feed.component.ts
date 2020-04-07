@@ -1,14 +1,17 @@
 import { FeedService } from 'src/app/services/feed.service';
+import { MatDialogModule } from '@angular/material/dialog';
 import { JsonDecoderService } from './../services/json-decoder.service';
-import { Component, OnInit,HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit,HostListener, ElementRef,Type } from '@angular/core';
 import { Feed } from './../models/feed.interface';
 import { likeService } from'../services/like.service';
 import { ILike } from '../models/like.interface';
+import{MatDialog,MatDialogConfig} from'@angular/material'
+
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  styleUrls: ['./feed.component.css',]
 })
 
 export class FeedComponent implements OnInit {
@@ -20,11 +23,13 @@ export class FeedComponent implements OnInit {
   message: any;
   tweets: any = [];
   customObject = [];
+  closeResult: string;
 
   constructor(
     private eRef: ElementRef,
     private likeService:likeService,
     private JsonDecoderService:JsonDecoderService,
+    private dialog: MatDialog,
     private feedService: FeedService ) { }
 
   ngOnInit() {   
@@ -75,7 +80,19 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  Feed: Feed[] = [
+display:boolean=false;
+showModal(){
+    this.display=true;
+    document.getElementById("feed").style.opacity="0.5";
+    document.body.setAttribute('style', 'overflow: hidden;'); 
+}
+closeModal(){
+  this.display=false;
+ document.getElementById("feed").style.opacity="1";
+  document.body.setAttribute('style', 'overflow: scroll;');
+}
+
+  Feed: Feed[]=[
     {_id:"1",photos: '../../assets/Images/image.jpeg',text:'.Just Now',title:'Anchal',name:'@anchal_hora',description:'A flower, sometimes known as a bloom or blossom. Every flower paint contrasting colors along the ground and bring joy.',newphoto:'../../assets/Images/myimage.jpg',isClicked:false},
     {_id:"2",photos: '../../assets/Images/myimage.jpg',text:'.38 minutes ago',title:'Chetna',name:'@chetna',description:'Mama was my greatest teacher, a teacher of compassion, love and fearlessness. If love is sweet as a flower, then my mother is that sweet flower of love.',newphoto:'../../assets/Images/unnamed.jpg',isClicked:false},
     {_id:"3",photos: '../../assets/Images/nice.jpg',text:'.21 minutes ago',title:'shubham',name:'@shubham',description:'Mama was my greatest teacher, a teacher of compassion, love and fearlessness. If love is sweet as a flower, then my mother is that sweet flower of love.',newphoto:'../../assets/Images/nice.jpg',isClicked:false},
@@ -88,4 +105,10 @@ export class FeedComponent implements OnInit {
     {message: "This trend is a duplicate"},
     {message: "This trend is low quality"},
   ]
-}
+
+  comment:any={
+     user:"amitabh",
+     tweet:"corona has locked us in our homes,but it is a great time for learning and self introspection",
+     comment:"very true said amitabh"
+    }
+  }
