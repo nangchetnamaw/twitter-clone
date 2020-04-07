@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -68,6 +69,7 @@ import { ExploreComponent } from './explore/explore.component';
 
 
 
+
 @NgModule({
   declarations: [
     SignUpComponent,
@@ -92,7 +94,8 @@ import { ExploreComponent } from './explore/explore.component';
     FileSelectDirective,
     EditProfileComponent,
     ComingSoonComponent,
-    ExploreComponent
+    ExploreComponent,
+    
   ],
   imports: [
     NgbModule,
@@ -148,7 +151,7 @@ import { ExploreComponent } from './explore/explore.component';
     CommonModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-
+  bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }

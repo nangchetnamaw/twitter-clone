@@ -4,13 +4,16 @@
 .card{
     width:42%;
     max-height:150px;
-   
+    
 }
 #settings:hover{
     background-color:#ecf7fc;
    padding:10px;
    border-radius:10px;
      
+}
+.card-header{
+    background-color: white;
 }
 
 .input-icons { 
@@ -84,11 +87,10 @@ h5{
       background-size: cover;
       float:right;
       border-radius:50%;
-     
+     margin-top:-20px;
 
   }
   
   .tweets:hover{
-
-    background-color: rgb(230, 236, 240);
-}
+    background-color:#ecf7fc;
+  }

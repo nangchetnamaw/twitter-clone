@@ -14,15 +14,15 @@
      </div> 
   </div>
    <div *ngFor="let feed of Feed">
-    <div class="card tweets">
-      <div class="card-header">
+    <div class="card ">
+      <div class="card-header tweets">
        <div>
-         <h5>{{feed.title}}</h5>
+        <span> <h5>{{feed.title}}</h5> {{feed.text}}</span>
          <h3>{{feed.name}}</h3>
+        
        </div>
        <div>
-         <h5 style="float:right">{{feed.text}}</h5>
-         <img class="thumbnail" src={{feed.photos}}>
+        <img class="thumbnail" src={{feed.photos}}>
        </div>
         <div>
          <h5 >{{feed.description}}</h5>

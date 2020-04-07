@@ -6,7 +6,8 @@ import{likeService} from'../services/like.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ILike } from '../models/like.interface';
 import{MatDialog,MatDialogConfig} from'@angular/material'
-//import{ModalComponent} from '../modal/modal.component'
+
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
@@ -19,10 +20,11 @@ export class FeedComponent implements OnInit {
   constructor(private eRef: ElementRef,
     private likeService:likeService,
     private JsonDecoderService:JsonDecoderService,
-    private dialog: MatDialog,
-    
-    ) { }
+    private dialog: MatDialog
    
+    ) { }
+    closeResult: string;
+
 
   ngOnInit() {   
   }
@@ -70,15 +72,18 @@ export class FeedComponent implements OnInit {
 }
 display:boolean=false;
 showModal(){
-  this.display=true;
+   this.display=true;
  document.getElementById("feed").style.opacity="0.5";
- document.body.setAttribute('style', 'overflow: hidden;');
+ document.body.setAttribute('style', 'overflow: hidden;'); 
+
 }
 closeModal(){
   this.display=false;
  document.getElementById("feed").style.opacity="1";
   document.body.setAttribute('style', 'overflow: scroll;');
 }
+
+
   
 
   Feed: Feed[]=[
