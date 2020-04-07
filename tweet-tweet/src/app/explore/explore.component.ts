@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{Feed} from '../models/feed.interface'
+import{ExploreService} from'../services/explore.service'
+import{ITweet} from'../models/tweet.interface'
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -7,7 +9,7 @@ import{Feed} from '../models/feed.interface'
 })
 export class ExploreComponent implements OnInit {
   clicked:boolean=false;
-  constructor() { }
+  constructor(private exploreService:ExploreService) { }
   change(){
    this.clicked=!this.clicked;
 
@@ -18,7 +20,17 @@ export class ExploreComponent implements OnInit {
     {_id:"3",photos: '../../assets/Images/nice.jpg',text:'.21 minutes ago',title:'shubham',name:'@shubham',description:'Mama was my greatest teacher, a teacher of compassion, love and fearlessness. If love is sweet as a flower, then my mother is that sweet flower of love.',newphoto:'../../assets/Images/nice.jpg',isClicked:false},
     {_id:"4",photos: '../../assets/Images/nice.jpg',text:'.10 seconds ago',title:'kris',name:'@kris',description:'Mama was my greatest teacher, a teacher of compassion, love and fearlessness. If love is sweet as a flower, then my mother is that sweet flower of love.',newphoto:'../../assets/Images/nice.jpg',isClicked:false}
 ];
+statuses:ITweet[];
+data:any;
   ngOnInit() {
+    let obj=this.exploreService.showExploreTweets().subscribe(res=>{
+       
+   
+      this.data=res;
+       console.log(this.data);
+
+    })
+    console.log(obj);
   }
 
 }
