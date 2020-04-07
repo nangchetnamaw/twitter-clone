@@ -5,7 +5,7 @@ export interface ICount{
 }
 
 export interface IUser {
-  location?: string;
+  location ?: string;
   dob: string;
   userhandle: string;
   email: string;
