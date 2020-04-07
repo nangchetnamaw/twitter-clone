@@ -4,7 +4,6 @@ const cors = require('cors');
 const config = require('config');
 const databaseConfig = require('./database/config');
 const bodyParser=require('body-parser');
-// const authenticate = require('./middlewares/authentication');
 
 if(!config.get('jwtPrivateKey')){
     console.log(config.get('jwtPrivateKey'));

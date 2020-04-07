@@ -10,12 +10,12 @@ const follow = require('./follow');
 const comment = require('./comment');
 
 module.exports = {
-    composeTweet: composeTweet,
+    tweet: composeTweet,
     profile: profile,
-    unfollow:unfollow,
+    unfollow: unfollow,
     likeTweet: likeTweet,
-    unlikeTweet:unlikeTweet,
-    retweet:retweet,
+    unlikeTweet: unlikeTweet,
+    retweet: retweet,
     user: user,
     follow:follow,
     comment: comment,

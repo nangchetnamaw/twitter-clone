@@ -6,7 +6,7 @@ class Tweet{
         this.model = mongoose.model('Tweet', tweetSchema);
     }
     async get(criteria={}){
-        return this.model.find(criteria);
+        return this.model.find(criteria).populate("user", "name userhandle profileImageURL");
     }
     async save(newTweet){
         return this.model.create(newTweet);

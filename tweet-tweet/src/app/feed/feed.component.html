@@ -1,31 +1,33 @@
-<div class="feed"id="feed">
-          <div class="item" *ngFor="let feed of Feed;index as _id">
-
-              <div class="media">
-                <div class="media-left">
-                  <a class="avatar avatar-online" href="javascript:void(0)">
-                    <img  src="{{feed.photos}}">
-                    <i></i>
-                  </a>
-                </div>
-                <div class="media-body" >
-                  <div class="text-muted pull-right" >{{feed.text}}</div>
-                  <div class="media-heading">{{feed.title}}</div>
-                  <div class="media">{{feed.name}}</div>
-                  <div class="content" >{{feed.description}}</div>
-                  <div class="image">
-                      <img class="content-image" src="{{feed.newphoto}}">
-                  </div>
-                  <div class="icons">
-                    <span ><i class="fa fa-comment comment icon"(click)="showModal()"></i></span>
-                    <span ><i class="fa fa-retweet icon"></i></span>
-                    <a (click)="onSelect(feed._id,feed)" id="like"><i  [ngClass]="{'selected':feed.isClicked==true}"class="fa fa-heart icon"></i></a>
-                    <span><i class="fa fa-share-square icon"></i></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<div>
+  <div class="d-flex" *ngFor="let tweet of tweets">
+    <img src="../../assets/user-logo.png" class="img-icon">
+    <div>
+      <p><b>{{tweet.user.name}}</b> {{tweet.user.userhandle}} . 7h</p>
+      <p>{{tweet.content.text}}</p>
+      <div *ngIf="true">
+        <img src="../../assets/Images/nice.jpg">
+      </div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <i class="fa fa-comment-o" (click)="showModal()" aria-hidden="true"></i>
+          <span>572</span>
+        </div>
+        <div>
+          <i class="fa fa-retweet" aria-hidden="true"></i>
+          <span>572</span>
+        </div>
+        <div  (click)="onSelect(feed._id,feed)">
+          <i class="fa fa-heart-o" [ngClass]="{'selected':feed.isClicked==true}" aria-hidden="true"></i>
+          <span>572</span>
+        </div>
+        <div>
+          <i class="fa fa-upload" aria-hidden="true"></i>
+          <span>572</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     <!--Modal for comment-->
     <div [ngClass]="{'show':display==true}"id="#commentModal"class="modal"tabindex="-1">
        <div class="modal-dialog">

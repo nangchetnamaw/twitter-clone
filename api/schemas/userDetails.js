@@ -28,7 +28,9 @@ const userSchema = Schema({
     },
     location:{
         type: String,
-        max:50
+        max:50,
+        required:true,
+        default: "Delhi"
     },
 
     name: {
