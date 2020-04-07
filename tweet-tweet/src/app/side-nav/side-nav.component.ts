@@ -34,12 +34,9 @@ export class SideNavComponent implements OnInit{
   }
   toggle(event:any){
        this.isClicked=!this.isClicked;
-      
        this.render.setElementClass(event.target,"selected",true);
-
        this.myprofileComponent.loadSearchedUserDetails(this.currentUserhandle);
-
-  }
+      }
   ngOnInit():void{
     
   }

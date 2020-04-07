@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -65,6 +66,8 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
 import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { FollowersFollowingComponent } from './followers-following/followers-following.component';
+import { ExploreComponent } from './explore/explore.component';
+
 
 
 
@@ -93,6 +96,8 @@ import { FollowersFollowingComponent } from './followers-following/followers-fol
     EditProfileComponent,
     ComingSoonComponent,
     FollowersFollowingComponent
+    ExploreComponent,
+    
   ],
   imports: [
     NgbModule,
@@ -148,7 +153,7 @@ import { FollowersFollowingComponent } from './followers-following/followers-fol
     CommonModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-
+  bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }

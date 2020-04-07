@@ -76,7 +76,7 @@ class UserController{
 
     async getProfile (req, res) {
         const _id= req.params.id;
-        const user = await User.findById({"_id":_id})
+        const user = await User.findById({"_id":_id}).select('-password');
         if(user!=null){
             res.status(200).send(user);
         }
@@ -91,7 +91,7 @@ class UserController{
     async getProfileByUserhandle (req,res){
         const userhandle=req.params.userhandle;
         console.log(userhandle)
-        const user = await User.findOne({"userhandle":userhandle})
+        const user = await User.findOne({"userhandle":userhandle}).select('-password');
         if(user!= null){
             res.status(200).send(user);
         }
@@ -121,7 +121,7 @@ class UserController{
 
     async search(req, res){
         let queryObject = { $regex: req.params.userhandle, $options: 'i'};
-        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1});
+        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1}).select('-password');
         res.status(200).send(employees);
     }
 }

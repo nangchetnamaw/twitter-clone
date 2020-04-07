@@ -7,7 +7,7 @@ class User{
         this.model = mongoose.model('User', userSchema)
     }
     async get(criteria = {}, columns = {}){
-        return this.model.find(criteria, columns);
+        return this.model.find(criteria, columns).select('-password');
     }
     async update(criteria={}, updatedObj){
         return this.model.updateOne(criteria, updatedObj)
@@ -22,7 +22,7 @@ class User{
     }
 
     async getUsers(criteria={}){
-        return this.model.find(criteria, {"name":1, "userhandle":1, _id:0})
+        return this.model.find(criteria, {"name":1, "userhandle":1, _id:0}).select('-password');
     }
 }
 
