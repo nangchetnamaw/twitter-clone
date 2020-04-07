@@ -71,19 +71,13 @@ export class FeedComponent implements OnInit {
 display:boolean=false;
 showModal(){
   this.display=true;
- 
  document.getElementById("feed").style.opacity="0.5";
- 
- console.log("deepsy");
  document.body.setAttribute('style', 'overflow: hidden;');
- 
 }
 closeModal(){
   this.display=false;
- 
  document.getElementById("feed").style.opacity="1";
- document.body.setAttribute('style', 'overflow: scroll;');
- 
+  document.body.setAttribute('style', 'overflow: scroll;');
 }
   
 
@@ -100,6 +94,10 @@ closeModal(){
     {message: "This trend is low quality"},
   ]
 
-
+  comment:any={
+     user:"amitabh",
+     tweet:"corona has locked us in our homes,but it is a great time for learning and self introspection",
+     comment:"very true said amitabh"
+    }
   }
   

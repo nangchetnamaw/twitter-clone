@@ -1,0 +1,32 @@
+
+  <div class="card">
+    <div class="input-icons"> 
+      <i class="fa fa-search icon"></i> 
+      <input class="input-field" type="search" placeholder="Search Twitter"> 
+     </div>
+     <div class="headings">
+       <a class="badge">For You</a>
+       <span class="badge">News</span>
+       <span class="badge">Sports</span>
+       <span class="badge">Fun </span>
+       <span class="badge">Entertainment</span>
+       <i class="fa fa-cog " id="settings" ></i>
+     </div> 
+  </div>
+   <div *ngFor="let feed of Feed">
+    <div class="card tweets">
+      <div class="card-header">
+       <div>
+         <h5>{{feed.title}}</h5>
+         <h3>{{feed.name}}</h3>
+       </div>
+       <div>
+         <h5 style="float:right">{{feed.text}}</h5>
+         <img class="thumbnail" src={{feed.photos}}>
+       </div>
+        <div>
+         <h5 >{{feed.description}}</h5>
+        </div>
+      </div>
+    </div>
+ 
