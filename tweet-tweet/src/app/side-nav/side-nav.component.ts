@@ -40,7 +40,7 @@ export class SideNavComponent implements OnInit{
    
   }
   showModal(){
-
+   
     this.open(TweetModalComponent);
   }
     toggle(event:any){
@@ -48,9 +48,7 @@ export class SideNavComponent implements OnInit{
        this.render.setElementClass(event.target,"selected",true);
        this.myprofileComponent.loadSearchedUserDetails(this.currentUserhandle);
       }
-  ngOnInit():void{
-    
-  }
+ 
   open(content) {
     this.modalService
       .open(content)
@@ -73,6 +71,8 @@ export class SideNavComponent implements OnInit{
       return `with: ${reason}`;
     }
   }
-  
+  ngOnInit():void{
+    
+  }
 }
 
