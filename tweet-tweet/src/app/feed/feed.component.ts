@@ -1,6 +1,7 @@
+import { ITweet } from 'src/app/models/tweet.interface';
 import { FeedService } from 'src/app/services/feed.service';
 import { JsonDecoderService } from './../services/json-decoder.service';
-import { Component, OnInit,HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, HostListener, ElementRef, SimpleChange, SimpleChanges } from '@angular/core';
 import { Feed } from './../models/feed.interface';
 import { likeService } from'../services/like.service';
 import { ILike } from '../models/like.interface';
@@ -18,7 +19,7 @@ export class FeedComponent implements OnInit {
   icon: any;
   likeObj: ILike;
   message: any;
-  tweets: any = [];
+  tweets: Array<ITweet> = [];
   customObject = [];
 
   constructor(
@@ -27,18 +28,10 @@ export class FeedComponent implements OnInit {
     private JsonDecoderService:JsonDecoderService,
     private feedService: FeedService ) { }
 
-  ngOnInit() {   
+  ngOnInit() {
+    console.log('Inside ngOnInit');   
     this.feedService.showTweets().subscribe(res => {
-      this.tweets = res.body;
-      console.log(this.tweets);
-    });
-  }
-
-  loadData(){
-    this.feedService.showTweets().subscribe(res => {
-      console.log(res.body);
-      this.tweets = res.body;
-      console.log(this.tweets);
+      this.tweets = res;
     });
   }
 

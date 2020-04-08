@@ -1,8 +1,9 @@
+import { HttpInterceptorService } from './http-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { AppComponent } from './app.component';
@@ -89,6 +90,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     FileSelectDirective,
     EditProfileComponent
   ],
+
   imports: [
     NgbModule,
     BrowserModule,
@@ -97,7 +99,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     MatCardModule,
     HttpClientModule,
     FormsModule,
-
     //Materail UI Modules
     MatAutocompleteModule,
     MatBadgeModule,
@@ -142,7 +143,15 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     MatListModule,
     CommonModule
   ],
-  providers: [],
+
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

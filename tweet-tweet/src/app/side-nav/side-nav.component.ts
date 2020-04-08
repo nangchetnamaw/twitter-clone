@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../services/auth-service.service';
 import { element } from 'protractor';
 import { Component, OnInit, Renderer, ElementRef, Renderer2 } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -11,13 +12,15 @@ import{Router}from '@angular/router'
 })
 export class SideNavComponent implements OnInit{
    isClicked:boolean = false;
+   userhandle: string;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router:Router,
     private render:Renderer,
     private ren:Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    private auth: AuthServiceService
    ) {}
 
   title: string = "Home"
@@ -26,14 +29,15 @@ export class SideNavComponent implements OnInit{
     this.router.navigate(["/login"])
    
   }
+
   toggle(event:any){
        this.isClicked=!this.isClicked;
       
       this.render.setElementClass(event.target,"selected",true);
 
   }
-  ngOnInit():void{
-    
 
+  ngOnInit(){
+    this.userhandle = this.auth.decodeToken().userhandle;
   }
 }

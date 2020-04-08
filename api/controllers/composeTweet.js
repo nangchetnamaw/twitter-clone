@@ -7,7 +7,7 @@ class tweets {
 
     async composeTweet(req, res){
         if (!req.file) {
-            return res.status(200).send({
+            return res.status(501).send({
                 success: false
             });
         } 

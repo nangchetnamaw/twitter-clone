@@ -24,11 +24,19 @@ const routes: Routes = [
       path: "home", component: HomeComponent
     },
     {
-      path: "profile", component: ProfileComponent
+      path: "profile", component: ProfileComponent, children: [
+        {
+          path: "", redirectTo: ":userhandle", pathMatch: "full"
+        },
+        {
+          path: ":userhandle", component: MyprofileComponent
+        }
+      ]
     }
   ]},
   { path: 'create', component: CreatePostComponent},
-  { path: 'modal', component: EditProfileComponent}
+  { path: 'modal', component: EditProfileComponent},
+  { path: 'temp', component: FeedComponent },
   // { path: 'profile',
   //   children: [
   //     {
@@ -38,7 +46,7 @@ const routes: Routes = [
   //       path: ':userhandle', component: MyprofileComponent
   //     }
   //   ]
-  // } 
+  // }
 ];
 
 @NgModule({

@@ -39,3 +39,16 @@ img{
     cursor: pointer;
     border-radius: 30px;
 }
+
+.main-container{
+    border-top: black;
+    border-bottom: black;
+    border-top-width: 1rem;
+    border-bottom-width: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.main-container:hover{
+    background-color: #F5F8FA;
+}
