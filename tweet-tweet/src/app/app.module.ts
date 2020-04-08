@@ -67,7 +67,7 @@ import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.comp
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { FollowersFollowingComponent } from './followers-following/followers-following.component';
 import { ExploreComponent } from './explore/explore.component';
-
+import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.component';
 
 
 
@@ -95,9 +95,9 @@ import { ExploreComponent } from './explore/explore.component';
     FileSelectDirective,
     EditProfileComponent,
     ComingSoonComponent,
-    FollowersFollowingComponent
+    FollowersFollowingComponent,
     ExploreComponent,
-    
+    TweetModalComponent
   ],
   imports: [
     NgbModule,
