@@ -67,6 +67,7 @@ import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.comp
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { FollowersFollowingComponent } from './followers-following/followers-following.component';
 import { ExploreComponent } from './explore/explore.component';
+import { RetweetComponent } from './feed/retweet/retweet.component';
 
 
 
@@ -95,8 +96,9 @@ import { ExploreComponent } from './explore/explore.component';
     FileSelectDirective,
     EditProfileComponent,
     ComingSoonComponent,
-    FollowersFollowingComponent
+    FollowersFollowingComponent,
     ExploreComponent,
+    RetweetComponent
     
   ],
   imports: [
