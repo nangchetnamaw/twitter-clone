@@ -65,6 +65,7 @@ export class SideNavComponent implements OnInit{
       .open(content)
       .result.then(
         result => {
+        
           this.closeResult = `Closed with: ${result}`;
         },
         reason => {

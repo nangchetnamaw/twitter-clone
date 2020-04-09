@@ -5,7 +5,6 @@ import {
   NgbModal,
   ModalDismissReasons
 } from "@ng-bootstrap/ng-bootstrap";
-import{Router, NavigationStart} from'@angular/router'
 import { UserService } from '../../services/user.service';
 const URL = 'http://localhost:3000/tweet';
 @Component({
@@ -21,14 +20,7 @@ export class TweetModalComponent implements OnInit {
     authToken: localStorage.getItem("Authorization").substring(7)
   });
   constructor(private userService: UserService,
-    public activeModal: NgbActiveModal,
-    private router: Router) { 
-     
-       
-    
-     
-    
-}
+    public activeModal: NgbActiveModal,) { }
   
   flag: number = 0;
   
@@ -96,7 +88,7 @@ export class TweetModalComponent implements OnInit {
       return "by pressing ESC";
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return "by clicking on a backdrop";
-    }else {
+    } else {
       return `with: ${reason}`;
     }
   }
