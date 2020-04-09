@@ -5,7 +5,7 @@ import { Component, OnInit, Renderer, ElementRef, Renderer2 } from '@angular/cor
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import{Router}from '@angular/router'
+import{Router,NavigationEnd}from '@angular/router'
 import ParseJwt from "../utils/parsejwt";
 import { IJwtPayload} from "../models/user.interface";
 import {
@@ -30,7 +30,18 @@ export class SideNavComponent implements OnInit{
     private el: ElementRef,
     private myprofileComponent: MyprofileComponent,
     private modalService: NgbModal
-   ) {}
+   ) {
+    this.router.events.subscribe(event => {
+
+      if (event instanceof NavigationEnd) {
+
+        // close all open modals
+        this.modalService.dismissAll();        
+
+      }
+
+    });
+   }
 
   title: string = "Home"
   closeResult: string;
