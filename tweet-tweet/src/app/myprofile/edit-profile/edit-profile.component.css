@@ -1,8 +1,9 @@
 
 .modal-content{
-    border-radius: 15px;
+    border-radius: 3.3rem;
     border:none;
     /* min-width: 600px !important; */
+    width:130%;
 }
 
 .modal-dialog{
