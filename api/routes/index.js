@@ -23,7 +23,7 @@ let upload = multer({storage: storage});
 module.exports = (app) => {
 
     app.post('/tweet', upload.single('image'), controller.tweet.composeTweet);
-    app.get('/tweet', controller.tweet.allTweets);
+    app.get('/tweet',authenticator, controller.tweet.allTweets);
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
     app.get('/user/:userhandle',authenticator, controller.user.search);
