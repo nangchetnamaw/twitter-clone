@@ -6,44 +6,51 @@ class tweets {
     }
 
     async composeTweet(req, res){
-        if (!req.file) {
-            return res.status(200).send({
-                success: false
-            });
-        } 
-        else {
+        // if (!req.file) {
+        //     return res.status(200).send({
+        //         success: false
+        //     });
+        // } 
+        // else {
+        try{
             let _id = (model.tokenDecoder(req.headers.authorization))._id;
-            let tagsArray = [];
-            let mentionArray = [];
-            let countTag = 0, countMention = 0;
-            let textArray = (req.body.text).split(" ");
-            for(let index = 0; index < textArray.length; index++){
-                if(textArray[index].charAt(0) == "@"){
-                    mentionArray[countMention] = textArray[index];
-                    countMention++;
-                }
-                else if(textArray[index].charAt(0) == "#"){
-                    tagsArray[countTag] = textArray[index];
-                    countTag++;
-                }
-            }
+            let retweetId = req.body.retweetId;
+            // let tagsArray = [];
+            // let mentionArray = [];
+            // let countTag = 0, countMention = 0;
+            // let textArray = (req.body.text).split(" ");
+            // for(let index = 0; index < textArray.length; index++){
+            //     if(textArray[index].charAt(0) == "@"){
+            //         mentionArray[countMention] = textArray[index];
+            //         countMention++;
+            //     }
+            //     else if(textArray[index].charAt(0) == "#"){
+            //         tagsArray[countTag] = textArray[index];
+            //         countTag++;
+            //     }
+            // }
             let tweetObject = {
                 "user" : _id,
                 "content" : {
-                    "text" : req.body.text,
-                    "imageURL" : req.file.path,
-                    "tags": tagsArray,
-                    "mentions": (req.body.mentions).split(",")
+                    "text" : req.body.content.text,
+                    // "imageURL" : req.file.path,
+                    // "tags": tagsArray,
+                    // "mentions": (req.body.mentions).split(",")
                 },
-                "date" : Date.now()
+                "date" : Date.now(),
+                "retweetId": retweetId
             };
-            var result = await model.tweetModel.save(tweetObject);
-            try{
-                return res.status(200).send("Uploaded");
-            }catch(err){
-                return res.status(501).send("Some Error Occured");
+                var result = await model.tweetModel.save(tweetObject);
+
+                if(retweetId){
+                    await model.tweetModel.update({_id:retweetId},{$inc: { "retweetCount": 1 }})
+                }
+                res.status(200).send(result);
+
             }
-        }
+            catch(err){
+                res.status(400).send(err);
+            }
     
     }
 
