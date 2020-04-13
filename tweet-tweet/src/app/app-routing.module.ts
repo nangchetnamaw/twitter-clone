@@ -1,4 +1,7 @@
+
+import { RetweetComponent } from './feed/retweet/retweet.component';
 import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.component';
+
 import { ProfileComponent } from './profile/profile.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { FollowersFollowingComponent } from './followers-following/followers-following.component';
@@ -18,6 +21,7 @@ import{ExploreComponent} from './explore/explore.component';
 
 
 const routes: Routes = [
+  { path: "retweet", component: RetweetComponent},
   { path: "welcome", component: WelcomePageComponent},
   { path: "login", component: LoginPageComponent },
   { path: 'comingsoon', component: ComingSoonComponent },
