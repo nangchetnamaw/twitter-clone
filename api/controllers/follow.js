@@ -120,7 +120,6 @@ class followController{
     async getFollowersData(req,res){
         const currentUser = tokenDecoder(req.headers.authorization);
         const currentUserId = currentUser._id;
-        console.log(currentUser, currentUserId)
         const userhandle = req.params.userhandle;
         const userId = await User.findOne({userhandle: userhandle}).select('_id');
         let followersList = await follower.getFollowers({user: userId});
