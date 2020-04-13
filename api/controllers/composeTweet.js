@@ -46,6 +46,19 @@ class tweets {
         }
     
     }
+
+    async allTweets(req, res){
+        let tweets = await model.tweetModel.get();
+        console.log(tweets);
+        if(tweets){
+            res.status(200).send(tweets);
+        }
+        else{
+            res.status(501).send({
+                "message": "Some Error Occured"
+            });
+        }
+    }
 }
 
 module.exports = new tweets();

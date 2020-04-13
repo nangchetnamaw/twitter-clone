@@ -1,44 +1,36 @@
-import { UserService } from './../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { IContent } from '../models/tweet.interface';
-import { ThrowStmt } from '@angular/compiler';
-
+import {
+  NgbActiveModal,
+  NgbModal,
+  ModalDismissReasons
+} from "@ng-bootstrap/ng-bootstrap";
+import { UserService } from '../../services/user.service';
 const URL = 'http://localhost:3000/tweet';
-
 @Component({
-  selector: 'app-create-post',
-  templateUrl: './create-post.component.html',
-  styleUrls: ['./create-post.component.css']
+  selector: 'app-tweet-modal',
+  templateUrl: './tweet-modal.component.html',
+  styleUrls: ['./tweet-modal.component.css']
 })
-export class CreatePostComponent implements OnInit {
-
-  constructor(private userService: UserService) { }
-
-  flag: number = 0;
-
-  textArea:string;
-  isVisible: Boolean = false;
-  mentionIdArray = [];
-  //searchedUsers: any = [];
-  searchedUsers = [];
+export class TweetModalComponent implements OnInit {
 
   public uploader: FileUploader = new FileUploader({
     url: URL,
     itemAlias: 'image',
     authToken: localStorage.getItem("Authorization").substring(7)
   });
-
+  constructor(private userService: UserService,
+    public activeModal: NgbActiveModal,) { }
+  
+  flag: number = 0;
+  
+  textArea:string;
+  isVisible: Boolean = false;
+  mentionIdArray = [];
+  //searchedUsers: any = [];
+  searchedUsers = [];
   ngOnInit() {
-    
-    this.uploader.onAfterAddingFile = (file) => {
-      file.withCredentials = false;
-    };
-    this.uploader.onCompleteItem = (item: any, status: any) => {
-      console.log("=========================", item, status);
-    };
   }
-
   check(event: any){
     var strArray = this.textArea.split(" ");
     if(this.flag == 1){
@@ -66,7 +58,6 @@ export class CreatePostComponent implements OnInit {
       this.isVisible = false;
     }
   }
-
   searchForUser(){
     var str = this.textArea.split(" ");
     var searchString = (str[str.length - 1]).substring(1);
@@ -80,17 +71,6 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
-  insertTag(user: any){
-    let strArray = this.textArea.split(" ");
-    if(strArray[strArray.length - 1].charAt(0) == "@"){
-      strArray.pop();
-      this.textArea = strArray.join(" ") + " @" + user.userhandle;
-      this.mentionIdArray.push(user._id);
-      this.isVisible = false;
-      this.flag = 0;
-    }
-  }
-
   OnSubmit(){
     this.uploader.onBuildItemForm = (item, form) => {
       form.append("text", this.textArea);
@@ -102,5 +82,14 @@ export class CreatePostComponent implements OnInit {
     this.textArea = "";
     this.mentionIdArray = [];
   }
-
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 }

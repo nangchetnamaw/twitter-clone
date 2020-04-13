@@ -22,7 +22,8 @@ let upload = multer({storage: storage});
 
 module.exports = (app) => {
 
-    app.post('/tweet', upload.single('image'), controller.composeTweet.composeTweet);
+    app.post('/tweet', upload.single('image'), controller.tweet.composeTweet);
+    app.get('/tweet', controller.tweet.allTweets);
     app.post('/signup', controller.user.signup);
     app.post('/login', controller.user.login);
     app.get('/user/:userhandle',authenticator, controller.user.search);
@@ -36,4 +37,6 @@ module.exports = (app) => {
     app.post('/like',authenticator, controller.likeTweet.updateLike);
     app.put('/unlike',authenticator, controller.unlikeTweet.unlike);
     app.get('/explore',authenticator, controller.explore.getExploreTweets);
+    app.get('/followers/:userhandle',controller.follow.getFollowersData);
+    app.get('/following/:userhandle',controller.follow.getFollowingData);
 }

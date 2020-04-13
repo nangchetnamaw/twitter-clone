@@ -7,7 +7,7 @@ import { Profile } from './../models/profile.interface';
 import { HttpResponse } from "@angular/common/http";
 import { IFollower, IUnfollow } from "../models/follow.interface";
 import { IUser, IJwtPayload } from "../models/user.interface";
-import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Router, ActivatedRoute, Params,NavigationEnd } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import {
   NgbModal,
@@ -51,7 +51,18 @@ export class MyprofileComponent implements OnInit {
     private route: ActivatedRoute,
     // public dialog: MatDialog,
     private modalService: NgbModal,
-    ) {}
+    ) {
+      this.router.events.subscribe(event => {
+
+        if (event instanceof NavigationEnd) {
+  
+          // close all open modals
+          this.modalService.dismissAll();        
+  
+        }
+  
+      });
+    }
   
 
   ngOnInit() {

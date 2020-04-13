@@ -115,5 +115,53 @@ class followController{
             });
         }
     };
+
+    async getFollowersData(req,res){
+        const userhandle = req.params.userhandle;
+        const userId = await User.findOne({userhandle: userhandle}).select('_id');
+        let followersList = await follower.getFollowers({user: userId});
+        if(followersList!=null){
+            res.send({
+                success: true,
+                payload: {
+                    isRelation: true,
+                    followers: followersList
+                }
+            });
+        }
+        else {
+            console.log("no followers")
+            res.send({
+                success: true,
+                payload: {
+                    followers: "user has no followers"
+                }
+            });
+        }
+    };
+
+    async getFollowingData(req,res){
+        const userhandle = req.params.userhandle;
+        const userId = await User.findOne({userhandle: userhandle}).select('_id');
+        let followingList = await following.getFollowing({user:userId});
+        if(followingList!=null){
+            res.send({
+                success: true,
+                payload: {
+                    isRelation: true,
+                    following: followingList
+                }
+            });
+        }
+        else {
+            console.log("not following anyone")
+            res.send({
+                success: true,
+                payload: {
+                    followers: "user does not  follow anyone"
+                }
+            });
+        }
+    };
 }
 module.exports = new followController();

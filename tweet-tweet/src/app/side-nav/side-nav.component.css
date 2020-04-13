@@ -12,6 +12,10 @@ a{
   margin-bottom: 0.5rem;
 }
 
+.middle-content{
+  width: 562.5px;
+}
+
 span{
   color: black;
   font-weight: 640;
@@ -68,11 +72,10 @@ a:focus {
   color:blue;
   outline: none;
 }
-.selected{
- 
-  color: rgba(29,161,242,1.00); 
- cursor: pointer;
 
+.selected{
+  color: rgba(29,161,242,1.00); 
+  cursor: pointer;
 }
 
 .icon{
@@ -130,15 +133,20 @@ a:focus {
 
 .main-content-big{
   background-color: white;
-  width: 45%;
+  width: 100%;
 }
 
 .navigation-header{
+  width: 562.5px;
   border: #E1E8ED;
   border-left: none;
   border-style: solid;
   border-width: 0.2rem;
 }
+
+/* .create-tweet-big{
+  width: 562.5px;
+} */
 
 .floating-btn{
   position: fixed;

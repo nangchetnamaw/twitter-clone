@@ -7,6 +7,15 @@
     border-style: solid;
 }
 
+.input-file{
+    position: fixed;
+    opacity: 0;
+}
+
+.input-file:hover{
+    cursor: pointer;
+}
+
 .user-image{
     height: 5rem;
     width: 5rem;
