@@ -10,9 +10,10 @@
     <div class="row-top">
       <div class="user-wrapper">
          <span ><img class="user-image" src="{{profile.images}}"></span>
+         <span class="edit" *ngIf="user?.userhandle === currentUser?.userhandle" (click) = "editProfileModal()">Edit Profile</span>
       </div>
 
-      <span class="edit" *ngIf="user?.userhandle === currentUser?.userhandle" (click) = "editProfileModal()">Edit Profile</span>
+      
        <div *ngIf="user?.userhandle !== currentUser?.userhandle">
         <div *ngIf="!follow">
           <button class="edit" (click)="handleFollow()">Follow</button>

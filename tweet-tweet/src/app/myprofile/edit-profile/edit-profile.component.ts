@@ -4,7 +4,11 @@ import ParseJwt from "../../utils/parsejwt";
 import { HttpResponse } from "@angular/common/http";
 import { IUser, IJwtPayload } from "../../models/user.interface";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-
+import {
+  NgbActiveModal,
+  NgbModal,
+  ModalDismissReasons
+} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-edit-profile',
@@ -35,8 +39,9 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService
-  ) { }
+    private userService: UserService,
+    public activeModal: NgbActiveModal,
+  ) {}
 
   ngOnInit() {
 
@@ -58,4 +63,13 @@ export class EditProfileComponent implements OnInit {
       }
     });
    }  
+   private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    }else {
+      return `with: ${reason}`;
+    }
+  }
 }
