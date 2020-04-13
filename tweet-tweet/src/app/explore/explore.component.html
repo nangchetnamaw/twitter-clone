@@ -1,0 +1,35 @@
+
+  <div class="card">
+    <div class="input-icons"> 
+      <i class="fa fa-search icon"></i> 
+      <input class="input-field" type="search" placeholder="Search Twitter"> 
+     </div>
+     <div class="headings">
+       <a class="badge">For You</a>
+       <span class="badge">News</span>
+       <span class="badge">Sports</span>
+       <span class="badge">Fun </span>
+       <span class="badge">Entertainment</span>
+       <i class="fa fa-cog " id="settings" ></i>
+     </div> 
+  </div>
+  <div class="card"style="margin-top:10px">
+    <h2 class="bold"style="text-align:left">What's happening</h2>
+  </div>
+   <div *ngFor="let tweet of data">
+    <div class="card ">
+      <div class="card-header tweets">
+       <div>
+        <span> <h5 class="bold">{{tweet.user.screen_name}}</h5> {{tweet.created_at}}</span>
+         <h3 class="bold">{{tweet.user.name}}</h3>
+        
+       </div>
+       <div>
+        <img class="thumbnail" src={{tweet.user.profile_image_url}}>
+       </div>
+        <div>
+         <h5 >{{tweet.text }}</h5>
+        </div>
+      </div>
+    </div>
+ 

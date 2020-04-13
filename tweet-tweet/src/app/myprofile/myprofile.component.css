@@ -9,16 +9,16 @@
 
 }
 .twitter{
+  position:absolute;
     max-height: 150px;
+    width: 530px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../../assets/Images/my.jpg");
 }
 
 .row-top{
-    max-height: 100px;
-  display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 5rem;
@@ -26,9 +26,8 @@
 }
 
 .user-image{
-  margin-top: 50px;
-  position: absolute;
-  background-image: url("../../assets/Images/my.jpg");
+  position: relative;
+  margin-top: 100px;
   background-position: center;
   background-size: cover;
   height: 95px; 
@@ -39,9 +38,9 @@
 }
 
 .edit{
-    position: relative;
-    margin-top: 250px;
-    font-size: medium;
+  position: absolute;
+  margin-left: 350px;
+  font-size: medium;
   padding: 0px 20px;
   border-style: solid;
   border-radius: 30px;
@@ -51,14 +50,33 @@
 }
 
 .edit:hover{
-  background-color: #EAFAF2;
+  background-color: #38A1F3;
   color: var(white);
   cursor: pointer;
 }
 
+#unfollow-edit:hover{
+  background-color: darkred;
+  color: var(white);
+  cursor: pointer;
+}
+
+.edit .unfollow { 
+  display: none;
+}
+
+.edit:hover .following {
+    display: none; 
+}
+
+
+.edit:hover .unfollow{
+    display: inline;
+}
+
 .user{
-    position: relative;
-    margin-top: 100px;
+  position: relative;
+  margin-top: -50px;
   font-size: large;
   font-weight: bolder;
   color: black;
@@ -163,7 +181,7 @@
 }
 .followers{
   
-  padding: 13px 50px;
+  padding: 13px 35px;
   justify-content: space-around;
   border-radius: 2px;
   color:gray;

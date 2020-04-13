@@ -1,32 +1,56 @@
 <div class="container-fluid">
-    <div class="twitter-card"> 
-      <span class="span">{{user.name}}</span>
-      <div class="fa fa-arrow-left" id="arrow-left"></div>
-      <div class="span-one">{{user.tweetCount}}&nbsp; tweets</div>
-      <div class="twitter">
-        <div class="row-top">
-          <div class="user-wrapper">
-            <span class="user-image"></span>
-          </div>
-          <span class="edit">Edit Profile</span>
+  <div class="row">
+    <div class="col-md-6">
+    <div class="twitter-card" id="profile"*ngFor="let profile of Profile;index as _id"> 
+    <span class="span">{{user.name}}</span>
+    <div class="fa fa-arrow-left" id="arrow-left"></div>
+    <div class="span-one">{{user.tweetCount}}&nbsp; tweets</div>
+    <div>
+      <img class="twitter" src="{{profile.image}}">
+    <div class="row-top">
+      <div class="user-wrapper">
+         <span ><img class="user-image" src="{{profile.images}}"></span>
+      </div>
+
+      <span class="edit" *ngIf="user?.userhandle === currentUser?.userhandle" (click) = "editProfileModal()">Edit Profile</span>
+       <div *ngIf="user?.userhandle !== currentUser?.userhandle">
+        <div *ngIf="!follow">
+          <button class="edit" (click)="handleFollow()">Follow</button>
         </div>
-        <div class="user">{{user.name}}</div>
-        <div class="username">{{user.userhandle}}</div>
-        <p class="profile-bio">{{user.bio}}</p>
-        <div class="row-middle">
-          <span class="profile-location">
-            <i class="fa fa-map-marker"></i>
-            {{user.location}}
-          </span>
-          <span class="profile-website">
-            <i class="fa fa-link"></i>
-            <a href="https://www.instagram.com/anchal.hora/">https://www.instagram.com/{{user.userhandle}}/</a>
-          </span>
-          <span class="profile-calendar">
-            <i class="fa fa-calendar"></i>
-            {{user.joined}}
-          </span>
+        <div *ngIf="follow">
+          <button class="edit" id="unfollow-edit" (click)="handleUnfollow()">
+            <span class="following">Following</span>
+            <span class="unfollow">Unfollow</span>
+          </button>
         </div>
+      </div>
+      
+    </div>
+    <div class="user">{{user.name}}</div>
+    <div class="username">{{user.userhandle}}</div>
+    <p class="profile-bio">{{user.bio}}</p>
+    <div class="row-middle">
+      <span class="profile-location">
+        <i class="fa fa-map-marker"></i>
+        {{user.location}}
+      </span>
+      <span class="profile-website">
+        <i class="fa fa-link"></i>
+        <a href="https://www.instagram.com/anchal.hora/">https://www.instagram.com/{{user.userhandle}}/</a>
+      </span>
+      <span class="profile-calendar">
+        <i class="fa fa-calendar"></i>
+        {{user.joined}}
+      </span>
+    </div>
+    
+      <span class="count">
+        <b>{{user.followerCount}}</b> Followers
+      </span>
+    <span class="count">
+       <b>{{user.followingCount}}</b> Following
+
+        </span>
   
         <span class="count">
           <b>{{user.followerCount}}</b> Followers
@@ -38,17 +62,19 @@
         <div class="row-bottom">
           <small class="followers">
             Tweets
-          </small>
-          <small class="followers">
-            Tweets & Replies
-          </small>
-          <small class="followers">
-            Media
-          </small>
-          <small class="followers">
-            Likes
-          </small>
-        </div>
-      </div>
-    </div>
+            </small>
+            <small class="followers">
+             Tweets & Replies
+            </small>
+             <small class="followers">
+              Media
+             </small>
+            <small class="followers">
+              Likes
+            </small>
+          </div>
+          <div class="row-bottom"></div>
+  </div>
+  </div>
+</div>
 </div>

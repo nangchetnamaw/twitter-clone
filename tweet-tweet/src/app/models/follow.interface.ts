@@ -9,8 +9,8 @@ interface IFollowing{
 }
 
 interface IUnfollow{
-    userId: string;
-    followerId: string;
+    userhandle: string;
+    followerhandle: string;
 }
 
 export { IFollower, IFollowing, IUnfollow };

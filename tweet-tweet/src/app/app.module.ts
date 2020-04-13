@@ -63,7 +63,12 @@ import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { TrendsComponent } from './trends/trends.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { FollowersFollowingComponent } from './followers-following/followers-following.component';
+import { ExploreComponent } from './explore/explore.component';
+
+
 
 
 @NgModule({
@@ -88,7 +93,10 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     TrendsComponent,
     MyprofileComponent,
     FileSelectDirective,
-    EditProfileComponent
+    EditProfileComponent,
+    ComingSoonComponent,
+    FollowersFollowingComponent,
+    ExploreComponent    
   ],
 
   imports: [
@@ -153,5 +161,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
   ],
 
   bootstrap: [AppComponent]
+ 
 })
 export class AppModule { }

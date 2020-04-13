@@ -55,7 +55,7 @@ class UserController{
             success: false,
             error: 'Invalid email or password'
         });
-
+     
         const isPassword = await bcrypt.compare(password, user.password);
         if(!isPassword) return res.status(401).send({
             success: false,
@@ -76,7 +76,7 @@ class UserController{
 
     async getProfile (req, res) {
         const _id= req.params.id;
-        const user = await User.findById({"_id":_id})
+        const user = await User.findById({"_id":_id}).select('-password');
         if(user!=null){
             res.status(200).send(user);
         }
@@ -85,10 +85,25 @@ class UserController{
                 "message": "Unauthorized"
             });
         }
-    }
+        
+    };
 
+    async getProfileByUserhandle (req,res){
+        const userhandle=req.params.userhandle;
+        console.log(userhandle)
+        const user = await User.findOne({"userhandle":userhandle}).select('-password');
+        if(user!= null){
+            res.status(200).send(user);
+        }
+        else{
+            res.status(401).send({
+                "message": "Unauthorized"
+            });
+        }
+        console.log(user);
+    };
+    
     async updateProfile(req,res) {
-        if(authenticate.authenticator()){
             try{
             let updateObj= req.body;
             const user= await User.update({_id: req.params.id},  updateObj);
@@ -100,19 +115,13 @@ class UserController{
             catch(error){
                 console.log(error);
             }
-        }
-        else{
-           
-                res.status(401).send({
-                "message": "Unauthorized"
-            });
         
-        }
+        
     }
 
     async search(req, res){
         let queryObject = { $regex: req.params.userhandle, $options: 'i'};
-        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1});
+        const employees = await User.find({userhandle: queryObject}, {name: 1, userhandle: 1}).select('-password');
         res.status(200).send(employees);
     }
 }

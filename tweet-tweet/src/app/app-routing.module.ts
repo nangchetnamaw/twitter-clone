@@ -1,5 +1,8 @@
 import { ProfileComponent } from './profile/profile.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { FollowersFollowingComponent } from './followers-following/followers-following.component';
+import { EditProfileComponent } from './myprofile/edit-profile/edit-profile.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { FeedComponent } from './feed/feed.component';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -10,11 +13,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ExploreComponent } from './explore/explore.component';
 
 const routes: Routes = [
   { path: "welcome", component: WelcomePageComponent},
   { path: "login", component: LoginPageComponent },
+  { path: 'comingsoon', component: ComingSoonComponent },
   { path: "signup", component: SignUpComponent },
   { path: "", component: SideNavComponent, children: [
     {
@@ -36,7 +40,7 @@ const routes: Routes = [
   ]},
   { path: 'create', component: CreatePostComponent},
   { path: 'modal', component: EditProfileComponent},
-  { path: 'temp', component: FeedComponent },
+  { path: 'temp', component: FeedComponent }
   // { path: 'profile',
   //   children: [
   //     {
@@ -47,6 +51,26 @@ const routes: Routes = [
   //     }
   //   ]
   // }
+  // {path:"explore",component:ExploreComponent}
+  // { path: 'profile',
+  //   children: [
+  //  {  path: '', component: MyprofileComponent, 
+  //     },
+  //     {
+  //       path: ':userhandle', component: MyprofileComponent, 
+  //     },
+  //     {
+  //       path: ':userhandle',
+  //       children: [
+  //         {
+  //           path: ':followers', component: FollowersFollowingComponent
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {path: "trends", component: TrendsComponent},
+  // {path:"feed", component:FeedComponent}
 ];
 
 @NgModule({
