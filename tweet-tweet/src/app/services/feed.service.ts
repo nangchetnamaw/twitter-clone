@@ -11,7 +11,7 @@ const FEED_API = 'http://localhost:3000/api/tweet';
 export class FeedService{
     headers: HttpHeaders = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('Authorization')
+        Authorization: localStorage.getItem("Authorization")
     });
     httpOptions = {
         headers: this.headers
