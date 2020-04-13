@@ -147,5 +147,21 @@ export class FollowersFollowingComponent implements OnInit {
 
   }
 
+  showFollowers(){
+    this.router.navigate(["/profile/" + this.currentUserhandle+"/followers"]);
+    this.getFollowersList(this.currentUserhandle);  
+    this.isListingFollowers = true;
+    this.isListingFollowing = false;
+  }
+  showFollowing(){
+    this.router.navigate(["/profile/" + this.currentUserhandle+"/following"]);
+    this.getFollowingList(this.currentUserhandle);  
+    this.isListingFollowers = false;
+    this.isListingFollowing = true;
+  }
+  redirectToClickedUser(user){
+    this.router.navigate(["/profile/" + user]);
+  }
+
 
 }

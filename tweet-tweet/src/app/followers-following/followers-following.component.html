@@ -7,29 +7,29 @@
         </span>
     </div>
     <div class="header">
-        <div class="card-body-title" [style.color]="isListingFollowers ? ' rgba(29,161,242,1.00)' : 'black'" [style.border-bottom]="isListingFollowers ? '2px solid #1da1f2' : '1px solid lightgrey'">
+        <div class="card-body-title" (click)="showFollowers()" [style.color]="isListingFollowers ? ' rgba(29,161,242,1.00)' : 'black'" [style.border-bottom]="isListingFollowers ? '2px solid #1da1f2' : '1px solid lightgrey'">
             Followers
         </div>
-        <div class="card-body-title" [style.color]="isListingFollowing ? ' rgba(29,161,242,1.00)' : 'black'" [style.border-bottom]="isListingFollowing ? '2px solid #1da1f2' : '1px solid lightgrey'">
+        <div class="card-body-title" (click)="showFollowing()"  [style.color]="isListingFollowing ? ' rgba(29,161,242,1.00)' : 'black'" [style.border-bottom]="isListingFollowing ? '2px solid #1da1f2' : '1px solid lightgrey'">
             Following
         </div>
     </div>
     
-    <ul class="list-group list-group-flush" > 
+    <ul class="list-group list-group-flush" [style.display]="isListingFollowers ? 'block': 'none'"> 
         <li class="list-group-item" *ngFor="let follower of followersList">
           <div class="list-body">
-              <div class="card-body">
+              <div class="card-body" (click)="redirectToClickedUser(follower.followers.follower.userhandle)">
                   <span>
                       <h4 class="card-title-header">{{follower.followers.follower.name}}</h4>
                       <div class="card-title-body" id="isFollowerDiv">
                           <h4>@{{follower.followers.follower.userhandle}} </h4>&nbsp;&nbsp;
                           <h4 id="isFollower">Follows you</h4>
                       </div>
-                      <h4 class="card-title-footer">{{follower.followers.follower.bio}}{{follower.hasRelation}}{{follower.isCurrentUserFollowing}}</h4>
+                      <h4 class="card-title-footer">{{follower.followers.follower.bio}}</h4>
                   </span>
                   <span >
                     <div *ngIf="currentUserhandle !== currentUser.userhandle" >
-                        <p>whatever logic</p>
+                        <p hidden>whatever logic</p>
                         <div *ngIf="!follower.isCurrentUserFollowing">
                             <button class="btn" id="follow-btn" (click)="follow(follower.followers.follower.userhandle)">Follow</button>
                         </div>
@@ -59,17 +59,17 @@
         
     </ul>
     
-    <ul class="list-group list-group-flush" > 
+    <ul class="list-group list-group-flush" [style.display]="isListingFollowing ? 'block' : 'none'"> 
       <li class="list-group-item" *ngFor="let following of followingList">
         <div class="list-body">
-            <div class="card-body">
+            <div class="card-body" (click)="redirectToClickedUser(following.following.following.userhandle)">
                 <span>
                     <h4 class="card-title-header">{{following.following.following.name}}</h4>
                     <div class="card-title-body" id="isFollowingDiv">
                         <h4>@{{following.following.following.userhandle}}</h4>&nbsp;&nbsp;
                         <h4 id="isFollower" *ngIf="following.hasRelation">Follows you</h4>
                     </div>
-                    <h4 class="card-title-footer">{{following.following.following.bio}}{{following.hasRelation}}{{following.isCurrentUserFollowing}}</h4>
+                    <h4 class="card-title-footer">{{following.following.following.bio}}</h4>
                 </span>
                 <span>  
                     <div *ngIf="currentUserhandle !== currentUser.userhandle" >
