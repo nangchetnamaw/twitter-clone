@@ -21,6 +21,8 @@ import {
 })
 export class EditProfileComponent implements OnInit {
 
+  editProfileModal:boolean=true;
+
   user: IUser = {
     userhandle: "",
     email: "",
