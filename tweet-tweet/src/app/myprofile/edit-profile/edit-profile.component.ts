@@ -36,6 +36,7 @@ export class EditProfileComponent implements OnInit {
     }
   };
   currentUser: IJwtPayload = ParseJwt.parseJwt();
+  obj: any;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -44,7 +45,6 @@ export class EditProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
     let currentUserhandle = this.currentUser.userhandle;
     var currentUserId = this.currentUser._id;
     this.loadUserDetails(currentUserId);
@@ -72,4 +72,14 @@ export class EditProfileComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+  userUpdate(obj):any{
+    this.userService.updateUser(obj, this.currentUser._id).subscribe(
+      (res: any) => {
+        this.router.navigate(["/profile"]);
+      },
+      err => {
+        console.log(err.error.payload.message);
+      });
+    }
 }

@@ -19,9 +19,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
 import{ExploreComponent} from './explore/explore.component';
 
-
 const routes: Routes = [
-  { path: "retweet", component: RetweetComponent},
+
   { path: "welcome", component: WelcomePageComponent},
   { path: "login", component: LoginPageComponent },
   { path: 'comingsoon', component: ComingSoonComponent },
@@ -60,7 +59,7 @@ const routes: Routes = [
   {path: "trends", component: TrendsComponent},
   {path:"feed", component:FeedComponent},
   {path:"tweetmodal", component:TweetModalComponent},
-
+  { path: "retweet", component: RetweetComponent}
 
 ];
 

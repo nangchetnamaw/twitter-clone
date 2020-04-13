@@ -43,6 +43,10 @@ export class UserService {
         return this.http.post<any>(`${USER_DOMAIN}/login`, user, { ...this.options, observe: 'response' });
     }
 
+    updateUser(user: any, _id:string): Observable<HttpResponse<any>>{
+        return this.http.patch<any>(`${USER_DOMAIN}/profile/${_id}`, user, { ...this.httpOptions, observe: 'response' });
+    }   
+
     searchUser(name:string): Observable<any>{
         return this.http.get("http://localhost:3000/user/"+name, {headers: this.header_token, observe: "response"}).pipe(
             tap(_ => this.log("showing details")),
