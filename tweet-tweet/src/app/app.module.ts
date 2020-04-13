@@ -99,10 +99,7 @@ import { TweetModalComponent } from './side-nav/tweet-modal/tweet-modal.componen
     ComingSoonComponent,
     FollowersFollowingComponent,
     ExploreComponent,
-
-    RetweetComponent
-    
-
+    RetweetComponent,
     TweetModalComponent
 
   ],

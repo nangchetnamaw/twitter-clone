@@ -127,19 +127,21 @@
   transition: all .2s ease-out;
   justify-content: space-evenly;
 }
- .handler{
-    display:flex;
-    flex-wrap:nowrap;
-     top:-10px;
-} 
+
 .tweet-area{
     font-size: 2rem;
-    width: 100%;
+    width: 89%;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     border: none;
     outline: none;
     resize: none;
     color: black;
+    margin-top:-40px;
+    margin-left:60px;
+}
+.adjust{
+    display:flex;
+    flex-flow:row;
 }
 
 .tweet-area::placeholder{
