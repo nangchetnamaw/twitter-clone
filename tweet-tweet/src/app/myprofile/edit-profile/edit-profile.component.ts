@@ -55,7 +55,6 @@ export class EditProfileComponent implements OnInit {
       if(res.status == 200){
         this.user = res.body;
         this.user.dob=this.user.dob.substring(0, 10);
-        console.log(this.user);
       }
       else if(res.status == 401){
         localStorage.removeItem("token");
