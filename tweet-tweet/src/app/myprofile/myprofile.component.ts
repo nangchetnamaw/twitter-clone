@@ -118,7 +118,7 @@ export class MyprofileComponent implements OnInit {
         this.user = res.body;
       }
       else if(res.status == 401){
-        localStorage.removeItem("token");
+        localStorage.removeItem("Authorization");
         this.router.navigate(['/login']);
       }
     });
@@ -137,7 +137,6 @@ export class MyprofileComponent implements OnInit {
   }
 
   handleUnfollow(): void {
-    debugger
     this.followService.unfollow({
         userhandle: this.searchedUser,
         followerhandle: this.currentUser.userhandle
