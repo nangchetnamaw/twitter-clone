@@ -95,7 +95,7 @@ import { ExploreComponent } from './explore/explore.component';
     FileSelectDirective,
     EditProfileComponent,
     ComingSoonComponent,
-    FollowersFollowingComponent
+    FollowersFollowingComponent,
     ExploreComponent,
     
   ],

@@ -14,7 +14,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/containers/home.component';
 import{ExploreComponent} from './explore/explore.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: "welcome", component: WelcomePageComponent},
@@ -34,7 +33,7 @@ const routes: Routes = [
   ]},
   { path: 'create', component: CreatePostComponent},
   { path: 'modal', component: EditProfileComponent},
-  {path:"explore",component:ExploreComponent}
+  {path:"explore",component:ExploreComponent},
   { path: 'profile',
     children: [
    {  path: '', component: MyprofileComponent, 
