@@ -1,3 +1,4 @@
+import { TweetService } from 'src/app/services/tweet.service';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
@@ -13,7 +14,9 @@ const URL = 'http://localhost:3000/tweet';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private tweetService: TweetService) { }
 
   flag: number = 0;
 
@@ -70,13 +73,10 @@ export class CreatePostComponent implements OnInit {
   searchForUser(){
     var str = this.textArea.split(" ");
     var searchString = (str[str.length - 1]).substring(1);
+    console.log("hgcjhjhfhhvjhvkjhjvchh");
     this.userService.searchUser(searchString).subscribe(res => {
-      if(res.status == 200){
-        this.searchedUsers = res.body;
-      }
-      else{
-        console.log("Some Error");
-      }
+      console.log(res);
+      this.searchedUsers = res;
     });
   }
 
@@ -92,13 +92,27 @@ export class CreatePostComponent implements OnInit {
   }
 
   OnSubmit(){
-    this.uploader.onBuildItemForm = (item, form) => {
-      form.append("text", this.textArea);
-      form.append("mentions", this.mentionIdArray);
-      item.formData = [this.textArea];
-      item.formData = this.mentionIdArray;
-    };
-    this.uploader.uploadAll();
+    console.log(this.uploader.getNotUploadedItems().length);
+    if(this.uploader.getNotUploadedItems().length != 0){
+      this.uploader.onBuildItemForm = (item, form) => {
+        form.append("text", this.textArea);
+        form.append("mentions", this.mentionIdArray);
+        item.formData = [this.textArea];
+        item.formData = this.mentionIdArray;
+      };
+      this.uploader.uploadAll();
+    }
+    else if(this.textArea === null || this.textArea.match(/^ *$/) !== null){
+      
+    }
+    else{
+      this.tweetService.createTweet({
+        "text": this.textArea,
+        "mentions": this.mentionIdArray
+      }).subscribe( res => {
+        alert("Tweet Tweet");
+      })
+    }
     this.textArea = "";
     this.mentionIdArray = [];
   }
