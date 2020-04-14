@@ -38,7 +38,7 @@ export class CreatePostComponent implements OnInit {
       file.withCredentials = false;
     };
     this.uploader.onCompleteItem = (item: any, status: any) => {
-      console.log("=========================", item, status);
+      console.log("Uploaded: ", item, status);
     };
   }
 
@@ -73,7 +73,6 @@ export class CreatePostComponent implements OnInit {
   searchForUser(){
     var str = this.textArea.split(" ");
     var searchString = (str[str.length - 1]).substring(1);
-    console.log("hgcjhjhfhhvjhvkjhjvchh");
     this.userService.searchUser(searchString).subscribe(res => {
       console.log(res);
       this.searchedUsers = res;
@@ -92,7 +91,6 @@ export class CreatePostComponent implements OnInit {
   }
 
   OnSubmit(){
-    console.log(this.uploader.getNotUploadedItems().length);
     if(this.uploader.getNotUploadedItems().length != 0){
       this.uploader.onBuildItemForm = (item, form) => {
         form.append("text", this.textArea);
