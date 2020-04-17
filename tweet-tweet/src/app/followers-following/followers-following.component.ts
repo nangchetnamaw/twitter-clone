@@ -62,21 +62,6 @@ export class FollowersFollowingComponent implements OnInit {
     }    
   }
 
-
-  @HostListener('document:click', ['$event'])
-  redirectToUserOnClick(event) {  
-    // if (this.eRef.nativeElement.contains(event.target)) {
-    //   if(event.target.id!="angle-down"){
-    //     for(let i=0;i<this.isDropdownClicked.length;i++){
-    //     this.isDropdownClicked[i]=false;
-    //   }
-      
-    //   }
-    // }
-    
-  }
-
-
   getFollowersList(currentUserhandle){
     this.followService.getFollowers(currentUserhandle).subscribe(res => {
       if(res.status == 200){
