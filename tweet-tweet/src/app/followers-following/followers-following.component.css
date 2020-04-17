@@ -48,11 +48,13 @@
     display: flex;
     justify-content: flex-start;
     position: relative;
+    cursor: pointer;
 }
 
 .header{
     display: flex;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 
 .card-body-title:hover{

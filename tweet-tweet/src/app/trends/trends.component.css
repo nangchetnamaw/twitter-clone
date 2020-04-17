@@ -10,7 +10,7 @@
 .card{
     background-color:rgb(245, 248, 250);
     border-radius: 4%;
-    width: 20vw !important;
+    width: 28vw !important;
 }
 
 .card-body{
@@ -42,6 +42,7 @@ h5{
 h4{
     font-size: 1.5rem;
     font-weight: 400;
+    color: black;
 }
 
 .card-link{
@@ -55,6 +56,7 @@ h4{
     flex-direction: row;
     position: relative;
     font-size: 1.5rem;
+    color: black;
 }
 
 .trend-head #angle-down{
@@ -123,17 +125,16 @@ li :hover{
     min-width: 40px; 
     font-size: 1.8rem;
     padding-top: 12px;
-
+    color: darkgray;
 } 
   
 .input-field { 
-   
     padding: 10px; 
     padding-left: 45px;
     font-size: 1.5rem;
     background-color:rgb(230, 236, 240);
     border-radius:50px;
-    width: 20vw !important;
+    width: 28vw !important;
     border: none;
 } 
 

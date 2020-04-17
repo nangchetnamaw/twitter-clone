@@ -11,24 +11,21 @@
       <div class="user-wrapper">
          <span ><img class="user-image" src="{{profile.images}}"></span>
          <span class="edit" *ngIf="user?.userhandle === currentUser?.userhandle" (click) = "editProfileModal()">Edit Profile</span>
+      </div>  
+      <div *ngIf="user?.userhandle !== currentUser?.userhandle">
+      <div *ngIf="!follow">
+        <button class="edit" (click)="handleFollow()">Follow</button>
       </div>
-
-      
-       <div *ngIf="user?.userhandle !== currentUser?.userhandle">
-        <div *ngIf="!follow">
-          <button class="edit" (click)="handleFollow()">Follow</button>
-        </div>
-        <div *ngIf="follow">
-          <button class="edit" id="unfollow-edit" (click)="handleUnfollow()">
-            <span class="following">Following</span>
-            <span class="unfollow">Unfollow</span>
-          </button>
-        </div>
+      <div *ngIf="follow">
+        <button class="edit" id="unfollow-edit" (click)="handleUnfollow()">
+          <span class="following">Following</span>
+          <span class="unfollow">Unfollow</span>
+        </button>
       </div>
-      
+      </div>  
     </div>
     <div class="user">{{user.name}}</div>
-    <div class="username">{{user.userhandle}}</div>
+    <div class="username">@{{user.userhandle}}</div>
     <p class="profile-bio">{{user.bio}}</p>
     <div class="row-middle">
       <span class="profile-location">

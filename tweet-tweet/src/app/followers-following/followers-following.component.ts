@@ -94,8 +94,6 @@ export class FollowersFollowingComponent implements OnInit {
     this.followService.getFollowing(currentUserhandle).subscribe(res => {
       if(res.status == 200){
         this.followingList = res.body.payload.following;
-        
-        console.log(this.followingList)
       }
       else if(res.status == 401){
         localStorage.removeItem("Authorization");
